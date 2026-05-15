@@ -21,7 +21,7 @@ const intensityLabels = {
 
     <h2 class="font-display font-black text-h2-size text-text-primary mb-6">
       A YEAR IN<br/>
-      <span class="text-accent-dim">THE LIFE.</span>
+      <span class="text-accent">THE LIFE.</span>
     </h2>
 
     <p class="font-body text-[16px] text-text-secondary leading-relaxed max-w-2xl mb-16">
@@ -47,7 +47,7 @@ const intensityLabels = {
               <span class:list={[
                 "text-[10px] font-heading font-bold uppercase tracking-[0.15em] px-2.5 py-1",
                 phase.intensity === "high" ? "bg-accent text-accent-text" :
-                phase.intensity === "medium" ? "bg-accent/20 text-accent-dim" :
+                phase.intensity === "medium" ? "bg-accent/20 text-accent" :
                 "bg-border text-text-muted",
               ]}>
                 {intensityLabels[phase.intensity]}
