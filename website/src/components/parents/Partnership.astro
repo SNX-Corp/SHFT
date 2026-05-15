@@ -1,0 +1,54 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+---
+
+<section class="py-24 lg:py-40 bg-surface-alt text-text-inverse">
+  <div class="content-width">
+    <SectionLabel number="03" text="STRATEGIC PARTNERSHIP" inverted />
+
+    <h2 class="font-display font-black text-h2-size text-white mb-8 max-w-3xl">
+      BACKED BY<br/>
+      <span class="text-accent">ALT-F4.</span>
+    </h2>
+
+    <p class="font-body text-[18px] text-white/50 leading-relaxed max-w-2xl mb-16">
+      Team SHFT has a sister-team partnership with Team 7558 ALT-F4 — one of the
+      fastest-growing FRC teams in Canadian history. This isn't just a name on paper.
+      It's a competitive advantage your child gets from day one.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+      {[
+        {
+          title: "Shared Resources",
+          description: "Access to ALT-F4's knowledge base, design archives, and proven engineering processes.",
+        },
+        {
+          title: "Joint Practice Sessions",
+          description: "Train alongside an established team. Your child learns from experienced students and mentors.",
+        },
+        {
+          title: "Technical Mentorship",
+          description: "ALT-F4's mentors provide guidance in mechanical design, CAD, and advanced fabrication techniques.",
+        },
+        {
+          title: "Alliance Selection",
+          description: "At district events, strong sister-team partnerships create a direct path to alliance selection and elimination rounds.",
+        },
+        {
+          title: "Competition Strategy",
+          description: "Coordinated scouting, match strategy, and game analysis between both teams during competitions.",
+        },
+        {
+          title: "Path to Championships",
+          description: "The partnership is designed to give both teams the best shot at DCMP qualification — and beyond.",
+        },
+      ].map((item) => (
+        <div class="bg-surface-alt p-8 lg:p-10">
+          <h3 class="font-heading font-bold text-[16px] text-white mb-3">{item.title}</h3>
+          <p class="font-body text-[14px] text-white/40 leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

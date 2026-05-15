@@ -1,0 +1,65 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+---
+
+<section class="py-24 lg:py-40 bg-surface">
+  <div class="content-width">
+    <SectionLabel number="02" text="LEADERSHIP" />
+
+    <h2 class="font-display font-black text-h2-size text-text-primary mb-16 lg:mb-24">
+      MEET YOUR<br/>
+      <span class="text-accent-dim">LEAD MENTOR.</span>
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
+      <!-- Photo placeholder -->
+      <div class="aspect-[3/4] bg-surface-alt relative overflow-hidden">
+        <div class="absolute inset-0 flex items-end p-8">
+          <div>
+            <div class="font-display font-black text-[1.5rem] text-white">MALHAR SONI</div>
+            <div class="text-label-size font-heading text-accent mt-1">LEAD MENTOR & FOUNDER</div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-accent"></div>
+      </div>
+
+      <!-- Bio -->
+      <div>
+        <div class="space-y-6 mb-12">
+          <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
+            Malhar is the Lead Strategy Mentor and founder of Team SHFT. Alongside his work with
+            ALT-F4 (Team 7558), he has been part of one of the fastest-growing FRC programs in
+            Canadian history — earning Rookie All-Star, qualifying for the District Championship
+            and Worlds, and earning recognition from top teams across Ontario.
+          </p>
+          <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
+            His expertise spans strategy, wiring, game analysis, and robot design. Year after year,
+            other mentors are in awe of the designs and strategies his teams produce — consistently
+            outperforming expectations at every level of competition.
+          </p>
+          <p class="font-body text-[16px] text-text-primary leading-[1.8] font-semibold border-l-2 border-accent pl-6">
+            "I want these kids to succeed. Even if it means no profit in the first year — the
+            mission comes first. We are building something that lasts."
+          </p>
+        </div>
+
+        <!-- Credentials grid -->
+        <div class="grid grid-cols-2 gap-x-8 gap-y-4">
+          {[
+            { label: "Role", value: "Lead Strategy Mentor" },
+            { label: "Expertise", value: "Strategy, Wiring, Game Analysis" },
+            { label: "Achievement", value: "Rookie All-Star Award" },
+            { label: "Competition", value: "DCMP & Worlds Qualifier" },
+            { label: "Recognition", value: "Top teams across Ontario" },
+            { label: "Philosophy", value: "Mission before profit" },
+          ].map((item) => (
+            <div class="py-3 border-b border-border">
+              <div class="text-label-size font-heading text-text-muted mb-1">{item.label}</div>
+              <div class="font-heading font-semibold text-[14px] text-text-primary">{item.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

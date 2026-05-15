@@ -1,0 +1,61 @@
+---
+import SectionLabel from '../SectionLabel.astro';
+import { faqs } from '../../data/faq';
+---
+
+<section class="py-24 lg:py-40 bg-surface">
+  <div class="content-width">
+    <SectionLabel number="08" text="FAQ" />
+
+    <h2 class="font-display font-black text-h2-size text-text-primary mb-16 lg:mb-24">
+      QUESTIONS<br/>
+      <span class="text-accent-dim">ANSWERED.</span>
+    </h2>
+
+    <div class="max-w-3xl">
+      {faqs.map((faq, i) => (
+        <div class="border-b border-border" data-faq-item>
+          <button
+            class="w-full flex items-center justify-between py-6 text-left group cursor-pointer"
+            data-faq-trigger
+          >
+            <span class="font-heading font-bold text-[16px] text-text-primary pr-8 group-hover:text-accent-dim transition-colors duration-200">
+              {faq.question}
+            </span>
+            <span class="text-text-muted text-[20px] shrink-0 transition-transform duration-300" data-faq-icon>+</span>
+          </button>
+          <div class="overflow-hidden transition-all duration-300" style="max-height: 0px;" data-faq-content>
+            <p class="font-body text-[15px] text-text-secondary leading-[1.8] pb-6 pr-12">
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll("[data-faq-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const item = trigger.closest("[data-faq-item]") as HTMLElement;
+      const content = item.querySelector("[data-faq-content]") as HTMLElement;
+      const icon = item.querySelector("[data-faq-icon]") as HTMLElement;
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+      document.querySelectorAll("[data-faq-content]").forEach((c) => {
+        (c as HTMLElement).style.maxHeight = "0px";
+      });
+      document.querySelectorAll("[data-faq-icon]").forEach((i) => {
+        (i as HTMLElement).textContent = "+";
+        (i as HTMLElement).style.transform = "rotate(0deg)";
+      });
+
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.textContent = "−";
+        icon.style.transform = "rotate(180deg)";
+      }
+    });
+  });
+</script>

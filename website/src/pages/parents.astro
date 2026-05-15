@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PasswordGate from '../components/parents/PasswordGate.astro';
+import ParentsHero from '../components/parents/ParentsHero.astro';
+import Vision from '../components/parents/Vision.astro';
+import Mentor from '../components/parents/Mentor.astro';
+import Partnership from '../components/parents/Partnership.astro';
+import WhatYouGet from '../components/parents/WhatYouGet.astro';
+import SeasonTimeline from '../components/parents/SeasonTimeline.astro';
+import Pricing from '../components/parents/Pricing.astro';
+import Expectations from '../components/parents/Expectations.astro';
+import FAQ from '../components/parents/FAQ.astro';
+import Contact from '../components/parents/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Team SHFT — Parent Information"
+  description="Everything you need to know about Team SHFT's FRC program. Pricing, timeline, mentorship, and next steps."
+>
+  <PasswordGate />
+
+  <!-- Minimal nav for this page -->
+  <header class="fixed top-0 left-0 right-0 z-[var(--z-nav)] bg-surface-alt/90 backdrop-blur-sm border-b border-white/5">
+    <div class="content-width flex items-center justify-between h-16 lg:h-20">
+      <a href="/" class="flex items-center" aria-label="Team SHIFT — home">
+        <img src="/images/logo/wordmark.png" alt="Team SHIFT" class="h-[22px] lg:h-7 w-auto" />
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="#pricing" class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white/50 hover:text-accent transition-colors duration-200 hidden sm:block">
+          Pricing
+        </a>
+        <a href="#contact" class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white/50 hover:text-accent transition-colors duration-200 hidden sm:block">
+          Contact
+        </a>
+        <a
+          href="#contact"
+          class="bg-accent text-accent-text font-heading font-bold text-[12px] uppercase tracking-wide px-5 py-2.5 hover:bg-accent-hover transition-all duration-200 active:scale-[0.97]"
+        >
+          Get Started
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <ParentsHero />
+  <Vision />
+  <Mentor />
+  <Partnership />
+  <WhatYouGet />
+  <SeasonTimeline />
+  <Pricing />
+  <Expectations />
+  <FAQ />
+  <Contact />
+  <Footer />
+</BaseLayout>
