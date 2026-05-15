@@ -3,7 +3,7 @@ import SectionLabel from '../SectionLabel.astro';
 import { costBreakdown } from '../../data/pricing';
 ---
 
-<section id="pricing" class="py-24 lg:py-40 bg-surface-alt text-text-inverse">
+<section id="pricing" class="py-20 lg:py-40 bg-surface-alt text-text-inverse">
   <div class="content-width">
     <SectionLabel number="06" text="INVESTMENT" inverted />
 
@@ -19,13 +19,13 @@ import { costBreakdown } from '../../data/pricing';
 
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12">
       <!-- Pricing card -->
-      <div class="border border-white/10 p-8 lg:p-12 relative">
+      <div class="border border-white/10 p-6 sm:p-8 lg:p-12 relative">
         <div class="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
 
         <div class="text-label-size font-heading text-accent mb-6">REGISTRATION FEE</div>
 
         <div class="flex items-baseline gap-3 mb-2">
-          <span class="font-display font-black text-[4rem] lg:text-[5rem] text-white leading-none">$10K</span>
+          <span class="font-display font-black text-[clamp(3rem,12vw,5rem)] text-white leading-none">$10K</span>
           <span class="font-heading text-[14px] text-white/30">per student</span>
         </div>
 
@@ -89,7 +89,7 @@ import { costBreakdown } from '../../data/pricing';
           <p class="font-body text-[14px] text-white/50 leading-relaxed">
             <strong class="text-white">A competitive FRC robot costs $30,000–$40,000 to build.</strong> Add registration,
             travel, tools, rent, and coaching — and the real cost per student is significantly higher than $10K.
-            We absorb the difference because building a great team matters more than profit.
+            We absorb the difference because building a great team is the only thing that matters.
           </p>
         </div>
       </div>
