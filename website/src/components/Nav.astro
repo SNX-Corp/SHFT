@@ -1,0 +1,169 @@
+---
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Team', href: '#team' },
+  { label: 'Robot', href: '#robot' },
+  { label: 'Sponsors', href: '#sponsors' },
+  { label: 'Join', href: '#recruit' },
+];
+---
+
+<header
+  id="nav"
+  class="fixed top-0 left-0 right-0 z-[var(--z-nav)] bg-transparent transition-colors duration-[var(--duration-normal)]"
+  data-nav
+>
+  <!-- Dark scrim — keeps nav text readable over the hero -->
+  <div
+    class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/70 to-transparent pointer-events-none transition-opacity duration-300"
+    data-nav-scrim
+  ></div>
+
+  <div class="relative content-width flex items-center justify-between h-16 lg:h-20">
+    <!-- Logo -->
+    <a href="/" class="flex items-center group" aria-label="Team SHIFT — home">
+      <img
+        src="/images/logo/wordmark.png"
+        alt="Team SHIFT"
+        class="h-[22px] lg:h-7 w-auto"
+        data-nav-logo
+      />
+    </a>
+
+    <!-- Desktop links -->
+    <nav class="hidden lg:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
+          data-nav-link
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#recruit"
+        class="bg-white text-surface-alt font-heading font-bold text-[13px] uppercase tracking-wide px-5 py-2.5 hover:opacity-90 transition-all duration-200 active:scale-[0.97]"
+        data-nav-cta
+      >
+        Join SHFT
+      </a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      class="lg:hidden flex flex-col justify-center items-center w-11 h-11 gap-[6px] group"
+      aria-label="Toggle menu"
+      data-mobile-toggle
+    >
+      <span class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center" data-bar-1></span>
+      <span class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center" data-bar-2></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile overlay -->
+<div
+  class="fixed inset-0 z-[var(--z-overlay)] bg-bg pointer-events-none opacity-0 transition-opacity duration-300 lg:hidden"
+  data-mobile-menu
+>
+  <div class="flex flex-col items-center justify-center h-full gap-8">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="font-heading font-bold text-[2rem] uppercase tracking-tight text-text-primary hover:text-accent transition-colors duration-200"
+        data-mobile-link
+      >
+        {link.label}
+      </a>
+    ))}
+    <a
+      href="#recruit"
+      class="mt-4 bg-accent text-accent-text font-heading font-bold text-[14px] uppercase tracking-wide px-8 py-4 hover:bg-accent-hover transition-colors duration-200"
+      data-mobile-link
+    >
+      Join SHFT
+    </a>
+  </div>
+</div>
+
+<script>
+  const nav = document.querySelector('[data-nav]') as HTMLElement;
+  const navScrim = document.querySelector('[data-nav-scrim]') as HTMLElement;
+  const logo = document.querySelector('[data-nav-logo]') as HTMLImageElement;
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  const navCta = document.querySelector('[data-nav-cta]') as HTMLElement;
+  const mobileToggle = document.querySelector('[data-mobile-toggle]') as HTMLElement;
+  const mobileMenu = document.querySelector('[data-mobile-menu]') as HTMLElement;
+  const mobileLinks = document.querySelectorAll('[data-mobile-link]');
+  const bar1 = document.querySelector('[data-bar-1]') as HTMLElement;
+  const bar2 = document.querySelector('[data-bar-2]') as HTMLElement;
+
+  let menuOpen = false;
+
+  function setBars(dark: boolean) {
+    [bar1, bar2].forEach((b) => {
+      b.classList.toggle('bg-text-primary', dark);
+      b.classList.toggle('bg-white', !dark);
+    });
+  }
+
+  function updateNav() {
+    const pastHero = window.scrollY > window.innerHeight * 0.8;
+
+    if (pastHero) {
+      // Past the hero — solid white bar that stays put (no auto-hide)
+      nav.classList.add('bg-bg', 'shadow-[0_1px_0_var(--color-border)]');
+      nav.classList.remove('bg-transparent');
+      navScrim.classList.add('opacity-0');
+      logo.src = '/images/logo/wordmark-dark.png';
+      navLinks.forEach((l) => {
+        l.classList.remove('text-white', 'hover:text-accent');
+        l.classList.add('text-text-secondary', 'hover:text-text-primary');
+      });
+      navCta.classList.remove('bg-white', 'text-surface-alt');
+      navCta.classList.add('bg-accent', 'text-accent-text');
+    } else {
+      // Over the hero — transparent with a dark scrim so white text reads
+      nav.classList.remove('bg-bg', 'shadow-[0_1px_0_var(--color-border)]');
+      nav.classList.add('bg-transparent');
+      navScrim.classList.remove('opacity-0');
+      logo.src = '/images/logo/wordmark.png';
+      navLinks.forEach((l) => {
+        l.classList.add('text-white', 'hover:text-accent');
+        l.classList.remove('text-text-secondary', 'hover:text-text-primary');
+      });
+      navCta.classList.add('bg-white', 'text-surface-alt');
+      navCta.classList.remove('bg-accent', 'text-accent-text');
+    }
+
+    if (!menuOpen) setBars(pastHero);
+  }
+
+  function toggleMobile() {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+      bar1.style.transform = 'rotate(45deg) translateY(4px)';
+      bar2.style.transform = 'rotate(-45deg) translateY(-4px)';
+      setBars(true);
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+      mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+      bar1.style.transform = '';
+      bar2.style.transform = '';
+      document.body.style.overflow = '';
+      updateNav();
+    }
+  }
+
+  mobileToggle?.addEventListener('click', toggleMobile);
+  mobileLinks.forEach(link => link.addEventListener('click', () => {
+    if (menuOpen) toggleMobile();
+  }));
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>

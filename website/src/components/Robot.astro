@@ -1,0 +1,65 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import Button from './Button.astro';
+
+const specs = [
+  { label: 'Drivetrain', value: 'Swerve Drive' },
+  { label: 'Weight', value: '~120 lbs' },
+  { label: 'Height', value: '4\' 2"' },
+  { label: 'Motors', value: '8x Falcon 500' },
+  { label: 'Subsystems', value: 'Intake / Shooter / Climber' },
+  { label: 'Controls', value: 'Java / WPILib' },
+];
+---
+
+<section id="robot" class="py-24 lg:py-40 bg-surface-alt text-text-inverse overflow-hidden">
+  <div class="content-width">
+    <SectionLabel number="03" text="THE ROBOT" inverted />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
+      <!-- Robot image placeholder -->
+      <div data-robot-image class="relative">
+        <div class="aspect-[4/3] bg-[#2a2a2a] border border-white/10 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+          <div class="text-center relative z-10">
+            <div class="w-16 h-16 mx-auto mb-4 border-2 border-dashed border-white/20 flex items-center justify-center">
+              <span class="text-white/20 text-2xl">⚙</span>
+            </div>
+            <span class="font-heading text-[12px] uppercase tracking-[0.15em] text-white/30">Robot Hero Image</span>
+            <p class="font-body text-[11px] text-white/15 mt-2 max-w-[200px]">Replace with competition robot photography</p>
+          </div>
+        </div>
+        <!-- Green accent corner -->
+        <div class="absolute -bottom-3 -left-3 w-24 h-24 border-b-[3px] border-l-[3px] border-accent"></div>
+      </div>
+
+      <!-- Specs -->
+      <div>
+        <h2 class="font-display font-black text-h2-size text-accent mb-2 tracking-tight">
+          THE MACHINE
+        </h2>
+        <p class="font-heading text-[13px] text-white/40 uppercase tracking-[0.15em] mb-10">
+          Season 2026 — Competition Robot
+        </p>
+
+        <div class="space-y-0">
+          {specs.map((spec) => (
+            <div data-robot-spec class="grid grid-cols-[140px_1fr] gap-4 py-4 border-t border-white/10">
+              <span class="font-heading text-[11px] font-bold uppercase tracking-[0.15em] text-white/40">
+                {spec.label}
+              </span>
+              <span class="font-body text-[15px] text-white/80">
+                {spec.value}
+              </span>
+            </div>
+          ))}
+          <div class="border-t border-white/10"></div>
+        </div>
+
+        <div class="mt-10">
+          <Button href="#gallery" variant="primary">See in action</Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

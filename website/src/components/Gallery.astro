@@ -1,0 +1,49 @@
+---
+const images = [
+  { label: 'Build Season', aspect: 'aspect-[4/3]' },
+  { label: 'Competition Day', aspect: 'aspect-square' },
+  { label: 'Team Photo', aspect: 'aspect-[3/4]' },
+  { label: 'Workshop', aspect: 'aspect-[4/3]' },
+  { label: 'Robot Testing', aspect: 'aspect-square' },
+  { label: 'Awards Ceremony', aspect: 'aspect-[3/4]' },
+  { label: 'Pit Crew', aspect: 'aspect-[4/3]' },
+  { label: 'Strategy Meeting', aspect: 'aspect-square' },
+];
+---
+
+<section id="gallery" class="py-24 lg:py-40 bg-surface overflow-hidden">
+  <div class="content-width mb-12">
+    <div class="flex items-center gap-4 mb-12">
+      <div class="w-8 h-px bg-accent"></div>
+      <span class="text-label-size font-heading text-text-muted">07 — GALLERY</span>
+    </div>
+
+    <h2 class="font-display font-black text-h2-size text-text-primary">
+      IN THE SHOP<br />AND ON THE FIELD.
+    </h2>
+  </div>
+
+  <!-- Full-width masonry grid -->
+  <div class="px-4 lg:px-8 columns-2 md:columns-3 lg:columns-4 gap-3 lg:gap-4">
+    {images.map((img) => (
+      <div data-gallery-item class="group mb-3 lg:mb-4 break-inside-avoid">
+        <div class:list={[
+          'relative overflow-hidden bg-border/30 transition-transform duration-300 group-hover:scale-[1.02]',
+          img.aspect,
+        ]}>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="font-heading text-[11px] uppercase tracking-[0.15em] text-text-muted/50">
+              {img.label}
+            </span>
+          </div>
+          <!-- Hover overlay -->
+          <div class="absolute inset-0 bg-surface-alt/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+            <span class="font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white">
+              {img.label}
+            </span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

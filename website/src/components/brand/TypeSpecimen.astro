@@ -1,0 +1,55 @@
+---
+interface Props {
+  name: string;
+  family: string;
+  classification: string;
+  usage: string;
+  weights: { value: number; label: string }[];
+  sample?: string;
+}
+
+const {
+  name,
+  family,
+  classification,
+  usage,
+  weights,
+  sample = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789',
+} = Astro.props;
+---
+
+<div class="border border-border p-8 lg:p-10">
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-8">
+    <h3 class="font-heading font-bold text-[1.25rem] text-text-primary">{name}</h3>
+    <span class="font-body text-[12px] text-text-muted">{classification}</span>
+  </div>
+
+  <!-- Character sample -->
+  <div class="mb-8 pb-8 border-b border-border overflow-hidden">
+    <p class="text-[clamp(1.5rem,3vw,2.5rem)] leading-tight text-text-primary break-all" style={`font-family: ${family};`}>
+      {sample}
+    </p>
+  </div>
+
+  <!-- Weight samples -->
+  <div class="space-y-4 mb-8">
+    {weights.map((w) => (
+      <div class="flex items-baseline gap-6">
+        <span class="font-body text-[11px] text-text-muted w-20 shrink-0">{w.label}</span>
+        <span
+          class="text-[1.5rem] text-text-primary"
+          style={`font-family: ${family}; font-weight: ${w.value};`}
+        >
+          SHIFT YOUR MINDSET
+        </span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Usage -->
+  <div class="bg-surface p-4">
+    <span class="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-accent mb-2 block">Usage</span>
+    <p class="font-body text-[13px] text-text-secondary">{usage}</p>
+  </div>
+</div>

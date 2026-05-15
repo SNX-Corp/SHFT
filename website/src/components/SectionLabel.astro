@@ -1,0 +1,26 @@
+---
+interface Props {
+  number: string;
+  text: string;
+  inverted?: boolean;
+}
+
+const { number, text, inverted = false } = Astro.props;
+---
+
+<div class="flex items-center gap-4 mb-12">
+  <div
+    class:list={[
+      'w-8 h-px',
+      inverted ? 'bg-accent' : 'bg-accent',
+    ]}
+  />
+  <span
+    class:list={[
+      'text-label-size font-heading',
+      inverted ? 'text-text-muted' : 'text-text-muted',
+    ]}
+  >
+    {number} — {text}
+  </span>
+</div>

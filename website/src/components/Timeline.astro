@@ -1,0 +1,52 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import { milestones } from '../data/timeline';
+---
+
+<section id="timeline" class="py-24 lg:py-40 bg-surface">
+  <div class="content-width">
+    <SectionLabel number="05" text="TIMELINE" />
+
+    <h2 class="font-display font-black text-h2-size text-text-primary mb-16 lg:mb-24">
+      THE STORY<br />SO FAR.
+    </h2>
+
+    <!-- Left-aligned timeline -->
+    <div class="relative pl-8 lg:pl-12">
+      <!-- Vertical line -->
+      <div class="absolute left-0 top-0 bottom-0 w-px bg-border" data-timeline-line></div>
+
+      <div class="space-y-12 lg:space-y-16">
+        {milestones.map((milestone, i) => (
+          <div class="relative" data-timeline-item>
+            <!-- Dot -->
+            <div class="absolute -left-8 lg:-left-12 top-2 w-4 h-4 border-2 border-accent bg-bg rounded-full flex items-center justify-center">
+              <div class="w-1.5 h-1.5 bg-accent rounded-full"></div>
+            </div>
+
+            <!-- Year -->
+            <div class="font-display font-black text-[2.5rem] lg:text-[3.5rem] text-border/50 leading-none mb-2">
+              {milestone.year}
+            </div>
+
+            <!-- Content -->
+            <h3 class="font-heading font-bold text-[1.25rem] text-text-primary mb-2">
+              {milestone.title}
+            </h3>
+            <p class="font-body text-text-secondary text-[15px] leading-relaxed max-w-lg">
+              {milestone.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Future indicator -->
+      <div class="relative mt-12" data-timeline-item>
+        <div class="absolute -left-8 lg:-left-12 top-2 w-4 h-4 border-2 border-border bg-bg rounded-full"></div>
+        <span class="font-heading font-semibold text-[13px] uppercase tracking-[0.15em] text-text-muted">
+          The best is yet to come →
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

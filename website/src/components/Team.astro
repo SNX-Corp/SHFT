@@ -1,0 +1,50 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import TeamCard from './TeamCard.astro';
+import { team } from '../data/team';
+
+const featured = team.filter(m => m.featured);
+const rest = team.filter(m => !m.featured);
+---
+
+<section id="team" class="py-24 lg:py-40 bg-bg">
+  <div class="content-width">
+    <SectionLabel number="04" text="THE TEAM" />
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+      <h2 class="font-display font-black text-h2-size text-text-primary">
+        THE PEOPLE<br />BEHIND THE BOT.
+      </h2>
+      <p class="font-body text-text-secondary text-[15px] max-w-md leading-relaxed">
+        Engineers, coders, builders, strategists, and storytellers. Every member of SHFT owns a piece of the mission.
+      </p>
+    </div>
+
+    <!-- Asymmetric grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Featured members get larger cards -->
+      {featured.map((member) => (
+        <div data-team-card class="sm:col-span-2 lg:col-span-2">
+          <TeamCard member={member} featured />
+        </div>
+      ))}
+
+      <!-- Regular members -->
+      {rest.map((member) => (
+        <div data-team-card>
+          <TeamCard member={member} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Pull quote -->
+    <div data-team-quote class="mt-16 lg:mt-24 pl-6 border-l-2 border-accent max-w-xl lg:ml-auto">
+      <blockquote class="font-heading font-bold text-[clamp(1.25rem,2.5vw,1.75rem)] text-text-primary leading-tight">
+        "We don't have passengers.<br />Everyone ships."
+      </blockquote>
+      <cite class="block mt-3 font-body text-[13px] text-text-muted not-italic">
+        — Team SHFT founding principle
+      </cite>
+    </div>
+  </div>
+</section>

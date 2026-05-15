@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import '../fonts/index.ts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Team SHFT — FRC Robotics',
+  description = 'SHIFT our mindset. ELEVATE our impact. Team SHFT is a competitive FIRST Robotics team building the future of engineering.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-bg text-text-primary">
+    <slot />
+
+    <script>
+      import '../scripts/animations';
+    </script>
+  </body>
+</html>

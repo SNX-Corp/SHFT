@@ -1,0 +1,50 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import Button from './Button.astro';
+import { sponsors } from '../data/sponsors';
+---
+
+<section id="sponsors" class="py-24 lg:py-40 bg-bg">
+  <div class="content-width">
+    <SectionLabel number="06" text="SPONSORS" />
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+      <h2 class="font-display font-black text-h2-size text-text-primary">
+        OUR PARTNERS.
+      </h2>
+      <Button href="#recruit" variant="outline">Become a sponsor</Button>
+    </div>
+
+    <!-- Sponsor logo grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {sponsors.map((sponsor) => (
+        <div data-sponsor-card class="group relative border border-border p-8 lg:p-10 flex items-center justify-center transition-all duration-300 hover:border-accent aspect-[2/1]">
+          <!-- Placeholder logo -->
+          <div class="text-center">
+            <div class="w-12 h-12 mx-auto mb-2 border border-dashed border-border group-hover:border-accent/50 flex items-center justify-center transition-colors duration-300">
+              <span class="font-display font-bold text-[10px] text-text-muted group-hover:text-accent transition-colors duration-300">
+                {sponsor.name.slice(0, 2).toUpperCase()}
+              </span>
+            </div>
+            <span class="font-heading text-[10px] font-semibold uppercase tracking-[0.1em] text-text-muted group-hover:text-text-primary transition-colors duration-300">
+              {sponsor.name}
+            </span>
+          </div>
+
+          <!-- Tier badge -->
+          <span
+            class:list={[
+              'absolute top-2 right-2 font-heading text-[8px] font-bold uppercase tracking-[0.1em] px-1.5 py-0.5',
+              sponsor.tier === 'platinum' && 'bg-text-primary text-text-inverse',
+              sponsor.tier === 'gold' && 'bg-accent text-accent-text',
+              sponsor.tier === 'silver' && 'bg-border text-text-secondary',
+              sponsor.tier === 'bronze' && 'bg-surface text-text-muted',
+            ]}
+          >
+            {sponsor.tier}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+import Button from './Button.astro';
+---
+
+<section id="hero" class="relative min-h-screen flex items-end overflow-hidden bg-surface-alt">
+  <!-- Depth vignette — darkens toward the bottom for headline legibility -->
+  <div class="absolute inset-0" style="background: linear-gradient(155deg, transparent 45%, rgba(0,0,0,0.55) 100%);"></div>
+
+  <!-- Grid texture, radially masked so it fades out -->
+  <div
+    class="absolute inset-0 opacity-[0.06]"
+    style="background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%); mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%);"
+  ></div>
+
+  <!-- Green ambient glow bleed -->
+  <div class="absolute -top-32 -right-32 w-[360px] h-[360px] lg:-top-40 lg:-right-40 lg:w-[640px] lg:h-[640px] bg-accent/30 blur-[110px] lg:blur-[130px]"></div>
+
+  <!-- Echo wedge — depth layer behind the main shape -->
+  <div class="absolute top-0 right-0 w-[74%] h-[44%] lg:w-[64%] lg:h-[82%] bg-accent/10" style="clip-path: polygon(26% 0, 100% 0, 100% 92%);"></div>
+
+  <!-- Main neon wedge — sharp diagonal cut, anchored top-right -->
+  <div class="absolute top-0 right-0 w-[66%] h-[36%] lg:w-[56%] lg:h-[70%] bg-accent origin-top-right" style="clip-path: polygon(34% 0, 100% 0, 100% 82%);" data-hero-splash></div>
+
+  <!-- Content -->
+  <div class="relative z-[var(--z-hero-text)] content-width w-full pb-16 lg:pb-24 pt-32">
+    <div class="max-w-xl">
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-6" data-hero-eyebrow>
+        <div class="w-6 h-px bg-accent"></div>
+        <span class="font-heading font-semibold text-[11px] uppercase tracking-[0.2em] text-white/40">
+          FRC Team #### — Est. 2025
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-display font-black text-[clamp(3.5rem,6.5vw,6rem)] leading-[0.9] tracking-[-0.04em] text-text-inverse mb-8">
+        <span class="block overflow-hidden"><span class="block" data-hero-word>SHIFT</span></span>
+        <span class="block overflow-hidden"><span class="block" data-hero-word>OUR</span></span>
+        <span class="block overflow-hidden"><span class="block" data-hero-word>MIND<span class="text-accent">SET.</span></span></span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="font-heading font-medium text-[clamp(1rem,2vw,1.375rem)] text-white/50 max-w-xl mb-10 leading-relaxed" data-hero-sub>
+        We don't just build robots. We build engineers,<br class="hidden sm:block" />
+        problem-solvers, and the next generation of makers.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4" data-hero-cta>
+        <Button href="#recruit" variant="primary" size="large">Join the team</Button>
+        <a
+          href="#about"
+          class="inline-flex items-center justify-center font-heading font-bold uppercase tracking-wide text-[14px] px-8 py-4 border border-white/20 text-white hover:border-white/50 transition-all duration-200 active:scale-[0.97]"
+        >
+          Learn more
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 right-8 hidden lg:flex flex-col items-center gap-2" data-hero-scroll>
+    <span class="font-heading text-[10px] uppercase tracking-[0.2em] text-white/30 [writing-mode:vertical-lr]">Scroll</span>
+    <div class="w-px h-12 bg-white/20 relative overflow-hidden">
+      <div class="w-full h-4 bg-accent animate-[scrollDown_2s_ease-in-out_infinite]"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scrollDown {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(300%); }
+  }
+</style>

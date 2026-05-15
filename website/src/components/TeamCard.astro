@@ -1,0 +1,59 @@
+---
+import type { TeamMember } from '../data/team';
+
+interface Props {
+  member: TeamMember;
+  featured?: boolean;
+}
+
+const { member, featured = false } = Astro.props;
+
+const initials = member.name.split(' ').map(w => w[0]).join('');
+---
+
+<div
+  class:list={[
+    'group relative',
+    featured ? 'lg:row-span-2' : '',
+  ]}
+>
+  <!-- Photo placeholder -->
+  <div
+    class:list={[
+      'relative overflow-hidden bg-surface border border-border transition-all duration-300 group-hover:border-accent group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgba(166,255,0,0.08)]',
+      featured ? 'aspect-[3/4]' : 'aspect-square',
+    ]}
+  >
+    <div class="absolute inset-0 flex items-center justify-center">
+      <span class="font-display font-black text-[3rem] text-border group-hover:text-accent/20 transition-colors duration-300">
+        {initials}
+      </span>
+    </div>
+
+    <!-- Hover overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-alt/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+    <!-- Type badge -->
+    <div class="absolute top-3 left-3">
+      <span
+        class:list={[
+          'font-heading text-[9px] font-bold uppercase tracking-[0.15em] px-2 py-1',
+          member.type === 'mentor'
+            ? 'bg-accent text-accent-text'
+            : 'bg-surface-alt text-text-inverse',
+        ]}
+      >
+        {member.type}
+      </span>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="mt-4">
+    <h3 class="font-heading font-bold text-[15px] text-text-primary">{member.name}</h3>
+    <p class="font-body text-[13px] text-text-muted mt-0.5">{member.role}</p>
+  </div>
+
+  <!-- Green bottom accent on hover -->
+  <div class="h-[3px] bg-accent w-0 group-hover:w-full transition-all duration-300 mt-3"></div>
+</div>

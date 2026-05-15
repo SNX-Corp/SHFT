@@ -1,0 +1,53 @@
+---
+import { values } from '../data/values';
+---
+
+<section id="values" class="py-24 lg:py-40 bg-surface">
+  <div class="content-width">
+    <div class="flex items-center gap-4 mb-16">
+      <div class="w-8 h-px bg-accent"></div>
+      <span class="text-label-size font-heading text-text-muted">02 — VALUES</span>
+    </div>
+
+    <h2 class="font-display font-black text-h2-size text-text-primary mb-16 lg:mb-24 max-w-2xl">
+      WHAT WE<br />STAND FOR.
+    </h2>
+
+    <!-- Staggered value bands -->
+    <div class="space-y-0">
+      {values.map((value, i) => (
+        <div
+          class:list={[
+            'group border-t border-border py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-12 items-center transition-colors duration-300 hover:bg-bg',
+            i % 2 === 1 && 'lg:pl-[10%]',
+          ]}
+          data-value-row
+        >
+          <!-- Number + Name -->
+          <div class="flex items-baseline gap-6 lg:min-w-[300px]">
+            <span class="font-display font-black text-[2.5rem] lg:text-[3.5rem] text-border group-hover:text-accent transition-colors duration-300">
+              {value.number}
+            </span>
+            <h3 class="font-display font-black text-[1.5rem] lg:text-[2rem] text-text-primary tracking-tight">
+              {value.name}
+            </h3>
+          </div>
+
+          <!-- Horizontal rule (desktop) + Description -->
+          <div class="flex items-center gap-8">
+            <div class="hidden lg:block w-full max-w-[80px] h-px bg-border group-hover:bg-accent transition-colors duration-300"></div>
+            <p class="font-body text-text-secondary text-[15px] leading-relaxed max-w-lg">
+              {value.description}
+            </p>
+          </div>
+
+          <!-- Icon -->
+          <div class="hidden lg:flex items-center justify-center w-14 h-14 border border-border text-text-muted group-hover:border-accent group-hover:text-accent transition-colors duration-300">
+            <span class="text-xl" set:html={value.icon} />
+          </div>
+        </div>
+      ))}
+      <div class="border-t border-border"></div>
+    </div>
+  </div>
+</section>

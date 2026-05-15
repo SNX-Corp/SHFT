@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ColorSwatch from '../components/brand/ColorSwatch.astro';
+import TypeSpecimen from '../components/brand/TypeSpecimen.astro';
+import LogoShowcase from '../components/brand/LogoShowcase.astro';
+import DesignPrinciples from '../components/brand/DesignPrinciples.astro';
+import Button from '../components/Button.astro';
+
+const colors = [
+  { name: 'White', hex: '#FFFFFF', cssVar: '--color-bg', usage: 'Primary backgrounds, content areas', dark: false },
+  { name: 'Surface', hex: '#F8F8F8', cssVar: '--color-surface', usage: 'Alternate section backgrounds, cards', dark: false },
+  { name: 'Near Black', hex: '#1A1A1A', cssVar: '--color-surface-alt', usage: 'Dark sections, text primary, footer', dark: true },
+  { name: 'Gray', hex: '#555555', cssVar: '--color-text-secondary', usage: 'Secondary text, descriptions', dark: true },
+  { name: 'Muted', hex: '#999999', cssVar: '--color-text-muted', usage: 'Labels, captions, tertiary text', dark: false },
+  { name: 'Border', hex: '#E5E5E5', cssVar: '--color-border', usage: 'Borders, dividers, subtle separators', dark: false },
+  { name: 'Neon Green', hex: '#A6FF00', cssVar: '--color-accent', usage: 'Primary accent, CTAs, highlights, marquee', dark: false },
+  { name: 'Green Hover', hex: '#8FE000', cssVar: '--color-accent-hover', usage: 'Hover state for accent elements', dark: false },
+];
+
+const fonts = [
+  {
+    name: 'Orbitron',
+    family: "'Orbitron', system-ui, sans-serif",
+    classification: 'Display / Geometric Sans',
+    usage: 'Team name (SHIFT), display headlines, section numbers, big statements. NEVER for body text. Always uppercase. Weight 700-900 only.',
+    weights: [
+      { value: 700, label: 'Bold' },
+      { value: 800, label: 'ExtraBold' },
+      { value: 900, label: 'Black' },
+    ],
+  },
+  {
+    name: 'Exo 2',
+    family: "'Exo 2 Variable', 'Exo 2', system-ui, sans-serif",
+    classification: 'Heading / Technical Sans',
+    usage: 'Section headings, subheadings, button text, nav links, labels. Always uppercase for labels/buttons. Weights 500-700 for headings, 600-700 for UI.',
+    weights: [
+      { value: 500, label: 'Medium' },
+      { value: 600, label: 'SemiBold' },
+      { value: 700, label: 'Bold' },
+    ],
+  },
+  {
+    name: 'Raleway',
+    family: "'Raleway Variable', 'Raleway', system-ui, sans-serif",
+    classification: 'Body / Elegant Sans',
+    usage: 'Body text, descriptions, paragraphs, long-form content. Weight 400 for body, 500 for emphasis. Never uppercase at small sizes.',
+    weights: [
+      { value: 400, label: 'Regular' },
+      { value: 500, label: 'Medium' },
+      { value: 600, label: 'SemiBold' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Brand Identity — Team SHFT">
+  <Nav />
+
+  <!-- Brand Hero (minimal) -->
+  <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-bg">
+    <div class="content-width">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-6 h-px bg-accent"></div>
+        <span class="font-heading font-semibold text-[11px] uppercase tracking-[0.2em] text-text-muted">
+          Brand Guidelines
+        </span>
+      </div>
+      <h1 class="font-display font-black text-h1-size text-text-primary mb-4">
+        BRAND<br />IDENTITY.
+      </h1>
+      <p class="font-body text-text-secondary text-[clamp(1rem,1.5vw,1.125rem)] max-w-xl leading-relaxed">
+        The visual system behind Team SHFT. Colors, typography, logo usage, and the design principles that define our identity.
+      </p>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="py-16 lg:py-24 bg-bg border-t border-border">
+    <div class="content-width">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-8 h-px bg-accent"></div>
+        <span class="text-label-size font-heading text-text-muted">01 — COLOR PALETTE</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        {colors.map((color) => (
+          <ColorSwatch {...color} />
+        ))}
+      </div>
+
+      <!-- Usage examples -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+        <div class="p-6 bg-bg border border-border">
+          <span class="text-label-size font-heading text-accent block mb-4">Light Mode (Primary)</span>
+          <p class="font-body text-text-primary text-[14px]">Primary text on white</p>
+          <p class="font-body text-text-secondary text-[14px]">Secondary text</p>
+          <p class="font-body text-text-muted text-[14px]">Muted text</p>
+        </div>
+        <div class="p-6 bg-surface-alt">
+          <span class="text-label-size font-heading text-accent block mb-4">Dark Sections</span>
+          <p class="font-body text-text-inverse text-[14px]">Primary text on dark</p>
+          <p class="font-body text-white/50 text-[14px]">Secondary text on dark</p>
+          <p class="font-body text-white/30 text-[14px]">Muted text on dark</p>
+        </div>
+        <div class="p-6 bg-accent">
+          <span class="text-label-size font-heading text-accent-text block mb-4">Accent Surface</span>
+          <p class="font-heading font-bold text-accent-text text-[14px]">Text on accent</p>
+          <p class="font-body text-accent-text/70 text-[14px]">Secondary on accent</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="py-16 lg:py-24 bg-surface">
+    <div class="content-width">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-8 h-px bg-accent"></div>
+        <span class="text-label-size font-heading text-text-muted">02 — TYPOGRAPHY</span>
+      </div>
+
+      <div class="space-y-6">
+        {fonts.map((font) => (
+          <TypeSpecimen {...font} />
+        ))}
+      </div>
+
+      <!-- Scale demo -->
+      <div class="mt-12 p-8 border border-border bg-bg">
+        <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent mb-8">Type Scale</h4>
+        <div class="space-y-6">
+          <div>
+            <span class="font-body text-[11px] text-text-muted block mb-1">Display — clamp(3.5rem, 8vw, 8rem)</span>
+            <span class="font-display font-black text-display-size text-text-primary leading-none">SHFT</span>
+          </div>
+          <div>
+            <span class="font-body text-[11px] text-text-muted block mb-1">H1 — clamp(2.5rem, 5vw, 4.5rem)</span>
+            <span class="font-display font-black text-h1-size text-text-primary">HEADING ONE</span>
+          </div>
+          <div>
+            <span class="font-body text-[11px] text-text-muted block mb-1">H2 — clamp(2rem, 4vw, 3.5rem)</span>
+            <span class="font-display font-black text-h2-size text-text-primary">HEADING TWO</span>
+          </div>
+          <div>
+            <span class="font-body text-[11px] text-text-muted block mb-1">H3 — clamp(1.5rem, 3vw, 2rem)</span>
+            <span class="font-heading font-bold text-h3-size text-text-primary">Heading Three</span>
+          </div>
+          <div>
+            <span class="font-body text-[11px] text-text-muted block mb-1">Body — 1rem</span>
+            <span class="font-body text-[1rem] text-text-secondary leading-relaxed">The quick brown fox jumps over the lazy dog. Team SHFT builds robots and engineers.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo -->
+  <section class="py-16 lg:py-24 bg-bg border-t border-border">
+    <div class="content-width">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-8 h-px bg-accent"></div>
+        <span class="text-label-size font-heading text-text-muted">03 — LOGO</span>
+      </div>
+
+      <LogoShowcase />
+    </div>
+  </section>
+
+  <!-- Design Principles -->
+  <section class="py-16 lg:py-24 bg-surface">
+    <div class="content-width">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-8 h-px bg-accent"></div>
+        <span class="text-label-size font-heading text-text-muted">04 — DESIGN PRINCIPLES</span>
+      </div>
+
+      <DesignPrinciples />
+    </div>
+  </section>
+
+  <!-- Component Catalog -->
+  <section class="py-16 lg:py-24 bg-bg border-t border-border">
+    <div class="content-width">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-8 h-px bg-accent"></div>
+        <span class="text-label-size font-heading text-text-muted">05 — COMPONENTS</span>
+      </div>
+
+      <!-- Buttons -->
+      <h3 class="font-heading font-bold text-[1rem] text-text-primary mb-6">Buttons</h3>
+      <div class="flex flex-wrap gap-4 mb-12">
+        <Button variant="primary">Primary CTA</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="ghost">Ghost Link</Button>
+        <Button variant="primary" size="large">Large Primary</Button>
+      </div>
+
+      <!-- On dark background -->
+      <div class="p-8 bg-surface-alt mb-12">
+        <h4 class="font-heading text-[12px] font-bold uppercase tracking-[0.1em] text-white/30 mb-6">On Dark Background</h4>
+        <div class="flex flex-wrap gap-4">
+          <Button variant="primary">Primary CTA</Button>
+          <a class="inline-flex items-center justify-center font-heading font-bold uppercase tracking-wide text-[13px] px-6 py-3 border border-white/20 text-white hover:border-white/50 transition-all duration-200">
+            Outline on Dark
+          </a>
+        </div>
+      </div>
+
+      <!-- Section Labels -->
+      <h3 class="font-heading font-bold text-[1rem] text-text-primary mb-6">Section Labels</h3>
+      <div class="space-y-4 mb-12">
+        <div class="flex items-center gap-4">
+          <div class="w-8 h-px bg-accent"></div>
+          <span class="text-label-size font-heading text-text-muted">01 — SECTION NAME</span>
+        </div>
+        <div class="p-4 bg-surface-alt inline-block">
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-px bg-accent"></div>
+            <span class="text-label-size font-heading text-white/30">01 — INVERTED</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values -->
+      <h3 class="font-heading font-bold text-[1rem] text-text-primary mb-3">Brand Values</h3>
+      <p class="font-body text-text-secondary text-[14px] mb-6">Focus. Elevate. Innovate. Together.</p>
+      <div class="flex flex-wrap gap-3">
+        {['FOCUS', 'ELEVATE', 'INNOVATE', 'TOGETHER'].map((v) => (
+          <span class="font-heading font-bold text-[12px] uppercase tracking-[0.1em] px-4 py-2 border border-border text-text-primary hover:border-accent hover:text-accent transition-colors duration-200">
+            {v}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

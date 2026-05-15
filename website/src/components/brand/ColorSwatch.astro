@@ -1,0 +1,32 @@
+---
+interface Props {
+  name: string;
+  hex: string;
+  cssVar: string;
+  usage: string;
+  dark?: boolean;
+}
+
+const { name, hex, cssVar, usage, dark = false } = Astro.props;
+---
+
+<div class="group">
+  <div
+    class:list={[
+      'w-full aspect-square border transition-transform duration-200 group-hover:-translate-y-1',
+      dark ? 'border-white/10' : 'border-border',
+    ]}
+    style={`background-color: ${hex};`}
+  >
+    <div class="p-3 h-full flex flex-col justify-end">
+      <span class:list={['font-display font-bold text-[11px] tracking-wide', dark ? 'text-white' : 'text-text-primary']}>
+        {hex}
+      </span>
+    </div>
+  </div>
+  <div class="mt-3">
+    <h4 class="font-heading font-bold text-[13px] text-text-primary">{name}</h4>
+    <p class="font-mono text-[11px] text-text-muted mt-0.5">{cssVar}</p>
+    <p class="font-body text-[12px] text-text-secondary mt-1">{usage}</p>
+  </div>
+</div>

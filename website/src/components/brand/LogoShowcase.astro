@@ -1,0 +1,55 @@
+---
+import SMark from './SMark.astro';
+---
+
+<div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <!-- S-Mark on white -->
+    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-4 p-8 bg-white border border-border transition-transform duration-200 hover:-translate-y-1">
+      <SMark size="92px" mode="light" />
+      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-text-muted" style="font-family:'Exo 2 Variable',system-ui;">S-Mark — on Light</span>
+    </div>
+
+    <!-- S-Mark on dark -->
+    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-4 p-8 bg-surface-alt transition-transform duration-200 hover:-translate-y-1">
+      <SMark size="92px" mode="dark" />
+      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40" style="font-family:'Exo 2 Variable',system-ui;">S-Mark — on Dark</span>
+    </div>
+
+    <!-- Wordmark on white -->
+    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-5 p-8 bg-white border border-border transition-transform duration-200 hover:-translate-y-1">
+      <img src="/images/logo/wordmark-dark.png" alt="Team SHIFT" class="h-10 w-auto" />
+      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-text-muted" style="font-family:'Exo 2 Variable',system-ui;">Wordmark — on Light</span>
+    </div>
+
+    <!-- Wordmark on dark -->
+    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-5 p-8 bg-surface-alt transition-transform duration-200 hover:-translate-y-1">
+      <img src="/images/logo/wordmark.png" alt="Team SHIFT" class="h-10 w-auto" />
+      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40" style="font-family:'Exo 2 Variable',system-ui;">Wordmark — on Dark</span>
+    </div>
+  </div>
+
+  <!-- Clear space & minimum size -->
+  <div class="mt-8 p-6 bg-surface border border-border">
+    <h4 class="font-heading font-bold text-[13px] text-text-primary mb-4">Clear Space &amp; Minimum Size</h4>
+    <div class="flex flex-col sm:flex-row gap-8">
+      <div class="flex-1">
+        <div class="border border-dashed border-accent/40 p-8 flex items-center justify-center">
+          <div class="border border-dashed border-text-muted p-6">
+            <SMark size="56px" mode="light" />
+          </div>
+        </div>
+        <p class="font-body text-[12px] text-text-muted mt-2">Minimum clear space = height of the S-mark on all sides</p>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center gap-6 p-8 border border-border">
+          <SMark size="28px" mode="light" />
+          <span class="font-body text-[11px] text-text-muted">24px min</span>
+          <img src="/images/logo/wordmark-dark.png" alt="Team SHIFT" class="h-4 w-auto" />
+          <span class="font-body text-[11px] text-text-muted">80px min</span>
+        </div>
+        <p class="font-body text-[12px] text-text-muted mt-2">Minimum reproduction sizes for digital use</p>
+      </div>
+    </div>
+  </div>
+</div>

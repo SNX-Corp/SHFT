@@ -1,0 +1,50 @@
+---
+const principles = [
+  {
+    title: 'Sharp, Not Soft',
+    description: 'Angular geometry, no rounded corners, aggressive crops. Every edge is intentional. Softness signals uncertainty — we don\'t do uncertain.',
+    rule: 'border-radius: 0',
+  },
+  {
+    title: 'White Canvas',
+    description: 'Let white space do the work. Color is accent, not background. The neon green earns attention by being rare, not everywhere.',
+    rule: 'bg: #FFFFFF',
+  },
+  {
+    title: 'Motion With Purpose',
+    description: 'Every animation serves hierarchy. Nothing moves just to move. Reveals communicate order of importance. Speed communicates confidence.',
+    rule: 'ease: expo.out',
+  },
+  {
+    title: 'Type First',
+    description: 'Typography carries the brand. When in doubt, make the text bigger. Orbitron for impact, Exo 2 for authority, Raleway for clarity.',
+    rule: 'font-weight: 900',
+  },
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  {principles.map((p, i) => (
+    <div class="group border border-border p-8 transition-all duration-300 hover:border-accent hover:-translate-y-1">
+      <!-- Number -->
+      <span class="font-display font-black text-[3rem] text-border group-hover:text-accent transition-colors duration-300 leading-none">
+        {String(i + 1).padStart(2, '0')}
+      </span>
+
+      <!-- Title -->
+      <h3 class="font-display font-black text-[1.25rem] text-text-primary mt-4 mb-3">
+        {p.title}
+      </h3>
+
+      <!-- Description -->
+      <p class="font-body text-[14px] text-text-secondary leading-relaxed mb-6">
+        {p.description}
+      </p>
+
+      <!-- Rule tag -->
+      <div class="inline-block bg-surface-alt px-3 py-1.5">
+        <code class="font-mono text-[11px] text-accent">{p.rule}</code>
+      </div>
+    </div>
+  ))}
+</div>
