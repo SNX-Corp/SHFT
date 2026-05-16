@@ -15,7 +15,7 @@ const marqueeContent = items.join(' ◆ ') + ' ◆ ';
 ---
 
 <div class="relative z-[var(--z-marquee)] bg-accent overflow-hidden py-4 select-none">
-  <div class="flex whitespace-nowrap animate-[marquee_25s_linear_infinite]">
+  <div class="flex whitespace-nowrap animate-[marquee_12s_linear_infinite]">
     <span class="font-heading font-bold text-[14px] lg:text-[16px] uppercase tracking-[0.15em] text-accent-text px-4">
       {marqueeContent}
     </span>
@@ -35,7 +35,7 @@ const marqueeContent = items.join(' ◆ ') + ' ◆ ';
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-\[marquee_25s_linear_infinite\] {
+    .animate-\[marquee_12s_linear_infinite\] {
       animation: none;
     }
   }
