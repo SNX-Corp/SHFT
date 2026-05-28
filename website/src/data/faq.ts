@@ -6,15 +6,15 @@ export interface FAQ {
 export const faqs: FAQ[] = [
   {
     question: "Why is the registration fee $10,000?",
-    answer: "FRC is one of the most resource-intensive programs in STEM education. A competitive robot costs $30,000–$40,000 to build. On top of that, there are high FRC registration fees, competition travel, tools, parts, shipping, facility rent, food during build sessions, and professional coaching. We are fully transparent about where every dollar goes — and we refuse to cut corners on your child's experience.",
+    answer: "FRC is one of the most resource-intensive programs in STEM education. A competitive robot costs $30,000–$40,000 to build. On top of that, there are high FRC registration fees, competition travel, tools, parts, shipping, facility rent, food during build sessions, and professional coaching. We are fully transparent about where every dollar goes - and we refuse to cut corners on your child's experience.",
   },
   {
     question: "What if my child has no prior robotics experience?",
-    answer: "Experience is preferred but not required. What we require is work ethic. If your child is willing to show up, put in the hours, and learn — we will teach them everything. CAD, fabrication, wiring, programming, strategy. We will make every student a superstar if they commit to the process.",
+    answer: "Experience is preferred but not required. What we require is work ethic. If your child is willing to show up, put in the hours, and learn - we will teach them everything. CAD, fabrication, wiring, programming, strategy. We will make every student a superstar if they commit to the process.",
   },
   {
     question: "What is the time commitment?",
-    answer: "Students meet 3–4 days per week, roughly 15–20 hours total. During build season (January–February), this intensifies. This is a serious competitive program — not a casual after-school club. The commitment is real, and so are the results.",
+    answer: "Students meet 3–4 days per week, roughly 15–20 hours total. During build season (January–February), this intensifies. This is a serious competitive program - not a casual after-school club. The commitment is real, and so are the results.",
   },
   {
     question: "What is FRC?",
@@ -30,7 +30,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: "How does this help with university applications?",
-    answer: "FRC is one of the most recognized extracurriculars in engineering and STEM admissions. Students build a real engineering portfolio, develop leadership and teamwork skills, and often receive direct mentorship letters. Many FRC alumni attend MIT, Waterloo Engineering, U of T, and other top programs — and they credit FRC as a decisive factor.",
+    answer: "FRC is one of the most recognized extracurriculars in engineering and STEM admissions. Students build a real engineering portfolio, develop leadership and teamwork skills, and often receive direct mentorship letters. Many FRC alumni attend MIT, Waterloo Engineering, U of T, and other top programs - and they credit FRC as a decisive factor.",
   },
   {
     question: "How do I sign up?",

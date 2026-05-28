@@ -59,8 +59,14 @@
     color: var(--color-text-primary);
     background-color: var(--color-bg);
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
   }
 
   ::selection {
@@ -84,6 +90,8 @@
 }
 
 @utility content-width {
+  box-sizing: border-box;
+  width: 100%;
   max-width: var(--width-content);
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -155,7 +163,9 @@ html:not(.gsap-ready) [data-gallery-item],
 html:not(.gsap-ready) [data-recruit-eyebrow],
 html:not(.gsap-ready) [data-recruit-heading],
 html:not(.gsap-ready) [data-recruit-sub],
-html:not(.gsap-ready) [data-recruit-cta] {
+html:not(.gsap-ready) [data-recruit-cta],
+html:not(.gsap-ready) [data-page-reveal],
+html:not(.gsap-ready) [data-card-reveal] {
   opacity: 1 !important;
   transform: none !important;
 }

@@ -1,10 +1,10 @@
 ---
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Team', href: '#team' },
-  { label: 'Robot', href: '#robot' },
-  { label: 'Sponsors', href: '#sponsors' },
-  { label: 'Join', href: '#recruit' },
+  { label: 'Vision', href: '#vision' },
+  { label: 'Mentor', href: '#mentor' },
+  { label: 'Program', href: '#program' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Contact', href: '#contact' },
 ];
 ---
 
@@ -13,18 +13,18 @@ const navLinks = [
   class="fixed top-0 left-0 right-0 z-[var(--z-nav)] bg-transparent transition-colors duration-[var(--duration-normal)]"
   data-nav
 >
-  <!-- Dark scrim — keeps nav text readable over the hero -->
+  <!-- Dark scrim - keeps nav text readable over the hero -->
   <div
     class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/70 to-transparent pointer-events-none transition-opacity duration-300"
     data-nav-scrim
   ></div>
 
-  <div class="relative content-width flex items-center justify-between h-16 lg:h-20">
+  <div class="relative content-width box-border max-w-full flex items-center justify-between h-16 lg:h-20">
     <!-- Logo -->
-    <a href="/" class="flex items-center group" aria-label="Team SHIFT — home">
+    <a href="/" class="flex items-center group" aria-label="Team SHFT - home">
       <img
         src="/images/logo/wordmark.png"
-        alt="Team SHIFT"
+        alt="Team SHFT"
         class="h-[22px] lg:h-7 w-auto"
         data-nav-logo
       />
@@ -42,7 +42,7 @@ const navLinks = [
         </a>
       ))}
       <a
-        href="#recruit"
+        href="#contact"
         class="bg-white text-surface-alt font-heading font-bold text-[13px] uppercase tracking-wide px-5 py-2.5 hover:opacity-90 transition-all duration-200 active:scale-[0.97]"
         data-nav-cta
       >
@@ -52,12 +52,13 @@ const navLinks = [
 
     <!-- Mobile hamburger -->
     <button
-      class="lg:hidden flex flex-col justify-center items-center w-11 h-11 gap-[6px] group"
+      class="lg:hidden fixed top-3 right-4 z-[60] flex flex-col justify-center items-center w-11 h-11 gap-[6px] rounded-full border border-accent bg-accent shadow-[0_8px_24px_rgba(0,0,0,.28)] backdrop-blur-sm transition-colors duration-200 group"
       aria-label="Toggle menu"
+      aria-expanded="false"
       data-mobile-toggle
     >
-      <span class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center" data-bar-1></span>
-      <span class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center" data-bar-2></span>
+      <span class="block w-5 h-[2px] bg-text-primary transition-all duration-300 origin-center" data-bar-1></span>
+      <span class="block w-5 h-[2px] bg-text-primary transition-all duration-300 origin-center" data-bar-2></span>
     </button>
   </div>
 </header>
@@ -78,7 +79,7 @@ const navLinks = [
       </a>
     ))}
     <a
-      href="#recruit"
+      href="#contact"
       class="mt-4 bg-accent text-accent-text font-heading font-bold text-[14px] uppercase tracking-wide px-8 py-4 hover:bg-accent-hover transition-colors duration-200"
       data-mobile-link
     >
@@ -103,16 +104,20 @@ const navLinks = [
 
   function setBars(dark: boolean) {
     [bar1, bar2].forEach((b) => {
-      b.classList.toggle('bg-text-primary', dark);
-      b.classList.toggle('bg-white', !dark);
+      b.classList.toggle('bg-text-primary', true);
+      b.classList.toggle('bg-white', false);
     });
+
+    mobileToggle.classList.toggle('border-black/10', dark);
+    mobileToggle.classList.toggle('bg-white/85', dark);
+    mobileToggle.classList.toggle('border-accent', !dark);
+    mobileToggle.classList.toggle('bg-accent', !dark);
   }
 
   function updateNav() {
     const pastHero = window.scrollY > window.innerHeight * 0.8;
 
     if (pastHero) {
-      // Past the hero — solid white bar that stays put (no auto-hide)
       nav.classList.add('bg-bg', 'shadow-[0_1px_0_var(--color-border)]');
       nav.classList.remove('bg-transparent');
       navScrim.classList.add('opacity-0');
@@ -124,7 +129,6 @@ const navLinks = [
       navCta.classList.remove('bg-white', 'text-surface-alt');
       navCta.classList.add('bg-accent', 'text-accent-text');
     } else {
-      // Over the hero — transparent with a dark scrim so white text reads
       nav.classList.remove('bg-bg', 'shadow-[0_1px_0_var(--color-border)]');
       nav.classList.add('bg-transparent');
       navScrim.classList.remove('opacity-0');
@@ -142,6 +146,8 @@ const navLinks = [
 
   function toggleMobile() {
     menuOpen = !menuOpen;
+    mobileToggle.setAttribute('aria-expanded', String(menuOpen));
+
     if (menuOpen) {
       mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
       mobileMenu.classList.add('opacity-100', 'pointer-events-auto');

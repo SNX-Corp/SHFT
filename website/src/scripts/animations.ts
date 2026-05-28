@@ -14,7 +14,7 @@ const prefersReducedMotion = window.matchMedia(
 ).matches;
 
 if (prefersReducedMotion) {
-  // Make everything visible immediately — no animations
+  // Make everything visible immediately - no animations
   gsap.set(
     [
       '[data-hero-splash]',
@@ -39,6 +39,8 @@ if (prefersReducedMotion) {
       '[data-recruit-heading]',
       '[data-recruit-sub]',
       '[data-recruit-cta]',
+      '[data-page-reveal]',
+      '[data-card-reveal]',
     ].join(','),
     { opacity: 1, y: 0, x: 0, scale: 1, clearProps: 'all' },
   );
@@ -87,8 +89,23 @@ if (prefersReducedMotion) {
   gsap.set('[data-recruit-sub]', { y: 20, opacity: 0 });
   gsap.set('[data-recruit-cta]', { y: 20, opacity: 0 });
 
+  // Current launch page sections
+  const nonHeroSections = gsap.utils.toArray<HTMLElement>('section:not(#hero)');
+  nonHeroSections.forEach((section) => {
+    const heading = section.querySelector('h2');
+    const intro = section.querySelector(':scope > div > p, :scope > div > div > p');
+    const cards = section.querySelectorAll(':scope article, :scope .grid > div, :scope button, :scope [class*="border"]');
+
+    if (heading) heading.setAttribute('data-page-reveal', '');
+    if (intro) intro.setAttribute('data-page-reveal', '');
+    cards.forEach((card) => card.setAttribute('data-card-reveal', ''));
+  });
+
+  gsap.set('[data-page-reveal]', { y: 28 });
+  gsap.set('[data-card-reveal]', { y: 24 });
+
   /* ---------------------------------------------------------------- */
-  /*  1. HERO — plays on page load (no ScrollTrigger)                 */
+  /*  1. HERO - plays on page load (no ScrollTrigger)                 */
   /* ---------------------------------------------------------------- */
 
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
@@ -118,7 +135,7 @@ if (prefersReducedMotion) {
       },
       0.3,
     )
-    // Subtitle — after words finish (0.3 start + 0.8 dur + 2*0.15 stagger = ~1.4)
+    // Subtitle - after words finish (0.3 start + 0.8 dur + 2*0.15 stagger = ~1.4)
     .to(
       '[data-hero-sub]',
       { y: 0, opacity: 1, duration: 0.6 },
@@ -130,7 +147,7 @@ if (prefersReducedMotion) {
       { y: 0, opacity: 1, duration: 0.6 },
       '>-0.1',
     )
-    // Scroll indicator — last
+    // Scroll indicator - last
     .to('[data-hero-scroll]', { opacity: 1, duration: 0.5 });
 
   /* ---------------------------------------------------------------- */
@@ -243,7 +260,6 @@ if (prefersReducedMotion) {
       onEnter: (batch) => {
         gsap.to(batch, {
           y: 0,
-          opacity: 1,
           duration: 0.6,
           stagger: 0.1,
           overwrite: true,
@@ -355,5 +371,38 @@ if (prefersReducedMotion) {
       .to('[data-recruit-heading]', { y: 0, opacity: 1, duration: 0.6 }, '-=0.3')
       .to('[data-recruit-sub]', { y: 0, opacity: 1, duration: 0.6 }, '-=0.3')
       .to('[data-recruit-cta]', { y: 0, opacity: 1, duration: 0.6 }, '-=0.3');
+  }
+
+  /* ---------------------------------------------------------------- */
+  /*  10. CURRENT PAGE DETAIL REVEALS                                 */
+  /* ---------------------------------------------------------------- */
+
+  const pageReveals = gsap.utils.toArray<HTMLElement>('[data-page-reveal]');
+  pageReveals.forEach((element) => {
+    gsap.to(element, {
+      y: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: element,
+        start: 'top 84%',
+      },
+    });
+  });
+
+  const cardReveals = gsap.utils.toArray<HTMLElement>('[data-card-reveal]');
+  if (cardReveals.length) {
+    ScrollTrigger.batch(cardReveals, {
+      start: 'top 86%',
+      onEnter: (batch) => {
+        gsap.to(batch, {
+          y: 0,
+          duration: 0.6,
+          stagger: 0.06,
+          ease: 'power3.out',
+          overwrite: true,
+        });
+      },
+    });
   }
 }

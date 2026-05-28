@@ -1,28 +1,29 @@
 ---
 const items = [
-  'TEAM SHFT',
-  'FRC',
-  'FOCUS',
-  'ELEVATE',
-  'INNOVATE',
-  'TOGETHER',
-  'EST. 2025',
-  'REAL ENGINEERING',
-  'SHIFT YOUR MINDSET',
+  'Competitive engineering',
+  'World-class mentorship',
+  'Real engineering skills',
+  'Direct mentorship',
+  'ALT-F4 partnership',
+  'Competition pathway',
+  'University portfolio',
+  'Strength in numbers',
+  'Built around mentorship',
+  'Ontario community FRC team',
 ];
 
-const marqueeContent = items.join(' ◆ ') + ' ◆ ';
+const marqueeContent = items.join('     •     ') + '     •     ';
 ---
 
-<div class="relative z-[var(--z-marquee)] bg-accent overflow-hidden py-4 select-none">
-  <div class="flex whitespace-nowrap animate-[marquee_12s_linear_infinite]">
-    <span class="font-heading font-bold text-[14px] lg:text-[16px] uppercase tracking-[0.15em] text-accent-text px-4">
+<div class="relative z-[var(--z-marquee)] bg-accent overflow-hidden py-4 lg:py-5 select-none">
+  <div class="flex whitespace-nowrap animate-[marquee_34s_linear_infinite]">
+    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text px-8">
       {marqueeContent}
     </span>
-    <span class="font-heading font-bold text-[14px] lg:text-[16px] uppercase tracking-[0.15em] text-accent-text px-4" aria-hidden="true">
+    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text px-8" aria-hidden="true">
       {marqueeContent}
     </span>
-    <span class="font-heading font-bold text-[14px] lg:text-[16px] uppercase tracking-[0.15em] text-accent-text px-4" aria-hidden="true">
+    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text px-8" aria-hidden="true">
       {marqueeContent}
     </span>
   </div>
@@ -35,7 +36,7 @@ const marqueeContent = items.join(' ◆ ') + ' ◆ ';
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-\[marquee_12s_linear_infinite\] {
+    .animate-\[marquee_34s_linear_infinite\] {
       animation: none;
     }
   }

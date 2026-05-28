@@ -1,0 +1,147 @@
+---
+import SectionLabel from './SectionLabel.astro';
+
+const mentorProfiles = [
+  {
+    number: '02',
+    name: 'Malhar Soni',
+    role: 'Strategy / Systems / Engineering',
+    initials: 'MS',
+    body: 'Malhar leads the competitive side of the program: game analysis, robot architecture, scouting systems, match strategy, wiring, software thinking, and the standards that turn effort into results.',
+    details: [
+      ['Focus', 'Game analysis, scouting, match strategy'],
+      ['Systems', 'Robot architecture, wiring, software thinking'],
+      ['Standard', 'Turning student effort into competitive execution'],
+    ],
+    tags: ['Game analysis', 'Robot systems', 'Match strategy'],
+  },
+  {
+    number: '03',
+    name: 'Noeen Kashif',
+    role: 'Head Coach / Technical Culture',
+    initials: 'NK',
+    body: 'Noeen brings the operating discipline behind a serious team: technical direction, build culture, student accountability, sponsor communication, and the day-to-day structure required to make a young program grow fast without losing its standard.',
+    details: [
+      ['Focus', 'Technical direction and build culture'],
+      ['Systems', 'Operations, sponsorship, accountability'],
+      ['Standard', 'A program that grows fast and stays disciplined'],
+    ],
+    tags: ['Technical direction', 'Build culture', 'Program execution'],
+  },
+];
+---
+
+<section id="mentors" class="relative overflow-hidden bg-bg py-24 lg:py-32 text-text-primary border-y border-border">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-x-0 top-0 h-px bg-border"></div>
+    <div class="absolute -top-40 right-[-14%] h-[38rem] w-[38rem] rounded-full bg-[#2a2a2a]/[0.055] blur-[110px]"></div>
+    <div class="absolute top-[42rem] left-[-18rem] h-[34rem] w-[34rem] rounded-full bg-accent/[0.09] blur-[130px]"></div>
+    <div class="absolute inset-0 opacity-[0.028]" style="background-image: linear-gradient(#2a2a2a 1px, transparent 1px), linear-gradient(90deg, #2a2a2a 1px, transparent 1px); background-size: 46px 46px;"></div>
+  </div>
+
+  <div class="content-width relative z-10">
+    <SectionLabel number="02" text="MENTORS" />
+
+    <div class="mb-12 lg:mb-20 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-16 items-end">
+      <div>
+        <p class="font-heading text-[11px] font-bold uppercase tracking-[0.22em] text-text-muted mb-5">
+          The people setting the standard
+        </p>
+        <h2 class="font-display font-black text-[clamp(2.8rem,6vw,6.8rem)] leading-[0.88] tracking-[-0.06em] text-text-primary max-w-5xl">
+          MENTORS<br />
+          BEHIND THE<br />
+          <span class="text-[#2a2a2a]">SHFT.</span>
+        </h2>
+      </div>
+
+      <div class="border-l-2 border-[#2a2a2a] pl-5 lg:pl-7">
+        <p class="font-body text-[clamp(1.12rem,1.6vw,1.38rem)] leading-[1.75] text-text-secondary">
+          Right now, the mentors are the product. This section needs to sell trust, track record, and the standard behind the program.
+        </p>
+      </div>
+    </div>
+
+    <article class="relative mb-8 lg:mb-10 overflow-hidden border border-[#2a2a2a] bg-surface shadow-[0_20px_70px_rgba(0,0,0,0.06)]">
+      <div class="absolute right-4 top-2 font-display font-black text-[8rem] sm:text-[12rem] lg:text-[17rem] leading-none tracking-[-0.09em] text-[#2a2a2a]/[0.055]">
+        01
+      </div>
+      <div class="absolute inset-x-0 top-0 h-1.5 bg-[#2a2a2a]"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[0.78fr_1.22fr] gap-10 lg:gap-16 p-8 sm:p-12 lg:p-16 min-h-[34rem] lg:min-h-[42rem] items-center">
+        <div>
+          <p class="font-heading text-[11px] font-black uppercase tracking-[0.18em] text-text-muted mb-6">
+            01 / Founder statement
+          </p>
+          <h3 class="font-display font-black text-[clamp(2.75rem,5.2vw,6.25rem)] leading-[0.9] tracking-[-0.06em] text-text-primary">
+            The Mentors behind the SHFT
+          </h3>
+        </div>
+
+        <div>
+          <p class="font-body text-[clamp(1.2rem,1.9vw,1.72rem)] leading-[1.62] font-semibold text-text-primary/80 max-w-4xl">
+            Malhar Soni and Noeen Kashif are the mentors behind one of Ontario's fastest-rising FRC stories. Together they helped take Team 7558 ALT-F4 from a brand-new rookie program to a DCMP and Worlds-qualifying team, earning Rookie All-Star and building a reputation for sharp strategy, disciplined builds, and athlete-first mentorship.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-2.5">
+            {['Rookie All-Star', 'DCMP + Worlds qualifying', 'Team 7558 ALT-F4', 'Athlete-first mentorship'].map((stat) => (
+              <span class="bg-[#2a2a2a] text-white font-heading text-[10.5px] sm:text-[11px] font-black uppercase tracking-[0.1em] px-3.5 py-2.5">
+                {stat}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="space-y-8 lg:space-y-10">
+      {mentorProfiles.map((mentor) => (
+        <article class="group relative overflow-hidden border border-border bg-bg text-text-primary shadow-[0_18px_60px_rgba(0,0,0,0.045)] transition-all duration-300 hover:border-[#2a2a2a]/50 hover:shadow-[0_26px_90px_rgba(0,0,0,0.08)]">
+          <div class="absolute inset-y-0 left-0 w-1.5 bg-[#2a2a2a]"></div>
+          <div class="absolute right-4 top-3 font-display font-black text-[8rem] sm:text-[10rem] lg:text-[15rem] leading-none tracking-[-0.09em] text-[#2a2a2a]/[0.045] transition-colors duration-300">
+            {mentor.number}
+          </div>
+
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[0.68fr_1.32fr] gap-10 lg:gap-16 p-8 sm:p-12 lg:p-16 min-h-[34rem] lg:min-h-[40rem] items-center">
+            <div>
+              <div class="mb-9 flex h-20 w-20 items-center justify-center border border-[#2a2a2a] bg-[#2a2a2a] text-white">
+                <span class="font-display text-[1.25rem] font-black">{mentor.initials}</span>
+              </div>
+              <p class="mb-5 font-heading text-[11px] font-black uppercase tracking-[0.18em] text-text-muted">
+                {mentor.number} / {mentor.role}
+              </p>
+              <h3 class="font-display font-black text-[clamp(3rem,5.2vw,6.2rem)] leading-[0.9] tracking-[-0.06em] text-text-primary">
+                {mentor.name}
+              </h3>
+            </div>
+
+            <div class="lg:pt-2">
+              <p class="font-body text-[clamp(1.12rem,1.55vw,1.42rem)] leading-[1.72] text-text-secondary max-w-4xl">
+                {mentor.body}
+              </p>
+
+              <div class="mt-9 grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                {mentor.details.map(([label, value]) => (
+                  <div class="border border-border bg-surface p-5 transition-colors duration-300 group-hover:border-[#2a2a2a]/35">
+                    <p class="font-heading text-[10px] font-black uppercase tracking-[0.16em] text-text-muted mb-2.5">
+                      {label}
+                    </p>
+                    <p class="font-body text-[15px] leading-[1.58] text-text-secondary">
+                      {value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-2.5">
+                {mentor.tags.map((tag) => (
+                  <span class="border border-border bg-bg text-text-secondary font-heading text-[10.5px] font-black uppercase tracking-[0.1em] px-3.5 py-2.5 group-hover:border-[#2a2a2a]/45 group-hover:text-text-primary transition-colors duration-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

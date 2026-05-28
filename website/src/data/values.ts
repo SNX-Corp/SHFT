@@ -21,13 +21,13 @@ export const values: Value[] = [
   {
     number: '03',
     name: 'INNOVATE',
-    description: 'We build what\'s next. Not satisfied with the obvious solution — we prototype, test, break, and rebuild until the design is right.',
+    description: 'We build what\'s next. Not satisfied with the obvious solution - we prototype, test, break, and rebuild until the design is right.',
     icon: '&lt;/&gt;',
   },
   {
     number: '04',
     name: 'TOGETHER',
-    description: 'We win as one team. Mechanical, electrical, programming, business, media — every subteam is essential. No one ships alone.',
+    description: 'We win as one team. Mechanical, electrical, programming, business, media - every subteam is essential. No one ships alone.',
     icon: '&#9733;',
   },
 ];
