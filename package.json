@@ -1,0 +1,14 @@
+{
+  "name": "shft",
+  "private": true,
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm --prefix website run dev",
+    "build": "npm --prefix website run build",
+    "preview": "npm --prefix website run preview",
+    "astro": "npm --prefix website run astro"
+  }
+}

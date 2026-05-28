@@ -6,6 +6,6 @@ export const social = [
 ] as const;
 
 export const teamName = 'SHFT';
-export const teamNumber = '####';
+export const teamNumber = 'Number pending';
 export const tagline = 'SHIFT our mindset. ELEVATE our impact.';
 export const founded = 2025;
