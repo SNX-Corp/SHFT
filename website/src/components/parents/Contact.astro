@@ -17,14 +17,14 @@ const d = entry!.data as {
   <div class="content-width">
     <div class="max-w-2xl mx-auto text-center">
       <div class="flex items-center justify-center gap-4 mb-8">
-        <div class="w-8 h-px bg-accent"></div>
+        <div class="w-8 h-px bg-accent breathing-rule"></div>
         <span class="text-label-size font-heading text-accent">{d.eyebrow}</span>
-        <div class="w-8 h-px bg-accent"></div>
+        <div class="w-8 h-px bg-accent breathing-rule" style="animation-delay: 1.6s"></div>
       </div>
 
-      <h2 class="font-display font-black text-h2-size text-white mb-6">
-        {d.headline_line_1}<br/>
-        <span class="text-accent">{d.headline_line_2}</span>
+      <h2 class="font-display font-black text-h2-size mb-6">
+        <span class="title-shine is-white">{d.headline_line_1}</span><br/>
+        <span class="title-shine is-accent delay-1">{d.headline_line_2}</span>
       </h2>
 
       <p class="font-body text-[18px] text-white/50 leading-relaxed mb-12">

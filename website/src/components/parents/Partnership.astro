@@ -17,9 +17,9 @@ const d = entry!.data as {
   <div class="content-width">
     <SectionLabel number={d.section_number} text={d.section_label} inverted />
 
-    <h2 class="font-display font-black text-h2-size text-white mb-8 max-w-3xl">
-      {d.headline_line_1}<br/>
-      {d.headline_line_2}
+    <h2 class="font-display font-black text-h2-size mb-8 max-w-3xl">
+      <span class="title-shine is-white delay-2">{d.headline_line_1}</span><br/>
+      <span class="title-shine is-white delay-3">{d.headline_line_2}</span>
     </h2>
 
     <p class="font-body text-[18px] text-white/50 leading-relaxed max-w-2xl mb-16">
@@ -31,7 +31,7 @@ const d = entry!.data as {
         <div class="bg-surface-alt p-8 lg:p-10">
           <div class="flex items-center gap-2 mb-5">
             <span class="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-accent">SHFT</span>
-            <span class="text-white/40 text-[12px] leading-none">↔</span>
+            <span class="text-white/40 text-[12px] leading-none arrow-nudge">↔</span>
             <span class="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-accent">ALT-F4</span>
           </div>
           <h3 class="font-heading font-bold text-[16px] text-white mb-3">{item.title}</h3>

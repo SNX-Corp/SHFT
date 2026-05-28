@@ -34,9 +34,9 @@ const intensityLabels: Record<string, string> = {
   <div class="content-width">
     <SectionLabel number={d.section_number} text={d.section_label} />
 
-    <h2 class="font-display font-black text-h2-size text-text-primary mb-6">
-      {d.headline_line_1}<br/>
-      {d.headline_line_2}
+    <h2 class="font-display font-black text-h2-size mb-6">
+      <span class="title-shine is-dark delay-5">{d.headline_line_1}</span><br/>
+      <span class="title-shine is-dark delay-6">{d.headline_line_2}</span>
     </h2>
 
     <p class="font-body text-[16px] text-text-secondary leading-relaxed max-w-2xl mb-16">
@@ -51,7 +51,10 @@ const intensityLabels: Record<string, string> = {
         {d.phases.map((phase) => (
           <div class="relative">
             <!-- Dot -->
-            <div class="absolute -left-8 lg:-left-12 top-2 w-4 h-4 border-2 border-accent bg-bg rounded-full flex items-center justify-center">
+            <div
+              class="absolute -left-8 lg:-left-12 top-2 w-4 h-4 border-2 border-accent bg-bg rounded-full flex items-center justify-center"
+              data-timeline-phase={phase.period}
+            >
               <div class:list={["w-1.5 h-1.5 rounded-full", intensityColors[phase.intensity]]}></div>
             </div>
 
@@ -76,3 +79,39 @@ const intensityLabels: Record<string, string> = {
     </div>
   </div>
 </section>
+
+<script>
+  // E — Highlight the timeline dot whose period covers today's month.
+  const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  function periodCovers(period: string, currentIdx: number): boolean {
+    const text = period.toUpperCase().trim();
+    const range = text.match(/^([A-Z]{3,})\s*[-–]\s*([A-Z]{3,})$/);
+    if (range) {
+      const startIdx = months.indexOf(range[1].slice(0, 3));
+      const endIdx = months.indexOf(range[2].slice(0, 3));
+      if (startIdx < 0 || endIdx < 0) return false;
+      if (startIdx <= endIdx) {
+        return currentIdx >= startIdx && currentIdx <= endIdx;
+      }
+      return currentIdx >= startIdx || currentIdx <= endIdx;
+    }
+    const single = months.findIndex((m) => text.startsWith(m));
+    return single === currentIdx;
+  }
+  const currentMonth = new Date().getMonth();
+  const dots = document.querySelectorAll<HTMLElement>('[data-timeline-phase]');
+  // Single-month phases beat ranges (so JANUARY wins over JAN – FEB for early Jan).
+  const single: HTMLElement[] = [];
+  const ranges: HTMLElement[] = [];
+  dots.forEach((el) => {
+    const period = (el.dataset.timelinePhase || '').toUpperCase();
+    (period.includes('-') || period.includes('–') ? ranges : single).push(el);
+  });
+  const ordered = [...single, ...ranges];
+  for (const el of ordered) {
+    if (periodCovers(el.dataset.timelinePhase || '', currentMonth)) {
+      el.classList.add('timeline-now');
+      break;
+    }
+  }
+</script>

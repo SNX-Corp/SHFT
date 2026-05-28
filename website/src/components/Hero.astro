@@ -38,6 +38,7 @@ const d = entry!.data as {
     <div class="w-full max-w-[calc(100vw-3rem)] sm:max-w-3xl">
       <!-- Eyebrow -->
       <div class="flex items-center gap-3 mb-4 sm:mb-6" data-hero-eyebrow>
+        <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
         <div class="w-6 h-px bg-accent"></div>
         <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white/60">
           {d.eyebrow}
@@ -46,9 +47,9 @@ const d = entry!.data as {
 
       <!-- Headline -->
       <h1 class="font-display font-black text-[clamp(2.35rem,10.5vw,2.85rem)] sm:text-[clamp(3.4rem,8vw,5.5rem)] leading-[0.98] sm:leading-[0.9] tracking-[-0.04em] text-text-inverse mb-5 sm:mb-8">
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block text-accent" data-hero-word>{d.headline_line_1}</span></span>
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block" data-hero-word>{d.headline_line_2}</span></span>
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block" data-hero-word>{d.headline_line_3}</span></span>
+        <span class="block overflow-visible sm:overflow-hidden"><span class="block text-accent title-shine is-accent" data-hero-word>{d.headline_line_1}</span></span>
+        <span class="block overflow-visible sm:overflow-hidden"><span class="block title-shine is-white delay-1" data-hero-word>{d.headline_line_2}</span></span>
+        <span class="block overflow-visible sm:overflow-hidden"><span class="block title-shine is-white delay-2" data-hero-word>{d.headline_line_3}</span></span>
       </h1>
 
       <!-- Subtitle -->

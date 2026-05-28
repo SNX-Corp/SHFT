@@ -26,9 +26,9 @@ const d = entry!.data as {
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
       <div>
-        <h2 class="font-display font-black text-h2-size text-text-primary mb-8">
-          {d.headline_line_1}<br/>
-          <span class="text-accent">{d.headline_line_2}</span>
+        <h2 class="font-display font-black text-h2-size mb-8">
+          <span class="title-shine is-dark">{d.headline_line_1}</span><br/>
+          <span class="title-shine is-accent delay-1">{d.headline_line_2}</span>
         </h2>
 
         <div class="space-y-6">
@@ -47,10 +47,13 @@ const d = entry!.data as {
             "border border-border p-6 lg:p-8",
             stat.accent_border && "border-t-2 border-t-accent",
           ]}>
-            <div class:list={[
-              "font-display font-black text-[clamp(2rem,7vw,2.5rem)] leading-none mb-2",
-              stat.accent ? "text-accent" : "text-text-primary",
-            ]}>{stat.value}</div>
+            <div
+              class:list={[
+                "font-display font-black text-[clamp(2rem,7vw,2.5rem)] leading-none mb-2",
+                stat.accent ? "text-accent" : "text-text-primary",
+              ]}
+              data-counter={stat.value}
+            >{stat.value}</div>
             <div class="text-label-size font-heading text-text-muted">{stat.label}</div>
             <p class="font-body text-[13px] text-text-secondary mt-2">{stat.description}</p>
           </div>
@@ -59,3 +62,37 @@ const d = entry!.data as {
     </div>
   </div>
 </section>
+
+<script>
+  // B — Count up stat values when they scroll into view (first time only).
+  // Non-numeric stats (∞) get a breathing class instead.
+  const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+  counters.forEach((el) => {
+    const target = el.dataset.counter || '';
+    const numeric = parseInt(target, 10);
+    if (isNaN(numeric)) {
+      el.classList.add('stat-breathe');
+      return;
+    }
+    let animated = false;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || animated) return;
+        animated = true;
+        el.textContent = '0';
+        const duration = 1400;
+        const start = performance.now();
+        const step = (now: number) => {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(eased * numeric).toString();
+          if (t < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        };
+        requestAnimationFrame(step);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    io.observe(el);
+  });
+</script>

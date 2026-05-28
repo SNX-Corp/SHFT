@@ -16,9 +16,9 @@ const d = entry!.data as {
   <div class="content-width">
     <SectionLabel number={d.section_number} text={d.section_label} />
 
-    <h2 class="font-display font-black text-h2-size text-text-primary mb-12 lg:mb-24">
-      {d.headline_line_1}<br/>
-      {d.headline_line_2}
+    <h2 class="font-display font-black text-h2-size mb-12 lg:mb-24">
+      <span class="title-shine is-dark delay-7">{d.headline_line_1}</span><br/>
+      <span class="title-shine is-dark">{d.headline_line_2}</span>
     </h2>
 
     <div class="max-w-3xl">
