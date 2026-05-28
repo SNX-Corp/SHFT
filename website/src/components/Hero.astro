@@ -1,10 +1,24 @@
 ---
+import { getEntry } from 'astro:content';
 import Button from './Button.astro';
+
+const entry = await getEntry('sections', 'hero');
+const d = entry!.data as {
+  eyebrow: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  headline_line_3: string;
+  subtitle: string;
+  cta_primary_label: string;
+  cta_primary_href: string;
+  cta_secondary_label: string;
+  cta_secondary_href: string;
+};
 ---
 
 <section id="hero" class="relative min-h-[100svh] flex items-center lg:items-end overflow-hidden bg-surface-alt">
   <!-- Workshop background photo from the parent page -->
-  <div class="absolute inset-0 bg-cover bg-[58%_center] sm:bg-center" style="background-image: url('/images/parents/shiftlab1.png');"></div>
+  <div class="absolute inset-0 bg-cover bg-[58%_bottom] sm:bg-bottom" style="background-image: url('/images/parents/shiftlab2.png');"></div>
 
   <!-- Mobile needs the message visible immediately; desktop keeps the cinematic side gradient. -->
   <div class="absolute inset-0 bg-gradient-to-b from-surface-alt/55 via-surface-alt/40 to-surface-alt/95 lg:bg-gradient-to-r lg:from-surface-alt/95 lg:via-surface-alt/55 lg:to-transparent"></div>
@@ -26,31 +40,30 @@ import Button from './Button.astro';
       <div class="flex items-center gap-3 mb-4 sm:mb-6" data-hero-eyebrow>
         <div class="w-6 h-px bg-accent"></div>
         <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white/60">
-          Ontario Community FRC Team
+          {d.eyebrow}
         </span>
       </div>
 
       <!-- Headline -->
       <h1 class="font-display font-black text-[clamp(2.35rem,10.5vw,2.85rem)] sm:text-[clamp(3.4rem,8vw,5.5rem)] leading-[0.98] sm:leading-[0.9] tracking-[-0.04em] text-text-inverse mb-5 sm:mb-8">
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block text-accent" data-hero-word>SHIFT</span></span>
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block" data-hero-word>THE</span></span>
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block" data-hero-word>STANDARD.</span></span>
+        <span class="block overflow-visible sm:overflow-hidden"><span class="block text-accent" data-hero-word>{d.headline_line_1}</span></span>
+        <span class="block overflow-visible sm:overflow-hidden"><span class="block" data-hero-word>{d.headline_line_2}</span></span>
+        <span class="block overflow-visible sm:overflow-hidden"><span class="block" data-hero-word>{d.headline_line_3}</span></span>
       </h1>
 
       <!-- Subtitle -->
       <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(0.95rem,1.25vw,1.08rem)] text-white/70 max-w-2xl mb-7 sm:mb-10 leading-relaxed" data-hero-sub>
-        A new Ontario-based community team built around competitive engineering,<br class="hidden sm:block" />
-        real impact, and teaching the next generation of problem-solvers.
+        {d.subtitle}
       </p>
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4" data-hero-cta>
-        <Button href="#contact" variant="primary" size="large" class="w-full sm:w-auto">Join the team</Button>
+        <Button href={d.cta_primary_href} variant="primary" size="large" class="w-full sm:w-auto">{d.cta_primary_label}</Button>
         <a
-          href="#vision"
+          href={d.cta_secondary_href}
           class="inline-flex w-full sm:w-auto items-center justify-center font-heading font-bold uppercase tracking-wide text-[14px] px-8 py-4 border border-white/20 text-white hover:border-white/50 transition-all duration-200 active:scale-[0.97]"
         >
-          Learn more
+          {d.cta_secondary_label}
         </a>
       </div>
     </div>

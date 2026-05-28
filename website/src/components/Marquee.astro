@@ -1,16 +1,8 @@
 ---
-const items = [
-  'Competitive engineering',
-  'World-class mentorship',
-  'Real engineering skills',
-  'Direct mentorship',
-  'ALT-F4 partnership',
-  'Competition pathway',
-  'University portfolio',
-  'Strength in numbers',
-  'Built around mentorship',
-  'Ontario community FRC team',
-];
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('sections', 'marquee');
+const items = (entry!.data as { items: string[] }).items;
 
 const marqueeContent = items.join('     •     ') + '     •     ';
 ---

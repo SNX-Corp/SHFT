@@ -1,14 +1,27 @@
 ---
+import { getEntry } from 'astro:content';
 import SectionLabel from '../SectionLabel.astro';
+
+const entry = await getEntry('sections', 'expectations');
+const d = entry!.data as {
+  section_number: string;
+  section_label: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  students_label: string;
+  parents_label: string;
+  students: Array<{ title: string; description: string }>;
+  parents: Array<{ title: string; description: string }>;
+};
 ---
 
 <section class="py-20 lg:py-40 bg-bg">
   <div class="content-width">
-    <SectionLabel number="07" text="EXPECTATIONS" />
+    <SectionLabel number={d.section_number} text={d.section_label} />
 
     <h2 class="font-display font-black text-h2-size text-text-primary mb-12 lg:mb-24">
-      WHAT WE ASK<br/>
-      <span class="text-accent">OF YOU.</span>
+      {d.headline_line_1}<br/>
+      {d.headline_line_2}
     </h2>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -16,28 +29,11 @@ import SectionLabel from '../SectionLabel.astro';
       <div>
         <div class="flex items-center gap-3 mb-8">
           <div class="w-10 h-10 bg-accent text-accent-text font-display font-black text-[14px] flex items-center justify-center">S</div>
-          <div class="text-label-size font-heading text-text-muted">FROM STUDENTS</div>
+          <div class="text-label-size font-heading text-text-muted">{d.students_label}</div>
         </div>
 
         <div class="space-y-6">
-          {[
-            {
-              title: "Grades 8–12",
-              description: "Open to middle and high school students ready for a serious competitive program.",
-            },
-            {
-              title: "Work Ethic Over Experience",
-              description: "Prior robotics experience is preferred but not required. What we require is effort, consistency, and a willingness to learn.",
-            },
-            {
-              title: "15–20 Hours Per Week",
-              description: "3–4 days a week during the season. This is a real commitment - but so is the reward.",
-            },
-            {
-              title: "Be Coachable",
-              description: "Come ready to listen, ask questions, and push yourself. We will make you a superstar - if you let us.",
-            },
-          ].map((item) => (
+          {d.students.map((item) => (
             <div class="border-l-2 border-border pl-6 py-1 hover:border-accent transition-colors duration-200">
               <div class="font-heading font-bold text-[15px] text-text-primary mb-1">{item.title}</div>
               <p class="font-body text-[14px] text-text-secondary leading-relaxed">{item.description}</p>
@@ -50,28 +46,11 @@ import SectionLabel from '../SectionLabel.astro';
       <div>
         <div class="flex items-center gap-3 mb-8">
           <div class="w-10 h-10 bg-surface-alt text-white font-display font-black text-[14px] flex items-center justify-center">P</div>
-          <div class="text-label-size font-heading text-text-muted">FROM PARENTS</div>
+          <div class="text-label-size font-heading text-text-muted">{d.parents_label}</div>
         </div>
 
         <div class="space-y-6">
-          {[
-            {
-              title: "Refer Other Families",
-              description: "Every referral saves you $1,000 - and helps us build the team your child deserves to be part of.",
-            },
-            {
-              title: "Advocate for the Program",
-              description: "Help other parents understand why this investment is worth it. The best teams have the strongest parent communities.",
-            },
-            {
-              title: "Connect Us With Sponsors",
-              description: "Know a business that supports STEM education? An introduction can help keep costs sustainable for all families.",
-            },
-            {
-              title: "Trust the Process",
-              description: "We've done this before. We know what it takes to build a championship-caliber team. Let us do what we do best.",
-            },
-          ].map((item) => (
+          {d.parents.map((item) => (
             <div class="border-l-2 border-border pl-6 py-1 hover:border-accent transition-colors duration-200">
               <div class="font-heading font-bold text-[15px] text-text-primary mb-1">{item.title}</div>
               <p class="font-body text-[14px] text-text-secondary leading-relaxed">{item.description}</p>

@@ -1,0 +1,263 @@
+backend:
+  name: github
+  repo: SNX-Corp/SHFT
+  branch: main
+  base_url: https://api.github.com
+
+# Where uploaded images go (if you add image fields later)
+media_folder: "website/public/images/uploads"
+public_folder: "/images/uploads"
+
+# After save, content is committed to GitHub. Vercel auto-rebuilds.
+publish_mode: simple
+
+collections:
+  - name: "sections"
+    label: "Sections"
+    label_singular: "Section"
+    description: "Edit the copy for each section of the homepage. Layout and styling stay in code — only the text changes."
+    files:
+
+      - name: "hero"
+        label: "Hero"
+        file: "website/src/content/sections/hero.md"
+        format: "frontmatter"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow text (small label above headline)", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1 (green)", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2", widget: "string" }
+          - { name: "headline_line_3", label: "Headline line 3", widget: "string" }
+          - { name: "subtitle", label: "Subtitle paragraph", widget: "text" }
+          - { name: "cta_primary_label", label: "Primary button label", widget: "string" }
+          - { name: "cta_primary_href", label: "Primary button link", widget: "string" }
+          - { name: "cta_secondary_label", label: "Secondary button label", widget: "string" }
+          - { name: "cta_secondary_href", label: "Secondary button link", widget: "string" }
+
+      - name: "marquee"
+        label: "Marquee strip (scrolling text)"
+        file: "website/src/content/sections/marquee.md"
+        format: "frontmatter"
+        fields:
+          - name: "items"
+            label: "Marquee items"
+            widget: "list"
+            field: { name: "item", label: "Item text", widget: "string" }
+
+      - name: "vision"
+        label: "Vision (section 01)"
+        file: "website/src/content/sections/vision.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label (uppercase)", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2 (green)", widget: "string" }
+          - { name: "paragraph_1", label: "Paragraph 1", widget: "text" }
+          - { name: "paragraph_2", label: "Paragraph 2", widget: "text" }
+          - name: "stats"
+            label: "Stats (4 boxes)"
+            widget: "list"
+            fields:
+              - { name: "value", label: "Big value (e.g. 20 or ∞)", widget: "string" }
+              - { name: "label", label: "Label under value", widget: "string" }
+              - { name: "description", label: "Small description", widget: "string" }
+              - { name: "accent", label: "Make value green?", widget: "boolean", required: false, default: false }
+              - { name: "accent_border", label: "Add green top border?", widget: "boolean", required: false, default: false }
+
+      - name: "mentors"
+        label: "Mentors (section 02)"
+        file: "website/src/content/sections/mentors.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2", widget: "string" }
+          - name: "mentors"
+            label: "Mentors (each card mirrors layout — Malhar left, Noeen right, etc.)"
+            widget: "list"
+            fields:
+              - { name: "name", label: "Name", widget: "string" }
+              - { name: "role_tagline", label: "Role / Title", widget: "string" }
+              - { name: "bio_1", label: "Bio paragraph 1", widget: "text" }
+              - { name: "bio_2", label: "Bio paragraph 2", widget: "text" }
+              - { name: "quote", label: "Pull quote", widget: "text" }
+              - name: "credentials"
+                label: "Credentials grid (6 items)"
+                widget: "list"
+                fields:
+                  - { name: "label", label: "Label (e.g. Role, Expertise)", widget: "string" }
+                  - { name: "value", label: "Value", widget: "string" }
+
+      - name: "partnership"
+        label: "Partnership / ALT-F4 (section 03)"
+        file: "website/src/content/sections/partnership.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2", widget: "string" }
+          - { name: "intro", label: "Intro paragraph", widget: "text" }
+          - name: "cards"
+            label: "Partnership benefit cards"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Card title", widget: "string" }
+              - { name: "description", label: "Card description", widget: "text" }
+
+      - name: "pricing"
+        label: "Pricing / Investment (section 04)"
+        file: "website/src/content/sections/pricing.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2 (green)", widget: "string" }
+          - { name: "intro", label: "Intro paragraph", widget: "text" }
+          - { name: "price_card_label", label: "Price card label (e.g. REGISTRATION FEE)", widget: "string" }
+          - { name: "price_value", label: "Price value (e.g. $10K)", widget: "string" }
+          - { name: "price_unit", label: "Price unit (e.g. per student)", widget: "string" }
+          - { name: "price_description", label: "Price description", widget: "text" }
+          - name: "payment_steps"
+            label: "Payment steps (numbered 1, 2, 3)"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Step title", widget: "string" }
+              - { name: "description", label: "Step description", widget: "string" }
+          - { name: "referral_label", label: "Referral box label", widget: "string" }
+          - { name: "referral_text", label: "Referral text (use **double asterisks** for bold)", widget: "text" }
+          - { name: "breakdown_label", label: "Cost breakdown label", widget: "string" }
+          - name: "cost_breakdown"
+            label: "Cost breakdown items"
+            widget: "list"
+            fields:
+              - { name: "label", label: "Item label", widget: "string" }
+              - { name: "description", label: "Item description", widget: "string" }
+          - { name: "transparency_note", label: "Closing transparency note (use **bold**)", widget: "text" }
+
+      - name: "experience"
+        label: "Experience / What Your Child Gets (section 05)"
+        file: "website/src/content/sections/experience.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2", widget: "string" }
+          - { name: "intro", label: "Intro paragraph", widget: "text" }
+          - name: "cards"
+            label: "6 experience cards"
+            widget: "list"
+            fields:
+              - { name: "number", label: "Card number (01, 02, …)", widget: "string" }
+              - { name: "title", label: "Card title", widget: "string" }
+              - { name: "description", label: "Card description", widget: "text" }
+              - { name: "accent", label: "Highlight this card with green top border?", widget: "boolean", required: false, default: false }
+
+      - name: "timeline"
+        label: "Season Timeline (section 06)"
+        file: "website/src/content/sections/timeline.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2", widget: "string" }
+          - { name: "intro", label: "Intro paragraph", widget: "text" }
+          - name: "phases"
+            label: "Season phases"
+            widget: "list"
+            fields:
+              - { name: "period", label: "Period (e.g. JUN – AUG)", widget: "string" }
+              - { name: "title", label: "Phase title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "intensity", label: "Intensity", widget: "select", options: ["low", "medium", "high"] }
+
+      - name: "expectations"
+        label: "Expectations (section 07)"
+        file: "website/src/content/sections/expectations.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2", widget: "string" }
+          - { name: "students_label", label: "Students column label", widget: "string" }
+          - { name: "parents_label", label: "Parents column label", widget: "string" }
+          - name: "students"
+            label: "Student expectations"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+          - name: "parents"
+            label: "Parent expectations"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+
+      - name: "faq"
+        label: "FAQ (section 08)"
+        file: "website/src/content/sections/faq.md"
+        format: "frontmatter"
+        fields:
+          - { name: "section_number", label: "Section number", widget: "string" }
+          - { name: "section_label", label: "Section label", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2", widget: "string" }
+          - name: "faqs"
+            label: "Questions & answers"
+            widget: "list"
+            fields:
+              - { name: "question", label: "Question", widget: "string" }
+              - { name: "answer", label: "Answer", widget: "text" }
+
+      - name: "contact"
+        label: "Contact (final section)"
+        file: "website/src/content/sections/contact.md"
+        format: "frontmatter"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow (NEXT STEPS)", widget: "string" }
+          - { name: "headline_line_1", label: "Headline line 1", widget: "string" }
+          - { name: "headline_line_2", label: "Headline line 2 (green)", widget: "string" }
+          - { name: "intro", label: "Intro paragraph", widget: "text" }
+          - { name: "cta_label", label: "CTA button label", widget: "string" }
+          - { name: "cta_href", label: "CTA destination (e.g. mailto:malhar@shftfrc.com)", widget: "string" }
+          - name: "steps"
+            label: "3-step process"
+            widget: "list"
+            fields:
+              - { name: "number", label: "Number (01, 02, 03)", widget: "string" }
+              - { name: "label", label: "Step label", widget: "string" }
+
+      - name: "nav"
+        label: "Navigation (top bar)"
+        file: "website/src/content/sections/nav.md"
+        format: "frontmatter"
+        fields:
+          - { name: "cta_label", label: "CTA button label", widget: "string" }
+          - { name: "cta_href", label: "CTA link", widget: "string" }
+          - name: "links"
+            label: "Nav links"
+            widget: "list"
+            fields:
+              - { name: "label", label: "Label", widget: "string" }
+              - { name: "href", label: "Anchor (e.g. #vision)", widget: "string" }
+
+      - name: "footer"
+        label: "Footer"
+        file: "website/src/content/sections/footer.md"
+        format: "frontmatter"
+        fields:
+          - { name: "tagline", label: "Tagline (under the logo)", widget: "string" }
+          - { name: "copyright_name", label: "Copyright name", widget: "string" }
+          - { name: "back_to_top_label", label: "Back-to-top link text", widget: "string" }
+          - name: "nav_links"
+            label: "Footer nav links"
+            widget: "list"
+            fields:
+              - { name: "label", label: "Label", widget: "string" }
+              - { name: "href", label: "Anchor", widget: "string" }

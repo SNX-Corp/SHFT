@@ -1,19 +1,28 @@
 ---
+import { getEntry } from 'astro:content';
 import SectionLabel from '../SectionLabel.astro';
-import { faqs } from '../../data/faq';
+
+const entry = await getEntry('sections', 'faq');
+const d = entry!.data as {
+  section_number: string;
+  section_label: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  faqs: Array<{ question: string; answer: string }>;
+};
 ---
 
 <section class="py-20 lg:py-40 bg-surface">
   <div class="content-width">
-    <SectionLabel number="08" text="FAQ" />
+    <SectionLabel number={d.section_number} text={d.section_label} />
 
     <h2 class="font-display font-black text-h2-size text-text-primary mb-12 lg:mb-24">
-      QUESTIONS<br/>
-      <span class="text-accent">ANSWERED.</span>
+      {d.headline_line_1}<br/>
+      {d.headline_line_2}
     </h2>
 
     <div class="max-w-3xl">
-      {faqs.map((faq, i) => (
+      {d.faqs.map((faq) => (
         <div class="border-b border-border" data-faq-item>
           <button
             class="w-full flex items-center justify-between py-6 text-left group cursor-pointer"

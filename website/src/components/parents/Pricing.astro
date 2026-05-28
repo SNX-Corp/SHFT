@@ -1,20 +1,43 @@
 ---
+import { getEntry } from 'astro:content';
 import SectionLabel from '../SectionLabel.astro';
-import { costBreakdown } from '../../data/pricing';
+
+const entry = await getEntry('sections', 'pricing');
+const d = entry!.data as {
+  section_number: string;
+  section_label: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  intro: string;
+  price_card_label: string;
+  price_value: string;
+  price_unit: string;
+  price_description: string;
+  payment_steps: Array<{ title: string; description: string }>;
+  referral_label: string;
+  referral_text: string;
+  breakdown_label: string;
+  cost_breakdown: Array<{ label: string; description: string }>;
+  transparency_note: string;
+};
+
+// Convert simple **bold** markdown to <strong class="text-white">…</strong> in dark-bg copy
+function renderInlineMd(text: string, strongClass = 'text-white') {
+  return text.replace(/\*\*(.+?)\*\*/g, `<strong class="${strongClass}">$1</strong>`);
+}
 ---
 
 <section id="pricing" class="py-20 lg:py-40 bg-surface-alt text-text-inverse">
   <div class="content-width">
-    <SectionLabel number="04" text="INVESTMENT" inverted />
+    <SectionLabel number={d.section_number} text={d.section_label} inverted />
 
     <h2 class="font-display font-black text-h2-size text-white mb-6">
-      FULL<br/>
-      <span class="text-accent">TRANSPARENCY.</span>
+      {d.headline_line_1}<br/>
+      <span class="text-accent">{d.headline_line_2}</span>
     </h2>
 
     <p class="font-body text-[18px] text-white/50 leading-relaxed max-w-2xl mb-16">
-      FRC is expensive. We don't hide that. Here's exactly what it costs, where the money goes,
-      and how you can reduce your investment.
+      {d.intro}
     </p>
 
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12">
@@ -22,59 +45,46 @@ import { costBreakdown } from '../../data/pricing';
       <div class="border border-white/10 p-6 sm:p-8 lg:p-12 relative">
         <div class="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
 
-        <div class="text-label-size font-heading text-accent mb-6">REGISTRATION FEE</div>
+        <div class="text-label-size font-heading text-accent mb-6">{d.price_card_label}</div>
 
         <div class="flex items-baseline gap-3 mb-2">
-          <span class="font-display font-black text-[clamp(3rem,12vw,5rem)] text-white leading-none">$10K</span>
-          <span class="font-heading text-[14px] text-white/30">per student</span>
+          <span class="font-display font-black text-[clamp(3rem,12vw,5rem)] text-white leading-none">{d.price_value}</span>
+          <span class="font-heading text-[14px] text-white/30">{d.price_unit}</span>
         </div>
 
         <p class="font-body text-[14px] text-white/40 mb-10">
-          Per season. Covers everything - robot, tools, competitions, coaching, facility, food, and transport.
+          {d.price_description}
         </p>
 
         <!-- Payment steps -->
         <div class="space-y-6 mb-10">
-          <div class="flex gap-4">
-            <div class="w-8 h-8 border border-accent text-accent font-display font-black text-[12px] flex items-center justify-center shrink-0">1</div>
-            <div>
-              <div class="font-heading font-bold text-[14px] text-white">$1,000 deposit</div>
-              <div class="font-body text-[13px] text-white/40">Secures your spot when you meet with us</div>
+          {d.payment_steps.map((step, i) => (
+            <div class="flex gap-4">
+              <div class:list={[
+                "w-8 h-8 font-display font-black text-[12px] flex items-center justify-center shrink-0",
+                i === 0 ? "border border-accent text-accent" : "border border-white/20 text-white/60",
+              ]}>{i + 1}</div>
+              <div>
+                <div class="font-heading font-bold text-[14px] text-white">{step.title}</div>
+                <div class="font-body text-[13px] text-white/40">{step.description}</div>
+              </div>
             </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-8 h-8 border border-white/20 text-white/60 font-display font-black text-[12px] flex items-center justify-center shrink-0">2</div>
-            <div>
-              <div class="font-heading font-bold text-[14px] text-white">Earn referral discounts</div>
-              <div class="font-body text-[13px] text-white/40">$1,000 off for every family you refer - stackable</div>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-8 h-8 border border-white/20 text-white/60 font-display font-black text-[12px] flex items-center justify-center shrink-0">3</div>
-            <div>
-              <div class="font-heading font-bold text-[14px] text-white">Remaining balance due September</div>
-              <div class="font-body text-[13px] text-white/40">Before the season officially begins</div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <!-- Referral highlight -->
         <div class="bg-accent/10 border border-accent/20 p-6">
-          <div class="font-heading font-bold text-[14px] text-accent mb-2">REFERRAL PROGRAM</div>
-          <p class="font-body text-[14px] text-white/60 leading-relaxed">
-            Every family you refer = <strong class="text-white">$1,000 off your fee</strong>.
-            Refer 3 families? Your fee drops to <strong class="text-white">$7,000</strong>.
-            Refer 5? <strong class="text-white">$5,000</strong>. There is no cap.
-          </p>
+          <div class="font-heading font-bold text-[14px] text-accent mb-2">{d.referral_label}</div>
+          <p class="font-body text-[14px] text-white/60 leading-relaxed" set:html={renderInlineMd(d.referral_text)}></p>
         </div>
       </div>
 
       <!-- Where the money goes -->
       <div>
-        <div class="text-label-size font-heading text-white/40 mb-8">WHERE THE MONEY GOES</div>
+        <div class="text-label-size font-heading text-white/40 mb-8">{d.breakdown_label}</div>
 
         <div class="space-y-0">
-          {costBreakdown.map((item, i) => (
+          {d.cost_breakdown.map((item) => (
             <div class="flex items-center justify-between py-5 border-b border-white/10">
               <div>
                 <div class="font-heading font-semibold text-[15px] text-white">{item.label}</div>
@@ -86,11 +96,7 @@ import { costBreakdown } from '../../data/pricing';
         </div>
 
         <div class="mt-10 p-6 border border-white/10">
-          <p class="font-body text-[14px] text-white/50 leading-relaxed">
-            <strong class="text-white">A competitive FRC robot costs $30,000–$40,000 to build.</strong> Add registration,
-            travel, tools, rent, and coaching - and the real cost per student is significantly higher than $10K.
-            We absorb the difference because building a great team is the only thing that matters.
-          </p>
+          <p class="font-body text-[14px] text-white/50 leading-relaxed" set:html={renderInlineMd(d.transparency_note)}></p>
         </div>
       </div>
     </div>

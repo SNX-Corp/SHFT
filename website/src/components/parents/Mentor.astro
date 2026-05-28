@@ -1,65 +1,81 @@
 ---
+import { getEntry } from 'astro:content';
 import SectionLabel from '../SectionLabel.astro';
+
+const entry = await getEntry('sections', 'mentors');
+const d = entry!.data as {
+  section_number: string;
+  section_label: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  mentors: Array<{
+    name: string;
+    role_tagline: string;
+    bio_1: string;
+    bio_2: string;
+    quote: string;
+    credentials: Array<{ label: string; value: string }>;
+  }>;
+};
 ---
 
 <section id="mentor" class="py-20 lg:py-40 bg-surface">
   <div class="content-width">
-    <SectionLabel number="02" text="LEADERSHIP" />
+    <SectionLabel number={d.section_number} text={d.section_label} />
 
     <h2 class="font-display font-black text-h2-size text-text-primary mb-12 lg:mb-24">
-      MEET YOUR<br/>
-      <span class="text-accent">LEAD MENTOR.</span>
+      {d.headline_line_1}<br/>
+      {d.headline_line_2}
     </h2>
 
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
-      <!-- Photo placeholder -->
-      <div class="aspect-[3/4] bg-surface-alt relative overflow-hidden">
-        <div class="absolute inset-0 flex items-end p-8">
-          <div>
-            <div class="font-display font-black text-[1.5rem] text-white">MALHAR SONI</div>
-            <div class="text-label-size font-heading text-accent mt-1">LEAD MENTOR & FOUNDER</div>
+    {d.mentors.map((mentor, i) => {
+      const mirrored = i % 2 === 1;
+      const gridCols = mirrored ? 'lg:grid-cols-[1.5fr_1fr]' : 'lg:grid-cols-[1fr_1.5fr]';
+      const photoOrder = mirrored ? 'lg:order-2 order-1' : 'lg:order-1 order-1';
+      const bioOrder = mirrored ? 'lg:order-1 order-2' : 'lg:order-2 order-2';
+      const wrapperClass = i > 0 ? 'mt-24 lg:mt-32 pt-16 lg:pt-24 border-t border-border' : '';
+
+      return (
+        <div class={wrapperClass}>
+          <div class:list={['grid grid-cols-1 gap-12 lg:gap-20', gridCols]}>
+            <!-- Photo placeholder -->
+            <div class:list={['aspect-[3/4] bg-surface-alt relative overflow-hidden', photoOrder]}>
+              <div class="absolute inset-0 flex items-end p-8">
+                <div>
+                  <div class="font-display font-black text-[1.5rem] text-white">{mentor.name.toUpperCase()}</div>
+                  <div class="text-label-size font-heading text-accent mt-1">{mentor.role_tagline.toUpperCase()}</div>
+                </div>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 h-1 bg-accent"></div>
+            </div>
+
+            <!-- Bio -->
+            <div class={bioOrder}>
+              <div class="space-y-6 mb-12">
+                <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
+                  {mentor.bio_1}
+                </p>
+                <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
+                  {mentor.bio_2}
+                </p>
+                <p class="font-body text-[16px] text-text-primary leading-[1.8] font-semibold border-l-2 border-accent pl-6">
+                  "{mentor.quote}"
+                </p>
+              </div>
+
+              <!-- Credentials grid -->
+              <div class="grid grid-cols-2 gap-x-8 gap-y-4">
+                {mentor.credentials.map((item) => (
+                  <div class="py-3 border-b border-border">
+                    <div class="text-label-size font-heading text-text-muted mb-1">{item.label}</div>
+                    <div class="font-heading font-semibold text-[14px] text-text-primary">{item.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-1 bg-accent"></div>
-      </div>
-
-      <!-- Bio -->
-      <div>
-        <div class="space-y-6 mb-12">
-          <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
-            Malhar is the Lead Strategy Mentor and founder of Team SHFT. Alongside his work with
-            ALT-F4 (Team 7558), he has been part of one of the fastest-growing FRC programs in
-            Canadian history - earning Rookie All-Star, qualifying for the District Championship
-            and Worlds, and earning recognition from top teams across Ontario.
-          </p>
-          <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
-            His expertise spans strategy, wiring, game analysis, and robot design. Year after year,
-            other mentors are in awe of the designs and strategies his teams produce - consistently
-            outperforming expectations at every level of competition.
-          </p>
-          <p class="font-body text-[16px] text-text-primary leading-[1.8] font-semibold border-l-2 border-accent pl-6">
-            "The mission comes first. We are building something that lasts - and every student
-            who walks through our doors is treated like they belong on the world stage."
-          </p>
-        </div>
-
-        <!-- Credentials grid -->
-        <div class="grid grid-cols-2 gap-x-8 gap-y-4">
-          {[
-            { label: "Role", value: "Lead Strategy Mentor" },
-            { label: "Expertise", value: "Strategy, Wiring, Game Analysis" },
-            { label: "Achievement", value: "Rookie All-Star Award" },
-            { label: "Competition", value: "DCMP & Worlds Qualifier" },
-            { label: "Recognition", value: "Top teams across Ontario" },
-            { label: "Philosophy", value: "Students first, always" },
-          ].map((item) => (
-            <div class="py-3 border-b border-border">
-              <div class="text-label-size font-heading text-text-muted mb-1">{item.label}</div>
-              <div class="font-heading font-semibold text-[14px] text-text-primary">{item.value}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+      );
+    })}
   </div>
 </section>

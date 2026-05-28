@@ -1,13 +1,14 @@
 ---
+import { getEntry } from 'astro:content';
 import { social } from '../data/social';
 
-const links = [
-  { label: 'Vision', href: '#vision' },
-  { label: 'Mentor', href: '#mentor' },
-  { label: 'Program', href: '#program' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
-];
+const entry = await getEntry('sections', 'footer');
+const d = entry!.data as {
+  tagline: string;
+  copyright_name: string;
+  back_to_top_label: string;
+  nav_links: Array<{ label: string; href: string }>;
+};
 ---
 
 <footer class="bg-surface-alt text-text-inverse">
@@ -20,13 +21,13 @@ const links = [
           class="h-10 lg:h-14 w-auto"
         />
         <p class="font-body text-[14px] text-white/40 mt-3 max-w-sm">
-          SHFT our mindset. ELEVATE our impact.
+          {d.tagline}
         </p>
       </div>
 
       <div class="flex flex-col sm:items-end gap-6">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-          {links.map((link) => (
+          {d.nav_links.map((link) => (
             <a
               href={link.href}
               class="font-heading text-[12px] font-bold uppercase tracking-[0.12em] text-white/60 hover:text-accent transition-colors duration-200 py-[13px] -my-[13px]"
@@ -53,13 +54,13 @@ const links = [
 
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8 border-t border-white/10">
       <p class="font-body text-[12px] text-white/30">
-        &copy; {new Date().getFullYear()} Team SHFT. All rights reserved.
+        &copy; {new Date().getFullYear()} {d.copyright_name}. All rights reserved.
       </p>
       <a
         href="#hero"
         class="font-heading text-[11px] font-semibold uppercase tracking-[0.15em] text-white/40 hover:text-accent transition-colors duration-200 py-[14px] -my-[14px]"
       >
-        Back to top ↑
+        {d.back_to_top_label}
       </a>
     </div>
   </div>

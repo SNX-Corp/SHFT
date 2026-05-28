@@ -1,14 +1,29 @@
 ---
+import { getEntry } from 'astro:content';
 import SectionLabel from '../SectionLabel.astro';
-import { seasonPhases } from '../../data/season-timeline';
 
-const intensityColors = {
+const entry = await getEntry('sections', 'timeline');
+const d = entry!.data as {
+  section_number: string;
+  section_label: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  intro: string;
+  phases: Array<{
+    period: string;
+    title: string;
+    description: string;
+    intensity: 'low' | 'medium' | 'high';
+  }>;
+};
+
+const intensityColors: Record<string, string> = {
   low: "bg-white/20",
   medium: "bg-accent/50",
   high: "bg-accent",
 };
 
-const intensityLabels = {
+const intensityLabels: Record<string, string> = {
   low: "Ramp-up",
   medium: "Building",
   high: "Full intensity",
@@ -17,16 +32,15 @@ const intensityLabels = {
 
 <section class="py-20 lg:py-40 bg-surface">
   <div class="content-width">
-    <SectionLabel number="06" text="THE SEASON" />
+    <SectionLabel number={d.section_number} text={d.section_label} />
 
     <h2 class="font-display font-black text-h2-size text-text-primary mb-6">
-      A YEAR IN<br/>
-      <span class="text-accent">THE LIFE.</span>
+      {d.headline_line_1}<br/>
+      {d.headline_line_2}
     </h2>
 
     <p class="font-body text-[16px] text-text-secondary leading-relaxed max-w-2xl mb-16">
-      FRC follows a structured season. Here's what your child's year looks like - from
-      first workshop to championship stage.
+      {d.intro}
     </p>
 
     <!-- Timeline -->
@@ -34,7 +48,7 @@ const intensityLabels = {
       <div class="absolute left-0 top-0 bottom-0 w-px bg-border"></div>
 
       <div class="space-y-10 lg:space-y-14">
-        {seasonPhases.map((phase) => (
+        {d.phases.map((phase) => (
           <div class="relative">
             <!-- Dot -->
             <div class="absolute -left-8 lg:-left-12 top-2 w-4 h-4 border-2 border-accent bg-bg rounded-full flex items-center justify-center">

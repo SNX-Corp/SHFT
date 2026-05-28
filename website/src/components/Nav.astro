@@ -1,11 +1,13 @@
 ---
-const navLinks = [
-  { label: 'Vision', href: '#vision' },
-  { label: 'Mentor', href: '#mentor' },
-  { label: 'Program', href: '#program' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Contact', href: '#contact' },
-];
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('sections', 'nav');
+const d = entry!.data as {
+  cta_label: string;
+  cta_href: string;
+  links: Array<{ label: string; href: string }>;
+};
+const navLinks = d.links;
 ---
 
 <header
@@ -42,11 +44,11 @@ const navLinks = [
         </a>
       ))}
       <a
-        href="#contact"
+        href={d.cta_href}
         class="bg-white text-surface-alt font-heading font-bold text-[13px] uppercase tracking-wide px-5 py-2.5 hover:opacity-90 transition-all duration-200 active:scale-[0.97]"
         data-nav-cta
       >
-        Join SHFT
+        {d.cta_label}
       </a>
     </nav>
 
@@ -79,11 +81,11 @@ const navLinks = [
       </a>
     ))}
     <a
-      href="#contact"
+      href={d.cta_href}
       class="mt-4 bg-accent text-accent-text font-heading font-bold text-[14px] uppercase tracking-wide px-8 py-4 hover:bg-accent-hover transition-colors duration-200"
       data-mobile-link
     >
-      Join SHFT
+      {d.cta_label}
     </a>
   </div>
 </div>

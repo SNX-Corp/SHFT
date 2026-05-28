@@ -1,4 +1,16 @@
 ---
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('sections', 'contact');
+const d = entry!.data as {
+  eyebrow: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  intro: string;
+  cta_label: string;
+  cta_href: string;
+  steps: Array<{ number: string; label: string }>;
+};
 ---
 
 <section id="contact" class="py-20 lg:py-40 bg-surface-alt text-text-inverse">
@@ -6,38 +18,33 @@
     <div class="max-w-2xl mx-auto text-center">
       <div class="flex items-center justify-center gap-4 mb-8">
         <div class="w-8 h-px bg-accent"></div>
-        <span class="text-label-size font-heading text-accent">NEXT STEPS</span>
+        <span class="text-label-size font-heading text-accent">{d.eyebrow}</span>
         <div class="w-8 h-px bg-accent"></div>
       </div>
 
       <h2 class="font-display font-black text-h2-size text-white mb-6">
-        LET'S<br/>
-        <span class="text-accent">TALK.</span>
+        {d.headline_line_1}<br/>
+        <span class="text-accent">{d.headline_line_2}</span>
       </h2>
 
       <p class="font-body text-[18px] text-white/50 leading-relaxed mb-12">
-        We meet with every family one-on-one. No pressure, no sales pitch - just an honest
-        conversation about your child's goals and whether SHFT is the right fit.
+        {d.intro}
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
         <a
-          href="mailto:malhar@shftfrc.com"
+          href={d.cta_href}
           class="inline-flex items-center justify-center bg-accent text-accent-text font-heading font-bold text-[14px] uppercase tracking-wide px-10 py-5 hover:bg-accent-hover transition-all duration-200 active:scale-[0.97] w-full sm:w-auto"
         >
-          Get in Touch
+          {d.cta_label}
         </a>
       </div>
 
       <!-- Process reminder -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10 max-w-xl mx-auto">
-        {[
-          { step: "01", label: "Meet with Malhar" },
-          { step: "02", label: "$1K deposit to hold your spot" },
-          { step: "03", label: "Welcome to SHFT" },
-        ].map((item) => (
+        {d.steps.map((item) => (
           <div class="bg-surface-alt p-6 text-center">
-            <div class="font-display font-black text-[1.5rem] text-accent/40 mb-2">{item.step}</div>
+            <div class="font-display font-black text-[1.5rem] text-accent/40 mb-2">{item.number}</div>
             <div class="font-heading font-semibold text-[12px] text-white/60 uppercase tracking-wide">{item.label}</div>
           </div>
         ))}

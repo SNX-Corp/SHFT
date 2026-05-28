@@ -1,0 +1,26 @@
+---
+section_number: "07"
+section_label: "EXPECTATIONS"
+headline_line_1: "WHAT WE ASK"
+headline_line_2: "OF YOU."
+students_label: "FROM STUDENTS"
+parents_label: "FROM PARENTS"
+students:
+  - title: "Grades 8–12"
+    description: "Open to middle and high school students ready for a serious competitive program."
+  - title: "Work Ethic Over Experience"
+    description: "Prior robotics experience is preferred but not required. What we require is effort, consistency, and a willingness to learn."
+  - title: "15–20 Hours Per Week"
+    description: "3–4 days a week during the season. This is a real commitment - but so is the reward."
+  - title: "Be Coachable"
+    description: "Come ready to listen, ask questions, and push yourself. We will make you a superstar - if you let us."
+parents:
+  - title: "Refer Other Families"
+    description: "Every referral saves you $1,000 - and helps us build the team your child deserves to be part of."
+  - title: "Advocate for the Program"
+    description: "Help other parents understand why this investment is worth it. The best teams have the strongest parent communities."
+  - title: "Connect Us With Sponsors"
+    description: "Know a business that supports STEM education? An introduction can help keep costs sustainable for all families."
+  - title: "Trust the Process"
+    description: "We've done this before. We know what it takes to build a championship-caliber team. Let us do what we do best."
+---

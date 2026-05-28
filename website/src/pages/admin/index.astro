@@ -1,0 +1,21 @@
+---
+// Sveltia CMS loader — Decap-compatible, no OAuth proxy required.
+// Lives as an Astro route so /admin and /admin/ both resolve in dev + prod.
+// Config: public/admin/config.yml (served by Astro from public/).
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>SHFT Editor</title>
+    <link rel="icon" href="/favicon.svg" />
+    <style>
+      body { margin: 0; background: #1a1a1a; font-family: system-ui, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  </body>
+</html>
