@@ -40,7 +40,7 @@ Sveltia commits as the logged-in user, so each editor needs write access to the 
 
 1. Go to https://github.com/SNX-Corp/SHFT/settings/access
 2. **Invite a collaborator** → add Noeen's GitHub username
-3. Role: `Write` (or `Maintain` if you want her to also manage settings)
+3. Role: `Write` (or `Maintain` if you want him to also manage settings)
 
 ### 4. Deploy
 Just push the new `public/admin/` folder and the content collection refactor to GitHub. Vercel auto-deploys.
@@ -59,8 +59,8 @@ That's it. The editor is now live at `https://teamshiftfrc.com/admin/`.
 
 1. Go to `https://teamshiftfrc.com/admin/`
 2. Click **Sign in with GitHub Token** (Sveltia shows this on first visit)
-3. Paste her PAT (see "Create a PAT" steps above — Noeen makes her own)
-4. The token stays in her browser's local storage — she only does this once per device
+3. Paste his PAT (see "Create a PAT" steps above — Noeen makes his own)
+4. The token stays in his browser's local storage — he only does this once per device
 
 > If GitHub OAuth (the "Sign in with GitHub" button without pasting tokens) is preferred, that requires deploying a small OAuth proxy. Skip for now — PAT auth works fine.
 

@@ -1,15 +1,18 @@
 ---
 import '../styles/global.css';
 import '../fonts/index.ts';
+import JoinModal from '../components/JoinModal.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  showJoinModal?: boolean;
 }
 
 const {
   title = 'Team SHFT - FRC Robotics',
   description = 'SHIFT our mindset. ELEVATE our impact. Team SHFT is a competitive FIRST Robotics team building the future of engineering.',
+  showJoinModal = true,
 } = Astro.props;
 ---
 
@@ -31,6 +34,8 @@ const {
   </head>
   <body class="bg-bg text-text-primary">
     <slot />
+
+    {showJoinModal && <JoinModal />}
 
     <script>
       import '../scripts/animations';

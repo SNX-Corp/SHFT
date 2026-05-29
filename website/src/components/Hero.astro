@@ -59,7 +59,7 @@ const d = entry!.data as {
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4" data-hero-cta>
-        <Button href={d.cta_primary_href} variant="primary" size="large" class="w-full sm:w-auto">{d.cta_primary_label}</Button>
+        <Button href={d.cta_primary_href} variant="primary" size="large" class="w-full sm:w-auto" data-open-join-modal>{d.cta_primary_label}</Button>
         <a
           href={d.cta_secondary_href}
           class="inline-flex w-full sm:w-auto items-center justify-center font-heading font-bold uppercase tracking-wide text-[14px] px-8 py-4 border border-white/20 text-white hover:border-white/50 transition-all duration-200 active:scale-[0.97]"

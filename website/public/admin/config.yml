@@ -216,7 +216,7 @@ collections:
               - { name: "answer", label: "Answer", widget: "text" }
 
       - name: "contact"
-        label: "Contact (final section)"
+        label: "Contact (final section + Join popup)"
         file: "website/src/content/sections/contact.md"
         format: "frontmatter"
         fields:
@@ -225,7 +225,14 @@ collections:
           - { name: "headline_line_2", label: "Headline line 2 (green)", widget: "string" }
           - { name: "intro", label: "Intro paragraph", widget: "text" }
           - { name: "cta_label", label: "CTA button label", widget: "string" }
-          - { name: "cta_href", label: "CTA destination (e.g. mailto:malhar@shftfrc.com)", widget: "string" }
+          - { name: "cta_href", label: "CTA fallback link (leave as #join so the popup opens)", widget: "string" }
+          - { name: "modal_eyebrow", label: "Popup — small label above headline", widget: "string" }
+          - { name: "modal_headline", label: "Popup — big headline", widget: "string" }
+          - { name: "modal_subtitle", label: "Popup — subtitle / one-liner", widget: "text" }
+          - { name: "contact_name", label: "Popup — your name", widget: "string" }
+          - { name: "contact_role", label: "Popup — your role (e.g. Lead Mentor & Founder)", widget: "string" }
+          - { name: "contact_email", label: "Popup — email address", widget: "string" }
+          - { name: "contact_phone", label: "Popup — phone / SMS number", widget: "string" }
           - name: "steps"
             label: "3-step process"
             widget: "list"
