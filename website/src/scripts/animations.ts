@@ -21,12 +21,10 @@ function setupHeroRobotZoom() {
   const bg = document.querySelector<HTMLElement>('[data-hero-bg]');
   const shade = document.querySelector<HTMLElement>('[data-hero-shade]');
   const grid = document.querySelector<HTMLElement>('[data-hero-grid]');
-  const target = document.querySelector<HTMLElement>('[data-hero-target]');
-  const scan = document.querySelector<HTMLElement>('[data-hero-scan]');
   const copy = document.querySelector<HTMLElement>('[data-hero-copy]');
   const scroll = document.querySelector<HTMLElement>('[data-hero-scroll]');
 
-  if (!hero || !trigger || !reset || !camera || !bg || !shade || !grid || !target || !scan || !copy) {
+  if (!hero || !trigger || !reset || !camera || !bg || !shade || !grid || !copy) {
     return;
   }
 
@@ -111,10 +109,8 @@ function setupHeroRobotZoom() {
       activeTl
         .to(copy, { x: -42, opacity: 0, filter: 'blur(8px)', duration: duration * 0.45 }, 0)
         .to(scroll ?? [], { opacity: 0, duration: duration * 0.28 }, 0)
-        .to(target, { scale: 1.75, opacity: 0, duration: duration * 0.42 }, 0)
         .to(shade, { opacity: 0.42, duration: duration * 0.7 }, 0)
         .to(grid, { opacity: 0.18, duration: duration * 0.7 }, 0)
-        .to(scan, { opacity: 0.62, duration: duration * 0.52 }, duration * 0.3)
         .to(
           camera,
           {
@@ -134,7 +130,6 @@ function setupHeroRobotZoom() {
 
     activeTl
       .to(reset, { opacity: 0, duration: duration * 0.22 }, 0)
-      .to(scan, { opacity: 0, duration: duration * 0.25 }, 0)
       .to(
         camera,
         {
@@ -150,7 +145,6 @@ function setupHeroRobotZoom() {
       )
       .to(shade, { opacity: 1, duration: duration * 0.55 }, 0)
       .to(grid, { opacity: 0.06, duration: duration * 0.55 }, 0)
-      .to(target, { scale: 1, opacity: 0.82, duration: duration * 0.45 }, duration * 0.2)
       .to(copy, { x: 0, opacity: 1, filter: 'blur(0px)', duration: duration * 0.52 }, duration * 0.26)
       .to(scroll ?? [], { opacity: 1, duration: duration * 0.25 }, duration * 0.5);
   };
