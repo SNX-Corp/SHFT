@@ -35,5 +35,4 @@ cost_breakdown:
     description: "Travel to and from competitions"
   - label: "Professional Coaching"
     description: "Expert mentorship and instruction"
-transparency_note: "**A competitive FRC robot costs $30,000–$40,000 to build.** Add registration, travel, tools, rent, and coaching - and the real cost per student is significantly higher than $10K. We absorb the difference because building a great team is the only thing that matters."
 ---

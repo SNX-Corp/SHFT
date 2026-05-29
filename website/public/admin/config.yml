@@ -158,7 +158,6 @@ collections:
             fields:
               - { name: "label", label: "Item label", widget: "string" }
               - { name: "description", label: "Item description", widget: "string" }
-          - { name: "transparency_note", label: "Closing transparency note (use **bold**)", widget: "text" }
 
       - name: "experience"
         label: "Experience / What Your Child Gets (section 05)"
