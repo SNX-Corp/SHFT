@@ -9,7 +9,25 @@ const d = entry!.data as {
   headline_line_1: string;
   headline_line_2: string;
   intro: string;
+  stat_card: {
+    team_label: string;
+    year: string;
+    record: string;
+    epa: Array<{ label: string; value: string; tone: 'blue' | 'orange' | 'green' | 'red' }>;
+    ranks: Array<{ rank: string; scope: string; of: string }>;
+    robot_image?: string;
+    robot_image_alt?: string;
+  };
   cards: Array<{ title: string; description: string }>;
+};
+
+const sc = d.stat_card;
+
+const toneStyles: Record<string, string> = {
+  blue:   'bg-[#3B82F6]/15 border-[#3B82F6]/40 text-[#93C5FD]',
+  orange: 'bg-[#F59E0B]/15 border-[#F59E0B]/40 text-[#FCD34D]',
+  green:  'bg-[#22C55E]/15 border-[#22C55E]/40 text-[#86EFAC]',
+  red:    'bg-altf4/20 border-altf4/50 text-altf4',
 };
 ---
 
@@ -17,14 +35,88 @@ const d = entry!.data as {
   <div class="content-width">
     <SectionLabel number={d.section_number} text={d.section_label} inverted />
 
-    <h2 class="font-display font-black text-h2-size mb-8 max-w-3xl">
-      <span class="title-shine is-white delay-2">{d.headline_line_1}</span><br/>
-      <span class="title-shine is-altf4 delay-3">{d.headline_line_2}</span>
-    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-start mb-14 lg:mb-20">
+      <!-- LEFT: copy -->
+      <div>
+        <h2 class="font-display font-black text-h2-size mb-8 max-w-3xl">
+          <span class="title-shine is-white delay-2">{d.headline_line_1}</span><br/>
+          <span class="title-shine is-altf4 delay-3">{d.headline_line_2}</span>
+        </h2>
 
-    <p class="font-body text-[18px] text-white/50 leading-relaxed max-w-2xl mb-16">
-      {d.intro}
-    </p>
+        <p class="font-body text-[18px] text-white/50 leading-relaxed max-w-2xl">
+          {d.intro}
+        </p>
+      </div>
+
+      <!-- RIGHT: ALT-F4 stat card -->
+      <div class="relative">
+        <!-- Subtle red glow behind the card -->
+        <div
+          class="absolute -inset-6 pointer-events-none"
+          aria-hidden="true"
+          style="background: radial-gradient(ellipse at 60% 40%, rgba(161, 29, 29, 0.15), transparent 65%);"
+        ></div>
+
+        <div class="relative border border-white/10 bg-white/[0.02] p-5 lg:p-6 overflow-hidden">
+          <!-- Accent top edge -->
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-altf4"></div>
+
+          <!-- Top label row -->
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <div>
+              <div class="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-altf4 mb-1">
+                {sc.team_label}
+              </div>
+              <div class="font-body text-[13px] text-white/60">
+                Record <span class="text-white font-semibold">{sc.record}</span> · Season {sc.year}
+              </div>
+            </div>
+            <div class="text-label-size font-heading text-white/30">FRC</div>
+          </div>
+
+          <!-- EPA pills -->
+          <div class="text-label-size font-heading text-white/35 mb-2">EPA Breakdown</div>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            {sc.epa.map((p) => (
+              <span class:list={[
+                'inline-flex items-baseline gap-1.5 px-2.5 py-1 border text-[11px] font-heading font-semibold tracking-wide uppercase',
+                toneStyles[p.tone] || toneStyles.blue,
+              ]}>
+                <span class="opacity-70">{p.label}</span>
+                <span class="text-white font-bold tabular-nums">{p.value}</span>
+              </span>
+            ))}
+          </div>
+
+          <!-- Ranks grid -->
+          <div class="grid grid-cols-3 gap-2">
+            {sc.ranks.map((r) => (
+              <div class="relative border border-white/10 bg-white/[0.025] py-2.5 px-2 text-center">
+                <div class="font-display font-black text-[clamp(1.35rem,2.4vw,1.65rem)] text-white leading-none mb-0.5 tabular-nums">{r.rank}</div>
+                <div class="font-heading text-[9px] font-bold uppercase tracking-[0.12em] text-white/70">{r.scope}</div>
+                <div class="font-body text-[9px] text-white/35 leading-tight">of {r.of}</div>
+              </div>
+            ))}
+          </div>
+
+          {sc.robot_image && (
+            <div class="relative mt-4 aspect-[16/9] overflow-hidden">
+              <div
+                class="absolute inset-0"
+                style="-webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 90%); mask-image: radial-gradient(ellipse at center, black 40%, transparent 90%);"
+              >
+                <img
+                  src={sc.robot_image}
+                  alt={sc.robot_image_alt || 'ALT-F4 robot'}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
       {d.cards.map((item) => (
