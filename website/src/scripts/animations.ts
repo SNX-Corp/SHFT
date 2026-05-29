@@ -13,6 +13,108 @@ const prefersReducedMotion = window.matchMedia(
   '(prefers-reduced-motion: reduce)',
 ).matches;
 
+function setupHeroRobotZoom() {
+  const hero = document.querySelector<HTMLElement>('[data-hero]');
+  const trigger = document.querySelector<HTMLButtonElement>('[data-hero-zoom-trigger]');
+  const reset = document.querySelector<HTMLButtonElement>('[data-hero-reset]');
+  const bg = document.querySelector<HTMLElement>('[data-hero-bg]');
+  const shade = document.querySelector<HTMLElement>('[data-hero-shade]');
+  const grid = document.querySelector<HTMLElement>('[data-hero-grid]');
+  const target = document.querySelector<HTMLElement>('[data-hero-target]');
+  const scan = document.querySelector<HTMLElement>('[data-hero-scan]');
+  const copy = document.querySelector<HTMLElement>('[data-hero-copy]');
+  const scroll = document.querySelector<HTMLElement>('[data-hero-scroll]');
+
+  if (!hero || !trigger || !reset || !bg || !shade || !grid || !target || !scan || !copy) {
+    return;
+  }
+
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const zoomScale = isMobile ? 2.45 : 3.65;
+  const zoomX = isMobile ? '-15vw' : '-11vw';
+  const zoomY = isMobile ? '6vh' : '4vh';
+  const duration = prefersReducedMotion ? 0 : 1.15;
+  let isFocused = false;
+  let activeTl: gsap.core.Timeline | undefined;
+
+  const setFocused = (nextFocused: boolean) => {
+    if (isFocused === nextFocused) return;
+
+    isFocused = nextFocused;
+    activeTl?.kill();
+    hero.classList.toggle('is-robot-focus', isFocused);
+    trigger.setAttribute('aria-expanded', String(isFocused));
+
+    activeTl = gsap.timeline({
+      defaults: { ease: 'power3.inOut' },
+      onComplete: () => {
+        if (isFocused) reset.focus({ preventScroll: true });
+      },
+    });
+
+    if (isFocused) {
+      activeTl
+        .to(copy, { x: -42, opacity: 0, filter: 'blur(8px)', duration: duration * 0.45 }, 0)
+        .to(scroll ?? [], { opacity: 0, duration: duration * 0.28 }, 0)
+        .to(target, { scale: 1.75, opacity: 0, duration: duration * 0.42 }, 0)
+        .to(shade, { opacity: 0.42, duration: duration * 0.7 }, 0)
+        .to(grid, { opacity: 0.18, duration: duration * 0.7 }, 0)
+        .to(scan, { opacity: 0.62, duration: duration * 0.52 }, duration * 0.3)
+        .to(
+          bg,
+          {
+            scale: zoomScale,
+            x: zoomX,
+            y: zoomY,
+            rotateX: -2.5,
+            rotateY: 4,
+            filter: 'contrast(1.13) saturate(1.08)',
+            duration,
+          },
+          0,
+        )
+        .to(reset, { opacity: 1, duration: duration * 0.3 }, duration * 0.58);
+      return;
+    }
+
+    activeTl
+      .to(reset, { opacity: 0, duration: duration * 0.22 }, 0)
+      .to(scan, { opacity: 0, duration: duration * 0.25 }, 0)
+      .to(
+        bg,
+        {
+          scale: 1,
+          x: 0,
+          y: 0,
+          rotateX: 0,
+          rotateY: 0,
+          filter: 'contrast(1) saturate(1)',
+          duration: duration * 0.82,
+        },
+        0,
+      )
+      .to(shade, { opacity: 1, duration: duration * 0.55 }, 0)
+      .to(grid, { opacity: 0.06, duration: duration * 0.55 }, 0)
+      .to(target, { scale: 1, opacity: 0.82, duration: duration * 0.45 }, duration * 0.2)
+      .to(copy, { x: 0, opacity: 1, filter: 'blur(0px)', duration: duration * 0.52 }, duration * 0.26)
+      .to(scroll ?? [], { opacity: 1, duration: duration * 0.25 }, duration * 0.5);
+  };
+
+  trigger.addEventListener('click', () => setFocused(!isFocused));
+  reset.addEventListener('click', (event) => {
+    event.stopPropagation();
+    setFocused(false);
+    trigger.focus({ preventScroll: true });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isFocused) {
+      setFocused(false);
+    }
+  });
+}
+
+setupHeroRobotZoom();
+
 if (prefersReducedMotion) {
   // Make everything visible immediately - no animations
   gsap.set(

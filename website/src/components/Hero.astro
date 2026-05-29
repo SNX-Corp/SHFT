@@ -16,25 +16,30 @@ const d = entry!.data as {
 };
 ---
 
-<section id="hero" class="relative min-h-[100svh] flex items-center lg:items-end overflow-hidden bg-surface-alt">
-  <!-- Workshop background photo from the parent page -->
-  <div class="absolute inset-0 bg-cover bg-[58%_bottom] sm:bg-bottom" style="background-image: url('/images/parents/shiftlab2.png');"></div>
+<section id="hero" class="hero-stage relative min-h-[100svh] flex items-center lg:items-end overflow-hidden bg-surface-alt" data-hero>
+  <button class="hero-zoom-trigger" type="button" aria-label="Inspect the SHFT robot" data-hero-zoom-trigger>
+    <!-- Workshop background photo from the parent page -->
+    <span class="hero-photo absolute inset-0 bg-cover bg-[58%_bottom] sm:bg-bottom" style="background-image: url('/images/parents/shiftlab2.png');" data-hero-bg></span>
 
-  <!-- Mobile needs the message visible immediately; desktop keeps the cinematic side gradient. -->
-  <div class="absolute inset-0 bg-gradient-to-b from-surface-alt/55 via-surface-alt/40 to-surface-alt/95 lg:bg-gradient-to-r lg:from-surface-alt/95 lg:via-surface-alt/55 lg:to-transparent"></div>
+    <!-- Mobile needs the message visible immediately; desktop keeps the cinematic side gradient. -->
+    <span class="hero-shade absolute inset-0 bg-gradient-to-b from-surface-alt/55 via-surface-alt/40 to-surface-alt/95 lg:bg-gradient-to-r lg:from-surface-alt/95 lg:via-surface-alt/55 lg:to-transparent" data-hero-shade></span>
 
-  <!-- Grid texture, radially masked so it fades out -->
-  <div
-    class="absolute inset-0 opacity-[0.06]"
-    style="background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%); mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%);"
-  ></div>
+    <!-- Grid texture, radially masked so it fades out -->
+    <span
+      class="hero-grid absolute inset-0 opacity-[0.06]"
+      style="background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%); mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%);"
+      data-hero-grid
+    ></span>
+    <span class="hero-target" aria-hidden="true" data-hero-target></span>
+    <span class="hero-scan" aria-hidden="true" data-hero-scan></span>
+  </button>
 
 
   <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
   <div class="sr-only" data-hero-splash></div>
 
   <!-- Content -->
-  <div class="relative z-[var(--z-hero-text)] content-width box-border max-w-full pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pb-24">
+  <div class="relative z-[var(--z-hero-text)] content-width box-border max-w-full pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pb-24" data-hero-copy>
     <div class="w-full max-w-[calc(100vw-3rem)] sm:max-w-3xl">
       <!-- Eyebrow -->
       <div class="flex items-center gap-3 mb-4 sm:mb-6" data-hero-eyebrow>
@@ -77,11 +82,178 @@ const d = entry!.data as {
       <div class="w-full h-4 bg-accent animate-[scrollDown_2s_ease-in-out_infinite]"></div>
     </div>
   </div>
+
+  <button class="hero-reset" type="button" aria-label="Return to hero" data-hero-reset>
+    <span aria-hidden="true"></span>
+  </button>
 </section>
 
 <style>
+  .hero-stage {
+    perspective: 1200px;
+    isolation: isolate;
+  }
+
+  .hero-zoom-trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-in;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #1A1A1A;
+    transform-style: preserve-3d;
+  }
+
+  .hero-photo,
+  .hero-shade,
+  .hero-grid,
+  .hero-scan {
+    display: block;
+    pointer-events: none;
+  }
+
+  .hero-photo {
+    transform-origin: 72% 52%;
+    will-change: transform, filter;
+  }
+
+  .hero-shade,
+  .hero-grid {
+    will-change: opacity;
+  }
+
+  .hero-target {
+    position: absolute;
+    left: 72%;
+    top: 51%;
+    width: clamp(3.25rem, 8vw, 6.75rem);
+    aspect-ratio: 1;
+    pointer-events: none;
+    border: 1px solid rgba(166, 255, 0, 0.72);
+    border-radius: 999px;
+    opacity: 0.82;
+    transform: translate(-50%, -50%);
+    box-shadow:
+      0 0 0 1px rgba(26, 26, 26, 0.45),
+      0 0 26px rgba(166, 255, 0, 0.22),
+      inset 0 0 22px rgba(166, 255, 0, 0.12);
+  }
+
+  .hero-target::before,
+  .hero-target::after {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    background: rgba(166, 255, 0, 0.86);
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-target::before {
+    width: 145%;
+    height: 1px;
+  }
+
+  .hero-target::after {
+    width: 1px;
+    height: 145%;
+  }
+
+  .hero-scan {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background:
+      radial-gradient(circle at 72% 51%, rgba(166, 255, 0, 0.18), transparent 22%),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 7px);
+    mix-blend-mode: screen;
+    transform: translateZ(70px);
+  }
+
+  .hero-reset {
+    position: absolute;
+    top: clamp(5rem, 9vw, 6.5rem);
+    right: 1.5rem;
+    z-index: 35;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    border-radius: 999px;
+    background: rgba(26, 26, 26, 0.62);
+    backdrop-filter: blur(12px);
+    transition: border-color 160ms ease, background 160ms ease, transform 100ms ease;
+  }
+
+  .hero-reset:hover {
+    border-color: rgba(166, 255, 0, 0.72);
+    background: rgba(26, 26, 26, 0.78);
+  }
+
+  .hero-reset:active {
+    transform: scale(0.97);
+  }
+
+  .hero-reset span,
+  .hero-reset span::after {
+    display: block;
+    width: 1rem;
+    height: 2px;
+    background: #FFFFFF;
+    border-radius: 999px;
+  }
+
+  .hero-reset span {
+    transform: rotate(45deg);
+  }
+
+  .hero-reset span::after {
+    content: "";
+    transform: rotate(90deg);
+  }
+
+  .hero-stage.is-robot-focus .hero-zoom-trigger {
+    cursor: zoom-out;
+  }
+
+  .hero-stage.is-robot-focus .hero-reset {
+    pointer-events: auto;
+  }
+
+  @media (max-width: 767px) {
+    .hero-photo {
+      transform-origin: 76% 48%;
+    }
+
+    .hero-target {
+      left: 76%;
+      top: 48%;
+    }
+
+    .hero-scan {
+      background:
+        radial-gradient(circle at 76% 48%, rgba(166, 255, 0, 0.2), transparent 28%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 7px);
+    }
+  }
+
   @keyframes scrollDown {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(300%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-target,
+    .hero-scan {
+      display: none;
+    }
   }
 </style>

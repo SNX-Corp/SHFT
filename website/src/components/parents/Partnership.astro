@@ -70,11 +70,15 @@ const sc = d.stat_card;
 
           <!-- Ranks grid -->
           <div class="grid grid-cols-3 gap-2">
-            {sc.ranks.map((r) => (
-              <div class="relative border border-white/10 bg-white/[0.025] py-2.5 px-2 text-center">
-                <div class="font-display font-black text-[clamp(1.35rem,2.4vw,1.65rem)] text-white leading-none mb-0.5 tabular-nums">{r.rank}</div>
-                <div class="font-heading text-[9px] font-bold uppercase tracking-[0.12em] text-white/70">{r.scope}</div>
-                <div class="font-body text-[9px] text-white/35 leading-tight">of {r.of}</div>
+            {sc.ranks.map((r, i) => (
+              <div class="relative border border-white/10 bg-white/[0.03] py-4 px-3 text-center">
+                <div class:list={[
+                  "font-display font-black text-[clamp(2.1rem,3.6vw,2.75rem)] leading-none mb-1.5 tabular-nums title-shine is-gold",
+                  i === 1 && "delay-1",
+                  i === 2 && "delay-2",
+                ]}>{r.rank}</div>
+                <div class="font-heading text-[11px] font-bold uppercase tracking-[0.14em] text-white/80">{r.scope}</div>
+                <div class="font-body text-[11px] text-white/40 leading-tight mt-0.5">of {r.of}</div>
               </div>
             ))}
           </div>
