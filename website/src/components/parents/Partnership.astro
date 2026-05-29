@@ -22,13 +22,6 @@ const d = entry!.data as {
 };
 
 const sc = d.stat_card;
-
-const toneStyles: Record<string, string> = {
-  blue:   'bg-[#3B82F6]/15 border-[#3B82F6]/40 text-[#93C5FD]',
-  orange: 'bg-[#F59E0B]/15 border-[#F59E0B]/40 text-[#FCD34D]',
-  green:  'bg-[#22C55E]/15 border-[#22C55E]/40 text-[#86EFAC]',
-  red:    'bg-altf4/20 border-altf4/50 text-altf4',
-};
 ---
 
 <section class="py-16 lg:py-28 bg-surface-alt text-text-inverse">
@@ -48,41 +41,28 @@ const toneStyles: Record<string, string> = {
         </p>
       </div>
 
-      <!-- RIGHT: ALT-F4 stat card -->
+      <!-- RIGHT: ALT-F4 stat card (monochrome) -->
       <div class="relative">
-        <!-- Subtle red glow behind the card -->
-        <div
-          class="absolute -inset-6 pointer-events-none"
-          aria-hidden="true"
-          style="background: radial-gradient(ellipse at 60% 40%, rgba(161, 29, 29, 0.15), transparent 65%);"
-        ></div>
-
         <div class="relative border border-white/10 bg-white/[0.02] p-5 lg:p-6 overflow-hidden">
-          <!-- Accent top edge -->
-          <div class="absolute top-0 left-0 right-0 h-[2px] bg-altf4"></div>
-
           <!-- Top label row -->
-          <div class="flex items-center justify-between gap-3 mb-4">
+          <div class="flex items-center justify-between gap-3 mb-4 pb-4 border-b border-white/10">
             <div>
-              <div class="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-altf4 mb-1">
+              <div class="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-white/80 mb-1">
                 {sc.team_label}
               </div>
-              <div class="font-body text-[13px] text-white/60">
+              <div class="font-body text-[13px] text-white/55">
                 Record <span class="text-white font-semibold">{sc.record}</span> · Season {sc.year}
               </div>
             </div>
-            <div class="text-label-size font-heading text-white/30">FRC</div>
+            <div class="text-label-size font-heading text-white/25">FRC</div>
           </div>
 
           <!-- EPA pills -->
           <div class="text-label-size font-heading text-white/35 mb-2">EPA Breakdown</div>
           <div class="flex flex-wrap gap-1.5 mb-4">
             {sc.epa.map((p) => (
-              <span class:list={[
-                'inline-flex items-baseline gap-1.5 px-2.5 py-1 border text-[11px] font-heading font-semibold tracking-wide uppercase',
-                toneStyles[p.tone] || toneStyles.blue,
-              ]}>
-                <span class="opacity-70">{p.label}</span>
+              <span class="inline-flex items-baseline gap-1.5 px-2.5 py-1 border border-white/15 bg-white/[0.03] text-[11px] font-heading font-semibold tracking-wide uppercase">
+                <span class="text-white/55">{p.label}</span>
                 <span class="text-white font-bold tabular-nums">{p.value}</span>
               </span>
             ))}
