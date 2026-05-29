@@ -8,14 +8,11 @@ const marqueeContent = items.join('     •     ') + '     •     ';
 ---
 
 <div class="relative z-[var(--z-marquee)] bg-accent overflow-hidden py-4 lg:py-5 select-none">
-  <div class="flex whitespace-nowrap animate-[marquee_3.4s_linear_infinite]">
-    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text px-8">
+  <div class="marquee-track flex whitespace-nowrap w-max">
+    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text">
       {marqueeContent}
     </span>
-    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text px-8" aria-hidden="true">
-      {marqueeContent}
-    </span>
-    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text px-8" aria-hidden="true">
+    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text" aria-hidden="true">
       {marqueeContent}
     </span>
   </div>
@@ -23,7 +20,11 @@ const marqueeContent = items.join('     •     ') + '     •     ';
 
 <style>
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-33.333%); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    animation: marquee 22s linear infinite;
+    will-change: transform;
   }
 </style>
