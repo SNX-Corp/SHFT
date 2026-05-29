@@ -23,7 +23,7 @@ const d = entry!.data as {
   <div class="content-width">
     <SectionLabel number={d.section_number} text={d.section_label} />
 
-    <h2 class="font-display font-black text-h2-size mb-12 lg:mb-24">
+    <h2 class="font-display font-black text-h2-size mb-8 lg:mb-24">
       <span class="title-shine is-dark delay-1">{d.headline_line_1}</span><br/>
       <span class="title-shine is-dark delay-2">{d.headline_line_2}</span>
     </h2>
@@ -33,16 +33,16 @@ const d = entry!.data as {
       const gridCols = mirrored ? 'lg:grid-cols-[1.5fr_1fr]' : 'lg:grid-cols-[1fr_1.5fr]';
       const photoOrder = mirrored ? 'lg:order-2 order-1' : 'lg:order-1 order-1';
       const bioOrder = mirrored ? 'lg:order-1 order-2' : 'lg:order-2 order-2';
-      const wrapperClass = i > 0 ? 'mt-24 lg:mt-32 pt-16 lg:pt-24 border-t border-border' : '';
+      const wrapperClass = i > 0 ? 'mt-12 lg:mt-32 pt-10 lg:pt-24 border-t border-border' : '';
 
       return (
         <div class={wrapperClass}>
-          <div class:list={['grid grid-cols-1 gap-12 lg:gap-20', gridCols]}>
-            <!-- Photo placeholder -->
-            <div class:list={['aspect-[3/4] bg-surface-alt relative overflow-hidden', photoOrder]}>
-              <div class="absolute inset-0 flex items-end p-8">
+          <div class:list={['grid grid-cols-1 gap-6 lg:gap-20', gridCols]}>
+            <!-- Photo placeholder — landscape banner on mobile, portrait on desktop -->
+            <div class:list={['aspect-[16/9] sm:aspect-[3/4] bg-surface-alt relative overflow-hidden', photoOrder]}>
+              <div class="absolute inset-0 flex items-end p-5 sm:p-8">
                 <div>
-                  <div class="font-display font-black text-[1.5rem] text-white">{mentor.name.toUpperCase()}</div>
+                  <div class="font-display font-black text-[1.25rem] sm:text-[1.5rem] text-white">{mentor.name.toUpperCase()}</div>
                   <div class="text-label-size font-heading text-accent mt-1">{mentor.role_tagline.toUpperCase()}</div>
                 </div>
               </div>
@@ -51,24 +51,24 @@ const d = entry!.data as {
 
             <!-- Bio -->
             <div class={bioOrder}>
-              <div class="space-y-6 mb-12">
-                <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
+              <div class="space-y-5 lg:space-y-6 mb-8 lg:mb-12">
+                <p class="font-body text-[15px] sm:text-[16px] text-text-secondary leading-[1.7] lg:leading-[1.8]">
                   {mentor.bio_1}
                 </p>
-                <p class="font-body text-[16px] text-text-secondary leading-[1.8]">
+                <p class="font-body text-[15px] sm:text-[16px] text-text-secondary leading-[1.7] lg:leading-[1.8]">
                   {mentor.bio_2}
                 </p>
-                <p class="font-body text-[16px] text-text-primary leading-[1.8] font-semibold border-l-2 border-accent pl-6">
+                <p class="font-body text-[15px] sm:text-[16px] text-text-primary leading-[1.7] lg:leading-[1.8] font-semibold border-l-2 border-accent pl-5 sm:pl-6">
                   "{mentor.quote}"
                 </p>
               </div>
 
               <!-- Credentials grid -->
-              <div class="grid grid-cols-2 gap-x-8 gap-y-4">
+              <div class="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3 sm:gap-y-4">
                 {mentor.credentials.map((item) => (
                   <div class="py-3 border-b border-border">
                     <div class="text-label-size font-heading text-text-muted mb-1">{item.label}</div>
-                    <div class="font-heading font-semibold text-[14px] text-text-primary">{item.value}</div>
+                    <div class="font-heading font-semibold text-[13px] sm:text-[14px] text-text-primary leading-snug">{item.value}</div>
                   </div>
                 ))}
               </div>

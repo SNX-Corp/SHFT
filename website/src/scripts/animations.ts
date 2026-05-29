@@ -30,8 +30,8 @@ function setupHeroRobotZoom() {
   }
 
   const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  const zoomScale = isMobile ? 2.45 : 3.65;
-  const zoomX = isMobile ? '-15vw' : '-11vw';
+  const zoomScale = isMobile ? 2.55 : 3.65;
+  const zoomX = isMobile ? '0vw' : '-11vw';
   const zoomY = isMobile ? '6vh' : '4vh';
   const duration = prefersReducedMotion ? 0 : 1.15;
   let isFocused = false;
