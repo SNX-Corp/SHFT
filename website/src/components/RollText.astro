@@ -1,0 +1,16 @@
+---
+// Wraps a word/phrase so that on hover of the parent element the text
+// rolls up and a duplicate copy rolls in from below.
+// Usage:  <a><RollText text="VISION" /></a>
+interface Props {
+  text: string;
+  class?: string;
+}
+const { text, class: className } = Astro.props;
+---
+<span class:list={['text-roll', className]}>
+  <span class="text-roll__inner">
+    <span class="text-roll__line">{text}</span>
+    <span class="text-roll__line" aria-hidden="true">{text}</span>
+  </span>
+</span>

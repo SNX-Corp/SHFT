@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import RollText from './RollText.astro';
 
 const entry = await getEntry('sections', 'nav');
 const d = entry!.data as {
@@ -40,7 +41,7 @@ const navLinks = d.links;
           class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
           data-nav-link
         >
-          {link.label}
+          <RollText text={link.label} />
         </a>
       ))}
       <a
@@ -49,7 +50,7 @@ const navLinks = d.links;
         data-nav-cta
         data-open-join-modal
       >
-        {d.cta_label}
+        <RollText text={d.cta_label} />
       </a>
     </nav>
 

@@ -39,6 +39,20 @@ const {
 
     <script>
       import '../scripts/animations';
+
+      // Redacted text reveal — toggle .revealed when element enters viewport.
+      const redacts = document.querySelectorAll<HTMLElement>('.redact-text');
+      if (redacts.length) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              (e.target as HTMLElement).classList.add('revealed');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        redacts.forEach((el) => io.observe(el));
+      }
     </script>
   </body>
 </html>

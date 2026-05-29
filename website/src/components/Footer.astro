@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import { social } from '../data/social';
+import RollText from './RollText.astro';
 
 const entry = await getEntry('sections', 'footer');
 const d = entry!.data as {
@@ -32,7 +33,7 @@ const d = entry!.data as {
               href={link.href}
               class="font-heading text-[12px] font-bold uppercase tracking-[0.12em] text-white/60 hover:text-accent transition-colors duration-200 py-[13px] -my-[13px]"
             >
-              {link.label}
+              <RollText text={link.label} />
             </a>
           ))}
         </div>
@@ -45,7 +46,7 @@ const d = entry!.data as {
               rel="noopener noreferrer"
               class="font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white/35 hover:text-accent transition-colors duration-200 py-[13px] -my-[13px]"
             >
-              {s.platform}
+              <RollText text={s.platform} />
             </a>
           ))}
         </div>
@@ -60,7 +61,7 @@ const d = entry!.data as {
         href="#hero"
         class="font-heading text-[11px] font-semibold uppercase tracking-[0.15em] text-white/40 hover:text-accent transition-colors duration-200 py-[14px] -my-[14px]"
       >
-        {d.back_to_top_label}
+        <RollText text={d.back_to_top_label} />
       </a>
     </div>
   </div>
