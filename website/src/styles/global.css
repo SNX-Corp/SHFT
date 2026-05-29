@@ -276,40 +276,6 @@ html:not(.gsap-ready) [data-card-reveal] {
 .title-shine.delay-7 { animation-delay: 4.2s; }
 
 /* ─────────────────────────────────────────────
-   REDACTED TEXT REVEAL
-   Text starts hidden behind a bar matching its color;
-   on scroll into view (.revealed added by JS) the bar
-   slides off to the right, exposing the words.
-   ───────────────────────────────────────────── */
-.redact-text {
-  position: relative;
-  display: inline-block;
-  isolation: isolate;
-}
-.redact-text::after {
-  content: '';
-  position: absolute;
-  inset: -0.05em -0.12em;
-  background: currentColor;
-  transform-origin: right center;
-  transform: scaleX(1);
-  transition: transform 1s cubic-bezier(0.83, 0, 0.17, 1);
-  z-index: 1;
-  pointer-events: none;
-}
-.redact-text.revealed::after {
-  transform: scaleX(0);
-}
-/* Stagger when multiple redacts live in one container */
-.redact-text.revealed.r-delay-1::after { transition-delay: 0.15s; }
-.redact-text.revealed.r-delay-2::after { transition-delay: 0.30s; }
-.redact-text.revealed.r-delay-3::after { transition-delay: 0.45s; }
-.redact-text.revealed.r-delay-4::after { transition-delay: 0.60s; }
-@media (prefers-reduced-motion: reduce) {
-  .redact-text::after { transform: scaleX(0); }
-}
-
-/* ─────────────────────────────────────────────
    ROLLING TEXT HOVER
    Two stacked copies of the same word inside an
    overflow-hidden container. Hover rolls the stack
