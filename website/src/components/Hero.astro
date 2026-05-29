@@ -18,20 +18,22 @@ const d = entry!.data as {
 
 <section id="hero" class="hero-stage relative min-h-[100svh] flex items-center lg:items-end overflow-hidden bg-surface-alt" data-hero>
   <button class="hero-zoom-trigger" type="button" aria-label="Inspect the SHFT robot" data-hero-zoom-trigger>
-    <!-- Workshop background photo from the parent page -->
-    <span class="hero-photo absolute inset-0 bg-cover bg-[58%_bottom] sm:bg-bottom" style="background-image: url('/images/parents/shiftlab2.png');" data-hero-bg></span>
+    <span class="hero-camera" data-hero-camera>
+      <!-- Workshop background photo from the parent page -->
+      <span class="hero-photo absolute inset-0 bg-cover bg-[58%_bottom] sm:bg-bottom" style="background-image: url('/images/parents/shiftlab2.png');" data-hero-bg></span>
 
-    <!-- Mobile needs the message visible immediately; desktop keeps the cinematic side gradient. -->
-    <span class="hero-shade absolute inset-0 bg-gradient-to-b from-surface-alt/55 via-surface-alt/40 to-surface-alt/95 lg:bg-gradient-to-r lg:from-surface-alt/95 lg:via-surface-alt/55 lg:to-transparent" data-hero-shade></span>
+      <!-- Mobile needs the message visible immediately; desktop keeps the cinematic side gradient. -->
+      <span class="hero-shade absolute inset-0 bg-gradient-to-b from-surface-alt/55 via-surface-alt/40 to-surface-alt/95 lg:bg-gradient-to-r lg:from-surface-alt/95 lg:via-surface-alt/55 lg:to-transparent" data-hero-shade></span>
 
-    <!-- Grid texture, radially masked so it fades out -->
-    <span
-      class="hero-grid absolute inset-0 opacity-[0.06]"
-      style="background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%); mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%);"
-      data-hero-grid
-    ></span>
-    <span class="hero-target" aria-hidden="true" data-hero-target></span>
-    <span class="hero-scan" aria-hidden="true" data-hero-scan></span>
+      <!-- Grid texture, radially masked so it fades out -->
+      <span
+        class="hero-grid absolute inset-0 opacity-[0.06]"
+        style="background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%); mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%);"
+        data-hero-grid
+      ></span>
+      <span class="hero-target" aria-hidden="true" data-hero-target></span>
+      <span class="hero-scan" aria-hidden="true" data-hero-scan></span>
+    </span>
   </button>
 
 

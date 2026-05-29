@@ -17,6 +17,7 @@ function setupHeroRobotZoom() {
   const hero = document.querySelector<HTMLElement>('[data-hero]');
   const trigger = document.querySelector<HTMLButtonElement>('[data-hero-zoom-trigger]');
   const reset = document.querySelector<HTMLButtonElement>('[data-hero-reset]');
+  const camera = document.querySelector<HTMLElement>('[data-hero-camera]');
   const bg = document.querySelector<HTMLElement>('[data-hero-bg]');
   const shade = document.querySelector<HTMLElement>('[data-hero-shade]');
   const grid = document.querySelector<HTMLElement>('[data-hero-grid]');
@@ -25,7 +26,7 @@ function setupHeroRobotZoom() {
   const copy = document.querySelector<HTMLElement>('[data-hero-copy]');
   const scroll = document.querySelector<HTMLElement>('[data-hero-scroll]');
 
-  if (!hero || !trigger || !reset || !bg || !shade || !grid || !target || !scan || !copy) {
+  if (!hero || !trigger || !reset || !camera || !bg || !shade || !grid || !target || !scan || !copy) {
     return;
   }
 
@@ -37,6 +38,58 @@ function setupHeroRobotZoom() {
   let isFocused = false;
   let activeTl: gsap.core.Timeline | undefined;
 
+  if (!prefersReducedMotion) {
+    let cursorX = 0;
+    let cursorY = 0;
+    let frame = 0;
+    const focusRotateX = -2.5;
+    const focusRotateY = 4;
+
+    const renderCursor = () => {
+      frame = 0;
+      if (!isFocused) return;
+
+      const drift = isFocused ? 7 : 14;
+      const tilt = isFocused ? 1.25 : 2.5;
+
+      hero.style.setProperty('--hero-cursor-x', `${cursorX * drift}px`);
+      hero.style.setProperty('--hero-cursor-y', `${cursorY * drift}px`);
+      gsap.to(camera, {
+        rotateY: focusRotateY + cursorX * tilt,
+        rotateX: focusRotateX + cursorY * -tilt,
+        duration: 0.5,
+        ease: 'power3.out',
+      });
+    };
+
+    hero.addEventListener('pointermove', (event) => {
+      if (!isFocused) return;
+
+      const rect = hero.getBoundingClientRect();
+      cursorX = (event.clientX - rect.left) / rect.width - 0.5;
+      cursorY = (event.clientY - rect.top) / rect.height - 0.5;
+
+      if (!frame) {
+        frame = window.requestAnimationFrame(renderCursor);
+      }
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      cursorX = 0;
+      cursorY = 0;
+      hero.style.setProperty('--hero-cursor-x', '0px');
+      hero.style.setProperty('--hero-cursor-y', '0px');
+      if (isFocused) {
+        gsap.to(camera, {
+          rotateY: focusRotateY,
+          rotateX: focusRotateX,
+          duration: 0.7,
+          ease: 'power3.out',
+        });
+      }
+    });
+  }
+
   const setFocused = (nextFocused: boolean) => {
     if (isFocused === nextFocused) return;
 
@@ -44,6 +97,8 @@ function setupHeroRobotZoom() {
     activeTl?.kill();
     hero.classList.toggle('is-robot-focus', isFocused);
     trigger.setAttribute('aria-expanded', String(isFocused));
+    hero.style.setProperty('--hero-cursor-x', '0px');
+    hero.style.setProperty('--hero-cursor-y', '0px');
 
     activeTl = gsap.timeline({
       defaults: { ease: 'power3.inOut' },
@@ -61,7 +116,7 @@ function setupHeroRobotZoom() {
         .to(grid, { opacity: 0.18, duration: duration * 0.7 }, 0)
         .to(scan, { opacity: 0.62, duration: duration * 0.52 }, duration * 0.3)
         .to(
-          bg,
+          camera,
           {
             scale: zoomScale,
             x: zoomX,
@@ -81,7 +136,7 @@ function setupHeroRobotZoom() {
       .to(reset, { opacity: 0, duration: duration * 0.22 }, 0)
       .to(scan, { opacity: 0, duration: duration * 0.25 }, 0)
       .to(
-        bg,
+        camera,
         {
           scale: 1,
           x: 0,

@@ -178,17 +178,9 @@ html:not(.gsap-ready) [data-card-reveal] {
 
 /* ─────────────────────────────────────────────────────────
    AMBIENT MOTION
-   Subtle, slow, looping micro-animations. Respect reduced motion.
+   Subtle, slow, looping micro-animations.
+   These are core to the brand and always run (mobile + reduce-motion).
    ───────────────────────────────────────────────────────── */
-
-@media (prefers-reduced-motion: reduce) {
-  .pulse-dot,
-  .arrow-nudge,
-  .pulse-square,
-  .timeline-now,
-  .breathing-rule,
-  .title-shine { animation: none !important; }
-}
 
 /* A — Hero live status dot */
 @keyframes pulse-dot {
@@ -360,6 +352,16 @@ button:hover .text-roll__inner {
   transform-style: preserve-3d;
 }
 
+.hero-camera {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  transform-origin: 72% 52%;
+  transform-style: preserve-3d;
+  will-change: transform, filter;
+}
+
 .hero-photo,
 .hero-shade,
 .hero-grid,
@@ -369,7 +371,9 @@ button:hover .text-roll__inner {
 }
 
 .hero-photo {
+  inset: -1.5rem;
   transform-origin: 72% 52%;
+  transform: translate3d(var(--hero-cursor-x, 0px), var(--hero-cursor-y, 0px), 0) scale(1.035);
   will-change: transform, filter;
 }
 
@@ -480,6 +484,10 @@ button:hover .text-roll__inner {
 }
 
 @media (max-width: 767px) {
+  .hero-camera {
+    transform-origin: 86% 48%;
+  }
+
   .hero-photo {
     transform-origin: 86% 48%;
   }
