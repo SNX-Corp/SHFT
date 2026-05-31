@@ -24,8 +24,8 @@ mentors:
         value: Students first. Standard always.
   - name: Noeen Kashif
     role_tagline: Lead Mentor
-    bio_1: Noeen Kashif is the Lead Mentor of Team SHFT. Alongside running ALT-F4 (Team 7558), he has helped take new rookie programs to Rookie All-Star, DCMP, and Worlds. Building the operating discipline, technical culture, and accountability that turn ambitious teams into competitive ones.
-    bio_2: "His focus is on the philosophy behind the standard: build culture, student accountability, sponsor relationships, and the day-to-day structure that keeps a young program growing fast without cutting corners. The trophies follow. They don't lead."
+    bio_1: "Noeen Kashif is the Lead Mentor of Team SHFT. He builds the culture a serious team runs on: clear standards, honest feedback, and a workshop where students learn to hold themselves to the level the work demands."
+    bio_2: His job is the part most people never see, turning an ambitious group of students into a team that shows up, owns its mistakes, and gets better every single week.
     quote: A team that's serious about winning is serious about its standards. We build the culture first. The trophies follow.
     credentials:
       - label: Role
