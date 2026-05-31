@@ -150,7 +150,7 @@ const telHref = `tel:${d.contact_phone.replace(/[^\d+]/g, '')}`;
   const copyButtons = document.querySelectorAll<HTMLButtonElement>('[data-copy]');
 
   if (!modal || !card || !backdrop || !closeBtn) {
-    // no modal on this page — bail
+    // no modal on this page, so bail
   } else {
     let lastFocused: HTMLElement | null = null;
 
