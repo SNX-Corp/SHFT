@@ -6,7 +6,7 @@ headline_line_2: MENTORS.
 mentors:
   - name: Malhar Soni
     role_tagline: Head Coach
-    bio_1: Malhar is the Head Coach of Team SHFT. With Team 7558 ALT-F4, he helped take the program from Rookie All-Star to one of the leading FRC teams in Canada. The team qualified for the District Championship and competed on the World stage.
+    bio_1: "Malhar is the Head Coach of Team SHFT. He's spent years guiding students through their first build, their first failed prototype, and their first win, building his coaching around one belief: every student is capable of more than they think."
     bio_2: His focus sits at the intersection of strategy, robot design, and game analysis. It is the long-tail thinking that wins close matches. He coaches students to think like engineers and execute like competitors.
     quote: The mission comes first. We are building something that lasts. Every student who walks through our doors is treated like they belong on the world stage.
     credentials:
