@@ -6,22 +6,22 @@ headline_line_2: MENTORS.
 mentors:
   - name: Malhar Soni
     role_tagline: Head Coach
-    bio_1: Malhar is the Lead Strategy Mentor and founder of Team SHFT. Alongside his work with ALT-F4 (Team 7558), he has been part of one of the fastest-growing FRC programs in Canadian history - earning Rookie All-Star, qualifying for the District Championship and Worlds, and earning recognition from top teams in the world.
-    bio_2: His expertise spans strategy, wiring, game analysis, and robot design. Year after year, other mentors are in awe of the designs and strategies his teams produce - consistently outperforming expectations at every level of competition.
+    bio_1: Malhar is the Head Coach of Team SHFT. Over the past several seasons with Team 7558 ALT-F4, he helped build one of the fastest-rising FRC programs in Canada — a Rookie All-Star, District Championship qualifier, and Worlds team inside its first two seasons.
+    bio_2: His focus sits at the intersection of strategy, robot design, and game analysis — the long-tail thinking that wins close matches. He coaches students to think like engineers and execute like competitors.
     quote: The mission comes first. We are building something that lasts - and every student who walks through our doors is treated like they belong on the world stage.
     credentials:
       - label: Role
         value: Head Coach
       - label: Expertise
-        value: Game Analysis, Strategy, Design, Wiring, AI-Coding
+        value: Strategy · Robot Design · Game Analysis
       - label: Achievement
-        value: World-class teams in different robotics programs
+        value: Rookie All-Star (Team 7558 ALT-F4)
       - label: Competition
         value: DCMP & Worlds Qualifier
       - label: Recognition
-        value: Top teams across Ontario
+        value: Two-time district playoff team
       - label: Philosophy
-        value: The act of reaching maximum potential
+        value: Students first. Standard always.
   - name: Noeen Kashif
     role_tagline: Lead Mentor
     bio_1: Noeen Kashif is the Lead Mentor of Team SHFT. Alongside running ALT-F4 (Team 7558), he has helped take new rookie programs to Rookie All-Star, DCMP, and Worlds. Building the operating discipline, technical culture, and accountability that turn ambitious teams into competitive ones.
