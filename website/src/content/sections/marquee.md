@@ -1,13 +1,8 @@
 ---
 items:
-  - "Competitive engineering"
-  - "World-class mentorship"
-  - "Real engineering skills"
-  - "DCMP & Worlds qualified mentors"
-  - "ALT-F4 partnership"
-  - "Competition pathway"
-  - "University portfolio"
-  - "Strength in numbers"
-  - "4 month CAD certification"
-  - "Ontario community FRC team"
+  - World-class mentorship
+  - University portfolio
+  - ALT-F4 partnership
+  - 4 month CAD certification
+  - Ontario community FRC team
 ---
