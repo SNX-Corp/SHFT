@@ -49,10 +49,10 @@ function renderInlineMd(text: string, strongClass = 'text-white') {
 
         <div class="flex items-baseline gap-3 mb-2">
           <span class="font-display font-black text-[clamp(3rem,12vw,5rem)] text-white leading-none">{d.price_value}</span>
-          <span class="font-heading text-[14px] text-white/30">{d.price_unit}</span>
+          <span class="font-heading text-[15px] text-white/55">{d.price_unit}</span>
         </div>
 
-        <p class="font-body text-[14px] text-white/40 mb-10">
+        <p class="font-body text-[15px] text-white/60 mb-10 leading-relaxed">
           {d.price_description}
         </p>
 
@@ -65,8 +65,8 @@ function renderInlineMd(text: string, strongClass = 'text-white') {
                 i === 0 ? "border border-accent text-accent" : "border border-white/20 text-white/60",
               ]}>{i + 1}</div>
               <div>
-                <div class="font-heading font-bold text-[14px] text-white">{step.title}</div>
-                <div class="font-body text-[13px] text-white/40">{step.description}</div>
+                <div class="font-heading font-bold text-[15px] text-white">{step.title}</div>
+                <div class="font-body text-[14px] text-white/60 mt-0.5">{step.description}</div>
               </div>
             </div>
           ))}
@@ -81,14 +81,14 @@ function renderInlineMd(text: string, strongClass = 'text-white') {
 
       <!-- Where the money goes -->
       <div>
-        <div class="text-label-size font-heading text-white/40 mb-8">{d.breakdown_label}</div>
+        <div class="text-label-size font-heading text-white/55 mb-8">{d.breakdown_label}</div>
 
         <div class="space-y-0">
           {d.cost_breakdown.map((item) => (
             <div class="flex items-center justify-between py-5 border-b border-white/10">
               <div>
                 <div class="font-heading font-semibold text-[15px] text-white">{item.label}</div>
-                <div class="font-body text-[13px] text-white/30 mt-0.5">{item.description}</div>
+                <div class="font-body text-[14px] text-white/55 mt-1">{item.description}</div>
               </div>
               <div class="w-2 h-2 bg-accent shrink-0 ml-4 pulse-square" style={`animation-delay: ${0.3 * (d.cost_breakdown.indexOf(item))}s`}></div>
             </div>

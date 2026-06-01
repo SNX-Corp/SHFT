@@ -50,19 +50,19 @@ const sc = d.stat_card;
               <div class="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-white/80 mb-1">
                 {sc.team_label}
               </div>
-              <div class="font-body text-[13px] text-white/55">
+              <div class="font-body text-[14px] text-white/65">
                 Record <span class="text-white font-semibold">{sc.record}</span> · Season {sc.year}
               </div>
             </div>
-            <div class="text-label-size font-heading text-white/25">FRC</div>
+            <div class="text-label-size font-heading text-white/30">FRC</div>
           </div>
 
           <!-- EPA pills -->
-          <div class="text-label-size font-heading text-white/35 mb-2">EPA Breakdown</div>
+          <div class="text-label-size font-heading text-white/55 mb-2.5">EPA Breakdown</div>
           <div class="flex flex-wrap gap-1.5 mb-4">
             {sc.epa.map((p) => (
-              <span class="inline-flex items-baseline gap-1.5 px-2.5 py-1 border border-white/15 bg-white/[0.03] text-[11px] font-heading font-semibold tracking-wide uppercase">
-                <span class="text-white/55">{p.label}</span>
+              <span class="inline-flex items-baseline gap-1.5 px-3 py-1.5 border border-white/15 bg-white/[0.04] text-[12px] font-heading font-semibold tracking-wide uppercase">
+                <span class="text-white/65">{p.label}</span>
                 <span class="text-white font-bold tabular-nums">{p.value}</span>
               </span>
             ))}
@@ -77,8 +77,8 @@ const sc = d.stat_card;
                   i === 1 && "delay-1",
                   i === 2 && "delay-2",
                 ]}>{r.rank}</div>
-                <div class="font-heading text-[11px] font-bold uppercase tracking-[0.14em] text-white/80">{r.scope}</div>
-                <div class="font-body text-[11px] text-white/40 leading-tight mt-0.5">of {r.of}</div>
+                <div class="font-heading text-[12px] font-bold uppercase tracking-[0.12em] text-white/85">{r.scope}</div>
+                <div class="font-body text-[12px] text-white/55 leading-tight mt-1">of {r.of}</div>
               </div>
             ))}
           </div>
@@ -106,12 +106,12 @@ const sc = d.stat_card;
       {d.cards.map((item) => (
         <div class="bg-surface-alt p-8 lg:p-10">
           <div class="flex items-center gap-2 mb-5">
-            <span class="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-accent">SHFT</span>
-            <span class="text-white/40 text-[12px] leading-none arrow-nudge">↔</span>
-            <span class="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-altf4">ALT-F4</span>
+            <span class="font-heading text-[11px] font-bold uppercase tracking-[0.15em] text-accent">SHFT</span>
+            <span class="text-white/50 text-[13px] leading-none arrow-nudge">↔</span>
+            <span class="font-heading text-[11px] font-bold uppercase tracking-[0.15em] text-altf4">ALT-F4</span>
           </div>
-          <h3 class="font-heading font-bold text-[16px] text-white mb-3">{item.title}</h3>
-          <p class="font-body text-[14px] text-white/40 leading-relaxed">{item.description}</p>
+          <h3 class="font-heading font-bold text-[17px] text-white mb-3">{item.title}</h3>
+          <p class="font-body text-[15px] text-white/65 leading-relaxed">{item.description}</p>
         </div>
       ))}
     </div>
