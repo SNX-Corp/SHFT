@@ -16,19 +16,19 @@ const d = entry!.data as {
 };
 ---
 
-<section id="hero" class="hero-stage relative min-h-[100svh] flex items-center lg:items-end overflow-hidden bg-surface-alt" data-hero>
+<section id="hero" class="hero-stage relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-surface-alt" data-hero>
   <button class="hero-zoom-trigger" type="button" aria-label="Inspect the SHFT workshop" data-hero-zoom-trigger>
     <span class="hero-camera" data-hero-camera>
       <!-- Workshop background photo -->
-      <span class="hero-photo absolute inset-0 bg-cover bg-[58%_bottom] sm:bg-bottom" style="background-image: url('/images/parents/shiftlab2.png');" data-hero-bg></span>
+      <span class="hero-photo absolute inset-0 bg-cover bg-[58%_bottom] sm:bg-center" style="background-image: url('/images/parents/shiftlab2.png');" data-hero-bg></span>
 
-      <!-- Mobile needs the message visible immediately; desktop keeps the cinematic side gradient. -->
-      <span class="hero-shade absolute inset-0 bg-gradient-to-b from-surface-alt/55 via-surface-alt/40 to-surface-alt/95 lg:bg-gradient-to-r lg:from-surface-alt/95 lg:via-surface-alt/55 lg:to-transparent" data-hero-shade></span>
+      <!-- Centered vignette so the centered logo + text stay legible -->
+      <span class="hero-shade absolute inset-0" style="background: radial-gradient(125% 95% at 50% 44%, rgba(26,26,26,0.34) 0%, rgba(26,26,26,0.62) 55%, rgba(26,26,26,0.9) 100%);" data-hero-shade></span>
 
       <!-- Grid texture, radially masked so it fades out -->
       <span
         class="hero-grid absolute inset-0 opacity-[0.06]"
-        style="background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%); mask-image: radial-gradient(120% 90% at 78% 8%, #000, transparent 72%);"
+        style="background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px); background-size: 64px 64px; -webkit-mask-image: radial-gradient(120% 90% at 50% 35%, #000, transparent 72%); mask-image: radial-gradient(120% 90% at 50% 35%, #000, transparent 72%);"
         data-hero-grid
       ></span>
     </span>
@@ -37,40 +37,35 @@ const d = entry!.data as {
   <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
   <div class="sr-only" data-hero-splash></div>
 
-  <!-- Content -->
-  <div class="pointer-events-none relative z-[var(--z-hero-text)] content-width box-border max-w-full pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pb-24" data-hero-copy>
-    <div class="w-full max-w-[calc(100vw-3rem)] sm:max-w-3xl">
+  <!-- Centered content. The big wordmark itself lives in the nav (it morphs up on scroll); this slot reserves its space. -->
+  <div class="pointer-events-none relative z-[var(--z-hero-text)] content-width box-border max-w-full text-center" data-hero-copy>
+    <div class="flex flex-col items-center">
       <!-- Eyebrow -->
-      <div class="flex items-center gap-3 mb-4 sm:mb-6" data-hero-eyebrow>
+      <div class="flex items-center gap-3 mb-6 sm:mb-8" data-hero-eyebrow>
         <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
-        <div class="w-6 h-px bg-accent"></div>
-        <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white/60">
+        <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/65">
           {d.eyebrow}
         </span>
       </div>
 
-      <!-- Headline -->
-      <h1 class="font-display font-black text-[clamp(2.35rem,10.5vw,2.85rem)] sm:text-[clamp(3.4rem,8vw,5.5rem)] leading-[0.98] sm:leading-[0.9] tracking-[-0.04em] text-text-inverse mb-5 sm:mb-8">
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block text-accent title-shine is-accent" data-hero-word>{d.headline_line_1}</span></span>
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block title-shine is-white delay-1" data-hero-word>{d.headline_line_2}</span></span>
-        <span class="block overflow-visible sm:overflow-hidden"><span class="block title-shine is-white delay-2" data-hero-word>{d.headline_line_3}</span></span>
-      </h1>
+      <!-- Logo slot: the morphing wordmark sits centered here at rest -->
+      <div class="hero-logo-slot" data-hero-logo-slot aria-hidden="true"></div>
 
-      <!-- Subtitle -->
-      <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(0.95rem,1.25vw,1.08rem)] text-white/70 max-w-2xl mb-7 sm:mb-10 leading-relaxed" data-hero-sub>
+      <!-- Tagline -->
+      <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(1rem,1.3vw,1.15rem)] text-white/70 max-w-xl mt-8 sm:mt-10 leading-relaxed" data-hero-sub>
         {d.subtitle}
       </p>
 
       <!-- CTA -->
-      <div class="pointer-events-auto flex flex-col sm:flex-row gap-3 sm:gap-4" data-hero-cta>
-        <Button href={d.cta_primary_href} variant="primary" size="large" class="w-full sm:w-auto" data-open-join-modal>{d.cta_primary_label}</Button>
+      <div class="pointer-events-auto mt-8 sm:mt-10" data-hero-cta>
+        <Button href={d.cta_primary_href} variant="primary" size="large" data-open-join-modal>{d.cta_primary_label}</Button>
       </div>
     </div>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 right-8 hidden lg:flex flex-col items-center gap-2" data-hero-scroll>
-    <span class="font-heading text-[10px] uppercase tracking-[0.2em] text-white/30 [writing-mode:vertical-lr]">Scroll</span>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2" data-hero-scroll>
+    <span class="font-heading text-[10px] uppercase tracking-[0.2em] text-white/35">Scroll</span>
     <div class="w-px h-12 bg-white/20 relative overflow-hidden">
       <div class="w-full h-4 bg-accent animate-[scrollDown_2s_ease-in-out_infinite]"></div>
     </div>
@@ -85,5 +80,9 @@ const d = entry!.data as {
   @keyframes scrollDown {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(300%); }
+  }
+  .hero-logo-slot {
+    height: var(--hero-logo-h, clamp(3.25rem, 12vh, 8.5rem));
+    width: 1px;
   }
 </style>
