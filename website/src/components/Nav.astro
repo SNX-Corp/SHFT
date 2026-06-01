@@ -16,10 +16,23 @@ const navLinks = d.links;
   class="fixed top-0 left-0 right-0 z-[var(--z-nav)] bg-transparent transition-colors duration-[var(--duration-normal)]"
   data-nav
 >
-  <div class="relative content-width box-border max-w-full flex items-center justify-between h-16 lg:h-20">
-    <!-- Left: desktop links (hidden at top, fade in on scroll) -->
-    <nav class="hidden lg:flex items-center gap-8" data-nav-left>
-      {navLinks.map((link) => (
+  <div class="relative content-width box-border max-w-full flex items-center justify-center h-16 lg:h-20">
+    <!-- Centered link cluster: 2 links, logo gap, 2 links -->
+    <nav class="hidden lg:flex items-center gap-7" data-nav-chrome>
+      {navLinks.slice(0, 2).map((link) => (
+        <a
+          href={link.href}
+          class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
+          data-nav-link
+        >
+          <RollText text={link.label} />
+        </a>
+      ))}
+
+      <!-- Reserved gap the centered morphing logo sits over -->
+      <span class="block shrink-0" style="width: 200px;" aria-hidden="true"></span>
+
+      {navLinks.slice(2, 4).map((link) => (
         <a
           href={link.href}
           class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
@@ -30,11 +43,11 @@ const navLinks = d.links;
       ))}
     </nav>
 
-    <!-- Right: Join SHIFT (hidden at top, fades in on scroll) -->
-    <div class="hidden lg:block" data-nav-right>
+    <!-- Far-right CTA -->
+    <div class="hidden lg:block absolute right-6" data-nav-cta-wrap>
       <a
         href={d.cta_href}
-        class="bg-accent text-accent-text font-heading font-bold text-[13px] uppercase tracking-wide px-5 py-2.5 hover:bg-accent-hover transition-all duration-200 active:scale-[0.97]"
+        class="inline-block bg-accent text-accent-text font-heading font-bold text-[13px] uppercase tracking-wide px-5 py-2.5 hover:bg-accent-hover transition-all duration-200 active:scale-[0.97]"
         data-nav-cta
         data-open-join-modal
       >
@@ -127,8 +140,8 @@ const navLinks = d.links;
 
 <script>
   const nav = document.querySelector('[data-nav]') as HTMLElement;
-  const navLeft = document.querySelector('[data-nav-left]') as HTMLElement;
-  const navRight = document.querySelector('[data-nav-right]') as HTMLElement;
+  const navChrome = document.querySelector('[data-nav-chrome]') as HTMLElement;
+  const navCtaWrap = document.querySelector('[data-nav-cta-wrap]') as HTMLElement;
   const navLinks = document.querySelectorAll('[data-nav-link]');
   const navCta = document.querySelector('[data-nav-cta]') as HTMLElement;
   const brand = document.querySelector('[data-brand-logo]') as HTMLElement;
@@ -186,15 +199,15 @@ const navLinks = d.links;
 
     // Fade the nav chrome (links + CTA) in as the logo docks
     const chrome = Math.min(1, Math.max(0, (p - 0.15) / 0.6));
-    if (navLeft) {
-      navLeft.style.opacity = String(chrome);
-      navLeft.style.transform = `translateY(${(1 - chrome) * -6}px)`;
-      navLeft.style.pointerEvents = chrome > 0.85 ? 'auto' : 'none';
+    if (navChrome) {
+      navChrome.style.opacity = String(chrome);
+      navChrome.style.transform = `translateY(${(1 - chrome) * -6}px)`;
+      navChrome.style.pointerEvents = chrome > 0.85 ? 'auto' : 'none';
     }
-    if (navRight) {
-      navRight.style.opacity = String(chrome);
-      navRight.style.transform = `translateY(${(1 - chrome) * -6}px)`;
-      navRight.style.pointerEvents = chrome > 0.85 ? 'auto' : 'none';
+    if (navCtaWrap) {
+      navCtaWrap.style.opacity = String(chrome);
+      navCtaWrap.style.transform = `translateY(${(1 - chrome) * -6}px)`;
+      navCtaWrap.style.pointerEvents = chrome > 0.85 ? 'auto' : 'none';
     }
 
     // Background + colour swap once we're past the hero
