@@ -18,8 +18,8 @@ const d = entry!.data as {
 };
 
 const intensityColors: Record<string, string> = {
-  low: "bg-white/20",
-  medium: "bg-accent/50",
+  low: "bg-white/30",
+  medium: "bg-accent/60",
   high: "bg-accent",
 };
 
@@ -30,57 +30,90 @@ const intensityLabels: Record<string, string> = {
 };
 ---
 
-<section class="py-16 lg:py-28 bg-surface">
-  <div class="content-width">
-    <SectionLabel number={d.section_number} text={d.section_label} />
+<section
+  id="season"
+  class="relative overflow-hidden bg-surface-alt text-text-inverse py-16 lg:py-0 lg:h-screen lg:flex lg:items-center"
+  data-season
+  data-no-reveal
+>
+  <!-- Static, dimmed workshop backdrop -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/parents/shiftlab2.png');"></div>
+  <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(20,20,20,0.94) 0%, rgba(20,20,20,0.9) 45%, rgba(20,20,20,0.82) 100%);"></div>
+  <div
+    class="absolute inset-0 opacity-[0.05]"
+    style="background-image: linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px); background-size: 60px 60px;"
+  ></div>
 
-    <h2 class="font-display font-black text-h2-size mb-6">
-      <span class="title-shine is-dark delay-5">{d.headline_line_1}</span><br/>
-      <span class="title-shine is-dark delay-6">{d.headline_line_2}</span>
-    </h2>
+  <div class="content-width relative w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-20 lg:items-center">
+      <!-- LEFT: static heading -->
+      <div>
+        <SectionLabel number={d.section_number} text={d.section_label} inverted />
 
-    <p class="font-body text-[16px] text-text-secondary leading-relaxed max-w-2xl mb-16">
-      {d.intro}
-    </p>
+        <h2 class="font-display font-black text-h2-size mb-6">
+          <span class="title-shine is-white">{d.headline_line_1}</span><br/>
+          <span class="title-shine is-white delay-1">{d.headline_line_2}</span>
+        </h2>
 
-    <!-- Timeline -->
-    <div class="relative pl-8 lg:pl-12">
-      <div class="absolute left-0 top-0 bottom-0 w-px bg-border"></div>
+        <p class="font-body text-[16px] text-white/60 leading-relaxed max-w-md mb-6">
+          {d.intro}
+        </p>
 
-      <div class="space-y-10 lg:space-y-14">
-        {d.phases.map((phase) => (
-          <div class="relative">
-            <!-- Dot -->
-            <div
-              class="absolute -left-8 lg:-left-12 top-2 w-4 h-4 border-2 border-accent bg-bg rounded-full flex items-center justify-center"
-              data-timeline-phase={phase.period}
-            >
-              <div class:list={["w-1.5 h-1.5 rounded-full", intensityColors[phase.intensity]]}></div>
-            </div>
+        <div class="hidden lg:flex items-center gap-2 text-white/35">
+          <span class="font-heading text-[10px] font-bold uppercase tracking-[0.2em]">Scroll the season</span>
+          <span class="text-[14px] leading-none animate-pulse">↓</span>
+        </div>
+      </div>
 
-            <!-- Period badge -->
-            <div class="flex items-center gap-3 mb-2">
-              <span class="font-display font-black text-[14px] text-text-primary tracking-wide">{phase.period}</span>
-              <span class:list={[
-                "text-[10px] font-heading font-bold uppercase tracking-[0.15em] px-2.5 py-1",
-                phase.intensity === "high" ? "bg-accent text-accent-text" :
-                phase.intensity === "medium" ? "bg-accent/60 text-accent-text" :
-                "bg-border text-text-muted",
-              ]}>
-                {intensityLabels[phase.intensity]}
-              </span>
-            </div>
+      <!-- RIGHT: timeline that scrolls within a fixed window while pinned -->
+      <div class="relative lg:h-[64vh] lg:overflow-hidden" data-timeline-window>
+        <!-- top/bottom fade masks (desktop only) -->
+        <div class="hidden lg:block absolute inset-x-0 top-0 h-16 z-10 pointer-events-none" style="background: linear-gradient(rgba(20,20,20,0.95), transparent);"></div>
+        <div class="hidden lg:block absolute inset-x-0 bottom-0 h-16 z-10 pointer-events-none" style="background: linear-gradient(transparent, rgba(20,20,20,0.95));"></div>
 
-            <h3 class="font-heading font-bold text-[1.25rem] text-text-primary mb-2">{phase.title}</h3>
-            <p class="font-body text-text-secondary text-[15px] leading-relaxed max-w-xl">{phase.description}</p>
+        <div class="relative pl-8 lg:pl-12 lg:py-10" data-timeline-track>
+          <div class="absolute left-0 top-0 bottom-0 w-px bg-white/15"></div>
+
+          <div class="space-y-10 lg:space-y-12">
+            {d.phases.map((phase) => (
+              <div class="relative">
+                <!-- Dot -->
+                <div
+                  class="absolute -left-8 lg:-left-12 top-2 w-4 h-4 border-2 border-accent bg-surface-alt rounded-full flex items-center justify-center"
+                  data-timeline-phase={phase.period}
+                >
+                  <div class:list={["w-1.5 h-1.5 rounded-full", intensityColors[phase.intensity]]}></div>
+                </div>
+
+                <!-- Period badge -->
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="font-display font-black text-[14px] text-white tracking-wide">{phase.period}</span>
+                  <span class:list={[
+                    "text-[10px] font-heading font-bold uppercase tracking-[0.15em] px-2.5 py-1",
+                    phase.intensity === "high" ? "bg-accent text-accent-text" :
+                    phase.intensity === "medium" ? "bg-accent/60 text-accent-text" :
+                    "bg-white/15 text-white/75",
+                  ]}>
+                    {intensityLabels[phase.intensity]}
+                  </span>
+                </div>
+
+                <h3 class="font-heading font-bold text-[1.25rem] text-white mb-2">{phase.title}</h3>
+                <p class="font-body text-white/60 text-[15px] leading-relaxed max-w-xl">{phase.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
   // E: Highlight the timeline dot whose period covers today's month.
   const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
   function periodCovers(period: string, currentIdx: number): boolean {
@@ -90,28 +123,54 @@ const intensityLabels: Record<string, string> = {
       const startIdx = months.indexOf(range[1].slice(0, 3));
       const endIdx = months.indexOf(range[2].slice(0, 3));
       if (startIdx < 0 || endIdx < 0) return false;
-      if (startIdx <= endIdx) {
-        return currentIdx >= startIdx && currentIdx <= endIdx;
-      }
+      if (startIdx <= endIdx) return currentIdx >= startIdx && currentIdx <= endIdx;
       return currentIdx >= startIdx || currentIdx <= endIdx;
     }
     const single = months.findIndex((m) => text.startsWith(m));
     return single === currentIdx;
   }
   const currentMonth = new Date().getMonth();
-  const dots = document.querySelectorAll<HTMLElement>('[data-timeline-phase]');
-  // Single-month phases beat ranges (so JANUARY wins over JAN – FEB for early Jan).
+  const dots = Array.from(document.querySelectorAll<HTMLElement>('[data-timeline-phase]'));
   const single: HTMLElement[] = [];
   const ranges: HTMLElement[] = [];
   dots.forEach((el) => {
     const period = (el.dataset.timelinePhase || '').toUpperCase();
     (period.includes('-') || period.includes('–') ? ranges : single).push(el);
   });
-  const ordered = [...single, ...ranges];
-  for (const el of ordered) {
+  for (const el of [...single, ...ranges]) {
     if (periodCovers(el.dataset.timelinePhase || '', currentMonth)) {
       el.classList.add('timeline-now');
       break;
     }
+  }
+
+  // Pin Section 6 on desktop; scroll the timeline track up through its window.
+  const section = document.querySelector<HTMLElement>('[data-season]');
+  const windowEl = document.querySelector<HTMLElement>('[data-timeline-window]');
+  const track = document.querySelector<HTMLElement>('[data-timeline-track]');
+
+  if (section && windowEl && track) {
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 1024px)', () => {
+      const distance = () => Math.max(0, track.scrollHeight - windowEl.clientHeight);
+      const tween = gsap.to(track, {
+        y: () => -distance(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => '+=' + distance(),
+          scrub: 0.5,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+        gsap.set(track, { clearProps: 'transform' });
+      };
+    });
   }
 </script>

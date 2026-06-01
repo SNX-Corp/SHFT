@@ -241,7 +241,7 @@ if (prefersReducedMotion) {
   gsap.set('[data-recruit-cta]', { y: 20, opacity: 0 });
 
   // Current launch page sections
-  const nonHeroSections = gsap.utils.toArray<HTMLElement>('section:not(#hero)');
+  const nonHeroSections = gsap.utils.toArray<HTMLElement>('section:not(#hero):not([data-no-reveal])');
   nonHeroSections.forEach((section) => {
     const heading = section.querySelector('h2');
     const intro = section.querySelector(':scope > div > p, :scope > div > div > p');
