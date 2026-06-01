@@ -23,11 +23,11 @@ const d = entry!.data as {
     style="background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(120% 100% at 50% 50%, #000, transparent 78%); mask-image: radial-gradient(120% 100% at 50% 50%, #000, transparent 78%);"
   ></div>
 
-  <!-- Cursor-following spotlight (defaults to centre) -->
-  <div class="hero-spotlight" data-hero-spotlight aria-hidden="true"></div>
-
   <!-- Edge vignette to deepen the corners -->
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(135% 105% at 50% 50%, transparent 52%, rgba(0,0,0,0.6) 100%);"></div>
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(135% 105% at 50% 50%, transparent 50%, rgba(0,0,0,0.6) 100%);"></div>
+
+  <!-- Inset green frame (CL16-style) -->
+  <div class="absolute inset-4 lg:inset-6 pointer-events-none z-[5]" style="border: 1.5px solid rgba(166, 255, 0, 0.55);"></div>
 
   <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
   <div class="sr-only" data-hero-splash></div>
@@ -59,7 +59,7 @@ const d = entry!.data as {
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2" data-hero-scroll>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 z-[6]" data-hero-scroll>
     <span class="font-heading text-[10px] uppercase tracking-[0.2em] text-white/35">Scroll</span>
     <div class="w-px h-12 bg-white/20 relative overflow-hidden">
       <div class="w-full h-4 bg-accent animate-[scrollDown_2s_ease-in-out_infinite]"></div>
@@ -76,70 +76,4 @@ const d = entry!.data as {
     height: var(--hero-logo-h, clamp(3.25rem, 12vh, 8.5rem));
     width: 1px;
   }
-  .hero-spotlight {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 64rem;
-    height: 64rem;
-    margin: -32rem 0 0 -32rem;
-    pointer-events: none;
-    background: radial-gradient(circle,
-      rgba(166, 255, 0, 0.16) 0%,
-      rgba(166, 255, 0, 0.06) 26%,
-      rgba(255, 255, 255, 0.035) 44%,
-      transparent 66%);
-    will-change: transform;
-  }
 </style>
-
-<script>
-  const hero = document.querySelector<HTMLElement>('[data-hero]');
-  const spot = document.querySelector<HTMLElement>('[data-hero-spotlight]');
-
-  if (hero && spot) {
-    const center = () => {
-      const r = hero.getBoundingClientRect();
-      return { x: r.width / 2, y: r.height / 2 };
-    };
-    let { x: tx, y: ty } = center();
-    let cx = tx;
-    let cy = ty;
-    let raf = 0;
-
-    const apply = () => spot.style.transform = `translate(${cx}px, ${cy}px)`;
-
-    const tick = () => {
-      cx += (tx - cx) * 0.12;
-      cy += (ty - cy) * 0.12;
-      apply();
-      if (Math.abs(tx - cx) > 0.5 || Math.abs(ty - cy) > 0.5) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        raf = 0;
-      }
-    };
-    const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
-
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect();
-      tx = e.clientX - r.left;
-      ty = e.clientY - r.top;
-      kick();
-    });
-    hero.addEventListener('pointerleave', () => {
-      const c = center();
-      tx = c.x;
-      ty = c.y;
-      kick();
-    });
-    window.addEventListener('resize', () => {
-      const c = center();
-      tx = cx = c.x;
-      ty = cy = c.y;
-      apply();
-    });
-
-    apply();
-  }
-</script>
