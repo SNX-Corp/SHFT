@@ -1,16 +1,26 @@
 ---
-// Wraps a word/phrase so that on hover of the parent element the text
-// rolls up and a duplicate copy rolls in from below.
-// Usage:  <a><RollText text="VISION" /></a>
+// Per-character rolling hover (landonorris.com style): each letter is a
+// clipped box holding two stacked copies. On hover of the parent, every
+// letter rolls up with a staggered delay, creating a wave. Spaces render as
+// real spaces so long strings still wrap at word boundaries.
 interface Props {
   text: string;
   class?: string;
 }
 const { text, class: className } = Astro.props;
+const chars = [...text];
 ---
-<span class:list={['text-roll', className]}>
-  <span class="text-roll__inner">
-    <span class="text-roll__line">{text}</span>
-    <span class="text-roll__line" aria-hidden="true">{text}</span>
-  </span>
+<span class:list={['text-roll', className]} aria-label={text}>
+  {chars.map((ch, i) =>
+    ch === ' ' ? (
+      ' '
+    ) : (
+      <span class="text-roll__char" style={`--ri:${i}`} aria-hidden="true">
+        <span class="text-roll__col">
+          <span>{ch}</span>
+          <span>{ch}</span>
+        </span>
+      </span>
+    )
+  )}
 </span>
