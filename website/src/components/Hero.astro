@@ -26,8 +26,8 @@ const d = entry!.data as {
   <!-- Edge vignette to deepen the corners -->
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(135% 105% at 50% 50%, transparent 50%, rgba(0,0,0,0.6) 100%);"></div>
 
-  <!-- Inset green frame (CL16-style) -->
-  <div class="absolute inset-4 lg:inset-6 pointer-events-none z-[5]" style="border: 1.5px solid rgba(166, 255, 0, 0.55);"></div>
+  <!-- Inset green frame (CL16-style): ~3mm border, ~10mm inner radius -->
+  <div class="absolute inset-4 lg:inset-6 pointer-events-none z-[5]" style="border: 3mm solid rgba(166, 255, 0, 0.7); border-radius: 13mm;"></div>
 
   <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
   <div class="sr-only" data-hero-splash></div>
