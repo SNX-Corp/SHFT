@@ -17,17 +17,14 @@ const d = entry!.data as {
 ---
 
 <section id="hero" class="hero-stage relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#0b0b0b]" data-hero>
-  <!-- Faint grid, radially masked so it fades toward the edges -->
-  <div
-    class="absolute inset-0 opacity-[0.05] pointer-events-none"
-    style="background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(120% 100% at 50% 50%, #000, transparent 78%); mask-image: radial-gradient(120% 100% at 50% 50%, #000, transparent 78%);"
-  ></div>
+  <!-- Living tech grid: slowly pans diagonally -->
+  <div class="hero-grid" aria-hidden="true"></div>
 
-  <!-- Cursor-following spotlight (defaults to centre) -->
-  <div class="hero-spotlight" data-hero-spotlight aria-hidden="true"></div>
+  <!-- Soft light sweep that passes through every few seconds -->
+  <div class="hero-sweep" aria-hidden="true"></div>
 
   <!-- Edge vignette to deepen the corners -->
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(135% 105% at 50% 50%, transparent 52%, rgba(0,0,0,0.6) 100%);"></div>
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(135% 105% at 50% 50%, transparent 50%, rgba(0,0,0,0.6) 100%);"></div>
 
   <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
   <div class="sr-only" data-hero-splash></div>
@@ -76,70 +73,48 @@ const d = entry!.data as {
     height: var(--hero-logo-h, clamp(3.25rem, 12vh, 8.5rem));
     width: 1px;
   }
-  .hero-spotlight {
+
+  /* Living tech grid */
+  .hero-grid {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 64rem;
-    height: 64rem;
-    margin: -32rem 0 0 -32rem;
+    inset: -60px;
     pointer-events: none;
-    background: radial-gradient(circle,
-      rgba(166, 255, 0, 0.16) 0%,
-      rgba(166, 255, 0, 0.06) 26%,
-      rgba(255, 255, 255, 0.035) 44%,
-      transparent 66%);
-    will-change: transform;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.11) 1px, transparent 1px);
+    background-size: 62px 62px;
+    -webkit-mask-image: radial-gradient(120% 100% at 50% 45%, #000 32%, transparent 80%);
+    mask-image: radial-gradient(120% 100% at 50% 45%, #000 32%, transparent 80%);
+    animation: gridPan 26s linear infinite;
+    will-change: background-position;
+  }
+  @keyframes gridPan {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 62px 62px, 62px 62px; }
+  }
+
+  /* Light sweep that passes through, then pauses */
+  .hero-sweep {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: linear-gradient(115deg,
+      transparent 36%,
+      rgba(166, 255, 0, 0.10) 47%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(166, 255, 0, 0.10) 53%,
+      transparent 64%);
+    background-size: 260% 100%;
+    background-position: 160% 0;
+    -webkit-mask-image: radial-gradient(120% 100% at 50% 45%, #000 38%, transparent 82%);
+    mask-image: radial-gradient(120% 100% at 50% 45%, #000 38%, transparent 82%);
+    animation: heroSweep 8.5s ease-in-out infinite;
+    will-change: background-position;
+  }
+  @keyframes heroSweep {
+    0%   { background-position: 160% 0; }
+    45%  { background-position: -60% 0; }
+    100% { background-position: -60% 0; }
   }
 </style>
-
-<script>
-  const hero = document.querySelector<HTMLElement>('[data-hero]');
-  const spot = document.querySelector<HTMLElement>('[data-hero-spotlight]');
-
-  if (hero && spot) {
-    const center = () => {
-      const r = hero.getBoundingClientRect();
-      return { x: r.width / 2, y: r.height / 2 };
-    };
-    let { x: tx, y: ty } = center();
-    let cx = tx;
-    let cy = ty;
-    let raf = 0;
-
-    const apply = () => spot.style.transform = `translate(${cx}px, ${cy}px)`;
-
-    const tick = () => {
-      cx += (tx - cx) * 0.12;
-      cy += (ty - cy) * 0.12;
-      apply();
-      if (Math.abs(tx - cx) > 0.5 || Math.abs(ty - cy) > 0.5) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        raf = 0;
-      }
-    };
-    const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
-
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect();
-      tx = e.clientX - r.left;
-      ty = e.clientY - r.top;
-      kick();
-    });
-    hero.addEventListener('pointerleave', () => {
-      const c = center();
-      tx = c.x;
-      ty = c.y;
-      kick();
-    });
-    window.addEventListener('resize', () => {
-      const c = center();
-      tx = cx = c.x;
-      ty = cy = c.y;
-      apply();
-    });
-
-    apply();
-  }
-</script>
