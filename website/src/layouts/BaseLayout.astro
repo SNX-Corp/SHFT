@@ -8,12 +8,14 @@ interface Props {
   title?: string;
   description?: string;
   showJoinModal?: boolean;
+  preloader?: boolean;
 }
 
 const {
   title = 'Team SHFT - FRC Robotics',
   description = 'SHIFT our mindset. ELEVATE our impact. Team SHFT is a competitive FIRST Robotics team building the future of engineering.',
   showJoinModal = true,
+  preloader = false,
 } = Astro.props;
 ---
 
@@ -34,7 +36,7 @@ const {
     <title>{title}</title>
   </head>
   <body class="bg-bg text-text-primary">
-    <Preloader />
+    {preloader && <Preloader />}
     <slot />
 
     {showJoinModal && <JoinModal />}
