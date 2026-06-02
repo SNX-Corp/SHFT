@@ -303,29 +303,7 @@ if (prefersReducedMotion) {
     heroTl.play();
   }
 
-  /* ---------------------------------------------------------------- */
-  /*  HERO PIN — hold the hero on screen so the wordmark can dock as   */
-  /*  late as possible without the next section sliding up behind it.  */
-  /*  Desktop only; mobile keeps the simpler hold-then-snap. The Nav   */
-  /*  morph reads `hero-pinned` to time the dock to the pin's end.     */
-  /* ---------------------------------------------------------------- */
-  const heroPinMM = gsap.matchMedia();
-  heroPinMM.add('(min-width: 1024px)', () => {
-    document.documentElement.classList.add('hero-pinned');
-    const pin = ScrollTrigger.create({
-      trigger: '#hero',
-      start: 'top top',
-      end: () => '+=' + Math.round(window.innerHeight * 0.85),
-      pin: true,
-      pinSpacing: true,
-      anticipatePin: 1,
-    });
-    return () => {
-      document.documentElement.classList.remove('hero-pinned');
-      pin.kill();
-    };
-  });
-  // The preloader locks scroll while it's up, so re-measure on hand-off.
+  // The preloader locks scroll while it's up, so re-measure ScrollTriggers on hand-off.
   window.addEventListener('shft:reveal', () => ScrollTrigger.refresh(), { once: true });
 
   /* ---------------------------------------------------------------- */

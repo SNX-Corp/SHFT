@@ -190,35 +190,24 @@ const navLinks = d.links;
     const vh = window.innerHeight;
     const y = window.scrollY;
 
-    // Morph progress: the logo stays full-size + centered, then snaps up and
-    // docks into the nav. When the hero is pinned (desktop) the next section is
-    // held off-screen, so we hold the wordmark almost to the end of the pin and
-    // dock right before it releases. Ease-in (squared) keeps it planted, then
-    // accelerates the move so it never slowly drifts.
-    const pinned = document.documentElement.classList.contains('hero-pinned');
-    const D = vh * 0.85; // must match the hero pin distance in animations.ts
-    const holdEnd = pinned ? D * 0.72 : vh * 0.52;
-    const dockRange = pinned ? D * 0.25 : vh * 0.2;
-    const pRaw = Math.min(1, Math.max(0, (y - holdEnd) / dockRange));
-    const p = pRaw * pRaw;
-    const inv = 1 - p;
+    // The wordmark rides up with the hero as you scroll (it stays in its slot,
+    // moving with the page). Only in the last stretch before it reaches the
+    // navbar does it scale down and lock into the nav centre. `dy` is the
+    // distance from the slot centre to the nav centre, so the logo reaches the
+    // nav exactly at scrollY === dy.
+    const dock = Math.max(60, Math.min(150, dy * 0.6)); // px of approach over which it docks
+    const dockStart = dy - dock;
+    const p = dy > 0 ? Math.min(1, Math.max(0, (y - dockStart) / dock)) : 1;
+    const ease = p * p * (3 - 2 * p); // smoothstep
+    const offset = Math.max(0, dy - y); // ride up with the page, then lock at the nav
 
-    // Fade the hero copy (eyebrow + tagline + button) out early so it never
-    // scrolls up through the held logo. The logo itself stays put. Only once
-    // scrolling, so the load-in intro keeps ownership of these at the top.
-    if (y > 2) {
-      const copyFade = Math.min(1, Math.max(0, 1 - y / (vh * 0.3)));
-      if (heroCopy) heroCopy.style.opacity = String(copyFade);
-      if (heroScroll) heroScroll.style.opacity = String(copyFade);
-    }
-
-    // Move + scale the floating logo from hero-center (p=0) to nav-center (p=1)
+    // Ride the logo up with the page; scale it into the nav only in the last bit.
     if (brand) {
-      const scale = 1 + (heroScale - 1) * inv;
-      brand.style.transform = `translate(-50%, -50%) translateY(${dy * inv}px) scale(${scale})`;
+      const scale = 1 + (heroScale - 1) * (1 - ease);
+      brand.style.transform = `translate(-50%, -50%) translateY(${offset}px) scale(${scale})`;
       // Opacity is owned by the hero intro timeline (logo fades in first).
       // Only clickable once docked in the nav, so it never blocks the hero.
-      brand.style.pointerEvents = p > 0.85 ? 'auto' : 'none';
+      brand.style.pointerEvents = p > 0.9 ? 'auto' : 'none';
     }
 
     // Fade the nav chrome (links + CTA) in as the logo docks
@@ -235,7 +224,7 @@ const navLinks = d.links;
     }
 
     // Background + colour swap once we're past the hero
-    const pastHero = y > (pinned ? D * 0.98 : vh * 0.88);
+    const pastHero = y > vh * 0.85;
     if (pastHero) {
       nav.classList.add('bg-bg', 'shadow-[0_1px_0_var(--color-border)]');
       nav.classList.remove('bg-transparent');
