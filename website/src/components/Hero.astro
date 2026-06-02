@@ -22,12 +22,12 @@ const d = entry!.data as {
   <div class="relative flex-1 flex items-center justify-center overflow-hidden">
     <!-- Corner video triangles -->
     <div class="hero-tri hero-tri-left" aria-hidden="true">
-      <video class="hero-tri-media" autoplay muted loop playsinline preload="metadata" poster="/images/parents/shiftlab2.png">
+      <video class="hero-tri-media" autoplay muted loop playsinline preload="metadata" poster="/videos/hero-left-poster.jpg">
         <source src="/videos/hero-left.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="hero-tri hero-tri-right" aria-hidden="true">
-      <video class="hero-tri-media" autoplay muted loop playsinline preload="metadata" poster="/images/parents/shiftlab2.png">
+      <video class="hero-tri-media" autoplay muted loop playsinline preload="metadata" poster="/videos/hero-right-poster.jpg">
         <source src="/videos/hero-right.mp4" type="video/mp4" />
       </video>
     </div>
@@ -106,10 +106,12 @@ const d = entry!.data as {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
-    filter: grayscale(0.25) contrast(1.05);
+    opacity: 0.9;
+    filter: grayscale(0.12) contrast(1.04);
   }
-  /* Darken the inner edges so the videos sink into the grey and never fight the centered wordmark */
+  /* Dissolve the central black smoothly into the video along each inner (diagonal) edge.
+     "to top right" / "to top left" keeps the gradient parallel to the clip hypotenuse at
+     any viewport size, so the surface colour bleeds over the video toward the centre. */
   .hero-tri::after {
     content: '';
     position: absolute;
@@ -117,13 +119,23 @@ const d = entry!.data as {
     pointer-events: none;
   }
   .hero-tri-left::after {
-    background: linear-gradient(120deg, rgba(26, 26, 26, 0) 35%, rgba(26, 26, 26, 0.85) 100%);
+    background: linear-gradient(to top right, transparent 24%, var(--color-surface-alt) 50%);
   }
   .hero-tri-right::after {
-    background: linear-gradient(240deg, rgba(26, 26, 26, 0) 35%, rgba(26, 26, 26, 0.85) 100%);
+    background: linear-gradient(to top left, transparent 24%, var(--color-surface-alt) 50%);
   }
   /* Desktop-only flourish: no corner videos on mobile / tablet */
   @media (max-width: 1023px) {
     .hero-tri { display: none; }
   }
 </style>
+
+<script>
+  // Belt-and-suspenders: a few browsers defer muted autoplay until an explicit play() call.
+  document.querySelectorAll<HTMLVideoElement>('.hero-tri-media').forEach((vid) => {
+    vid.muted = true;
+    const tryPlay = () => vid.play().catch(() => {});
+    if (vid.readyState >= 2) tryPlay();
+    vid.addEventListener('canplay', tryPlay, { once: true });
+  });
+</script>
