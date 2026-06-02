@@ -17,8 +17,6 @@ const d = entry!.data as {
 ---
 
 <section id="hero" class="hero-stage relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-surface-alt" data-hero>
-  <!-- Spotlight beaming from the top centre, fading downward -->
-  <div class="hero-spotlight" aria-hidden="true"></div>
 
   <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
   <div class="sr-only" data-hero-splash></div>
@@ -66,21 +64,5 @@ const d = entry!.data as {
   .hero-logo-slot {
     height: var(--hero-logo-h, clamp(3.25rem, 12vh, 8.5rem));
     width: 1px;
-  }
-
-  /* Spotlight from the top centre, beaming down */
-  .hero-spotlight {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(58% 78% at 50% -10%, rgba(166, 255, 0, 0.17) 0%, rgba(166, 255, 0, 0.06) 32%, transparent 64%),
-      radial-gradient(90% 60% at 50% -6%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
-    animation: heroBeam 6s ease-in-out infinite;
-    will-change: opacity;
-  }
-  @keyframes heroBeam {
-    0%, 100% { opacity: 0.78; }
-    50% { opacity: 1; }
   }
 </style>
