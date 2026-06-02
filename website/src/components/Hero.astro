@@ -122,7 +122,8 @@ const d = entry!.data as {
   .hero-tri-right::after {
     background: linear-gradient(240deg, rgba(26, 26, 26, 0) 35%, rgba(26, 26, 26, 0.85) 100%);
   }
-  @media (max-width: 640px) {
-    .hero-tri { width: 56%; height: 38%; }
+  /* Desktop-only flourish: no corner videos on mobile / tablet */
+  @media (max-width: 1023px) {
+    .hero-tri { display: none; }
   }
 </style>
