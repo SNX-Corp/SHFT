@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import Button from './Button.astro';
+import Marquee from './Marquee.astro';
 
 const entry = await getEntry('sections', 'hero');
 const d = entry!.data as {
@@ -16,44 +17,61 @@ const d = entry!.data as {
 };
 ---
 
-<section id="hero" class="hero-stage relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-surface-alt" data-hero>
+<section id="hero" class="hero-stage relative min-h-[100svh] flex flex-col bg-surface-alt" data-hero>
+  <!-- MAIN STAGE -->
+  <div class="relative flex-1 flex items-center justify-center overflow-hidden">
+    <!-- Corner video triangles -->
+    <div class="hero-tri hero-tri-left" aria-hidden="true">
+      <video class="hero-tri-media" autoplay muted loop playsinline preload="metadata" poster="/images/parents/shiftlab2.png">
+        <source src="/videos/hero-left.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-tri hero-tri-right" aria-hidden="true">
+      <video class="hero-tri-media" autoplay muted loop playsinline preload="metadata" poster="/images/parents/shiftlab2.png">
+        <source src="/videos/hero-right.mp4" type="video/mp4" />
+      </video>
+    </div>
 
-  <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
-  <div class="sr-only" data-hero-splash></div>
+    <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
+    <div class="sr-only" data-hero-splash></div>
 
-  <!-- Centered content. The big wordmark itself lives in the nav (it morphs up on scroll); this slot reserves its space. -->
-  <div class="pointer-events-none relative z-[var(--z-hero-text)] content-width box-border max-w-full text-center" data-hero-copy>
-    <div class="flex flex-col items-center">
-      <!-- Eyebrow -->
-      <div class="flex items-center gap-3 mb-6 sm:mb-8" data-hero-eyebrow>
-        <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
-        <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/65">
-          {d.eyebrow}
-        </span>
+    <!-- Centered content. The big wordmark itself lives in the nav (it morphs up on scroll); this slot reserves its space. -->
+    <div class="pointer-events-none relative z-[var(--z-hero-text)] content-width box-border max-w-full text-center" data-hero-copy>
+      <div class="flex flex-col items-center">
+        <!-- Eyebrow -->
+        <div class="flex items-center gap-3 mb-6 sm:mb-8" data-hero-eyebrow>
+          <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
+          <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/65">
+            {d.eyebrow}
+          </span>
+        </div>
+
+        <!-- Logo slot: the morphing wordmark sits centered here at rest -->
+        <div class="hero-logo-slot" data-hero-logo-slot aria-hidden="true"></div>
+
+        <!-- Tagline -->
+        <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(1rem,1.3vw,1.15rem)] text-white/70 max-w-xl mt-8 sm:mt-10 leading-relaxed" data-hero-sub>
+          {d.subtitle}
+        </p>
+
+        <!-- CTA -->
+        <div class="pointer-events-auto mt-8 sm:mt-10" data-hero-cta>
+          <Button href={d.cta_primary_href} variant="primary" size="large" data-open-join-modal>{d.cta_primary_label}</Button>
+        </div>
       </div>
+    </div>
 
-      <!-- Logo slot: the morphing wordmark sits centered here at rest -->
-      <div class="hero-logo-slot" data-hero-logo-slot aria-hidden="true"></div>
-
-      <!-- Tagline -->
-      <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(1rem,1.3vw,1.15rem)] text-white/70 max-w-xl mt-8 sm:mt-10 leading-relaxed" data-hero-sub>
-        {d.subtitle}
-      </p>
-
-      <!-- CTA -->
-      <div class="pointer-events-auto mt-8 sm:mt-10" data-hero-cta>
-        <Button href={d.cta_primary_href} variant="primary" size="large" data-open-join-modal>{d.cta_primary_label}</Button>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-7 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 z-[6]" data-hero-scroll>
+      <span class="font-heading text-[10px] uppercase tracking-[0.2em] text-white/35">Scroll</span>
+      <div class="w-px h-10 bg-white/20 relative overflow-hidden">
+        <div class="w-full h-4 bg-accent animate-[scrollDown_2s_ease-in-out_infinite]"></div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2" data-hero-scroll>
-    <span class="font-heading text-[10px] uppercase tracking-[0.2em] text-white/35">Scroll</span>
-    <div class="w-px h-12 bg-white/20 relative overflow-hidden">
-      <div class="w-full h-4 bg-accent animate-[scrollDown_2s_ease-in-out_infinite]"></div>
-    </div>
-  </div>
+  <!-- MARQUEE: thin bottom band of the hero -->
+  <Marquee />
 </section>
 
 <style>
@@ -64,5 +82,47 @@ const d = entry!.data as {
   .hero-logo-slot {
     height: var(--hero-logo-h, clamp(3.25rem, 12vh, 8.5rem));
     width: 1px;
+  }
+
+  /* Corner video triangles */
+  .hero-tri {
+    position: absolute;
+    bottom: 0;
+    width: 40%;
+    height: 58%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-tri-left {
+    left: 0;
+    clip-path: polygon(0 100%, 0 0, 100% 100%);
+  }
+  .hero-tri-right {
+    right: 0;
+    clip-path: polygon(100% 100%, 100% 0, 0 100%);
+  }
+  .hero-tri-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    filter: grayscale(0.25) contrast(1.05);
+  }
+  /* Darken the inner edges so the videos sink into the grey and never fight the centered wordmark */
+  .hero-tri::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hero-tri-left::after {
+    background: linear-gradient(120deg, rgba(26, 26, 26, 0) 35%, rgba(26, 26, 26, 0.85) 100%);
+  }
+  .hero-tri-right::after {
+    background: linear-gradient(240deg, rgba(26, 26, 26, 0) 35%, rgba(26, 26, 26, 0.85) 100%);
+  }
+  @media (max-width: 640px) {
+    .hero-tri { width: 56%; height: 38%; }
   }
 </style>

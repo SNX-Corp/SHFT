@@ -3,18 +3,20 @@ import { getEntry } from 'astro:content';
 
 const entry = await getEntry('sections', 'marquee');
 const items = (entry!.data as { items: string[] }).items;
-
-const marqueeContent = items.join('     •     ') + '     •     ';
+// Two identical copies so the -50% translate loops seamlessly.
+const loop = [...items, ...items];
 ---
 
-<div class="relative z-[var(--z-marquee)] bg-accent overflow-hidden py-4 lg:py-5 select-none">
-  <div class="marquee-track flex whitespace-nowrap w-max">
-    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text">
-      {marqueeContent}
-    </span>
-    <span class="font-heading font-bold text-[13px] lg:text-[15px] uppercase tracking-[0.18em] text-accent-text" aria-hidden="true">
-      {marqueeContent}
-    </span>
+<div class="relative z-[var(--z-marquee)] bg-accent overflow-hidden py-2 lg:py-2.5 select-none">
+  <div class="marquee-track flex items-center gap-10 lg:gap-16 w-max">
+    {loop.map((item, i) => (
+      <Fragment>
+        <span class="font-heading font-bold text-[10.5px] lg:text-[11.5px] uppercase tracking-[0.2em] text-accent-text whitespace-nowrap" aria-hidden={i >= items.length ? 'true' : undefined}>
+          {item}
+        </span>
+        <span class="text-accent-text/45 text-[8px] leading-none" aria-hidden="true">●</span>
+      </Fragment>
+    ))}
   </div>
 </div>
 
