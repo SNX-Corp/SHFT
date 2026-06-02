@@ -190,10 +190,16 @@ const navLinks = d.links;
     const vh = window.innerHeight;
     const y = window.scrollY;
 
-    // Morph progress: the logo stays full-size + centered through the hero, then
-    // snaps up and docks into the nav near the end. Ease-in (squared) keeps it
-    // planted, then accelerates the move so it never slowly drifts.
-    const pRaw = Math.min(1, Math.max(0, (y - vh * 0.52) / (vh * 0.2)));
+    // Morph progress: the logo stays full-size + centered, then snaps up and
+    // docks into the nav. When the hero is pinned (desktop) the next section is
+    // held off-screen, so we hold the wordmark almost to the end of the pin and
+    // dock right before it releases. Ease-in (squared) keeps it planted, then
+    // accelerates the move so it never slowly drifts.
+    const pinned = document.documentElement.classList.contains('hero-pinned');
+    const D = vh * 0.85; // must match the hero pin distance in animations.ts
+    const holdEnd = pinned ? D * 0.72 : vh * 0.52;
+    const dockRange = pinned ? D * 0.25 : vh * 0.2;
+    const pRaw = Math.min(1, Math.max(0, (y - holdEnd) / dockRange));
     const p = pRaw * pRaw;
     const inv = 1 - p;
 
@@ -229,7 +235,7 @@ const navLinks = d.links;
     }
 
     // Background + colour swap once we're past the hero
-    const pastHero = y > vh * 0.88;
+    const pastHero = y > (pinned ? D * 0.98 : vh * 0.88);
     if (pastHero) {
       nav.classList.add('bg-bg', 'shadow-[0_1px_0_var(--color-border)]');
       nav.classList.remove('bg-transparent');
