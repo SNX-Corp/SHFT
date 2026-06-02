@@ -1,0 +1,206 @@
+---
+// SHFT Glitch Preloader — adapted from the Claude Design handoff
+// (shft/project/SHFT Glitch Preloader.html). Chromatic glitch entry on the
+// wordmark, a load bar, then a zoom-through exit that reveals the real page.
+// The logo is sized to match the hero wordmark exactly.
+const LOGO = '/images/logo/wordmark.png';
+---
+
+<div id="shft-pre" class="pre exit-zoom" aria-hidden="true">
+  <div class="pre-logo">
+    <div class="gh r"></div>
+    <div class="gh c"></div>
+    <img class="glogo main" src={LOGO} alt="Team SHFT" draggable="false" />
+    <div class="scan"></div>
+  </div>
+
+  <div class="pre-meta">
+    <div class="pre-row"><span>Loading</span><span class="val" data-pre-val>000%</span></div>
+    <div class="pre-track"><div class="pre-fill" data-pre-fill style="width:0%"></div></div>
+  </div>
+
+  <div class="scanlines"></div>
+  <div class="flash"></div>
+  <div class="vign"></div>
+</div>
+
+<style>
+  /* Lock scroll + hide overlay until the boot script opts in (keeps reduced-motion clean, no flash) */
+  :global(html.shft-preloading) { overflow: hidden; }
+  .pre { display: none; }
+  :global(html.shft-preloading) .pre { display: flex; }
+
+  .pre {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #121212;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    transition: opacity .6s cubic-bezier(0.16,1,0.3,1);
+    /* logo sized to the hero wordmark */
+    --gx: 5px;
+    --logo-h: clamp(3.25rem, 12vh, 8.5rem);
+    --logo-w: calc(var(--logo-h) * 1225 / 364);
+  }
+  .pre.done { pointer-events: none; }
+  .pre.exit-zoom.done { animation: preZoomOut .9s ease forwards; }
+  @keyframes preZoomOut { 0%,52% { opacity: 1; } 100% { opacity: 0; } }
+
+  .pre .flash {
+    position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8), rgba(166,255,0,0.42) 17%, transparent 44%);
+    mix-blend-mode: screen;
+  }
+  .pre.exit-zoom.done .flash { animation: zoomFlash .9s ease forwards; }
+  @keyframes zoomFlash { 0%,58% { opacity: 0; } 80% { opacity: 0.5; } 100% { opacity: 0; } }
+  .pre.exit-zoom.done .pre-meta,
+  .pre.exit-zoom.done .scanlines { animation: exitFast .22s ease forwards; }
+  @keyframes exitFast { to { opacity: 0; } }
+
+  .pre .scanlines {
+    position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0.32;
+    background: repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.4) 2px 3px);
+  }
+  .pre .vign {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(0,0,0,0.55) 100%);
+  }
+
+  .pre-logo { position: relative; width: var(--logo-w); height: var(--logo-h); transform-origin: 53% 50%; z-index: 6; }
+  .glogo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; -webkit-user-drag: none; user-select: none; }
+  .gh {
+    position: absolute; inset: 0; mix-blend-mode: screen;
+    -webkit-mask: url('/images/logo/wordmark.png') center/contain no-repeat;
+            mask: url('/images/logo/wordmark.png') center/contain no-repeat;
+  }
+  .gh.r { background: #ff0033; }
+  .gh.c { background: #00e7ff; }
+
+  /* entry: quick chromatic stutter -> clean lock (one-shot) */
+  .gh.r { animation: inR .72s steps(1,end) both, idleR 5.5s ease 0.9s infinite; }
+  .gh.c { animation: inC .72s steps(1,end) both, idleC 5.5s ease 0.9s infinite; }
+  .glogo.main { animation: inMain .72s steps(1,end) both; }
+  .pre-logo .scan {
+    position: absolute; left: 0; right: 0; height: 24%; z-index: 6; pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(166,255,0,0.18), rgba(255,255,255,0.32), rgba(166,255,0,0.18), transparent);
+    mix-blend-mode: screen; top: -30%; opacity: 0; animation: scanOnce .72s linear both;
+  }
+
+  @keyframes inR {
+    0% { transform: translate(calc(var(--gx) * -2), 2px); opacity: 0; }
+    14% { transform: translate(calc(var(--gx) * -2.4), -2px); opacity: .85; }
+    32% { transform: translate(calc(var(--gx) * 1.4), 1px); }
+    54% { transform: translate(calc(var(--gx) * -.8), 0); }
+    74% { transform: translate(calc(var(--gx) * .4), 0); opacity: .6; }
+    100% { transform: translate(0,0); opacity: 0; }
+  }
+  @keyframes inC {
+    0% { transform: translate(calc(var(--gx) * 2), -2px); opacity: 0; }
+    14% { transform: translate(calc(var(--gx) * 2.4), 2px); opacity: .85; }
+    32% { transform: translate(calc(var(--gx) * -1.4), -1px); }
+    54% { transform: translate(calc(var(--gx) * .8), 0); }
+    74% { transform: translate(calc(var(--gx) * -.4), 0); opacity: .6; }
+    100% { transform: translate(0,0); opacity: 0; }
+  }
+  @keyframes inMain {
+    0% { opacity: 0; clip-path: inset(42% 0 34% 0); transform: translateX(calc(var(--gx) * -1.4)); }
+    12% { opacity: 1; clip-path: inset(0 0 58% 0); transform: translateX(calc(var(--gx) * 1.6)); }
+    24% { clip-path: inset(54% 0 0 0); transform: translateX(calc(var(--gx) * -1.8)); }
+    38% { clip-path: inset(22% 0 38% 0); transform: translateX(calc(var(--gx) * .8)); }
+    56% { clip-path: inset(0 0 0 0); transform: translateX(calc(var(--gx) * -.4)); }
+    100% { clip-path: inset(0 0 0 0); transform: translateX(0); opacity: 1; }
+  }
+  @keyframes scanOnce { 0% { top: -30%; opacity: 0; } 12% { opacity: .9; } 70% { top: 104%; opacity: .7; } 71%,100% { opacity: 0; top: 104%; } }
+
+  /* sparse idle flicker after lock */
+  @keyframes idleR {
+    0%,42%,100% { transform: translate(0,0); opacity: 0; }
+    43% { transform: translate(calc(var(--gx) * -1),0); opacity: .7; }
+    45% { transform: translate(0,0); opacity: 0; }
+    78% { transform: translate(calc(var(--gx) * -.6),1px); opacity: .55; }
+    80% { transform: translate(0,0); opacity: 0; }
+  }
+  @keyframes idleC {
+    0%,42%,100% { transform: translate(0,0); opacity: 0; }
+    43% { transform: translate(calc(var(--gx) * 1),0); opacity: .7; }
+    45% { transform: translate(0,0); opacity: 0; }
+    78% { transform: translate(calc(var(--gx) * .6),-1px); opacity: .55; }
+    80% { transform: translate(0,0); opacity: 0; }
+  }
+
+  /* exit (ZOOM): camera winds up, then rushes into the mark with motion blur */
+  .pre.exit-zoom.done .pre-logo { animation: zoomThru .9s cubic-bezier(0.55,0,0.9,0.28) forwards; }
+  @keyframes zoomThru {
+    0% { transform: scale(1); filter: none; opacity: 1; }
+    13% { transform: scale(0.94); filter: none; }
+    34% { filter: blur(0); opacity: 1; }
+    100% { transform: scale(11); filter: blur(7px); opacity: 0; }
+  }
+
+  /* progress */
+  .pre-meta {
+    position: relative; z-index: 6; margin-top: clamp(26px,4vh,40px);
+    width: var(--logo-w); display: flex; flex-direction: column; gap: 12px; align-items: center;
+  }
+  .pre-row {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-heading); font-weight: 700; font-size: 10px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: rgba(255,255,255,0.32);
+  }
+  .pre-row .val { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.60); }
+  .pre-track { position: relative; width: 100%; height: 2px; background: rgba(255,255,255,0.12); overflow: hidden; }
+  .pre-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--color-accent); box-shadow: 0 0 10px 0 var(--color-accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pre { display: none !important; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    var pre = document.getElementById('shft-pre');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!pre || reduce) { if (pre) pre.remove(); return; }
+
+    // Cover the page immediately and gate the hero intro until we reveal.
+    root.classList.add('shft-preloading');
+
+    var fill = pre.querySelector('[data-pre-fill]');
+    var val = pre.querySelector('[data-pre-val]');
+    var DURATION = 2000;
+    var revealed = false;
+
+    function reveal() {
+      if (revealed) return;
+      revealed = true;
+      pre.classList.add('done');                       // fire the zoom-through exit
+      window.dispatchEvent(new Event('shft:reveal'));   // let the hero intro start
+      setTimeout(function () {
+        root.classList.remove('shft-preloading');
+        if (pre && pre.parentNode) pre.parentNode.removeChild(pre);
+      }, 950);
+    }
+
+    var start = 0;
+    function tick(now) {
+      if (!start) start = now;
+      var lin = Math.min(1, (now - start) / DURATION);
+      var p = 1 - Math.pow(1 - lin, 2.2);              // ease-out into 100
+      var pct = Math.round(p * 100);
+      var s = ('' + pct);
+      while (s.length < 3) s = '0' + s;
+      if (val) val.textContent = s + '%';
+      if (fill) fill.style.width = pct + '%';
+      if (lin < 1) requestAnimationFrame(tick);
+      else reveal();
+    }
+    requestAnimationFrame(tick);
+
+    // safety: never trap the page if a frame stalls
+    setTimeout(reveal, DURATION + 1600);
+  })();
+</script>

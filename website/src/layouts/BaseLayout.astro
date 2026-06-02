@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../fonts/index.ts';
+import Preloader from '../components/Preloader.astro';
 import JoinModal from '../components/JoinModal.astro';
 
 interface Props {
@@ -33,6 +34,7 @@ const {
     <title>{title}</title>
   </head>
   <body class="bg-bg text-text-primary">
+    <Preloader />
     <slot />
 
     {showJoinModal && <JoinModal />}

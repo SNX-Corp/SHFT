@@ -259,7 +259,7 @@ if (prefersReducedMotion) {
   /*  1. HERO - plays on page load (no ScrollTrigger)                 */
   /* ---------------------------------------------------------------- */
 
-  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' }, paused: true });
 
   heroTl
     // Beat 1 - the logo materialises out of the dark
@@ -287,6 +287,21 @@ if (prefersReducedMotion) {
     )
     // Scroll hint last
     .to('[data-hero-scroll]', { opacity: 1, duration: 0.5 }, 2.5);
+
+  // Gate the hero intro behind the glitch preloader when present: play on its
+  // reveal signal, with a safety timeout so the hero is never left hidden.
+  if (document.documentElement.classList.contains('shft-preloading')) {
+    let started = false;
+    const startHero = () => {
+      if (started) return;
+      started = true;
+      heroTl.play();
+    };
+    window.addEventListener('shft:reveal', startHero, { once: true });
+    setTimeout(startHero, 4500);
+  } else {
+    heroTl.play();
+  }
 
   /* ---------------------------------------------------------------- */
   /*  2. ABOUT                                                        */
