@@ -106,12 +106,10 @@ const d = entry!.data as {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9;
-    filter: grayscale(0.12) contrast(1.04);
   }
-  /* Dissolve the central black smoothly into the video along each inner (diagonal) edge.
-     "to top right" / "to top left" keeps the gradient parallel to the clip hypotenuse at
-     any viewport size, so the surface colour bleeds over the video toward the centre. */
+  /* Crisp diagonal seam with a thin lime stroke along the inner edge.
+     The 50% iso-line of a corner-anchored gradient tracks the clip hypotenuse at any
+     viewport size, so a hard 2px band sits exactly on the cut. */
   .hero-tri::after {
     content: '';
     position: absolute;
@@ -119,10 +117,22 @@ const d = entry!.data as {
     pointer-events: none;
   }
   .hero-tri-left::after {
-    background: linear-gradient(to top right, transparent 24%, var(--color-surface-alt) 50%);
+    background: linear-gradient(
+      to top right,
+      transparent calc(50% - 2px),
+      var(--color-accent) calc(50% - 2px),
+      var(--color-accent) 50%,
+      transparent 50%
+    );
   }
   .hero-tri-right::after {
-    background: linear-gradient(to top left, transparent 24%, var(--color-surface-alt) 50%);
+    background: linear-gradient(
+      to top left,
+      transparent calc(50% - 2px),
+      var(--color-accent) calc(50% - 2px),
+      var(--color-accent) 50%,
+      transparent 50%
+    );
   }
   /* Desktop-only flourish: no corner videos on mobile / tablet */
   @media (max-width: 1023px) {
