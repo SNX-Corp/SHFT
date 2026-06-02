@@ -16,15 +16,9 @@ const d = entry!.data as {
 };
 ---
 
-<section id="hero" class="hero-stage relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#0b0b0b]" data-hero>
-  <!-- Living tech grid: slowly pans diagonally -->
-  <div class="hero-grid" aria-hidden="true"></div>
-
-  <!-- Soft light sweep that passes through every few seconds -->
-  <div class="hero-sweep" aria-hidden="true"></div>
-
-  <!-- Edge vignette to deepen the corners -->
-  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(135% 105% at 50% 50%, transparent 50%, rgba(0,0,0,0.6) 100%);"></div>
+<section id="hero" class="hero-stage relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black" data-hero>
+  <!-- Faint static glow so the black stage has a hint of depth behind the logo -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(60% 45% at 50% 46%, rgba(166,255,0,0.06) 0%, transparent 70%);"></div>
 
   <!-- Invisible animation target retained so the existing GSAP sequence stays intact -->
   <div class="sr-only" data-hero-splash></div>
@@ -72,49 +66,5 @@ const d = entry!.data as {
   .hero-logo-slot {
     height: var(--hero-logo-h, clamp(3.25rem, 12vh, 8.5rem));
     width: 1px;
-  }
-
-  /* Living tech grid */
-  .hero-grid {
-    position: absolute;
-    inset: -60px;
-    pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.11) 1px, transparent 1px);
-    background-size: 62px 62px;
-    -webkit-mask-image: radial-gradient(120% 100% at 50% 45%, #000 32%, transparent 80%);
-    mask-image: radial-gradient(120% 100% at 50% 45%, #000 32%, transparent 80%);
-    animation: gridPan 26s linear infinite;
-    will-change: background-position;
-  }
-  @keyframes gridPan {
-    from { background-position: 0 0, 0 0; }
-    to   { background-position: 62px 62px, 62px 62px; }
-  }
-
-  /* Light sweep that passes through, then pauses */
-  .hero-sweep {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    mix-blend-mode: screen;
-    background: linear-gradient(115deg,
-      transparent 36%,
-      rgba(166, 255, 0, 0.10) 47%,
-      rgba(255, 255, 255, 0.06) 50%,
-      rgba(166, 255, 0, 0.10) 53%,
-      transparent 64%);
-    background-size: 260% 100%;
-    background-position: 160% 0;
-    -webkit-mask-image: radial-gradient(120% 100% at 50% 45%, #000 38%, transparent 82%);
-    mask-image: radial-gradient(120% 100% at 50% 45%, #000 38%, transparent 82%);
-    animation: heroSweep 8.5s ease-in-out infinite;
-    will-change: background-position;
-  }
-  @keyframes heroSweep {
-    0%   { background-position: 160% 0; }
-    45%  { background-position: -60% 0; }
-    100% { background-position: -60% 0; }
   }
 </style>

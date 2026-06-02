@@ -110,9 +110,8 @@ const navLinks = d.links;
     height: 22px;
     transform: translate(-50%, -50%);
     transform-origin: center center;
-    will-change: transform;
+    will-change: transform, opacity, filter;
     opacity: 0;
-    transition: opacity 0.5s ease;
   }
   @media (min-width: 1024px) {
     .brand-logo {
@@ -192,7 +191,7 @@ const navLinks = d.links;
     if (brand) {
       const scale = 1 + (heroScale - 1) * inv;
       brand.style.transform = `translate(-50%, -50%) translateY(${dy * inv}px) scale(${scale})`;
-      brand.style.opacity = '1';
+      // Opacity is owned by the hero intro timeline (logo fades in first).
       // Only clickable once docked in the nav, so it never blocks the hero.
       brand.style.pointerEvents = p > 0.85 ? 'auto' : 'none';
     }

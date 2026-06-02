@@ -168,6 +168,7 @@ if (prefersReducedMotion) {
   // Make everything visible immediately - no animations
   gsap.set(
     [
+      '[data-brand-logo]',
       '[data-hero-splash]',
       '[data-hero-eyebrow]',
       '[data-hero-word]',
@@ -200,12 +201,11 @@ if (prefersReducedMotion) {
   /*  Initial hidden states                                           */
   /* ---------------------------------------------------------------- */
 
-  // Hero
-  gsap.set('[data-hero-splash]', { scale: 1.3, opacity: 0 });
-  gsap.set('[data-hero-eyebrow]', { y: 20, opacity: 0 });
-  gsap.set('[data-hero-word]', { yPercent: 100 });
-  gsap.set('[data-hero-sub]', { y: 20, opacity: 0 });
-  gsap.set('[data-hero-cta]', { y: 20, opacity: 0 });
+  // Hero - futuristic sequential reveal (logo -> paragraph -> button)
+  gsap.set('[data-brand-logo]', { opacity: 0, filter: 'blur(16px)' });
+  gsap.set('[data-hero-eyebrow]', { y: 16, opacity: 0, filter: 'blur(8px)' });
+  gsap.set('[data-hero-sub]', { y: 16, opacity: 0, filter: 'blur(8px)' });
+  gsap.set('[data-hero-cta]', { y: 16, opacity: 0, filter: 'blur(8px)' });
   gsap.set('[data-hero-scroll]', { opacity: 0 });
 
   // About
@@ -262,44 +262,31 @@ if (prefersReducedMotion) {
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   heroTl
-    // Green splash
-    .to('[data-hero-splash]', {
-      scale: 1,
-      opacity: 0.9,
-      duration: 1.2,
-      ease: 'power2.out',
-    })
-    // Eyebrow
+    // Beat 1 - the logo materialises out of the dark
     .to(
-      '[data-hero-eyebrow]',
-      { y: 0, opacity: 1, duration: 0.6 },
-      0.4,
-    )
-    // Words stagger up
-    .to(
-      '[data-hero-word]',
-      {
-        yPercent: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-      },
+      '[data-brand-logo]',
+      { opacity: 1, filter: 'blur(0px)', duration: 1.2, ease: 'power2.out' },
       0.3,
     )
-    // Subtitle - after words finish (0.3 start + 0.8 dur + 2*0.15 stagger = ~1.4)
+    // Beat 2 - the paragraph (eyebrow + tagline)
+    .to(
+      '[data-hero-eyebrow]',
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7 },
+      1.3,
+    )
     .to(
       '[data-hero-sub]',
-      { y: 0, opacity: 1, duration: 0.6 },
-      '>-0.1',
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7 },
+      1.5,
     )
-    // CTAs
+    // Beat 3 - the button
     .to(
       '[data-hero-cta]',
-      { y: 0, opacity: 1, duration: 0.6 },
-      '>-0.1',
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.6 },
+      2.05,
     )
-    // Scroll indicator - last
-    .to('[data-hero-scroll]', { opacity: 1, duration: 0.5 });
+    // Scroll hint last
+    .to('[data-hero-scroll]', { opacity: 1, duration: 0.5 }, 2.5);
 
   /* ---------------------------------------------------------------- */
   /*  2. ABOUT                                                        */
