@@ -130,6 +130,11 @@ const navLinks = d.links;
     inset: 0;
     opacity: 0;
   }
+  /* Hidden until the scroll logic fades them in (prevents a flash on load) */
+  [data-nav-chrome],
+  [data-nav-cta-wrap] {
+    opacity: 0;
+  }
   /* Hide the floating logo while the hero zoom is focused */
   .hero-stage.is-robot-focus ~ .brand-logo {
     opacity: 0;
