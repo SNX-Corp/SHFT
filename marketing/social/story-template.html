@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SHFT Story Template (1080x1920)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /*
+    SHFT STORY TEMPLATE  ·  1080 x 1920  (9:16)
+    --------------------------------------------------------------
+    HOW TO USE
+    1. Open this file in Chrome.
+    2. Edit the three swappable lines below in the HTML:
+         - .headline   (Orbitron, big)
+         - .subline    (the supporting line)
+         - .cta        (the pill button text)
+    3. Screenshot the lime-bordered frame at full size.
+       Tip: zoom the browser to fit, then crop to the frame edges.
+       Or use a 1080x1920 device emulation for a pixel-perfect grab.
+    --------------------------------------------------------------
+    BRAND
+      Lime  #A6FF00   ·   Black #1A1A1A   ·   White #FFFFFF
+      Headline = Orbitron (heavy, uppercase)
+    No em dashes anywhere in copy.
+  */
+  :root {
+    --lime: #A6FF00;
+    --lime-dim: #5A8C00;
+    --black: #1A1A1A;
+    --white: #FFFFFF;
+    --grey: #737373;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  /* The capture frame. Screenshot exactly this. */
+  .frame {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    background:
+      radial-gradient(120% 80% at 50% 0%, #232323 0%, var(--black) 55%, #0E0E0E 100%);
+    overflow: hidden;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Subtle lime energy glow, top */
+  .frame::before {
+    content: "";
+    position: absolute;
+    top: -380px; left: 50%;
+    transform: translateX(-50%);
+    width: 1100px; height: 1100px;
+    background: radial-gradient(circle, rgba(166,255,0,0.16) 0%, rgba(166,255,0,0) 60%);
+    pointer-events: none;
+  }
+
+  /* Faint diagonal grid for texture */
+  .frame::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 90px 90px;
+    pointer-events: none;
+  }
+
+  .inner {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 150px 96px 130px;
+  }
+
+  /* Top: eyebrow / kicker */
+  .kicker {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--lime);
+  }
+  .kicker .dot { color: var(--white); margin: 0 14px; opacity: 0.5; }
+
+  /* Middle: the headline block, pushed toward upper-middle */
+  .main {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .bolt {
+    display: inline-block;
+    width: 70px; height: 110px;
+    margin-bottom: 40px;
+    background: var(--lime);
+    /* lightning bolt silhouette */
+    clip-path: polygon(58% 0, 12% 56%, 46% 56%, 30% 100%, 92% 40%, 54% 40%);
+    filter: drop-shadow(0 0 28px rgba(166,255,0,0.55));
+  }
+  .headline {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 132px;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .headline .hl {
+    color: var(--lime);
+    text-shadow: 0 0 40px rgba(166,255,0,0.35);
+  }
+  .subline {
+    margin-top: 44px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    font-size: 44px;
+    line-height: 1.3;
+    color: #E8E8E8;
+    max-width: 760px;
+  }
+
+  /* Bottom: CTA pill + wordmark */
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 56px;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--lime);
+    color: var(--black);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 30px 56px;
+    border-radius: 99px;
+    box-shadow: 0 0 40px rgba(166,255,0,0.35);
+  }
+  .cta .arrow { font-weight: 900; }
+
+  .wordmark {
+    height: 84px;
+    width: auto;
+    opacity: 0.96;
+  }
+  .handle {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.12em;
+    color: var(--grey);
+    margin-top: 22px;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="inner">
+
+      <!-- KICKER (swap freely) -->
+      <div class="kicker">Ontario FRC <span class="dot">/</span> New Team</div>
+
+      <!-- HEADLINE (swap me). Wrap key words in <span class="hl"> for lime. -->
+      <div class="main">
+        <span class="bolt"></span>
+        <h1 class="headline">Top 10 in<br /><span class="hl">Ontario.</span><br />Year one.</h1>
+
+        <!-- SUBLINE (swap me) -->
+        <p class="subline">No experience needed. We teach everything. You just have to show up.</p>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <!-- CTA (swap me) -->
+        <div class="cta">Join SHFT <span class="arrow">&rarr;</span></div>
+
+        <div>
+          <img class="wordmark" src="../../website/public/images/logo/wordmark.png" alt="SHFT" />
+          <div class="handle">@shftrobotics</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

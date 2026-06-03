@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SHFT Ad Creative: 1080x1080</title>
+<!--
+  SHFT Robotics: 1080x1080 ad creative template.
+  Self-contained. Open in a browser, then screenshot the .canvas element
+  (it is exactly 1080x1080) for a square Instagram/Facebook ad.
+
+  SWAP THESE:
+    - .hook   text  -> the main line ("Build robots. Compete. Win.")
+    - .kicker text  -> small top label
+    - .cta    text  -> the call to action button label
+    - .meta   text  -> info-night / location line (or delete it)
+  Brand: lime #A6FF00 on near-black #0D0D0D. Wordmark + bolt sit in this folder.
+
+  Screenshot tip (headless): a 1080x1080 viewport capture of .canvas
+  produces a pixel-perfect feed-ready asset.
+-->
+<style>
+  :root{
+    --lime:#A6FF00;
+    --black:#0D0D0D;
+    --ink:#FFFFFF;
+    --muted:#8A8F82;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    background:#1a1a1a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    font-family:'Inter',system-ui,sans-serif;
+    padding:24px;
+  }
+
+  /* The exact export frame */
+  .canvas{
+    position:relative;
+    width:1080px;
+    height:1080px;
+    background:
+      radial-gradient(120% 90% at 78% 18%, rgba(175,248,8,0.16) 0%, rgba(175,248,8,0) 46%),
+      var(--black);
+    overflow:hidden;
+    color:var(--ink);
+    flex:0 0 auto;
+  }
+
+  /* Faint grid / engineering texture */
+  .canvas::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size:60px 60px;
+    pointer-events:none;
+  }
+
+  /* Oversized lime bolt, anchored top-right, bleeding off-canvas */
+  .bolt{
+    position:absolute;
+    top:-90px;
+    right:-120px;
+    width:760px;
+    height:760px;
+    opacity:0.92;
+    transform:rotate(8deg);
+    /* tint the bolt-mask.png to lime via mask, with a solid lime fill */
+    background-color:var(--lime);
+    -webkit-mask:url('bolt-mask.png') no-repeat center / contain;
+    mask:url('bolt-mask.png') no-repeat center / contain;
+    filter:drop-shadow(0 0 60px rgba(175,248,8,0.35));
+  }
+
+  /* Content stack */
+  .stack{
+    position:absolute;
+    inset:0;
+    padding:90px;
+    padding-top:170px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    z-index:2;
+  }
+
+  .kicker{
+    align-self:flex-start;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--lime);
+    border:2px solid var(--lime);
+    padding:10px 18px;
+    border-radius:99px;
+    margin-bottom:auto;
+  }
+
+  .hook{
+    font-size:104px;
+    line-height:0.98;
+    font-weight:900;
+    letter-spacing:-0.03em;
+    text-transform:uppercase;
+    max-width:14ch;
+  }
+  .hook .hl{ color:var(--lime); }
+
+  .meta{
+    margin-top:28px;
+    font-size:28px;
+    font-weight:600;
+    color:var(--muted);
+    letter-spacing:0.01em;
+  }
+
+  .footerrow{
+    margin-top:48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background:var(--lime);
+    color:var(--black);
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    padding:22px 40px;
+    border-radius:14px;
+  }
+  .cta .arrow{ font-weight:900; }
+
+  .wordmark{
+    height:64px;
+    width:auto;
+    opacity:0.95;
+  }
+  /* Fallback text wordmark if PNG is missing */
+  .wordmark-text{
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:0.04em;
+    color:var(--ink);
+  }
+  .url{
+    position:absolute;
+    top:90px;
+    left:90px;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--ink);
+    opacity:0.85;
+    z-index:3;
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="bolt"></div>
+
+    <div class="url">shftrobotics.com</div>
+
+    <div class="stack">
+      <!-- SWAP: kicker -->
+      <span class="kicker">New Ontario FRC Team</span>
+
+      <!-- SWAP: hook (use .hl span to lime-highlight a word) -->
+      <h1 class="hook">Build robots.<br /><span class="hl">Compete. Win.</span></h1>
+
+      <!-- SWAP or delete: meta line (info night / location) -->
+      <p class="meta">Recruiting students now in [FILL: city].</p>
+
+      <div class="footerrow">
+        <!-- SWAP: CTA label -->
+        <span class="cta">Join SHFT <span class="arrow">&#8594;</span></span>
+
+        <!-- Wordmark PNG sits in this folder. Falls back to text if missing. -->
+        <img class="wordmark" src="wordmark.png" alt="SHFT"
+             onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'wordmark-text\'>SHFT</span>');" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
