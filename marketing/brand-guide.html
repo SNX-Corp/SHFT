@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SHFT Brand Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Letter, prints clean, flows to a few pages */
+  @page { size: 8.5in 11in; margin: 0.5in; }
+
+  :root{
+    --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5;
+    --secondary:#555555; --muted:#737373;
+    --lime:#A6FF00; --lime-hover:#8FE000; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
+    --altf4:#A11D1D; --gold:#F5C518;
+  }
+
+  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+  html,body{
+    margin:0; padding:0;
+    background:#D0D0D0;
+    font-family:'Raleway',sans-serif;
+    color:var(--secondary);
+    line-height:1.6;
+  }
+
+  /* The sheet. On screen it sits centered on a gray board. In print it fills the page. */
+  .sheet{
+    width:8.5in;
+    margin:0.4in auto;
+    background:var(--bg);
+    color:var(--ink);
+    padding:0.7in;
+  }
+  @media print{
+    html,body{ background:#FFFFFF; }
+    .sheet{ width:auto; margin:0; padding:0; }
+  }
+
+  /* ---------- Section label pattern ---------- */
+  .seclabel{ margin:0 0 18px; }
+  .seclabel .rule{
+    display:inline-block; width:28px; height:2px;
+    background:var(--lime); vertical-align:middle; margin-right:10px;
+  }
+  .seclabel .txt{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
+    vertical-align:middle;
+  }
+
+  section{ padding:30px 0; border-top:1px solid var(--border); }
+  section:first-of-type{ border-top:0; }
+
+  /* ---------- Header ---------- */
+  .header{ padding-bottom:8px; }
+  .header .mark{ height:54px; width:auto; display:block; margin-bottom:22px; }
+  .header h1{
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    letter-spacing:-0.02em; color:var(--ink);
+    font-size:clamp(2.5rem,5vw,4rem); line-height:0.95; margin:0 0 14px;
+  }
+  .header .tag{
+    font-family:'Exo 2',sans-serif; font-weight:700; text-transform:uppercase;
+    letter-spacing:.04em; color:var(--ink); font-size:15px; margin:0;
+  }
+  .header .tag .lime{ color:var(--lime-dim); }
+
+  h2.title{
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
+    letter-spacing:.01em; color:var(--ink); font-size:22px; margin:0 0 16px;
+  }
+  p.lead{ color:var(--secondary); font-size:14px; max-width:6in; margin:0 0 18px; }
+
+  /* ---------- 01 Color ---------- */
+  .swatches{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+  }
+  .chip{ border:1px solid var(--border); background:var(--bg); }
+  .chip .fill{ height:70px; border-bottom:1px solid var(--border); }
+  .chip .meta{ padding:9px 10px; }
+  .chip .name{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
+    text-transform:uppercase; letter-spacing:.04em; color:var(--ink);
+    display:block; line-height:1.2;
+  }
+  .chip .token{
+    font-family:'Exo 2',sans-serif; font-weight:600; font-size:9.5px;
+    color:var(--muted); display:block; margin-top:3px; word-break:break-all;
+  }
+  .chip .hex{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10.5px;
+    color:var(--secondary); display:block; margin-top:2px; letter-spacing:.02em;
+  }
+  .subhead{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
+    margin:26px 0 12px;
+  }
+
+  /* ---------- 02 Type ---------- */
+  .specimen{ border-top:1px solid var(--border); padding:18px 0; }
+  .specimen:first-child{ border-top:0; padding-top:0; }
+  .specimen .role{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
+    margin-bottom:8px;
+  }
+  .spec-orbitron{
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    letter-spacing:-0.02em; color:var(--ink); font-size:40px; line-height:0.95;
+  }
+  .spec-exo{
+    font-family:'Exo 2',sans-serif; font-weight:700; color:var(--ink);
+    font-size:26px; line-height:1.1;
+  }
+  .spec-raleway{
+    font-family:'Raleway',sans-serif; font-weight:400; color:var(--secondary);
+    font-size:16px; line-height:1.6; max-width:6in;
+  }
+  .specimen .note{
+    font-family:'Exo 2',sans-serif; font-weight:600; font-size:10.5px;
+    color:var(--muted); margin-top:6px; letter-spacing:.02em;
+  }
+
+  table.scale{ width:100%; border-collapse:collapse; margin-top:6px; }
+  table.scale th{
+    text-align:left; font-family:'Exo 2',sans-serif; font-weight:700;
+    font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--muted); padding:8px 10px; background:var(--surface);
+    border-bottom:1px solid var(--border);
+  }
+  table.scale td{
+    font-size:12px; color:var(--secondary); padding:8px 10px;
+    border-bottom:1px solid var(--border);
+  }
+  table.scale td.step{
+    font-family:'Exo 2',sans-serif; font-weight:700; color:var(--ink);
+    text-transform:uppercase; letter-spacing:.03em; font-size:11px;
+  }
+  table.scale td.val{
+    font-family:'Exo 2',sans-serif; font-weight:600; color:var(--ink); font-size:11.5px;
+  }
+
+  /* ---------- 03 Logo ---------- */
+  .logo-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .logo-box{ border:1px solid var(--border); padding:34px 24px; text-align:center; }
+  .logo-box.light{ background:var(--surface); }
+  .logo-box.dark{ background:var(--ink); border-color:var(--ink); }
+  .logo-box img{ width:78%; max-width:280px; height:auto; display:block; margin:0 auto; }
+  .logo-box .cap{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px;
+    letter-spacing:.16em; text-transform:uppercase; margin-top:18px;
+  }
+  .logo-box.light .cap{ color:var(--muted); }
+  .logo-box.dark .cap{ color:#FFFFFF; }
+  .rules-list{ list-style:none; padding:0; margin:18px 0 0; }
+  .rules-list li{
+    font-size:13px; color:var(--secondary); padding:7px 0 7px 16px;
+    border-bottom:1px solid var(--border); position:relative;
+  }
+  .rules-list li::before{
+    content:""; position:absolute; left:0; top:14px;
+    width:8px; height:2px; background:var(--lime);
+  }
+  .rules-list li b{ color:var(--ink); font-family:'Exo 2',sans-serif; font-weight:700; }
+
+  /* ---------- 04 Principles ---------- */
+  .principles{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .principle{ border:1px solid var(--border); padding:18px; }
+  .principle .num{
+    font-family:'Orbitron',sans-serif; font-weight:800; font-size:13px;
+    color:var(--lime-dim); letter-spacing:.04em;
+  }
+  .principle h3{
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
+    letter-spacing:.02em; color:var(--ink); font-size:16px; margin:6px 0 6px;
+  }
+  .principle p{ font-size:13px; color:var(--secondary); margin:0; }
+  .principle .ruletag{
+    display:inline-block; margin-top:10px; background:var(--lime); color:var(--ink);
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px;
+    letter-spacing:.04em; text-transform:uppercase; padding:4px 10px;
+  }
+
+  /* ---------- 05 Voice ---------- */
+  .infobar{
+    background:var(--lime); color:var(--ink); padding:18px 22px; margin:0 0 18px;
+  }
+  .infobar .lbl{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:6px;
+  }
+  .infobar .quote{
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
+    letter-spacing:.01em; font-size:20px; line-height:1.15;
+  }
+  .voice-line{
+    font-size:13px; color:var(--secondary); padding:8px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .voice-line b{ color:var(--ink); font-family:'Exo 2',sans-serif; font-weight:700; }
+  .value-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+  .value-chips .vc{
+    background:var(--lime); color:var(--ink);
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
+    letter-spacing:.06em; font-size:13px; padding:11px 20px;
+  }
+
+  /* ---------- Footer ---------- */
+  .foot{
+    margin-top:30px; background:var(--ink); color:#FFFFFF; padding:22px 24px;
+  }
+  .foot .fw{
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    letter-spacing:.02em; font-size:18px; color:#FFFFFF;
+  }
+  .foot .fw .lime{ color:var(--lime); }
+  .foot .fmeta{
+    font-family:'Exo 2',sans-serif; font-weight:600; font-size:11px;
+    color:#B5B5B5; letter-spacing:.03em; margin-top:10px;
+  }
+  .foot .fmeta b{ color:var(--lime); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ============ HEADER ============ -->
+  <section class="header">
+    <img class="mark" src="../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
+    <h1>Brand Guide</h1>
+    <p class="tag"><span class="lime">SHIFT</span> our mindset. <span class="lime">ELEVATE</span> our impact.</p>
+  </section>
+
+  <!-- ============ 01 COLOR ============ -->
+  <section>
+    <div class="seclabel"><span class="rule"></span><span class="txt">01 / Color</span></div>
+    <h2 class="title">Color System</h2>
+    <p class="lead">White is the default ground. Lime is the one bright color and it earns attention by being rare. The dark <b style="color:var(--ink)">#1A1A1A</b> carries contrast sections and primary text.</p>
+
+    <div class="swatches">
+      <div class="chip">
+        <div class="fill" style="background:var(--lime)"></div>
+        <div class="meta"><span class="name">Accent</span><span class="token">--color-accent</span><span class="hex">#A6FF00</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:var(--lime-hover)"></div>
+        <div class="meta"><span class="name">Accent Hover</span><span class="token">--color-accent-hover</span><span class="hex">#8FE000</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:#1A1A1A"></div>
+        <div class="meta"><span class="name">Accent Text</span><span class="token">--color-accent-text</span><span class="hex">#1A1A1A</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:var(--lime-dim)"></div>
+        <div class="meta"><span class="name">Accent Dim</span><span class="token">--color-accent-dim</span><span class="hex">#5A8C00</span></div>
+      </div>
+
+      <div class="chip">
+        <div class="fill" style="background:#FFFFFF"></div>
+        <div class="meta"><span class="name">White</span><span class="token">--color-bg</span><span class="hex">#FFFFFF</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:var(--surface)"></div>
+        <div class="meta"><span class="name">Surface</span><span class="token">--color-surface</span><span class="hex">#F8F8F8</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:var(--ink)"></div>
+        <div class="meta"><span class="name">Ink</span><span class="token">--color-surface-alt</span><span class="hex">#1A1A1A</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:var(--border)"></div>
+        <div class="meta"><span class="name">Border</span><span class="token">--color-border</span><span class="hex">#E5E5E5</span></div>
+      </div>
+
+      <div class="chip">
+        <div class="fill" style="background:var(--secondary)"></div>
+        <div class="meta"><span class="name">Text Secondary</span><span class="token">--color-text-secondary</span><span class="hex">#555555</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:var(--muted)"></div>
+        <div class="meta"><span class="name">Text Muted</span><span class="token">--color-text-muted</span><span class="hex">#737373</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:#FFFFFF;border-bottom:1px solid var(--border)"></div>
+        <div class="meta"><span class="name">Text Inverse</span><span class="token">--color-text-inverse</span><span class="hex">#FFFFFF</span></div>
+      </div>
+    </div>
+
+    <div class="subhead">Partner / Semantic. Reference only, not SHFT's own.</div>
+    <div class="swatches" style="grid-template-columns:repeat(4,1fr)">
+      <div class="chip">
+        <div class="fill" style="background:var(--altf4)"></div>
+        <div class="meta"><span class="name">ALT-F4 Red</span><span class="token">--color-altf4</span><span class="hex">#A11D1D</span></div>
+      </div>
+      <div class="chip">
+        <div class="fill" style="background:var(--gold)"></div>
+        <div class="meta"><span class="name">Ranking Gold</span><span class="token">--color-gold</span><span class="hex">#F5C518</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 TYPE ============ -->
+  <section>
+    <div class="seclabel"><span class="rule"></span><span class="txt">02 / Type</span></div>
+    <h2 class="title">Typography</h2>
+    <p class="lead">Orbitron for impact. Exo 2 for authority. Raleway for clarity. Typography carries the brand.</p>
+
+    <div class="specimen">
+      <div class="role">Display / Orbitron 900 Uppercase</div>
+      <div class="spec-orbitron">SHFT</div>
+      <div class="note">Team name, display headlines, section numbers. Always uppercase, weight 700 to 900. Never body.</div>
+    </div>
+
+    <div class="specimen">
+      <div class="role">Heading / Exo 2 700</div>
+      <div class="spec-exo">Compete from day one</div>
+      <div class="note">Section headings, buttons, nav, labels. Uppercase for labels and buttons. Weight 500 to 700.</div>
+    </div>
+
+    <div class="specimen">
+      <div class="role">Body / Raleway 400</div>
+      <div class="spec-raleway">A new Ontario FRC team built to compete from day one. Raleway carries body copy and descriptions at weight 400, with 500 for emphasis. Never uppercase at small sizes.</div>
+    </div>
+
+    <div class="subhead">Type Scale. Real clamp values.</div>
+    <table class="scale">
+      <thead><tr><th>Step</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td class="step">Display</td><td class="val">clamp(3.5rem, 8vw, 8rem)</td></tr>
+        <tr><td class="step">H1</td><td class="val">clamp(2.5rem, 5vw, 4.5rem)</td></tr>
+        <tr><td class="step">H2</td><td class="val">clamp(2rem, 4vw, 3.5rem)</td></tr>
+        <tr><td class="step">H3</td><td class="val">clamp(1.5rem, 3vw, 2rem)</td></tr>
+        <tr><td class="step">Body Large</td><td class="val">1.25rem</td></tr>
+        <tr><td class="step">Body</td><td class="val">1rem</td></tr>
+        <tr><td class="step">Small</td><td class="val">0.875rem</td></tr>
+        <tr><td class="step">Caption</td><td class="val">0.75rem</td></tr>
+        <tr><td class="step">Label</td><td class="val">0.6875rem, weight 700, uppercase, tracking 0.2em</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ 03 LOGO ============ -->
+  <section>
+    <div class="seclabel"><span class="rule"></span><span class="txt">03 / Logo</span></div>
+    <h2 class="title">Logo and Marks</h2>
+    <p class="lead">The primary mark is the S-Mark from SS.svg: an ink top hook and bottom hook plus a lime diagonal connector. That lime diagonal is the only color in the logo. Pair the dark wordmark on light, the light wordmark on dark.</p>
+
+    <div class="logo-grid">
+      <div class="logo-box light">
+        <img src="../website/public/images/logo/wordmark-dark.png" alt="SHFT dark wordmark on white" />
+        <div class="cap">Dark Wordmark / On White</div>
+      </div>
+      <div class="logo-box dark">
+        <img src="../website/public/images/logo/wordmark.png" alt="SHFT light wordmark on dark" />
+        <div class="cap">Light Wordmark / On #1A1A1A</div>
+      </div>
+    </div>
+
+    <ul class="rules-list">
+      <li><b>Clear space.</b> Keep open space around the mark equal to the height of the S-mark on all sides.</li>
+      <li><b>Minimum sizes.</b> S-mark 24px. Wordmark 80px wide.</li>
+      <li><b>Color.</b> Keep the lime diagonal as the only color. Ink hooks on light, white hooks on dark.</li>
+      <li><b>Vector.</b> The S-Mark source is SS.svg. The maple-leaf crest is the secondary Canadian accent.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 04 PRINCIPLES ============ -->
+  <section>
+    <div class="seclabel"><span class="rule"></span><span class="txt">04 / Principles</span></div>
+    <h2 class="title">Design Principles</h2>
+
+    <div class="principles">
+      <div class="principle">
+        <div class="num">01</div>
+        <h3>Sharp, Not Soft</h3>
+        <p>Angular geometry, no rounded corners, aggressive crops. Softness signals uncertainty.</p>
+        <span class="ruletag">border-radius: 0</span>
+      </div>
+      <div class="principle">
+        <div class="num">02</div>
+        <h3>White Canvas</h3>
+        <p>Let white space work. Color is accent, not background. The neon green earns attention by being rare.</p>
+        <span class="ruletag">bg: #FFFFFF</span>
+      </div>
+      <div class="principle">
+        <div class="num">03</div>
+        <h3>Motion With Purpose</h3>
+        <p>Every animation serves hierarchy. Nothing moves just to move.</p>
+        <span class="ruletag">ease: expo.out</span>
+      </div>
+      <div class="principle">
+        <div class="num">04</div>
+        <h3>Type First</h3>
+        <p>Typography carries the brand. When in doubt, make the text bigger.</p>
+        <span class="ruletag">font-weight: 900</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 VOICE ============ -->
+  <section>
+    <div class="seclabel"><span class="rule"></span><span class="txt">05 / Voice</span></div>
+    <h2 class="title">Voice and Copy</h2>
+
+    <div class="infobar">
+      <span class="lbl">Official Tagline</span>
+      <div class="quote">SHIFT our mindset. ELEVATE our impact.</div>
+    </div>
+
+    <div class="voice-line"><b>Footer line.</b> Shift the standard.</div>
+    <div class="voice-line"><b>Hero.</b> A new Ontario FRC team built to compete from day one.</div>
+    <div class="voice-line"><b>Vision.</b> A LAUNCHPAD. Top 10 in Ontario. Year one.</div>
+    <div class="voice-line"><b>Writing rule.</b> No em dashes anywhere. Short, declarative lines. Restructure with a period or a colon instead.</div>
+
+    <div class="subhead">Brand Values</div>
+    <div class="value-chips">
+      <span class="vc">Focus</span>
+      <span class="vc">Elevate</span>
+      <span class="vc">Innovate</span>
+      <span class="vc">Together</span>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <div class="foot">
+    <div class="fw">SHIFT THE <span class="lime">STANDARD.</span></div>
+    <div class="fmeta">Source of truth: website/src/styles/global.css and /brand. Lime <b>#A6FF00</b>, proof Pantone 802/809 C for print.</div>
+  </div>
+
+</div>
+</body>
+</html>

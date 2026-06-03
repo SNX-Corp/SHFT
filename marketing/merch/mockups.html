@@ -4,44 +4,65 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SHFT Merch Placement Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
+    --bg: #FFFFFF;
+    --surface: #F8F8F8;
+    --ink: #1A1A1A;
+    --border: #E5E5E5;
+    --secondary: #555555;
+    --muted: #737373;
     --lime: #A6FF00;
-    --black: #1A1A1A;
-    --true-black: #0D0D0D;
-    --white: #ffffff;
-    --grey: #737373;
-    --border: #2a2a2a;
+    --lime-hover: #8FE000;
+    --lime-text: #1A1A1A;
+    --lime-dim: #5A8C00;
     /* tint filter to recolor the white bolt-mask PNG to SHFT lime */
     --bolt-lime: brightness(0) saturate(100%) invert(83%) sepia(64%)
                  saturate(2000%) hue-rotate(31deg) brightness(110%) contrast(105%);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: ui-sans-serif, system-ui, "Inter", "Segoe UI", sans-serif;
-    background: var(--true-black);
-    color: var(--white);
-    padding: 40px 24px 80px;
-    line-height: 1.5;
+    font-family: 'Raleway', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 48px 24px 80px;
+    line-height: 1.6;
   }
   .wrap { max-width: 1100px; margin: 0 auto; }
 
+  /* ---- section label pattern ---- */
+  .seclabel { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .seclabel .rule {
+    display: inline-block; width: 28px; height: 2px; background: var(--lime);
+  }
+  .seclabel .txt {
+    font-family: 'Exo 2'; font-weight: 700; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  }
+
   header { margin-bottom: 8px; }
   h1 {
-    font-size: 26px; font-weight: 800; letter-spacing: -0.02em;
+    font-family: 'Orbitron'; font-weight: 900; font-size: 30px;
+    letter-spacing: -0.02em; text-transform: uppercase; color: var(--ink);
+    line-height: 1.05;
   }
-  h1 .lime { color: var(--lime); }
-  .sub { color: var(--grey); font-size: 14px; margin-top: 4px; }
+  .sub { color: var(--secondary); font-size: 14px; margin-top: 8px; font-weight: 500; }
+  .sub code { font-family: 'Exo 2'; font-weight: 700; color: var(--ink); }
 
+  /* ---- info bar (the one allowed lime block) ---- */
   .banner {
-    margin: 20px 0 36px;
-    border: 1px solid var(--lime);
-    background: rgba(166,255,0,0.06);
-    color: var(--lime);
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
+    margin: 22px 0 40px;
+    border: 0;
+    background: var(--lime);
+    color: var(--ink);
+    padding: 14px 18px;
+    border-radius: 0;
+    font-family: 'Exo 2';
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
@@ -49,26 +70,27 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
+    gap: 24px;
   }
   @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
 
   .card {
-    background: #161616;
+    background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 0;
     padding: 20px;
   }
   .card h2 {
-    font-size: 13px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--grey); margin-bottom: 4px;
+    font-family: 'Orbitron'; font-size: 14px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: -0.01em;
+    color: var(--ink); margin-bottom: 4px;
   }
-  .card .note { font-size: 12px; color: #8a8a8a; margin-bottom: 16px; }
+  .card .note { font-size: 12px; color: var(--secondary); margin-bottom: 16px; font-weight: 500; }
 
   .stage {
-    background:
-      repeating-linear-gradient(45deg, #1c1c1c 0 12px, #191919 12px 24px);
-    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
     min-height: 320px;
     display: flex;
     align-items: center;
@@ -91,11 +113,11 @@
     filter: var(--bolt-lime);
   }
 
-  /* ============ TEE ============ */
+  /* ============ TEE ============ (realistic dark garment) */
   .tee {
     position: relative;
     width: 260px; height: 300px;
-    background: var(--black);
+    background: var(--ink);
     /* simple tee silhouette via clip-path */
     clip-path: polygon(
       30% 0, 38% 6%, 62% 6%, 70% 0,
@@ -116,15 +138,15 @@
   }
   .tee .print img { width: 100%; }
   .tee .subcopy {
-    margin-top: 8px; font-size: 8px; font-weight: 700;
-    letter-spacing: 0.14em; color: var(--white); text-transform: uppercase;
+    margin-top: 8px; font-family: 'Exo 2'; font-size: 8px; font-weight: 700;
+    letter-spacing: 0.14em; color: #ffffff; text-transform: uppercase;
   }
 
-  /* ============ HOODIE ============ */
+  /* ============ HOODIE ============ (realistic dark garment) */
   .hoodie {
     position: relative;
     width: 270px; height: 300px;
-    background: var(--black);
+    background: var(--ink);
     clip-path: polygon(
       28% 4%, 38% 0, 62% 0, 72% 4%,
       100% 18%, 90% 36%, 82% 30%, 82% 100%,
@@ -148,27 +170,27 @@
   .hoodie .chest-bolt img { height: 100%; }
   .back-tag {
     position: absolute; bottom: 8px; right: 12px;
-    font-size: 9px; color: var(--grey); font-weight: 600;
+    font-family: 'Exo 2'; font-size: 9px; color: var(--muted); font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.1em;
   }
 
-  /* ============ STICKER ============ */
+  /* ============ STICKER ============ (realistic dark garment / decal) */
   .sticker {
     position: relative;
     width: 170px; height: 170px;
-    background: var(--black);
-    border-radius: 16px;
-    box-shadow: 0 0 0 6px var(--white), 0 8px 24px rgba(0,0,0,0.6);
+    background: var(--ink);
+    border-radius: 0;
+    box-shadow: 0 0 0 6px #ffffff, 0 8px 24px rgba(0,0,0,0.18);
     display: flex; align-items: center; justify-content: center;
   }
   .sticker .bolt { height: 96px; }
   .sticker-label {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-    font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+    font-family: 'Exo 2'; font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
     color: var(--lime); text-transform: uppercase;
   }
 
-  /* ============ CAP ============ */
+  /* ============ CAP ============ (realistic dark garment) */
   .cap {
     position: relative;
     width: 240px; height: 150px;
@@ -176,7 +198,7 @@
   .cap .crown {
     position: absolute; top: 0; left: 20px;
     width: 200px; height: 110px;
-    background: var(--black);
+    background: var(--ink);
     border-radius: 110px 110px 16px 16px;
   }
   .cap .brim {
@@ -194,37 +216,41 @@
 
   footer {
     margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
-    color: var(--grey); font-size: 12px;
+    color: var(--secondary); font-size: 12px; font-weight: 500;
   }
-  footer code { color: var(--lime); }
+  footer code { font-family: 'Exo 2'; font-weight: 700; color: var(--ink); }
   .legend {
     display: flex; gap: 20px; flex-wrap: wrap; margin-top: 12px;
-    font-size: 12px; color: #aaa;
+    font-size: 12px; color: var(--secondary); font-weight: 500;
   }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+  .sw { width: 14px; height: 14px; border-radius: 0; display: inline-block; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>SH<span class="lime">⚡</span>FT Merch Placement Mockups</h1>
-    <p class="sub">Lime <strong>#A6FF00</strong> on black · uses the existing <code style="color:#A6FF00">wordmark.png</code> + <code style="color:#A6FF00">bolt-mask.png</code></p>
+    <div class="seclabel">
+      <span class="rule"></span>
+      <span class="txt">01 / MERCH PLACEMENT</span>
+    </div>
+    <h1>SHFT Merch Placement Mockups</h1>
+    <p class="sub">Lime <code>#A6FF00</code> on black. Uses the existing <code>wordmark.png</code> + <code>bolt-mask.png</code>.</p>
   </header>
 
-  <div class="banner">⚠ Placement mockup, not final art. CSS shapes stand in for real garments. Bolt is the existing PNG tinted lime for preview. Get true vectors before printing (see vector-plan.md).</div>
+  <div class="banner">Placement mockup, not final art. CSS shapes stand in for real garments. Bolt is the existing PNG tinted lime for preview. Get true vectors before printing (see vector-plan.md).</div>
 
   <div class="grid">
 
     <!-- TEE -->
     <div class="card">
       <h2>Tee: hero</h2>
-      <p class="note">Black ring-spun cotton · full-front wordmark ~10–11 in wide · white letters + lime bolt.</p>
+      <p class="note">Black ring-spun cotton. Full-front wordmark ~10 to 11 in wide. White letters + lime bolt.</p>
       <div class="stage">
         <div class="tee">
           <div class="collar"></div>
           <div class="print">
-            <img src="wordmark.png" alt="SHFT wordmark on tee" />
+            <img src="../../website/public/images/logo/wordmark.png" alt="SHFT wordmark on tee" />
             <div class="subcopy">Ontario Community FRC Team</div>
           </div>
         </div>
@@ -234,11 +260,11 @@
     <!-- HOODIE -->
     <div class="card">
       <h2>Hoodie</h2>
-      <p class="note">Black heavyweight fleece · small lime bolt left chest · big wordmark / "SHIFT THE STANDARD." on the back.</p>
+      <p class="note">Black heavyweight fleece. Small lime bolt left chest. Big wordmark / "SHIFT THE STANDARD." on the back.</p>
       <div class="stage">
         <div class="hoodie">
           <div class="hood"></div>
-          <div class="chest-bolt"><img src="bolt-mask.png" alt="lime bolt left chest" class="bolt" /></div>
+          <div class="chest-bolt"><img src="../../website/public/images/logo/bolt-mask.png" alt="lime bolt left chest" class="bolt" /></div>
           <div class="pocket"></div>
         </div>
         <div class="back-tag">back: wordmark / tagline</div>
@@ -248,10 +274,10 @@
     <!-- STICKER / PATCH -->
     <div class="card">
       <h2>Sticker / Patch</h2>
-      <p class="note">Die-cut vinyl or embroidered patch · lime bolt alone · the most reusable mark.</p>
+      <p class="note">Die-cut vinyl or embroidered patch. Lime bolt alone. The most reusable mark.</p>
       <div class="stage">
         <div class="sticker">
-          <img src="bolt-mask.png" alt="lime bolt sticker" class="bolt" />
+          <img src="../../website/public/images/logo/bolt-mask.png" alt="lime bolt sticker" class="bolt" />
           <div class="sticker-label">@shftrobotics</div>
         </div>
       </div>
@@ -260,11 +286,11 @@
     <!-- CAP -->
     <div class="card">
       <h2>Cap</h2>
-      <p class="note">Black structured 6-panel · embroidered lime bolt front · fluoro poly thread.</p>
+      <p class="note">Black structured 6-panel. Embroidered lime bolt front. Fluoro poly thread.</p>
       <div class="stage">
         <div class="cap">
           <div class="crown"></div>
-          <div class="front-bolt"><img src="bolt-mask.png" alt="embroidered lime bolt on cap" class="bolt" /></div>
+          <div class="front-bolt"><img src="../../website/public/images/logo/bolt-mask.png" alt="embroidered lime bolt on cap" class="bolt" /></div>
           <div class="brim"></div>
         </div>
       </div>
@@ -273,11 +299,11 @@
   </div>
 
   <footer>
-    <div>Color reference: lime <code>#A6FF00</code> (fluorescent. Proof to Pantone 802 C / 809 C, confirm physical swatch) · black <code>#1A1A1A</code>.</div>
+    <div>Color reference: lime <code>#A6FF00</code> (fluorescent. Proof to Pantone 802 C / 809 C, confirm physical swatch). Black <code>#1A1A1A</code>.</div>
     <div class="legend">
       <span><i class="sw" style="background:#A6FF00"></i> SHFT Lime: bolt / accent</span>
-      <span><i class="sw" style="background:#1A1A1A;border:1px solid #333"></i> SHFT Black: garment</span>
-      <span><i class="sw" style="background:#fff"></i> White: letters</span>
+      <span><i class="sw" style="background:#1A1A1A;border:1px solid #E5E5E5"></i> SHFT Black: garment</span>
+      <span><i class="sw" style="background:#FFFFFF;border:1px solid #E5E5E5"></i> White: letters</span>
     </div>
     <div style="margin-top:12px;">Placement mockup only. Final art requires a true vector wordmark + bolt. See <code>vector-plan.md</code> and <code>merch-specs.md</code>.</div>
   </footer>

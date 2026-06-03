@@ -6,135 +6,148 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,700;0,800;0,900;1,900&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   @page { size: 11in 17in; margin: 0; }
 
   :root{
-    --bg:#0D0D0D;
-    --lime:#A6FF00;
-    --white:#FFFFFF;
-    --gray:#9A9A9A;
-    --line:#262626;
+    --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5;
+    --secondary:#555555; --muted:#737373;
+    --lime:#A6FF00; --lime-hover:#8FE000; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
   }
 
   *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  html,body{ margin:0; padding:0; background:#3a3a3a; }
+  html,body{ margin:0; padding:0; background:#d8d8d8; }
 
   .page{
     width:11in; height:17in;
     margin:0 auto;
     background:var(--bg);
-    color:var(--white);
+    color:var(--ink);
     font-family:'Raleway',sans-serif;
     position:relative; overflow:hidden;
-    padding:0.9in 0.85in 0.7in;
+    padding:0.9in 0.85in 0;
     display:flex; flex-direction:column;
-  }
-
-  /* GIANT bolt, dominant graphic, bleeds off the right edge */
-  .megabolt{
-    position:absolute; right:-2.2in; top:3.6in;
-    width:10in; opacity:0.92; transform:rotate(6deg);
-    z-index:0; filter:drop-shadow(0 0 1.4in rgba(175,248,8,0.35));
-  }
-  /* a second ghost bolt, faint, top-left for depth */
-  .ghostbolt{
-    position:absolute; left:-2.6in; top:-1.4in;
-    width:7in; opacity:0.05; transform:rotate(-14deg); z-index:0;
   }
 
   .layer{ position:relative; z-index:2; display:flex; flex-direction:column; height:100%; }
 
-  .top{ display:flex; align-items:center; justify-content:space-between; }
-  .wordmark{ height:0.95in; width:auto; }
+  .top{ display:flex; align-items:center; justify-content:space-between; padding-bottom:0.28in; border-bottom:1px solid var(--border); }
+  .wordmark{ height:0.92in; width:auto; }
+  .crest-top{ display:flex; align-items:center; gap:0.18in; }
+  .leaf{ width:0.8in; height:auto; display:block; }
   .teamtag{
     font-family:'Exo 2',sans-serif; font-weight:800; font-size:15pt;
-    letter-spacing:0.18em; color:var(--lime); text-transform:uppercase; text-align:right; line-height:1.3;
+    letter-spacing:0.18em; color:var(--ink); text-transform:uppercase; text-align:right; line-height:1.3;
   }
-  .teamtag small{ display:block; color:var(--gray); font-weight:700; font-size:10pt; letter-spacing:0.2em; }
+  .teamtag small{ display:block; color:var(--muted); font-weight:700; font-size:10pt; letter-spacing:0.2em; }
+
+  /* section label */
+  .seclabel{ margin:0.9in 0 0.16in; display:flex; align-items:center; gap:14px; }
+  .seclabel .rule{ display:inline-block; width:40px; height:3px; background:var(--lime); }
+  .seclabel .txt{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:15px;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);
+  }
 
   /* huge headline, the whole point */
   .headline{
-    font-family:'Exo 2',sans-serif; font-weight:900; font-style:italic;
-    text-transform:uppercase; line-height:0.86; letter-spacing:-0.015em;
-    font-size:118pt; margin:1.2in 0 0;
-    max-width:8.2in;
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    text-transform:uppercase; line-height:0.92; letter-spacing:-0.02em;
+    color:var(--ink);
+    font-size:104pt; margin:0;
+    max-width:9.2in;
   }
-  .headline .lime{ color:var(--lime); }
+  .headline .markline{ display:inline-block; border-bottom:12px solid var(--lime); }
 
   .kicker{
     font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
-    letter-spacing:0.06em; color:var(--white); font-size:28pt; line-height:1.1;
-    margin-top:0.45in; max-width:7.5in;
+    letter-spacing:0.04em; color:var(--ink); font-size:28pt; line-height:1.15;
+    margin-top:0.5in; max-width:8in;
   }
-  .kicker .sub{ display:block; color:var(--gray); font-family:'Raleway',sans-serif; font-weight:700; font-size:19pt; letter-spacing:0; margin-top:0.18in; }
+  .kicker .sub{ display:block; color:var(--secondary); font-family:'Raleway',sans-serif; font-weight:500; font-size:19pt; letter-spacing:0; text-transform:none; margin-top:0.2in; line-height:1.4; }
+
+  /* info night bar (the one allowed lime block) */
+  .infonight{
+    margin-top:0.5in;
+    background:var(--lime); color:var(--ink); border-radius:0;
+    padding:0.26in 0.34in;
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:0.04em;
+    font-size:20pt; line-height:1.3;
+  }
+  .infonight .lbl{ font-size:12pt; letter-spacing:0.2em; opacity:0.72; display:block; margin-bottom:5px; }
 
   /* bottom band: CTA + QR, anchored */
-  .bottom{ margin-top:auto; display:flex; align-items:stretch; gap:0.4in; }
+  .bottom{ margin-top:auto; display:flex; align-items:stretch; gap:0.4in; padding-bottom:0.6in; }
   .cta{
-    flex:1; background:var(--lime); color:var(--bg); border-radius:14px;
+    flex:1; background:var(--lime); color:var(--lime-text); border-radius:0;
     display:flex; flex-direction:column; justify-content:center; padding:0.4in 0.5in;
   }
   .cta .big{
-    font-family:'Exo 2',sans-serif; font-weight:900; font-style:italic;
-    text-transform:uppercase; font-size:60pt; line-height:0.9; letter-spacing:-0.01em;
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    text-transform:uppercase; font-size:54pt; line-height:0.96; letter-spacing:-0.02em;
   }
-  .cta .small{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:18pt; letter-spacing:0.04em; margin-top:0.12in; text-transform:uppercase; }
+  .cta .small{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:18pt; letter-spacing:0.04em; margin-top:0.14in; text-transform:uppercase; }
 
   .qr{
-    flex:0 0 2.7in; width:2.7in; border:4px solid var(--lime); border-radius:14px;
+    flex:0 0 2.7in; width:2.7in; border:1.5px solid var(--ink); border-radius:0;
     display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0.2in;
   }
   .qr .qbox{
-    width:1.9in; height:1.9in; border:3px dashed var(--gray); border-radius:10px;
-    display:flex; align-items:center; justify-content:center; color:var(--gray);
-    font-weight:800; font-size:13pt; letter-spacing:0.1em; text-transform:uppercase; text-align:center; margin-bottom:0.16in;
+    width:1.9in; height:1.9in; border:1.5px solid var(--ink); border-radius:0;
+    display:flex; align-items:center; justify-content:center; color:var(--muted);
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:13pt; letter-spacing:0.1em; text-transform:uppercase; text-align:center; margin-bottom:0.16in;
   }
-  .qr .url{ font-family:'Exo 2',sans-serif; font-weight:900; font-size:16pt; color:var(--white); letter-spacing:0.02em; }
+  .qr .url{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:16pt; color:var(--ink); letter-spacing:0.02em; }
 
+  /* single dark footer strip */
   .footstrip{
-    margin-top:0.4in; padding-top:0.22in; border-top:3px solid var(--line);
+    margin:0 -0.85in;
+    padding:0.28in 0.85in;
+    background:var(--ink); color:#FFFFFF;
     display:flex; align-items:center; justify-content:space-between;
-    color:var(--gray); font-weight:700; font-size:13pt; letter-spacing:0.05em;
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:13pt; letter-spacing:0.06em;
+    text-transform:uppercase;
   }
-  .footstrip .crest{ display:flex; align-items:center; gap:0.16in; color:var(--white); }
-  .footstrip .crest svg{ width:0.5in; height:0.5in; color:var(--lime); }
-  .footstrip .crest b{ font-family:'Exo 2',sans-serif; font-weight:800; letter-spacing:0.06em; }
-  .footstrip .handle{ color:var(--lime); font-family:'Exo 2',sans-serif; font-weight:900; font-size:15pt; letter-spacing:0.04em; }
+  .footstrip .crest{ display:flex; align-items:center; gap:0.2in; color:#FFFFFF; }
+  .footstrip .crest img{ height:0.55in; width:auto; }
+  .footstrip .crest b{ font-weight:800; letter-spacing:0.06em; }
+  .footstrip .tagline{ color:#FFFFFF; }
+  .footstrip .handle{ color:var(--lime); font-weight:800; font-size:15pt; letter-spacing:0.04em; }
 </style>
 </head>
 <body>
   <div class="page">
-    <!-- big foreground bolt -->
-    <svg class="megabolt" viewBox="0 0 614 508" aria-hidden="true">
-      <g transform="translate(0,508) scale(0.1,-0.1)" fill="#A6FF00" stroke="none">
-        <path d="M5371 4950 c10 -6 19 -14 19 -19 0 -6 -149 -161 -155 -161 -1 0 -65 -62 -141 -138 -76 -75 -151 -146 -165 -157 -14 -11 -32 -33 -40 -49 -8 -17 -35 -41 -64 -57 l-50 -28 -422 -1 c-248 0 -432 -4 -447 -10 -14 -5 -57 -40 -95 -77 -38 -38 -92 -90 -120 -116 -28 -27 -56 -61 -63 -75 -19 -39 -72 -50 -238 -52 -80 -1 -153 -4 -162 -8 -27 -11 -166 -135 -173 -154 -4 -10 -13 -18 -21 -18 -8 0 -14 -4 -14 -8 0 -11 -261 -272 -272 -272 -4 0 -8 -6 -8 -14 0 -8 -9 -17 -19 -21 -10 -3 -24 -19 -31 -35 -7 -17 -16 -30 -20 -30 -4 0 -20 -12 -35 -27 -36 -37 -29 -80 22 -138 70 -80 94 -117 87 -139 -5 -16 -154 -168 -349 -356 -9 -9 -65 -65 -256 -255 -45 -44 -97 -99 -116 -122 -56 -68 -82 -66 -140 10 -16 19 -64 79 -108 133 -44 54 -84 106 -90 116 -16 26 -123 164 -156 200 -16 18 -32 40 -35 50 -3 9 -14 20 -25 23 -11 4 -29 26 -39 48 -10 23 -54 84 -97 134 -107 127 -151 187 -159 217 -5 22 8 39 98 129 56 58 112 106 123 108 10 2 22 13 25 24 6 22 282 295 298 295 6 0 13 9 17 19 3 11 42 55 87 98 44 43 106 104 136 136 31 31 62 57 69 57 8 0 16 8 20 18 7 20 280 292 294 292 5 0 13 8 16 18 6 15 264 276 307 310 9 7 16 21 16 31 0 10 6 23 13 28 12 9 102 38 142 47 48 9 2517 6 2536 -4z m-430 -990 c30 -17 23 -48 -15 -71 -19 -11 -37 -31 -40 -44 -4 -14 -17 -32 -30 -41 -35 -22 -187 -174 -209 -207 -9 -14 -28 -29 -41 -33 -15 -3 -29 -17 -35 -34 -5 -16 -18 -33 -28 -38 -10 -6 -60 -52 -110 -104 -51 -51 -175 -175 -275 -275 -101 -100 -189 -188 -197 -196 -45 -48 -68 -71 -155 -155 -53 -52 -96 -98 -96 -103 0 -5 -18 -20 -40 -34 -22 -14 -40 -32 -40 -40 0 -8 -12 -22 -26 -31 -33 -22 -214 -204 -214 -216 0 -5 -16 -16 -35 -24 -19 -8 -35 -20 -36 -27 0 -6 -41 -50 -92 -97 -51 -47 -112 -108 -137 -137 -25 -28 -48 -52 -53 -52 -8 -1 -254 -253 -274 -281 -8 -11 -27 -27 -44 -35 -16 -9 -29 -20 -29 -26 0 -6 -54 -65 -120 -131 -66 -66 -120 -123 -120 -128 0 -5 -19 -22 -42 -39 l-42 -31 -473 0 c-394 0 -475 2 -479 14 -8 21 22 83 43 90 10 4 63 54 118 113 55 59 115 121 133 138 17 17 32 37 32 43 0 7 4 12 9 12 7 0 504 492 576 569 6 6 46 46 90 89 45 42 116 114 158 160 42 45 82 82 87 82 6 0 10 4 10 9 0 6 549 560 622 628 7 6 77 76 155 156 78 79 148 147 156 150 9 3 17 14 19 25 2 10 53 65 113 122 61 58 116 114 123 127 7 13 26 30 42 38 17 9 30 23 30 33 0 42 4 42 508 42 314 0 490 -4 503 -10z m-423 -1021 c26 -28 52 -61 57 -74 6 -12 28 -42 50 -66 22 -24 67 -79 100 -122 33 -43 84 -106 113 -140 28 -34 52 -66 52 -70 0 -5 18 -30 40 -56 22 -26 40 -50 40 -53 0 -3 15 -22 33 -41 17 -19 51 -56 73 -83 23 -27 59 -68 79 -91 20 -24 45 -58 55 -78 17 -34 17 -36 0 -70 -10 -19 -82 -98 -161 -175 -79 -77 -147 -143 -152 -147 -96 -94 -327 -336 -327 -343 0 -6 -4 -10 -9 -10 -10 0 -169 -154 -223 -217 -20 -22 -46 -44 -57 -48 -12 -3 -21 -13 -21 -21 0 -8 -12 -24 -27 -37 -15 -12 -80 -75 -145 -139 -65 -65 -122 -118 -128 -118 -5 0 -12 -11 -16 -25 -3 -14 -10 -25 -15 -25 -12 0 -239 -229 -239 -241 0 -6 -13 -15 -29 -20 -23 -8 -31 -17 -33 -42 -3 -32 -4 -32 -68 -38 -36 -4 -621 -8 -1300 -8 -1036 -1 -1238 1 -1254 12 -29 21 -14 62 33 91 21 14 48 38 59 53 11 15 46 53 77 83 32 30 85 82 119 116 33 33 70 66 80 71 11 6 29 28 41 49 12 22 34 45 48 52 15 7 37 27 50 44 33 45 92 72 162 73 33 1 230 3 437 3 l378 2 67 71 c38 40 78 81 90 91 12 11 24 31 27 44 5 18 24 33 70 54 59 28 70 30 185 30 139 0 171 9 229 67 21 21 62 58 90 83 28 25 52 48 52 51 0 12 218 229 229 229 6 0 11 6 11 12 0 7 16 29 35 48 33 32 166 174 214 228 12 12 21 27 21 32 0 15 -56 93 -89 124 -42 40 -41 76 5 132 20 24 43 44 50 44 7 0 20 13 28 28 8 15 33 43 56 62 23 19 47 41 54 49 13 16 129 130 241 239 44 42 85 84 90 93 19 31 196 189 211 189 9 0 37 -23 62 -51z"/>
-      </g>
-    </svg>
-    <svg class="ghostbolt" viewBox="0 0 614 508" aria-hidden="true">
-      <g transform="translate(0,508) scale(0.1,-0.1)" fill="#FFFFFF" stroke="none">
-        <path d="M5371 4950 c10 -6 19 -14 19 -19 0 -6 -149 -161 -155 -161 -1 0 -65 -62 -141 -138 -76 -75 -151 -146 -165 -157 -14 -11 -32 -33 -40 -49 -8 -17 -35 -41 -64 -57 l-50 -28 -422 -1 c-248 0 -432 -4 -447 -10 -14 -5 -57 -40 -95 -77 -38 -38 -92 -90 -120 -116 -28 -27 -56 -61 -63 -75 -19 -39 -72 -50 -238 -52 -80 -1 -153 -4 -162 -8 -27 -11 -166 -135 -173 -154 -4 -10 -13 -18 -21 -18 -8 0 -14 -4 -14 -8 0 -11 -261 -272 -272 -272 -4 0 -8 -6 -8 -14 0 -8 -9 -17 -19 -21 -10 -3 -24 -19 -31 -35 -7 -17 -16 -30 -20 -30 -4 0 -20 -12 -35 -27 -36 -37 -29 -80 22 -138 70 -80 94 -117 87 -139 -5 -16 -154 -168 -349 -356 -9 -9 -65 -65 -256 -255 -45 -44 -97 -99 -116 -122 -56 -68 -82 -66 -140 10 -16 19 -64 79 -108 133 -44 54 -84 106 -90 116 -16 26 -123 164 -156 200 -16 18 -32 40 -35 50 -3 9 -14 20 -25 23 -11 4 -29 26 -39 48 -10 23 -54 84 -97 134 -107 127 -151 187 -159 217 -5 22 8 39 98 129 56 58 112 106 123 108 10 2 22 13 25 24 6 22 282 295 298 295 6 0 13 9 17 19 3 11 42 55 87 98 44 43 106 104 136 136 31 31 62 57 69 57 8 0 16 8 20 18 7 20 280 292 294 292 5 0 13 8 16 18 6 15 264 276 307 310 9 7 16 21 16 31 0 10 6 23 13 28 12 9 102 38 142 47 48 9 2517 6 2536 -4z m-430 -990 c30 -17 23 -48 -15 -71 -19 -11 -37 -31 -40 -44 -4 -14 -17 -32 -30 -41 -35 -22 -187 -174 -209 -207 -9 -14 -28 -29 -41 -33 -15 -3 -29 -17 -35 -34 -5 -16 -18 -33 -28 -38 -10 -6 -60 -52 -110 -104 -51 -51 -175 -175 -275 -275 -101 -100 -189 -188 -197 -196 -45 -48 -68 -71 -155 -155 -53 -52 -96 -98 -96 -103 0 -5 -18 -20 -40 -34 -22 -14 -40 -32 -40 -40 0 -8 -12 -22 -26 -31 -33 -22 -214 -204 -214 -216 0 -5 -16 -16 -35 -24 -19 -8 -35 -20 -36 -27 0 -6 -41 -50 -92 -97 -51 -47 -112 -108 -137 -137 -25 -28 -48 -52 -53 -52 -8 -1 -254 -253 -274 -281 -8 -11 -27 -27 -44 -35 -16 -9 -29 -20 -29 -26 0 -6 -54 -65 -120 -131 -66 -66 -120 -123 -120 -128 0 -5 -19 -22 -42 -39 l-42 -31 -473 0 c-394 0 -475 2 -479 14 -8 21 22 83 43 90 10 4 63 54 118 113 55 59 115 121 133 138 17 17 32 37 32 43 0 7 4 12 9 12 7 0 504 492 576 569 6 6 46 46 90 89 45 42 116 114 158 160 42 45 82 82 87 82 6 0 10 4 10 9 0 6 549 560 622 628 7 6 77 76 155 156 78 79 148 147 156 150 9 3 17 14 19 25 2 10 53 65 113 122 61 58 116 114 123 127 7 13 26 30 42 38 17 9 30 23 30 33 0 42 4 42 508 42 314 0 490 -4 503 -10z m-423 -1021 c26 -28 52 -61 57 -74 6 -12 28 -42 50 -66 22 -24 67 -79 100 -122 33 -43 84 -106 113 -140 28 -34 52 -66 52 -70 0 -5 18 -30 40 -56 22 -26 40 -50 40 -53 0 -3 15 -22 33 -41 17 -19 51 -56 73 -83 23 -27 59 -68 79 -91 20 -24 45 -58 55 -78 17 -34 17 -36 0 -70 -10 -19 -82 -98 -161 -175 -79 -77 -147 -143 -152 -147 -96 -94 -327 -336 -327 -343 0 -6 -4 -10 -9 -10 -10 0 -169 -154 -223 -217 -20 -22 -46 -44 -57 -48 -12 -3 -21 -13 -21 -21 0 -8 -12 -24 -27 -37 -15 -12 -80 -75 -145 -139 -65 -65 -122 -118 -128 -118 -5 0 -12 -11 -16 -25 -3 -14 -10 -25 -15 -25 -12 0 -239 -229 -239 -241 0 -6 -13 -15 -29 -20 -23 -8 -31 -17 -33 -42 -3 -32 -4 -32 -68 -38 -36 -4 -621 -8 -1300 -8 -1036 -1 -1238 1 -1254 12 -29 21 -14 62 33 91 21 14 48 38 59 53 11 15 46 53 77 83 32 30 85 82 119 116 33 33 70 66 80 71 11 6 29 28 41 49 12 22 34 45 48 52 15 7 37 27 50 44 33 45 92 72 162 73 33 1 230 3 437 3 l378 2 67 71 c38 40 78 81 90 91 12 11 24 31 27 44 5 18 24 33 70 54 59 28 70 30 185 30 139 0 171 9 229 67 21 21 62 58 90 83 28 25 52 48 52 51 0 12 218 229 229 229 6 0 11 6 11 12 0 7 16 29 35 48 33 32 166 174 214 228 12 12 21 27 21 32 0 15 -56 93 -89 124 -42 40 -41 76 5 132 20 24 43 44 50 44 7 0 20 13 28 28 8 15 33 43 56 62 23 19 47 41 54 49 13 16 129 130 241 239 44 42 85 84 90 93 19 31 196 189 211 189 9 0 37 -23 62 -51z"/>
-      </g>
-    </svg>
-
     <div class="layer">
       <div class="top">
-        <img class="wordmark" src="../../website/public/images/logo/wordmark.png" alt="SHFT" />
-        <div class="teamtag">FRC TEAM [FILL: #]<small>ONTARIO, CANADA</small></div>
+        <img class="wordmark" src="../../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
+        <div class="crest-top">
+          <img class="leaf" src="../../website/public/images/maple-leaf.png" alt="Ontario" />
+          <div class="teamtag">FRC TEAM [FILL: #]<small>ONTARIO, CANADA</small></div>
+        </div>
       </div>
 
-      <h1 class="headline">SHIFT THE<br/><span class="lime">STANDARD.</span></h1>
+      <div class="seclabel">
+        <span class="rule"></span>
+        <span class="txt">01 / JOIN THE TEAM</span>
+      </div>
+
+      <h1 class="headline">SHIFT THE<br/><span class="markline">STANDARD.</span></h1>
 
       <div class="kicker">
         Build a real competition robot.
         <span class="sub">No experience needed. Win, travel, learn the tools.</span>
       </div>
 
+      <div class="infonight">
+        <span class="lbl">Info Night</span>
+        [FILL: DATE] at [FILL: TIME] &nbsp;/&nbsp; [FILL: PLACE / ROOM / ADDRESS]
+      </div>
+
       <div class="bottom">
         <div class="cta">
           <div class="big">Join SHFT</div>
-          <div class="small">Scan &nbsp;&middot;&nbsp; shftrobotics.com</div>
+          <div class="small">Scan &nbsp;/&nbsp; shftrobotics.com</div>
         </div>
         <div class="qr">
           <div class="qbox">QR<br/>CODE</div>
@@ -144,10 +157,11 @@
 
       <div class="footstrip">
         <div class="crest">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.5 1.6 1.7 2.7 3.3 3 .5.1.7.7.4 1.1l-1.7 2 1.4 2.3c.3.5-.1 1.1-.7 1l-2.6-.4-1.4 2.3c-.3.5-1 .4-1.2-.1l-1-2.5-2.6.2c-.6 0-.9-.6-.5-1.1l1.6-2-1.1-2.4c-.2-.5.2-1.1.8-1l2.5.5 1.5-2.2c.3-.5 1-.4 1.3.1z"/></svg>
-          <b>SHFT ROBOTICS &middot; ONTARIO</b>
+          <img src="../../website/public/images/maple-leaf.png" alt="Ontario" />
+          <b>SHFT ROBOTICS &nbsp;/&nbsp; ONTARIO</b>
         </div>
-        <div class="handle">@shftrobotics</div>
+        <div class="tagline">SHIFT THE STANDARD.</div>
+        <div class="handle">@SHFTROBOTICS</div>
       </div>
     </div>
   </div>

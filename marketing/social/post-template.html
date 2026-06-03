@@ -16,25 +16,21 @@
     2. Edit the three swappable lines below in the HTML:
          - .headline   (Orbitron, big)
          - .subline    (the supporting line)
-         - .cta        (the pill button text)
-    3. Screenshot the lime-bordered frame at full size and crop
-       to the frame edges. A 1080x1080 emulation gives a clean grab.
+         - .cta        (the square button text)
+    3. Screenshot the .frame at full size and crop to the frame edges.
+       A 1080x1080 emulation gives a clean grab.
     --------------------------------------------------------------
-    BRAND
-      Lime  #A6FF00   ·   Black #1A1A1A   ·   White #FFFFFF
-      Headline = Orbitron (heavy, uppercase)
+    REAL BRAND: white canvas, sharp square edges, type first, lime is rare.
     No em dashes anywhere in copy.
   */
   :root {
-    --lime: #A6FF00;
-    --lime-dim: #5A8C00;
-    --black: #1A1A1A;
-    --white: #FFFFFF;
-    --grey: #737373;
+    --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5;
+    --secondary:#555555; --muted:#737373;
+    --lime:#A6FF00; --lime-hover:#8FE000; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
-    background: #000;
+    background: #F8F8F8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,46 +38,15 @@
     font-family: 'Raleway', sans-serif;
   }
 
-  /* The capture frame. Screenshot exactly this. */
+  /* The capture frame. Screenshot exactly this. White canvas. */
   .frame {
     position: relative;
     width: 1080px;
     height: 1080px;
-    background:
-      radial-gradient(115% 90% at 0% 0%, #232323 0%, var(--black) 55%, #0E0E0E 100%);
+    background: #FFFFFF;
     overflow: hidden;
-    color: var(--white);
+    color: var(--ink);
     display: flex;
-  }
-
-  /* Lime energy glow, top-left */
-  .frame::before {
-    content: "";
-    position: absolute;
-    top: -300px; left: -200px;
-    width: 900px; height: 900px;
-    background: radial-gradient(circle, rgba(166,255,0,0.16) 0%, rgba(166,255,0,0) 62%);
-    pointer-events: none;
-  }
-  /* Faint grid texture */
-  .frame::after {
-    content: "";
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 72px 72px;
-    pointer-events: none;
-  }
-
-  /* Lime accent edge, left side */
-  .edge {
-    position: absolute;
-    top: 0; left: 0;
-    width: 14px; height: 100%;
-    background: var(--lime);
-    box-shadow: 0 0 30px rgba(166,255,0,0.5);
-    z-index: 3;
   }
 
   .inner {
@@ -90,29 +55,39 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 84px 88px 80px 96px;
+    padding: 88px 92px 80px;
   }
 
-  /* Top row: kicker + handle */
+  /* Top row: section label + handle */
   .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .kicker {
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .label .rule {
+    display: inline-block;
+    width: 40px; height: 3px;
+    background: var(--lime);
+  }
+  .label .txt {
     font-family: 'Exo 2', sans-serif;
     font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 0.3em;
+    font-size: 22px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--lime);
+    color: var(--muted);
   }
   .handle {
     font-family: 'Exo 2', sans-serif;
     font-weight: 700;
     font-size: 22px;
     letter-spacing: 0.1em;
-    color: var(--grey);
+    color: var(--muted);
   }
 
   /* Headline block, centered vertically */
@@ -120,33 +95,33 @@
     margin-top: auto;
     margin-bottom: auto;
   }
-  .bolt {
-    display: inline-block;
-    width: 48px; height: 76px;
-    margin-bottom: 28px;
+  /* Short lime rule above the headline */
+  .accent-rule {
+    width: 96px; height: 6px;
     background: var(--lime);
-    clip-path: polygon(58% 0, 12% 56%, 46% 56%, 30% 100%, 92% 40%, 54% 40%);
-    filter: drop-shadow(0 0 22px rgba(166,255,0,0.55));
+    margin-bottom: 40px;
   }
   .headline {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 100px;
-    line-height: 0.98;
-    letter-spacing: -0.01em;
+    font-size: 104px;
+    line-height: 0.96;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
+    color: var(--ink);
   }
+  /* Emphasis on white = ink word with a lime underline rule, not lime text */
   .headline .hl {
-    color: var(--lime);
-    text-shadow: 0 0 34px rgba(166,255,0,0.35);
+    color: var(--ink);
+    box-shadow: inset 0 -0.12em 0 var(--lime);
   }
   .subline {
-    margin-top: 34px;
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 1.3;
-    color: #E8E8E8;
+    margin-top: 36px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.35;
+    color: var(--secondary);
     max-width: 720px;
   }
 
@@ -157,44 +132,46 @@
     justify-content: space-between;
     gap: 24px;
   }
+  /* Square lime CTA chip, ink text */
   .cta {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     background: var(--lime);
-    color: var(--black);
-    font-family: 'Orbitron', sans-serif;
+    color: var(--lime-text);
+    font-family: 'Exo 2', sans-serif;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 30px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     padding: 22px 44px;
-    border-radius: 99px;
-    box-shadow: 0 0 34px rgba(166,255,0,0.35);
+    border: 0;
+    border-radius: 0;
   }
-  .cta .arrow { font-weight: 900; }
+  .cta .arrow { font-weight: 800; }
   .wordmark {
-    height: 66px;
+    height: 60px;
     width: auto;
-    opacity: 0.96;
   }
 </style>
 </head>
 <body>
   <div class="frame">
-    <div class="edge"></div>
     <div class="inner">
 
-      <!-- TOP ROW -->
+      <!-- TOP ROW: section label + handle -->
       <div class="top">
-        <!-- KICKER (swap freely) -->
-        <div class="kicker">New Ontario FRC Team</div>
+        <div class="label">
+          <span class="rule"></span>
+          <!-- SECTION LABEL (swap freely) -->
+          <span class="txt">01 / New Ontario FRC Team</span>
+        </div>
         <div class="handle">@shftrobotics</div>
       </div>
 
-      <!-- HEADLINE (swap me). Wrap key words in <span class="hl"> for lime. -->
+      <!-- HEADLINE (swap me). Wrap key words in <span class="hl"> for a lime underline. -->
       <div class="main">
-        <span class="bolt"></span>
+        <span class="accent-rule"></span>
         <h1 class="headline">Shift the<br /><span class="hl">standard.</span></h1>
 
         <!-- SUBLINE (swap me) -->
@@ -205,7 +182,7 @@
       <div class="footer">
         <!-- CTA (swap me) -->
         <div class="cta">Join SHFT <span class="arrow">&rarr;</span></div>
-        <img class="wordmark" src="../../website/public/images/logo/wordmark.png" alt="SHFT" />
+        <img class="wordmark" src="../../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
       </div>
 
     </div>

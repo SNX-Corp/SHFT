@@ -8,137 +8,141 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{ --lime:#A6FF00; --ink:#0D0D0D; --panel:#141414; --line:#262626; --grey:#8a8a8a; }
-  *{ box-sizing:border-box; }
-  body{ margin:0; background:var(--ink); color:#fff; font-family:'Raleway',sans-serif; -webkit-font-smoothing:antialiased; }
+  :root{ --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5; --secondary:#555555; --muted:#737373; --lime:#A6FF00; --lime-hover:#8FE000; }
+  *{ box-sizing:border-box; border-radius:0; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Raleway',sans-serif; -webkit-font-smoothing:antialiased; }
   a{ color:inherit; text-decoration:none; }
-  .wrap{ max-width:1140px; margin:0 auto; padding:40px 24px 80px; }
-  header{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:8px; }
-  header img{ height:38px; width:auto; }
-  .htitle{ font-family:'Orbitron',sans-serif; font-weight:900; letter-spacing:.04em; font-size:15px; text-transform:uppercase; }
-  .htitle .lime{ color:var(--lime); }
-  .sub{ color:var(--grey); font-size:13px; margin-top:2px; }
-  .chips{ display:flex; gap:8px; flex-wrap:wrap; margin:22px 0 10px; }
-  .chip{ font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--lime); border:1px solid #2c3a00; background:#121a00; padding:5px 10px; border-radius:99px; }
-  .lead{ color:#cfcfcf; font-size:14.5px; line-height:1.6; max-width:680px; margin:14px 0 6px; }
-  .seclabel{ display:flex; align-items:center; gap:10px; font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.12em; font-size:12px; color:#fff; margin:46px 0 18px; }
-  .seclabel::before{ content:"\26A1"; color:var(--lime); font-size:15px; }
-  .seclabel::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .wrap{ max-width:1180px; margin:0 auto; padding:48px 28px 90px; }
+  .eyebrow{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .eyebrow .rule{ width:30px; height:3px; background:var(--lime); }
+  .eyebrow span{ font-family:'Exo 2'; font-weight:700; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  header img{ height:34px; width:auto; display:block; margin-bottom:18px; }
+  h1{ font-family:'Orbitron'; font-weight:900; font-size:clamp(28px,4vw,44px); letter-spacing:-.02em; text-transform:uppercase; margin:0 0 10px; }
+  .lead{ color:var(--secondary); font-size:15px; line-height:1.6; max-width:680px; margin:0; }
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; margin:20px 0 4px; }
+  .chip{ font-family:'Exo 2'; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink); border:1px solid var(--border); padding:5px 11px; }
+  .chip.lime{ background:var(--lime); border-color:var(--lime); }
+  .seclabel{ display:flex; align-items:center; gap:12px; margin:48px 0 18px; }
+  .seclabel .rule{ width:30px; height:3px; background:var(--lime); }
+  .seclabel span{ font-family:'Exo 2'; font-weight:800; text-transform:uppercase; letter-spacing:.14em; font-size:12px; color:var(--ink); }
+  .seclabel .line{ flex:1; height:1px; background:var(--border); }
   .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }
-  .card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .15s, transform .15s, box-shadow .15s; }
-  .card:hover{ border-color:#3a4d00; transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.5); }
-  .shot{ background:#000; display:flex; align-items:center; justify-content:center; padding:14px; min-height:200px; }
-  .shot img{ max-width:100%; max-height:460px; height:auto; border-radius:4px; display:block; }
-  .meta{ padding:14px 16px 16px; border-top:1px solid var(--line); }
-  .name{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:14.5px; }
-  .dim{ color:var(--grey); font-size:12px; margin-top:3px; }
+  .card{ background:var(--bg); border:1px solid var(--border); display:flex; flex-direction:column; transition:border-color .15s, transform .15s; }
+  .card:hover{ border-color:var(--ink); transform:translateY(-2px); }
+  .shot{ background:var(--surface); display:flex; align-items:center; justify-content:center; padding:16px; min-height:200px; border-bottom:1px solid var(--border); }
+  .shot img{ max-width:100%; max-height:440px; height:auto; display:block; border:1px solid var(--border); }
+  .meta{ padding:14px 16px 16px; }
+  .name{ font-family:'Exo 2'; font-weight:700; font-size:14.5px; }
+  .dim{ color:var(--muted); font-size:12px; margin-top:3px; }
   .links{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
-  .btn{ font-size:11.5px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; padding:6px 11px; border-radius:6px; border:1px solid var(--line); color:#ddd; transition:all .12s; }
-  .btn:hover{ border-color:var(--lime); color:#fff; }
-  .btn.pdf{ color:var(--ink); background:var(--lime); border-color:var(--lime); }
-  .btn.pdf:hover{ opacity:.88; }
+  .btn{ font-family:'Exo 2'; font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; padding:6px 11px; border:1px solid var(--border); color:var(--ink); transition:all .12s; }
+  .btn:hover{ border-color:var(--ink); }
+  .btn.pdf{ background:var(--lime); border-color:var(--lime); }
+  .btn.pdf:hover{ background:var(--lime-hover); }
+  .feature{ display:grid; grid-template-columns:300px 1fr; gap:0; border:1px solid var(--border); margin-bottom:8px; }
+  .feature .shot{ border-bottom:0; border-right:1px solid var(--border); }
+  .feature .shot img{ max-height:520px; }
+  .feature .meta{ padding:28px; display:flex; flex-direction:column; justify-content:center; }
+  .feature h3{ font-family:'Orbitron'; font-weight:900; text-transform:uppercase; font-size:22px; margin:0 0 8px; }
+  .feature p{ color:var(--secondary); font-size:13.5px; line-height:1.6; margin:0 0 16px; }
   .docs{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; }
-  .doc{ display:block; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; transition:border-color .12s; }
-  .doc:hover{ border-color:var(--lime); }
-  .doc b{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:13.5px; }
-  .doc span{ display:block; color:var(--grey); font-size:12px; margin-top:3px; }
-  footer{ margin-top:54px; border-top:1px solid var(--line); padding-top:22px; color:var(--grey); font-size:12.5px; line-height:1.7; }
-  footer code{ color:var(--lime); background:#121a00; padding:1px 6px; border-radius:4px; font-size:12px; }
+  .doc{ display:block; border:1px solid var(--border); padding:14px 16px; transition:border-color .12s; }
+  .doc:hover{ border-color:var(--ink); }
+  .doc b{ font-family:'Exo 2'; font-weight:700; font-size:13.5px; }
+  .doc span{ display:block; color:var(--muted); font-size:12px; margin-top:3px; }
+  footer{ margin-top:56px; background:var(--ink); color:#fff; padding:24px 28px; font-size:12.5px; line-height:1.7; }
+  footer code{ color:var(--lime); font-family:monospace; font-size:12px; }
+  @media (max-width:640px){ .feature{ grid-template-columns:1fr; } .feature .shot{ border-right:0; border-bottom:1px solid var(--border); } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <img src="../../website/public/images/logo/wordmark.png" alt="SHFT"/>
-    <div>
-      <div class="htitle">Recruitment <span class="lime">Kit</span>: Visual Preview</div>
-      <div class="sub">Every visual asset rendered in one place. Click any card to open the editable source.</div>
+    <img src="../../website/public/images/logo/wordmark-dark.png" alt="SHFT"/>
+    <div class="eyebrow"><span class="rule"></span><span>Recruitment Kit / Visual Preview</span></div>
+    <h1>The Kit, In One Place</h1>
+    <p class="lead">Every visual asset rendered to an image. Click a card to open the editable source or the print PDF. The [FILL] spots are intentional: drop in your Info Night date, team number, and signup link, then re-open the source to update.</p>
+    <div class="chips">
+      <span class="chip lime">White canvas</span>
+      <span class="chip">Square edges</span>
+      <span class="chip">Lime #A6FF00</span>
+      <span class="chip">Zero em-dashes</span>
+      <span class="chip">9 assets + 5 PDFs</span>
     </div>
   </header>
 
-  <div class="chips">
-    <span class="chip">Lime #A6FF00</span>
-    <span class="chip">Zero em-dashes</span>
-    <span class="chip">8 assets</span>
-    <span class="chip">4 print PDFs</span>
+  <div class="seclabel"><span class="rule"></span><span>Brand Guide</span><span class="line"></span></div>
+  <div class="feature">
+    <div class="shot"><img src="brand-guide.png" alt="Brand guide"/></div>
+    <div class="meta">
+      <h3>SHFT Brand Guide</h3>
+      <p>The verified, single source of truth: colors, type, logo rules, design principles, and voice, all pulled from the live site tokens. Hand this to any printer, merch shop, or designer.</p>
+      <div class="links">
+        <a class="btn pdf" href="brand-guide.pdf">Print PDF</a>
+        <a class="btn" href="../brand-guide.html">Open page</a>
+        <a class="btn" href="../BRAND.md">BRAND.md spec</a>
+      </div>
+    </div>
   </div>
-  <p class="lead">These are live renders of the HTML templates in the kit. The <b>[FILL]</b> spots are intentional. Drop in your real Info Night date, team number, and signup link, then re-open the source file to update. Print PDFs are ready to send to a shop or print at home.</p>
 
-  <div class="seclabel">Social</div>
+  <div class="seclabel"><span class="rule"></span><span>Social</span><span class="line"></span></div>
   <div class="grid">
-    <div class="card">
-      <div class="shot"><img src="post-template.png" alt="Instagram post"/></div>
+    <div class="card"><div class="shot"><img src="post-template.png" alt="post"/></div>
       <div class="meta"><div class="name">Feed Post</div><div class="dim">Instagram / TikTok, 1080 x 1080</div>
-        <div class="links"><a class="btn" href="post-template.png">Full image</a><a class="btn" href="../social/post-template.html">Edit source</a></div></div>
-    </div>
-    <div class="card">
-      <div class="shot"><img src="story-template.png" alt="Instagram story"/></div>
-      <div class="meta"><div class="name">Story</div><div class="dim">Instagram / TikTok, 1080 x 1920</div>
-        <div class="links"><a class="btn" href="story-template.png">Full image</a><a class="btn" href="../social/story-template.html">Edit source</a></div></div>
-    </div>
+      <div class="links"><a class="btn" href="post-template.png">Full image</a><a class="btn" href="../social/post-template.html">Edit source</a></div></div></div>
+    <div class="card"><div class="shot"><img src="story-template.png" alt="story"/></div>
+      <div class="meta"><div class="name">Story</div><div class="dim">Dark-section variant, 1080 x 1920</div>
+      <div class="links"><a class="btn" href="story-template.png">Full image</a><a class="btn" href="../social/story-template.html">Edit source</a></div></div></div>
   </div>
 
-  <div class="seclabel">Print</div>
+  <div class="seclabel"><span class="rule"></span><span>Print</span><span class="line"></span></div>
   <div class="grid">
-    <div class="card">
-      <div class="shot"><img src="flyer-letter.png" alt="Flyer"/></div>
-      <div class="meta"><div class="name">Flyer</div><div class="dim">8.5 x 11 in, full page</div>
-        <div class="links"><a class="btn pdf" href="flyer-letter.pdf">Print PDF</a><a class="btn" href="../print/flyer-letter.html">Edit source</a></div></div>
-    </div>
-    <div class="card">
-      <div class="shot"><img src="poster-tabloid.png" alt="Poster"/></div>
-      <div class="meta"><div class="name">Hallway Poster</div><div class="dim">11 x 17 in, read from 10 feet</div>
-        <div class="links"><a class="btn pdf" href="poster-tabloid.pdf">Print PDF</a><a class="btn" href="../print/poster-tabloid.html">Edit source</a></div></div>
-    </div>
-    <div class="card">
-      <div class="shot"><img src="half-page.png" alt="Half-page handbills"/></div>
-      <div class="meta"><div class="name">Half-Page Handbills</div><div class="dim">Two per sheet, cheap mass handout</div>
-        <div class="links"><a class="btn pdf" href="half-page.pdf">Print PDF</a><a class="btn" href="../print/half-page.html">Edit source</a></div></div>
-    </div>
-    <div class="card">
-      <div class="shot"><img src="tear-tab.png" alt="Tear-off tab flyer"/></div>
-      <div class="meta"><div class="name">Tear-Off Tab Flyer</div><div class="dim">Community board, pull-tab handle</div>
-        <div class="links"><a class="btn pdf" href="tear-tab.pdf">Print PDF</a><a class="btn" href="../print/tear-tab.html">Edit source</a></div></div>
-    </div>
+    <div class="card"><div class="shot"><img src="flyer-letter.png" alt="flyer"/></div>
+      <div class="meta"><div class="name">Flyer</div><div class="dim">8.5 x 11 in</div>
+      <div class="links"><a class="btn pdf" href="flyer-letter.pdf">Print PDF</a><a class="btn" href="../print/flyer-letter.html">Edit source</a></div></div></div>
+    <div class="card"><div class="shot"><img src="poster-tabloid.png" alt="poster"/></div>
+      <div class="meta"><div class="name">Hallway Poster</div><div class="dim">11 x 17 in</div>
+      <div class="links"><a class="btn pdf" href="poster-tabloid.pdf">Print PDF</a><a class="btn" href="../print/poster-tabloid.html">Edit source</a></div></div></div>
+    <div class="card"><div class="shot"><img src="half-page.png" alt="half page"/></div>
+      <div class="meta"><div class="name">Half-Page Handbills</div><div class="dim">Two per sheet</div>
+      <div class="links"><a class="btn pdf" href="half-page.pdf">Print PDF</a><a class="btn" href="../print/half-page.html">Edit source</a></div></div></div>
+    <div class="card"><div class="shot"><img src="tear-tab.png" alt="tear tab"/></div>
+      <div class="meta"><div class="name">Tear-Off Tab Flyer</div><div class="dim">Community board</div>
+      <div class="links"><a class="btn pdf" href="tear-tab.pdf">Print PDF</a><a class="btn" href="../print/tear-tab.html">Edit source</a></div></div></div>
   </div>
 
-  <div class="seclabel">Ads</div>
+  <div class="seclabel"><span class="rule"></span><span>Ads</span><span class="line"></span></div>
   <div class="grid">
-    <div class="card">
-      <div class="shot"><img src="ad-creative.png" alt="Ad creative"/></div>
-      <div class="meta"><div class="name">Paid Social Creative</div><div class="dim">Meta / IG ad, 1080 x 1080</div>
-        <div class="links"><a class="btn" href="ad-creative.png">Full image</a><a class="btn" href="../ads/ad-creative.html">Edit source</a><a class="btn" href="../ads/meta-ads.md">Ad copy</a></div></div>
-    </div>
+    <div class="card"><div class="shot"><img src="ad-creative.png" alt="ad"/></div>
+      <div class="meta"><div class="name">Paid Social Creative</div><div class="dim">Meta / IG, 1080 x 1080</div>
+      <div class="links"><a class="btn" href="ad-creative.png">Full image</a><a class="btn" href="../ads/ad-creative.html">Edit source</a><a class="btn" href="../ads/meta-ads.md">Ad copy</a></div></div></div>
   </div>
 
-  <div class="seclabel">Merch</div>
+  <div class="seclabel"><span class="rule"></span><span>Merch</span><span class="line"></span></div>
   <div class="grid">
-    <div class="card">
-      <div class="shot"><img src="merch-mockups.png" alt="Merch mockups"/></div>
-      <div class="meta"><div class="name">Placement Mockups</div><div class="dim">Tee, hoodie, sticker, cap. Layout only, not final art</div>
-        <div class="links"><a class="btn" href="merch-mockups.png">Full image</a><a class="btn" href="../merch/mockups.html">Edit source</a><a class="btn" href="../merch/merch-specs.md">Specs</a></div></div>
-    </div>
+    <div class="card"><div class="shot"><img src="merch-mockups.png" alt="merch"/></div>
+      <div class="meta"><div class="name">Placement Mockups</div><div class="dim">Tee, hoodie, sticker, cap. Layout only</div>
+      <div class="links"><a class="btn" href="merch-mockups.png">Full image</a><a class="btn" href="../merch/mockups.html">Edit source</a><a class="btn" href="../merch/merch-specs.md">Specs</a></div></div></div>
   </div>
 
-  <div class="seclabel">The Written Playbook</div>
+  <div class="seclabel"><span class="rule"></span><span>The Written Playbook</span><span class="line"></span></div>
   <div class="docs">
-    <a class="doc" href="../README.md"><b>README</b><span>Start here. The full map of the kit.</span></a>
-    <a class="doc" href="../TODO-from-you.md"><b>TODO from you</b><span>The blanks to fill before launch.</span></a>
-    <a class="doc" href="../PLAN.md"><b>Recruitment plan</b><span>Personas, 8-week calendar, budget, metrics.</span></a>
-    <a class="doc" href="../social/captions.md"><b>Captions</b><span>24+ ready-to-paste IG / TikTok captions.</span></a>
-    <a class="doc" href="../social/content-calendar.md"><b>Content calendar</b><span>A 4-week posting schedule.</span></a>
+    <a class="doc" href="../README.md"><b>README</b><span>Start here. The full map.</span></a>
+    <a class="doc" href="../TODO-from-you.md"><b>TODO from you</b><span>Blanks to fill before launch.</span></a>
+    <a class="doc" href="../BRAND.md"><b>BRAND.md</b><span>The verified brand spec.</span></a>
+    <a class="doc" href="../PLAN.md"><b>Recruitment plan</b><span>Personas, 8-week calendar, budget.</span></a>
+    <a class="doc" href="../social/captions.md"><b>Captions</b><span>24+ ready-to-paste captions.</span></a>
     <a class="doc" href="../social/reel-scripts.md"><b>Reel scripts</b><span>5 short-form video scripts.</span></a>
     <a class="doc" href="../ads/meta-ads.md"><b>Meta ads</b><span>Audiences, copy, budget plan.</span></a>
-    <a class="doc" href="../merch/vector-plan.md"><b>Vector art guide</b><span>Export print files from SHFT logo.ai.</span></a>
-    <a class="doc" href="../events/info-night-runofshow.md"><b>Info night</b><span>Run-of-show and prep checklist.</span></a>
-    <a class="doc" href="../events/school-outreach-emails.md"><b>School outreach</b><span>Ready-to-send teacher and principal emails.</span></a>
-    <a class="doc" href="../events/parent-faq.md"><b>Parent FAQ</b><span>The 10 questions parents actually ask.</span></a>
+    <a class="doc" href="../merch/vector-plan.md"><b>Vector art guide</b><span>Export from SHFT logo.ai.</span></a>
+    <a class="doc" href="../events/info-night-runofshow.md"><b>Info night</b><span>Run-of-show and prep.</span></a>
+    <a class="doc" href="../events/school-outreach-emails.md"><b>School outreach</b><span>Ready-to-send emails.</span></a>
+    <a class="doc" href="../events/parent-faq.md"><b>Parent FAQ</b><span>The 10 questions parents ask.</span></a>
     <a class="doc" href="../events/signup-form.md"><b>Signup form</b><span>Exact fields for a Google Form.</span></a>
   </div>
-
-  <footer>
-    Open this file any time at <code>~/SHFT-repo/marketing/preview/index.html</code>. The PNGs in this folder double as ready-to-post images once you swap the placeholders. Markdown links open as text. For a nicer read, open them in your editor or a Markdown viewer.
-  </footer>
 </div>
+<footer>
+  Open any time at <code>~/SHFT-repo/marketing/preview/index.html</code>. The PNGs double as post-ready images once you swap the placeholders. Everything here is realigned to the real brand: white canvas, square edges, lime #A6FF00 used sparingly.
+</footer>
 </body>
 </html>
