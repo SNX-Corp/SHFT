@@ -33,8 +33,8 @@ const d = entry!.data as {
       class="hero-readable absolute inset-0 z-[var(--z-hero-text)] content-width box-border max-w-full grid grid-rows-[1fr_auto_1fr] justify-items-center text-center pointer-events-none"
       data-hero-copy
     >
-      <!-- Crest: maple leaf + eyebrow, hugging the wordmark from above -->
-      <div class="self-end flex flex-col items-center gap-3 pb-8 sm:pb-10" data-hero-eyebrow>
+      <!-- Crest: maple leaf + eyebrow, sitting just above the wordmark -->
+      <div class="self-end flex flex-col items-center gap-3 pb-5 sm:pb-6" data-hero-eyebrow>
         <img
           src="/images/maple-leaf.png"
           alt=""
@@ -42,13 +42,9 @@ const d = entry!.data as {
           class="h-[27px] w-auto"
           style="filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5));"
         />
-        <div class="flex items-center justify-center gap-3">
-          <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
-          <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/80">
-            {d.eyebrow}
-          </span>
-          <span class="block w-1.5 h-1.5 rounded-full invisible" aria-hidden="true"></span>
-        </div>
+        <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/80">
+          {d.eyebrow}
+        </span>
       </div>
 
       <!-- Logo slot: the morphing wordmark sits centred here at rest -->
@@ -56,7 +52,7 @@ const d = entry!.data as {
 
       <!-- Copy: tagline + credibility strip + CTA, hugging the wordmark from below (tight, lifted) -->
       <div class="self-start flex flex-col items-center pt-3 sm:pt-4">
-        <div class="flex flex-col items-center gap-3" data-hero-sub>
+        <div class="flex flex-col items-center gap-1.5" data-hero-sub>
           <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(1rem,1.3vw,1.15rem)] text-white/85 max-w-xl leading-relaxed">
             {d.subtitle}
           </p>
