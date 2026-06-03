@@ -72,6 +72,7 @@ const navLinks = d.links;
 <a href="/" class="brand-logo" data-brand-logo aria-label="Team SHFT - home">
   <img src="/images/logo/wordmark.png" alt="Team SHFT" class="brand-logo__img" data-brand-light />
   <img src="/images/logo/wordmark-dark.png" alt="" aria-hidden="true" class="brand-logo__img brand-logo__img--dark" data-brand-dark />
+  <span class="brand-logo__shine" data-brand-shine aria-hidden="true"></span>
 </a>
 
 <!-- Mobile overlay -->
@@ -112,6 +113,7 @@ const navLinks = d.links;
     transform-origin: center center;
     will-change: transform, opacity, filter;
     opacity: 0;
+    isolation: isolate;
   }
   @media (min-width: 1024px) {
     .brand-logo {
@@ -129,6 +131,24 @@ const navLinks = d.links;
     position: absolute;
     inset: 0;
     opacity: 0;
+  }
+  /* Cursor-reactive gloss riding the lightning bolt (masked to the bolt only) */
+  .brand-logo__shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    -webkit-mask: url('/images/logo/bolt-mask.png') center / contain no-repeat;
+            mask: url('/images/logo/bolt-mask.png') center / contain no-repeat;
+    background: radial-gradient(
+      23% 42% at var(--shine-x, 52%) var(--shine-y, 26%),
+      rgba(255, 255, 255, 1) 0%,
+      rgba(233, 255, 165, 0.62) 38%,
+      rgba(166, 255, 0, 0) 78%
+    );
+    mix-blend-mode: screen;
+    opacity: var(--shine-op, 0);
+    transition: opacity 0.4s ease;
+    will-change: opacity, background;
   }
   /* Hidden until the scroll logic fades them in (prevents a flash on load) */
   [data-nav-chrome],
@@ -151,6 +171,7 @@ const navLinks = d.links;
   const brand = document.querySelector('[data-brand-logo]') as HTMLElement;
   const brandLight = document.querySelector('[data-brand-light]') as HTMLElement;
   const brandDark = document.querySelector('[data-brand-dark]') as HTMLElement;
+  const brandShine = document.querySelector('[data-brand-shine]') as HTMLElement;
   const slot = document.querySelector('[data-hero-logo-slot]') as HTMLElement;
   const heroCopy = document.querySelector('[data-hero-copy]') as HTMLElement;
   const heroScroll = document.querySelector('[data-hero-scroll]') as HTMLElement;
@@ -208,6 +229,11 @@ const navLinks = d.links;
       // Opacity is owned by the hero intro timeline (logo fades in first).
       // Only clickable once docked in the nav, so it never blocks the hero.
       brand.style.pointerEvents = p > 0.9 ? 'auto' : 'none';
+    }
+
+    // The bolt gloss only lives on the big hero wordmark; fade it out as it docks.
+    if (brandShine) {
+      brandShine.style.setProperty('--shine-op', String(Math.max(0, Math.min(1, 1 - y / (vh * 0.35)))));
     }
 
     // Fade the nav chrome (links + CTA) in as the logo docks
@@ -272,6 +298,24 @@ const navLinks = d.links;
   mobileLinks.forEach((link) => link.addEventListener('click', () => {
     if (menuOpen) toggleMobile();
   }));
+
+  // Cursor-reactive shine that glides across the bolt. Cursor position is mapped
+  // into the bolt's box so the glint always rides the lightning, sliding mostly
+  // up/down as you move (the bolt is tall + narrow).
+  if (brandShine && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener(
+      'pointermove',
+      (e) => {
+        // Map the cursor into the bolt's box so the glint rides the lightning
+        // (mostly up/down, since the bolt is tall + narrow).
+        const sx = 44 + (e.clientX / window.innerWidth) * 17; // bolt spans ~44%–61% across
+        const sy = 4 + (e.clientY / window.innerHeight) * 92; // full height
+        brandShine.style.setProperty('--shine-x', sx.toFixed(1) + '%');
+        brandShine.style.setProperty('--shine-y', sy.toFixed(1) + '%');
+      },
+      { passive: true },
+    );
+  }
 
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', () => { measure(); update(); });
