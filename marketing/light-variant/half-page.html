@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SHFT Half-Page Handbills (2-up on Letter)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* Letter sheet, split into two 8.5 x 5.5in handbills. Cut along the dashed line. */
+  @page { size: 8.5in 11in; margin: 0; }
+
+  :root{
+    --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5;
+    --secondary:#555555; --muted:#737373;
+    --lime:#A6FF00; --lime-hover:#8FE000; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
+  }
+  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ margin:0; padding:0; background:#d8d8d8; }
+
+  .sheet{ width:8.5in; height:11in; margin:0 auto; display:flex; flex-direction:column; }
+
+  /* cut guide between the two halves */
+  .cutline{
+    height:0; border-top:1px dashed var(--border); position:relative;
+  }
+  .cutline::after{
+    content:"cut here"; position:absolute; right:0.18in; top:-7px;
+    background:#d8d8d8; color:var(--muted); font:700 7pt 'Exo 2',sans-serif;
+    letter-spacing:0.15em; text-transform:uppercase; padding:0 6px;
+  }
+
+  .half{
+    width:8.5in; height:5.5in; background:var(--bg); color:var(--ink);
+    font-family:'Raleway',sans-serif; position:relative; overflow:hidden;
+    padding:0.42in 0.5in 0; display:flex; flex-direction:column;
+  }
+
+  .inner{ position:relative; z-index:1; display:flex; flex-direction:column; height:100%; }
+
+  .top{ display:flex; align-items:center; justify-content:space-between; padding-bottom:0.14in; border-bottom:1px solid var(--border); }
+  .wordmark{ height:0.46in; width:auto; }
+  .crest-top{ display:flex; align-items:center; gap:0.1in; }
+  .leaf{ width:0.4in; height:auto; display:block; }
+  .teamtag{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:9pt; letter-spacing:0.16em; color:var(--ink); text-transform:uppercase; text-align:right; line-height:1.3; }
+  .teamtag small{ display:block; color:var(--muted); font-weight:700; font-size:7pt; letter-spacing:0.18em; }
+
+  .seclabel{ margin:0.16in 0 0.08in; display:flex; align-items:center; gap:8px; }
+  .seclabel .rule{ display:inline-block; width:24px; height:2px; background:var(--lime); }
+  .seclabel .txt{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+
+  .headline{
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    font-size:30pt; line-height:0.98; letter-spacing:-0.02em; color:var(--ink); margin:0 0 0.08in;
+  }
+  .headline .markline{ display:inline-block; border-bottom:4px solid var(--lime); }
+  .sub{ font-family:'Raleway',sans-serif; font-weight:500; font-size:10.5pt; color:var(--secondary); max-width:5in; line-height:1.4; margin-bottom:0.16in; }
+
+  .bullets{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:0.08in 0.3in; }
+  .bullets li{ display:flex; align-items:center; gap:8px; font-family:'Exo 2',sans-serif; font-weight:700; font-size:10.5pt; color:var(--ink); }
+  .bullets .chip{ width:15px; height:15px; background:var(--lime); color:var(--lime-text); display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+  .bullets .chip svg{ width:10px; height:10px; }
+
+  .bottom{ margin-top:auto; display:flex; align-items:center; gap:0.28in; padding-bottom:0.42in; }
+  .cta{
+    background:var(--lime); color:var(--lime-text); border-radius:0; padding:0.14in 0.26in;
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    font-size:18pt; line-height:1; letter-spacing:-0.02em; white-space:nowrap;
+  }
+  .ctmeta{ display:flex; flex-direction:column; gap:3px; }
+  .ctmeta-info{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:9pt; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink); }
+  .ctmeta-info b{ color:var(--lime-dim); }
+  .ctmeta-url{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:9pt; color:var(--muted); letter-spacing:0.02em; }
+
+  .qr{
+    margin-left:auto; flex:0 0 1in; width:1in; height:1in; border:1.5px solid var(--ink); border-radius:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:5px; text-align:center;
+  }
+  .qr .qbox{ width:0.58in; height:0.58in; border:1.5px solid var(--ink); border-radius:0; display:flex; align-items:center; justify-content:center; color:var(--muted); font:700 6pt 'Exo 2',sans-serif; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:3px; }
+  .qr .qurl{ font:800 6.5pt 'Exo 2',sans-serif; color:var(--ink); letter-spacing:0.01em; }
+
+  .handle{ position:absolute; bottom:0.16in; left:0.5in; z-index:1; color:var(--ink); font-family:'Exo 2',sans-serif; font-weight:800; font-size:8pt; letter-spacing:0.1em; }
+  .handle .bar{ display:inline-block; width:18px; height:2px; background:var(--lime); vertical-align:middle; margin-right:7px; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <!-- ===== HANDBILL 1 (identical to 2 for cheap mass print) ===== -->
+    <div class="half">
+      <div class="inner">
+        <div class="top">
+          <img class="wordmark" src="../../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
+          <div class="crest-top">
+            <img class="leaf" src="../../website/public/images/maple-leaf.png" alt="Ontario" />
+            <div class="teamtag">FRC TEAM [FILL: #]<small>ONTARIO, CANADA</small></div>
+          </div>
+        </div>
+        <div class="seclabel"><span class="rule"></span><span class="txt">01 / RECRUITING NOW</span></div>
+        <h2 class="headline">SHIFT THE <span class="markline">STANDARD.</span></h2>
+        <p class="sub">A new Ontario FRC team built to compete from day one.</p>
+        <ul class="bullets">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>No experience needed</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>Build a real competition robot</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>Win, travel, learn tools</li>
+        </ul>
+        <div class="bottom">
+          <div class="cta">Join SHFT</div>
+          <div class="ctmeta">
+            <span class="ctmeta-info"><b>INFO NIGHT:</b> [FILL: DATE] &middot; [FILL: TIME]</span>
+            <span class="ctmeta-info">[FILL: PLACE / ROOM]</span>
+            <span class="ctmeta-url">shftrobotics.com</span>
+          </div>
+          <div class="qr"><div class="qbox">QR</div><div class="qurl">shftrobotics.com</div></div>
+        </div>
+      </div>
+      <div class="handle"><span class="bar"></span>@shftrobotics</div>
+    </div>
+
+    <div class="cutline"></div>
+
+    <!-- ===== HANDBILL 2 (duplicate) ===== -->
+    <div class="half">
+      <div class="inner">
+        <div class="top">
+          <img class="wordmark" src="../../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
+          <div class="crest-top">
+            <img class="leaf" src="../../website/public/images/maple-leaf.png" alt="Ontario" />
+            <div class="teamtag">FRC TEAM [FILL: #]<small>ONTARIO, CANADA</small></div>
+          </div>
+        </div>
+        <div class="seclabel"><span class="rule"></span><span class="txt">01 / RECRUITING NOW</span></div>
+        <h2 class="headline">SHIFT THE <span class="markline">STANDARD.</span></h2>
+        <p class="sub">A new Ontario FRC team built to compete from day one.</p>
+        <ul class="bullets">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>No experience needed</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>Build a real competition robot</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>Win, travel, learn tools</li>
+        </ul>
+        <div class="bottom">
+          <div class="cta">Join SHFT</div>
+          <div class="ctmeta">
+            <span class="ctmeta-info"><b>INFO NIGHT:</b> [FILL: DATE] &middot; [FILL: TIME]</span>
+            <span class="ctmeta-info">[FILL: PLACE / ROOM]</span>
+            <span class="ctmeta-url">shftrobotics.com</span>
+          </div>
+          <div class="qr"><div class="qbox">QR</div><div class="qurl">shftrobotics.com</div></div>
+        </div>
+      </div>
+      <div class="handle"><span class="bar"></span>@shftrobotics</div>
+    </div>
+
+  </div>
+</body>
+</html>

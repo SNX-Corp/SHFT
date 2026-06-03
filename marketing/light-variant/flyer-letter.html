@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SHFT Recruitment Flyer (Letter 8.5x11)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ---- Print setup: real Letter size, no browser margins ---- */
+  @page { size: 8.5in 11in; margin: 0; }
+
+  :root{
+    --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5;
+    --secondary:#555555; --muted:#737373;
+    --lime:#A6FF00; --lime-hover:#8FE000; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
+  }
+
+  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+  html,body{ margin:0; padding:0; background:#d8d8d8; }
+
+  .page{
+    width:8.5in; height:11in;
+    margin:0 auto;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Raleway',sans-serif;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    padding:0.62in 0.62in 0;
+  }
+
+  .content{ position:relative; z-index:1; display:flex; flex-direction:column; height:100%; }
+
+  /* ---- Top: wordmark + maple-leaf crest / team number ---- */
+  .top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:0.22in; border-bottom:1px solid var(--border);
+  }
+  .wordmark{ height:0.58in; width:auto; display:block; }
+  .crest-top{ display:flex; align-items:center; gap:0.14in; }
+  .leaf{ width:0.5in; height:auto; display:block; }
+  .teamtag{
+    text-align:right; font-family:'Exo 2',sans-serif;
+    font-weight:800; font-size:11pt; letter-spacing:0.16em;
+    color:var(--ink); text-transform:uppercase; line-height:1.25;
+  }
+  .teamtag small{ display:block; color:var(--muted); font-weight:700; font-size:8pt; letter-spacing:0.18em; }
+
+  /* ---- Section label pattern ---- */
+  .seclabel{ margin:0.34in 0 0.12in; display:flex; align-items:center; gap:10px; }
+  .seclabel .rule{ display:inline-block; width:28px; height:2px; background:var(--lime); }
+  .seclabel .txt{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ---- Headline ---- */
+  .headline{
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    font-size:50pt; line-height:0.96;
+    letter-spacing:-0.02em; text-transform:uppercase;
+    color:var(--ink);
+    margin:0 0 0.16in;
+  }
+  .headline .hl-mark{ display:inline-block; border-bottom:6px solid var(--lime); }
+  .subhead{
+    font-family:'Raleway',sans-serif;
+    font-weight:500; font-size:14pt; color:var(--secondary);
+    max-width:6.2in; line-height:1.4; margin:0 0 0.34in;
+  }
+
+  /* ---- Benefit bullets ---- */
+  .benefits{ list-style:none; margin:0 0 0.36in; padding:0; }
+  .benefits li{
+    display:flex; align-items:center; gap:0.16in;
+    font-family:'Exo 2',sans-serif;
+    font-weight:700; font-size:16pt; color:var(--ink);
+    padding:0.12in 0;
+    border-bottom:1px solid var(--border);
+  }
+  .benefits li:first-child{ border-top:1px solid var(--border); }
+  .chip{
+    flex:0 0 auto; width:0.34in; height:0.34in;
+    background:var(--lime); color:var(--lime-text);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .chip svg{ width:0.2in; height:0.2in; }
+
+  /* ---- Info night (the one allowed lime block) ---- */
+  .infonight{
+    background:var(--lime); color:var(--ink);
+    border-radius:0; padding:0.16in 0.22in;
+    font-family:'Exo 2',sans-serif; font-weight:800;
+    text-transform:uppercase; letter-spacing:0.04em;
+    font-size:13pt; margin-bottom:0.3in; line-height:1.3;
+  }
+  .infonight .lbl{ font-size:9pt; letter-spacing:0.2em; opacity:0.72; display:block; margin-bottom:3px; }
+
+  /* ---- CTA + QR row ---- */
+  .cta-row{
+    margin-top:auto; display:flex; align-items:stretch; gap:0.28in;
+  }
+  .cta{
+    flex:1; background:var(--lime); color:var(--lime-text);
+    border-radius:0; display:flex; flex-direction:column;
+    justify-content:center; padding:0.26in 0.3in;
+  }
+  .cta .big{
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:30pt; text-transform:uppercase; line-height:0.98; letter-spacing:-0.02em;
+  }
+  .cta .small{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:11pt; margin-top:6px; letter-spacing:0.01em; }
+
+  .qr{
+    flex:0 0 1.55in; width:1.55in;
+    border:1.5px solid var(--ink); border-radius:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:0.1in;
+  }
+  .qr .qbox{
+    width:1.05in; height:1.05in; border:1.5px solid var(--ink);
+    border-radius:0; display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-family:'Exo 2',sans-serif; font-size:8pt; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.1em; margin-bottom:7px;
+  }
+  .qr .url{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:9.5pt; color:var(--ink); letter-spacing:0.02em; }
+
+  /* ---- Footer: single dark strip ---- */
+  .footer{
+    margin:0.26in -0.62in 0;
+    padding:0.18in 0.62in;
+    background:var(--ink); color:#FFFFFF;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'Exo 2',sans-serif; font-size:9.5pt; font-weight:700; letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+  .footer .left{ color:#FFFFFF; }
+  .footer .tagline{ color:#FFFFFF; }
+  .footer .handle{ color:var(--lime); font-weight:800; letter-spacing:0.04em; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="content">
+      <!-- TOP -->
+      <div class="top">
+        <img class="wordmark" src="../../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
+        <div class="crest-top">
+          <img class="leaf" src="../../website/public/images/maple-leaf.png" alt="Ontario" />
+          <div class="teamtag">
+            FRC TEAM [FILL: #]
+            <small>ONTARIO, CANADA</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION LABEL -->
+      <div class="seclabel">
+        <span class="rule"></span>
+        <span class="txt">01 / RECRUITING NOW</span>
+      </div>
+
+      <!-- HEADLINE -->
+      <h1 class="headline">SHIFT THE <span class="hl-mark">STANDARD.</span></h1>
+      <p class="subhead">A new Ontario FRC team built to compete from day one. No experience needed. We build a real competition robot. You build the skills.</p>
+
+      <!-- BENEFITS -->
+      <ul class="benefits">
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span> No experience needed</li>
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span> Build a real competition robot</li>
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span> Win, travel, learn tools</li>
+      </ul>
+
+      <!-- INFO NIGHT -->
+      <div class="infonight">
+        <span class="lbl">Info Night</span>
+        [FILL: DATE] at [FILL: TIME] &nbsp;/&nbsp; [FILL: PLACE / ROOM / ADDRESS]
+      </div>
+
+      <!-- CTA + QR -->
+      <div class="cta-row">
+        <div class="cta">
+          <div class="big">Join SHFT</div>
+          <div class="small">Scan the code or visit shftrobotics.com. No tryout cuts. Just show up.</div>
+        </div>
+        <div class="qr">
+          <div class="qbox">QR<br/>CODE</div>
+          <div class="url">shftrobotics.com</div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <span class="left">SHFT ROBOTICS &nbsp;/&nbsp; FRC TEAM [FILL: #] &nbsp;/&nbsp; ONTARIO</span>
+        <span class="tagline">SHIFT THE STANDARD.</span>
+        <span class="handle">@SHFTROBOTICS</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

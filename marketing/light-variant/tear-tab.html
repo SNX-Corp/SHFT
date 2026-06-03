@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SHFT Tear-Tab Flyer (Letter 8.5x11)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+
+  :root{
+    --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5;
+    --secondary:#555555; --muted:#737373;
+    --lime:#A6FF00; --lime-hover:#8FE000; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
+  }
+  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ margin:0; padding:0; background:#d8d8d8; }
+
+  .page{
+    width:8.5in; height:11in; margin:0 auto; background:var(--bg); color:var(--ink);
+    font-family:'Raleway',sans-serif; position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+
+  /* MAIN poster body, ~8.4in tall, leaving room for the tab strip */
+  .body{
+    flex:1 1 auto; padding:0.62in 0.62in 0.3in; position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .inner{ position:relative; z-index:1; display:flex; flex-direction:column; height:100%; }
+
+  .top{ display:flex; align-items:center; justify-content:space-between; padding-bottom:0.2in; border-bottom:1px solid var(--border); }
+  .wordmark{ height:0.56in; width:auto; }
+  .crest-top{ display:flex; align-items:center; gap:0.14in; }
+  .leaf{ width:0.48in; height:auto; display:block; }
+  .teamtag{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:11pt; letter-spacing:0.16em; color:var(--ink); text-transform:uppercase; text-align:right; line-height:1.3; }
+  .teamtag small{ display:block; color:var(--muted); font-weight:700; font-size:8pt; letter-spacing:0.18em; }
+
+  .seclabel{ margin:0.3in 0 0.12in; display:flex; align-items:center; gap:10px; }
+  .seclabel .rule{ display:inline-block; width:28px; height:2px; background:var(--lime); }
+  .seclabel .txt{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+
+  .headline{
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    font-size:46pt; line-height:0.96; letter-spacing:-0.02em; color:var(--ink); margin:0 0 0.12in;
+  }
+  .headline .markline{ display:inline-block; border-bottom:5px solid var(--lime); }
+  .sub{ font-family:'Raleway',sans-serif; font-weight:500; font-size:13pt; color:var(--secondary); max-width:6in; line-height:1.4; margin-bottom:0.28in; }
+
+  .bullets{ list-style:none; margin:0 0 0.3in; padding:0; }
+  .bullets li{ display:flex; align-items:center; gap:0.14in; font-family:'Exo 2',sans-serif; font-weight:700; font-size:15pt; color:var(--ink); padding:0.1in 0; border-bottom:1px solid var(--border); }
+  .bullets li:first-child{ border-top:1px solid var(--border); }
+  .bullets .chip{ width:0.3in; height:0.3in; background:var(--lime); color:var(--lime-text); display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+  .bullets .chip svg{ width:0.18in; height:0.18in; }
+
+  .infonight{
+    background:var(--lime); color:var(--ink); border-radius:0; padding:0.13in 0.2in;
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:0.03em;
+    font-size:12pt; line-height:1.3; margin-bottom:0.22in;
+  }
+  .infonight .lbl{ font-size:8pt; letter-spacing:0.2em; opacity:0.72; display:block; margin-bottom:3px; }
+
+  .cta-row{ margin-top:auto; display:flex; align-items:center; gap:0.26in; }
+  .cta{
+    background:var(--lime); color:var(--lime-text); border-radius:0; padding:0.18in 0.32in;
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    font-size:24pt; line-height:1; letter-spacing:-0.02em; white-space:nowrap;
+  }
+  .cta-note{ font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase; font-size:11pt; letter-spacing:0.04em; color:var(--ink); line-height:1.4; }
+  .cta-note .accent{ color:var(--lime-dim); }
+  .qr{ margin-left:auto; flex:0 0 1.25in; width:1.25in; height:1.25in; border:1.5px solid var(--ink); border-radius:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:7px; text-align:center; }
+  .qr .qbox{ width:0.76in; height:0.76in; border:1.5px solid var(--ink); border-radius:0; display:flex; align-items:center; justify-content:center; color:var(--muted); font:700 7pt 'Exo 2',sans-serif; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
+  .qr .qurl{ font:800 8pt 'Exo 2',sans-serif; color:var(--ink); }
+
+  .pulltext{
+    text-align:center; color:var(--ink); font-family:'Exo 2',sans-serif; font-weight:700; font-size:8.5pt;
+    text-transform:uppercase; letter-spacing:0.22em; padding:0.08in 0 0.06in;
+    border-top:1px solid var(--border);
+  }
+
+  /* ===== TEAR-OFF TAB STRIP ===== */
+  .tabs{
+    flex:0 0 1.55in; height:1.55in;
+    display:flex; border-top:1px dashed var(--border);
+  }
+  .tab{
+    flex:1 1 0; min-width:0; position:relative;
+    border-right:1px dashed var(--border);
+    display:flex; align-items:center; justify-content:center;
+    padding:0.08in 0;
+  }
+  .tab:last-child{ border-right:none; }
+  .tab-rot{
+    transform:rotate(-90deg); white-space:nowrap;
+    text-align:center;
+    font-family:'Exo 2',sans-serif;
+  }
+  .tab-rot .h{ display:block; color:var(--ink); font-weight:800; font-size:13pt; letter-spacing:0.06em; }
+  .tab-rot .u{ display:block; color:var(--secondary); font-weight:700; font-size:10pt; letter-spacing:0.04em; margin-top:4px; }
+  .tab-rot .t{ display:block; color:var(--ink); font-weight:800; font-size:7.5pt; letter-spacing:0.12em; text-transform:uppercase; margin-top:4px; }
+  .tab-rot .t .bar{ display:inline-block; width:14px; height:2px; background:var(--lime); vertical-align:middle; margin-right:5px; }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- MAIN BODY -->
+    <div class="body">
+      <div class="inner">
+        <div class="top">
+          <img class="wordmark" src="../../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
+          <div class="crest-top">
+            <img class="leaf" src="../../website/public/images/maple-leaf.png" alt="Ontario" />
+            <div class="teamtag">FRC TEAM [FILL: #]<small>ONTARIO, CANADA</small></div>
+          </div>
+        </div>
+
+        <div class="seclabel"><span class="rule"></span><span class="txt">01 / RECRUITING NOW</span></div>
+
+        <h1 class="headline">SHIFT THE <span class="markline">STANDARD.</span></h1>
+        <p class="sub">A new Ontario FRC team built to compete from day one. No experience needed. You build the skills.</p>
+
+        <ul class="bullets">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>No experience needed</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>Build a real competition robot</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>Win, travel, learn tools</li>
+        </ul>
+
+        <div class="infonight">
+          <span class="lbl">Info Night</span>
+          [FILL: DATE] at [FILL: TIME] &nbsp;/&nbsp; [FILL: PLACE / ROOM / ADDRESS]
+        </div>
+
+        <div class="cta-row">
+          <div class="cta">Join SHFT</div>
+          <div class="cta-note">Tear a tab.<br/><span class="accent">Scan. Show up. Build.</span></div>
+          <div class="qr"><div class="qbox">QR<br/>CODE</div><div class="qurl">shftrobotics.com</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pulltext">&#9662; &nbsp; Take one. Tear a tab below &nbsp; &#9662;</div>
+
+    <!-- TEAR-OFF TABS -->
+    <div class="tabs">
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+      <div class="tab"><div class="tab-rot"><span class="h">@shftrobotics</span><span class="u">shftrobotics.com</span><span class="t"><span class="bar"></span>JOIN THE TEAM</span></div></div>
+    </div>
+
+  </div>
+</body>
+</html>
