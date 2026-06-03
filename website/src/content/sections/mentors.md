@@ -13,13 +13,11 @@ mentors:
       - label: Role
         value: Head Coach
       - label: Expertise
-        value: Strategy · Robot Design · Game Analysis
-      - label: Achievement
-        value: Rookie All-Star (Team 7558 ALT-F4)
+        value: Strategy · Robot Design · Game Analysis · AI-Coding
       - label: Competition
-        value: DCMP & Worlds Qualifier
+        value: 10+ years of VEX & FRC
       - label: Recognition
-        value: Two-time district playoff team
+        value: Unlock maximum potential.
       - label: Philosophy
         value: Students first. Standard always.
   - name: Noeen Kashif
@@ -31,11 +29,11 @@ mentors:
       - label: Role
         value: Lead Mentor
       - label: Expertise
-        value: Design & Manufacturing, Operations, Strategy, Ai-Coding
+        value: Design & Manufacturing, Operations, Strategy, AI-Coding
       - label: Achievement
         value: Coach for the fastest growing team in Ontario
       - label: Competition
-        value: DCMP & Worlds Qualifier. Better. Every. Year.
+        value: Provincials & Worlds Qualifier. Better. Every. Year.
       - label: Recognition
         value: Program execution & discipline
       - label: Philosophy
