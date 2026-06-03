@@ -10,8 +10,6 @@ const d = entry!.data as {
   headline_line_2: string;
   intro: string;
   price_card_label: string;
-  price_value: string;
-  price_unit: string;
   price_description: string;
   payment_steps: Array<{ title: string; description: string }>;
   referral_label: string;
@@ -45,12 +43,7 @@ function renderInlineMd(text: string, strongClass = 'text-white') {
       <div class="border border-white/10 p-6 sm:p-8 lg:p-12 relative">
         <div class="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
 
-        <div class="text-label-size font-heading text-accent mb-6">{d.price_card_label}</div>
-
-        <div class="flex items-baseline gap-3 mb-2">
-          <span class="font-display font-black text-[clamp(3rem,12vw,5rem)] text-white leading-none">{d.price_value}</span>
-          <span class="font-heading text-[15px] text-white/55">{d.price_unit}</span>
-        </div>
+        <div class="text-label-size font-heading text-accent mb-4">{d.price_card_label}</div>
 
         <p class="font-body text-[15px] text-white/60 mb-10 leading-relaxed">
           {d.price_description}

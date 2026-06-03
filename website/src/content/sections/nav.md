@@ -6,7 +6,7 @@ links:
     href: "#vision"
   - label: "Mentor"
     href: "#mentor"
-  - label: "Pricing"
+  - label: "Program"
     href: "#pricing"
   - label: "Experience"
     href: "#program"

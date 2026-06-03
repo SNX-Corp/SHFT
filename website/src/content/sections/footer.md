@@ -9,6 +9,6 @@ nav_links:
     href: "#mentor"
   - label: "Experience"
     href: "#program"
-  - label: "Pricing"
+  - label: "Program"
     href: "#pricing"
 ---

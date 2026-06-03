@@ -3,7 +3,7 @@ section_number: "05"
 section_label: "THE EXPERIENCE"
 headline_line_1: "WHAT YOUR CHILD"
 headline_line_2: "ACTUALLY GETS."
-intro: "This isn't a classroom. It's a launchpad. Here's what $10,000 buys, and why families who understand the value never look back."
+intro: "This isn't a classroom. It's a launchpad. Here's what your child actually gets, and why families who understand the value never look back."
 cards:
   - number: "01"
     title: "World-Class Facility"
