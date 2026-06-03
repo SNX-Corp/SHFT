@@ -77,14 +77,18 @@ const intensityLabels: Record<string, string> = {
           <div class="space-y-10 lg:space-y-12">
             {d.phases.map((phase) => (
               <div class="relative">
-                <!-- Dot: centered on the line -->
+                <!-- Marker: lightning bolt centered on the line -->
                 <div
                   class:list={[
-                    "absolute top-[0.45rem] left-[-2rem] lg:left-[-3rem] -translate-x-1/2 w-3 h-3 rounded-full ring-4 ring-[#161616]",
-                    intensityColors[phase.intensity],
+                    "absolute top-[0.2rem] left-[-2rem] lg:left-[-3rem] -translate-x-1/2 flex items-center justify-center w-[18px] h-[18px] rounded-full bg-[#161616]",
+                    phase.intensity === 'high' ? 'text-accent' : phase.intensity === 'medium' ? 'text-accent/70' : 'text-white/45',
                   ]}
                   data-timeline-phase={phase.period}
-                ></div>
+                >
+                  <svg class="w-[11px] h-[11px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                </div>
 
                 <!-- Period badge -->
                 <div class="flex items-center gap-3 mb-2">

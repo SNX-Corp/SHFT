@@ -90,7 +90,9 @@ function renderInlineMd(text: string, strongClass = 'text-white') {
                 <div class="font-heading font-semibold text-[15px] text-white">{item.label}</div>
                 <div class="font-body text-[14px] text-white/55 mt-1">{item.description}</div>
               </div>
-              <div class="w-2 h-2 bg-accent shrink-0 ml-4 pulse-square" style={`animation-delay: ${0.3 * (d.cost_breakdown.indexOf(item))}s`}></div>
+              <svg class="w-4 h-4 text-accent shrink-0 ml-4 pulse-square" style={`animation-delay: ${0.3 * (d.cost_breakdown.indexOf(item))}s`} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
             </div>
           ))}
         </div>

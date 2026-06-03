@@ -12,24 +12,7 @@ const { number, text } = Astro.props;
   <span class="w-8 h-px bg-accent shrink-0" aria-hidden="true"></span>
   <span class="flex items-center gap-2 text-label-size font-heading text-text-muted">
     <span>{number}</span>
-    <svg
-      class="section-bolt shrink-0 text-accent"
-      viewBox="0 0 24 24"
-      width="12"
-      height="12"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-    </svg>
+    <span class="opacity-60" aria-hidden="true">&middot;</span>
     <span>{text}</span>
   </span>
 </div>
-
-<style>
-  /* Lightning bolt echoes the SHFT logo mark. Subtle lime glow to make it read as
-     an accent without shouting. */
-  .section-bolt {
-    filter: drop-shadow(0 0 5px rgba(166, 255, 0, 0.45));
-  }
-</style>
