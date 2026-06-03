@@ -17,30 +17,35 @@ const navLinks = d.links;
   data-nav
 >
   <div class="relative content-width box-border max-w-full flex items-center justify-center h-16 lg:h-20">
-    <!-- Centered link cluster: 2 links, logo gap, 2 links -->
-    <nav class="hidden lg:flex items-center gap-7" data-nav-chrome>
-      {navLinks.slice(0, 2).map((link) => (
-        <a
-          href={link.href}
-          class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
-          data-nav-link
-        >
-          <RollText text={link.label} />
-        </a>
-      ))}
+    <!-- Symmetric link layout: equal side columns flank the centred logo gap,
+         so the links sit the same distance from the wordmark on both sides. -->
+    <nav class="hidden lg:grid w-full grid-cols-[1fr_auto_1fr] items-center" data-nav-chrome>
+      <div class="flex items-center justify-end gap-7">
+        {navLinks.slice(0, 2).map((link) => (
+          <a
+            href={link.href}
+            class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
+            data-nav-link
+          >
+            <RollText text={link.label} />
+          </a>
+        ))}
+      </div>
 
-      <!-- Reserved gap the centered morphing logo sits over -->
+      <!-- Reserved gap the centred morphing logo sits over -->
       <span class="block shrink-0" style="width: 200px;" aria-hidden="true"></span>
 
-      {navLinks.slice(2, 4).map((link) => (
-        <a
-          href={link.href}
-          class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
-          data-nav-link
-        >
-          <RollText text={link.label} />
-        </a>
-      ))}
+      <div class="flex items-center justify-start gap-7">
+        {navLinks.slice(2, 4).map((link) => (
+          <a
+            href={link.href}
+            class="font-heading font-semibold text-[13px] uppercase tracking-[0.1em] text-white hover:text-accent transition-colors duration-200"
+            data-nav-link
+          >
+            <RollText text={link.label} />
+          </a>
+        ))}
+      </div>
     </nav>
 
     <!-- Far-right CTA -->
