@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SHFT Recruitment Kit Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --lime:#A6FF00; --ink:#0D0D0D; --panel:#141414; --line:#262626; --grey:#8a8a8a; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--ink); color:#fff; font-family:'Raleway',sans-serif; -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1140px; margin:0 auto; padding:40px 24px 80px; }
+  header{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:8px; }
+  header img{ height:38px; width:auto; }
+  .htitle{ font-family:'Orbitron',sans-serif; font-weight:900; letter-spacing:.04em; font-size:15px; text-transform:uppercase; }
+  .htitle .lime{ color:var(--lime); }
+  .sub{ color:var(--grey); font-size:13px; margin-top:2px; }
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; margin:22px 0 10px; }
+  .chip{ font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--lime); border:1px solid #2c3a00; background:#121a00; padding:5px 10px; border-radius:99px; }
+  .lead{ color:#cfcfcf; font-size:14.5px; line-height:1.6; max-width:680px; margin:14px 0 6px; }
+  .seclabel{ display:flex; align-items:center; gap:10px; font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.12em; font-size:12px; color:#fff; margin:46px 0 18px; }
+  .seclabel::before{ content:"\26A1"; color:var(--lime); font-size:15px; }
+  .seclabel::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:border-color .15s, transform .15s, box-shadow .15s; }
+  .card:hover{ border-color:#3a4d00; transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.5); }
+  .shot{ background:#000; display:flex; align-items:center; justify-content:center; padding:14px; min-height:200px; }
+  .shot img{ max-width:100%; max-height:460px; height:auto; border-radius:4px; display:block; }
+  .meta{ padding:14px 16px 16px; border-top:1px solid var(--line); }
+  .name{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:14.5px; }
+  .dim{ color:var(--grey); font-size:12px; margin-top:3px; }
+  .links{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .btn{ font-size:11.5px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; padding:6px 11px; border-radius:6px; border:1px solid var(--line); color:#ddd; transition:all .12s; }
+  .btn:hover{ border-color:var(--lime); color:#fff; }
+  .btn.pdf{ color:var(--ink); background:var(--lime); border-color:var(--lime); }
+  .btn.pdf:hover{ opacity:.88; }
+  .docs{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; }
+  .doc{ display:block; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; transition:border-color .12s; }
+  .doc:hover{ border-color:var(--lime); }
+  .doc b{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:13.5px; }
+  .doc span{ display:block; color:var(--grey); font-size:12px; margin-top:3px; }
+  footer{ margin-top:54px; border-top:1px solid var(--line); padding-top:22px; color:var(--grey); font-size:12.5px; line-height:1.7; }
+  footer code{ color:var(--lime); background:#121a00; padding:1px 6px; border-radius:4px; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../../website/public/images/logo/wordmark.png" alt="SHFT"/>
+    <div>
+      <div class="htitle">Recruitment <span class="lime">Kit</span>: Visual Preview</div>
+      <div class="sub">Every visual asset rendered in one place. Click any card to open the editable source.</div>
+    </div>
+  </header>
+
+  <div class="chips">
+    <span class="chip">Lime #A6FF00</span>
+    <span class="chip">Zero em-dashes</span>
+    <span class="chip">8 assets</span>
+    <span class="chip">4 print PDFs</span>
+  </div>
+  <p class="lead">These are live renders of the HTML templates in the kit. The <b>[FILL]</b> spots are intentional. Drop in your real Info Night date, team number, and signup link, then re-open the source file to update. Print PDFs are ready to send to a shop or print at home.</p>
+
+  <div class="seclabel">Social</div>
+  <div class="grid">
+    <div class="card">
+      <div class="shot"><img src="post-template.png" alt="Instagram post"/></div>
+      <div class="meta"><div class="name">Feed Post</div><div class="dim">Instagram / TikTok, 1080 x 1080</div>
+        <div class="links"><a class="btn" href="post-template.png">Full image</a><a class="btn" href="../social/post-template.html">Edit source</a></div></div>
+    </div>
+    <div class="card">
+      <div class="shot"><img src="story-template.png" alt="Instagram story"/></div>
+      <div class="meta"><div class="name">Story</div><div class="dim">Instagram / TikTok, 1080 x 1920</div>
+        <div class="links"><a class="btn" href="story-template.png">Full image</a><a class="btn" href="../social/story-template.html">Edit source</a></div></div>
+    </div>
+  </div>
+
+  <div class="seclabel">Print</div>
+  <div class="grid">
+    <div class="card">
+      <div class="shot"><img src="flyer-letter.png" alt="Flyer"/></div>
+      <div class="meta"><div class="name">Flyer</div><div class="dim">8.5 x 11 in, full page</div>
+        <div class="links"><a class="btn pdf" href="flyer-letter.pdf">Print PDF</a><a class="btn" href="../print/flyer-letter.html">Edit source</a></div></div>
+    </div>
+    <div class="card">
+      <div class="shot"><img src="poster-tabloid.png" alt="Poster"/></div>
+      <div class="meta"><div class="name">Hallway Poster</div><div class="dim">11 x 17 in, read from 10 feet</div>
+        <div class="links"><a class="btn pdf" href="poster-tabloid.pdf">Print PDF</a><a class="btn" href="../print/poster-tabloid.html">Edit source</a></div></div>
+    </div>
+    <div class="card">
+      <div class="shot"><img src="half-page.png" alt="Half-page handbills"/></div>
+      <div class="meta"><div class="name">Half-Page Handbills</div><div class="dim">Two per sheet, cheap mass handout</div>
+        <div class="links"><a class="btn pdf" href="half-page.pdf">Print PDF</a><a class="btn" href="../print/half-page.html">Edit source</a></div></div>
+    </div>
+    <div class="card">
+      <div class="shot"><img src="tear-tab.png" alt="Tear-off tab flyer"/></div>
+      <div class="meta"><div class="name">Tear-Off Tab Flyer</div><div class="dim">Community board, pull-tab handle</div>
+        <div class="links"><a class="btn pdf" href="tear-tab.pdf">Print PDF</a><a class="btn" href="../print/tear-tab.html">Edit source</a></div></div>
+    </div>
+  </div>
+
+  <div class="seclabel">Ads</div>
+  <div class="grid">
+    <div class="card">
+      <div class="shot"><img src="ad-creative.png" alt="Ad creative"/></div>
+      <div class="meta"><div class="name">Paid Social Creative</div><div class="dim">Meta / IG ad, 1080 x 1080</div>
+        <div class="links"><a class="btn" href="ad-creative.png">Full image</a><a class="btn" href="../ads/ad-creative.html">Edit source</a><a class="btn" href="../ads/meta-ads.md">Ad copy</a></div></div>
+    </div>
+  </div>
+
+  <div class="seclabel">Merch</div>
+  <div class="grid">
+    <div class="card">
+      <div class="shot"><img src="merch-mockups.png" alt="Merch mockups"/></div>
+      <div class="meta"><div class="name">Placement Mockups</div><div class="dim">Tee, hoodie, sticker, cap. Layout only, not final art</div>
+        <div class="links"><a class="btn" href="merch-mockups.png">Full image</a><a class="btn" href="../merch/mockups.html">Edit source</a><a class="btn" href="../merch/merch-specs.md">Specs</a></div></div>
+    </div>
+  </div>
+
+  <div class="seclabel">The Written Playbook</div>
+  <div class="docs">
+    <a class="doc" href="../README.md"><b>README</b><span>Start here. The full map of the kit.</span></a>
+    <a class="doc" href="../TODO-from-you.md"><b>TODO from you</b><span>The blanks to fill before launch.</span></a>
+    <a class="doc" href="../PLAN.md"><b>Recruitment plan</b><span>Personas, 8-week calendar, budget, metrics.</span></a>
+    <a class="doc" href="../social/captions.md"><b>Captions</b><span>24+ ready-to-paste IG / TikTok captions.</span></a>
+    <a class="doc" href="../social/content-calendar.md"><b>Content calendar</b><span>A 4-week posting schedule.</span></a>
+    <a class="doc" href="../social/reel-scripts.md"><b>Reel scripts</b><span>5 short-form video scripts.</span></a>
+    <a class="doc" href="../ads/meta-ads.md"><b>Meta ads</b><span>Audiences, copy, budget plan.</span></a>
+    <a class="doc" href="../merch/vector-plan.md"><b>Vector art guide</b><span>Export print files from SHFT logo.ai.</span></a>
+    <a class="doc" href="../events/info-night-runofshow.md"><b>Info night</b><span>Run-of-show and prep checklist.</span></a>
+    <a class="doc" href="../events/school-outreach-emails.md"><b>School outreach</b><span>Ready-to-send teacher and principal emails.</span></a>
+    <a class="doc" href="../events/parent-faq.md"><b>Parent FAQ</b><span>The 10 questions parents actually ask.</span></a>
+    <a class="doc" href="../events/signup-form.md"><b>Signup form</b><span>Exact fields for a Google Form.</span></a>
+  </div>
+
+  <footer>
+    Open this file any time at <code>~/SHFT-repo/marketing/preview/index.html</code>. The PNGs in this folder double as ready-to-post images once you swap the placeholders. Markdown links open as text. For a nicer read, open them in your editor or a Markdown viewer.
+  </footer>
+</div>
+</body>
+</html>

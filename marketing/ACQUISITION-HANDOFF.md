@@ -1,4 +1,4 @@
-# SHFT — Student Acquisition + Site + Sponsor Handoff
+# SHFT: Student Acquisition + Site + Sponsor Handoff
 
 The plan to fill the founding roster and stand up the money side. This sits on
 top of the existing `marketing/` kit (which handles the day-to-day social,
@@ -60,7 +60,7 @@ Merch is identity, walking advertising, and a soft revenue line. Make it feel li
 - **Spec it tasteful:** dark stage, one spotlight, the lime bolt catching the light as it turns. Pair with `marketing/merch/merch-specs.md` for what's actually printable.
 - **Caution:** keep models small (<2–3 MB each) and lazy-load below the fold so it doesn't hurt mobile load.
 
-### 3c. "Where this takes you" — University Outcomes  ·  **P0 (this is the parent-closer)**
+### 3c. "Where this takes you": University Outcomes  ·  **P0 (this is the parent-closer)**
 The single most persuasive section for the achievement parent. Make the admissions case explicit.
 - **Content:** FRC as one of the most recognized STEM extracurriculars; alumni destinations (MIT, Waterloo Engineering, U of T, Stanford, Toronto Met, etc.); the portfolio + leadership + mentor-letter story; scholarship dollars FIRST awards annually (FIRST and its sponsors award tens of millions in scholarships, cite the current figure). University/word-marks as a logo wall (respect usage rules; "alumni attend" framing).
 - **Build:** `Outcomes.astro` + `outcomes.md`. Stat tiles (Orbitron numbers) + a logo strip + 2–3 short proof lines. No fluff.
@@ -149,18 +149,18 @@ The kit's social/print/events content feeds these. What's specific here is *wher
 
 Sequence so each thing you ship moves the funnel.
 
-**Phase 1 — make the site close (P0):**
+**Phase 1. Make the site close (P0):**
 1. The Application (`/apply` + form + lead tracking).
 2. Open House / Info Night section (date + RSVP + countdown).
 3. University Outcomes section.
 4. Founding-cohort / scarcity band.
 
-**Phase 2 — credibility + money (P1):**
+**Phase 2. Credibility + money (P1):**
 5. Proof & credibility wall (cluster the existing partner stats).
 6. Parent hub + first testimonials.
 7. **Sponsor page** + the tier package + the downloadable deck.
 
-**Phase 3 — delight + identity (P1/P2):**
+**Phase 3. Delight + identity (P1/P2):**
 8. Merch showcase with 3D mockups.
 9. Countdown ribbon, momentum polish.
 
