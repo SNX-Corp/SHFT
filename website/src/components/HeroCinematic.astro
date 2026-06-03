@@ -30,7 +30,7 @@ const d = entry!.data as {
     <!-- Centered content: the wordmark is the vertical centrepiece (middle grid
          row sits at 50%); the maple-leaf crest hugs it above, the copy below. -->
     <div
-      class="hero-readable absolute inset-0 z-[var(--z-hero-text)] content-width box-border max-w-full grid grid-rows-[1fr_auto_1fr] justify-items-center text-center pointer-events-none"
+      class="hero-readable absolute inset-0 z-[var(--z-hero-text)] content-width box-border max-w-full grid grid-rows-[0.92fr_auto_1.08fr] sm:grid-rows-[1fr_auto_1fr] justify-items-center text-center pointer-events-none"
       data-hero-copy
     >
       <!-- Crest: maple leaf + eyebrow, sitting just above the wordmark -->
@@ -88,6 +88,13 @@ const d = entry!.data as {
   .hero-logo-slot {
     height: var(--hero-logo-h, clamp(4.75rem, 18vh, 12.5rem));
     width: 1px;
+  }
+  /* On phones the width-capped wordmark is shorter than 18vh, so trim the slot
+     to sit snugly around it (less dead space below the logo). */
+  @media (max-width: 640px) {
+    .hero-logo-slot {
+      height: clamp(5rem, 14vh, 7.5rem);
+    }
   }
 
   /* Full-bleed background video, dimmed so white copy reads cleanly over it */

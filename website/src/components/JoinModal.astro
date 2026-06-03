@@ -12,8 +12,12 @@ const d = entry!.data as {
   contact_phone: string;
 };
 
-// tel: links need the phone stripped to digits + leading + (if present)
-const telHref = `tel:${d.contact_phone.replace(/[^\d+]/g, '')}`;
+// The phone opens a pre-filled SMS draft so an inbound text is easy to spot
+// (and respond to / unblock from spam). `?&body=` is the cross-platform form
+// that works on both iOS and Android.
+const phoneDigits = d.contact_phone.replace(/[^\d+]/g, '');
+const smsBody = "Hi! I'm interested in joining Team SHFT. (Sent from your website.)";
+const smsHref = `sms:${phoneDigits}?&body=${encodeURIComponent(smsBody)}`;
 ---
 
 <div
@@ -107,9 +111,9 @@ const telHref = `tel:${d.contact_phone.replace(/[^\d+]/g, '')}`;
           </button>
         </a>
 
-        <!-- Phone row -->
+        <!-- Phone row (opens a pre-filled text) -->
         <a
-          href={telHref}
+          href={smsHref}
           class="group flex items-center justify-between gap-3 py-4 hover:border-accent/40 transition-colors duration-150"
         >
           <div class="flex items-center gap-3 min-w-0">
@@ -117,7 +121,7 @@ const telHref = `tel:${d.contact_phone.replace(/[^\d+]/g, '')}`;
               <path d="M3 2.5h2.5l1 3-1.5 1c.8 1.8 2.2 3.2 4 4l1-1.5 3 1V13c0 .3-.2.5-.5.5C7 13.5 2.5 9 2.5 3c0-.3.2-.5.5-.5z"/>
             </svg>
             <div class="min-w-0">
-              <div class="text-label-size font-heading text-text-muted mb-0.5">Phone / SMS</div>
+              <div class="text-label-size font-heading text-text-muted mb-0.5">Text us</div>
               <div class="font-body text-[14px] text-white truncate">{d.contact_phone}</div>
             </div>
           </div>
@@ -134,7 +138,7 @@ const telHref = `tel:${d.contact_phone.replace(/[^\d+]/g, '')}`;
 
         <!-- Footnote -->
         <p class="font-body text-[11px] text-white/35 mt-6 text-center">
-          Tap email or phone to open directly. Or just copy and paste.
+          Tap to email, or send a pre-written text. Or just copy and paste.
         </p>
       </div>
     </div>

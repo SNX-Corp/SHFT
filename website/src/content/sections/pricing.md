@@ -7,7 +7,7 @@ intro: "FRC is expensive. We don't hide that. Here's exactly what it costs, wher
 price_card_label: "REGISTRATION FEE"
 price_value: "$10K"
 price_unit: "per student"
-price_description: "Per season. Covers everything: robot, tools, competitions, coaching, facility, food, and transport."
+price_description: "Per season. Covers the robot, tools, competitions, coaching, facility, food, and robot transport. Student travel is not included."
 payment_steps:
   - title: "Meet with us"
     description: "We map out the season with your family and lock in your spot"
@@ -31,8 +31,8 @@ cost_breakdown:
     description: "Dedicated workshop space year-round"
   - label: "Food & Meals"
     description: "During build sessions and competitions"
-  - label: "Transportation"
-    description: "Travel to and from competitions"
+  - label: "Robot Transport"
+    description: "Getting the robot and equipment to and from competitions. Student travel is not included."
   - label: "Professional Coaching"
     description: "Expert mentorship and instruction"
 ---
