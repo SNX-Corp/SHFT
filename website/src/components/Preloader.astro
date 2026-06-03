@@ -40,19 +40,21 @@ const LOGO = '/images/logo/wordmark.png';
     /* logo sized to the hero wordmark */
     --lh: clamp(4.75rem, 18vh, 12.5rem);
     --logo-w: calc(var(--lh) * 1225 / 364);
+    /* seam (where the logo straddles + doors split) = hero logo centre;
+       the boot script measures the real hero slot and overrides this. */
+    --seam: 37%;
   }
 
   .panel {
     position: absolute;
     left: 0;
     right: 0;
-    height: 50%;
     overflow: hidden;
     background: var(--panel);
     will-change: transform;
   }
-  .panel.top { top: 0; }
-  .panel.bottom { top: 50%; }
+  .panel.top { top: 0; height: var(--seam); }
+  .panel.bottom { top: var(--seam); height: calc(100% - var(--seam)); }
   /* hairline seam to telegraph the split */
   .panel.top::after,
   .panel.bottom::before {
@@ -152,6 +154,18 @@ const LOGO = '/images/logo/wordmark.png';
 
     // Cover the page immediately and gate the hero intro until the doors open.
     root.classList.add('shft-preloading');
+
+    // Line the seam (and the logo that straddles it) up with the real hero
+    // wordmark, so the mark is in the exact same spot when the doors open.
+    function placeSeam() {
+      var slot = document.querySelector('[data-hero-logo-slot]');
+      if (!slot) return;
+      var r = slot.getBoundingClientRect();
+      var y = ((r.top + r.height / 2) / window.innerHeight) * 100;
+      if (y > 8 && y < 92) pre.style.setProperty('--seam', y.toFixed(2) + '%');
+    }
+    requestAnimationFrame(function () { requestAnimationFrame(placeSeam); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeSeam);
 
     var WAIT = 1200; // closed time before the doors open (kept snappy)
     var DOOR = 950;  // door animation + small buffer
