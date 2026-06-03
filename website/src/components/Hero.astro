@@ -51,14 +51,15 @@ const d = entry!.data as {
         <!-- Logo slot: the morphing wordmark sits centered here at rest -->
         <div class="hero-logo-slot" data-hero-logo-slot aria-hidden="true"></div>
 
-        <!-- Tagline + credibility lines -->
-        <div class="mt-8 sm:mt-10 flex flex-col items-center gap-3.5" data-hero-sub>
+        <!-- Tagline + credibility strip -->
+        <div class="mt-7 sm:mt-9 flex flex-col items-center gap-5" data-hero-sub>
           <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(1rem,1.3vw,1.15rem)] text-white/70 max-w-xl leading-relaxed">
             {d.subtitle}
           </p>
-          <div class="flex flex-col items-center gap-1.5 font-heading text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.18em] text-white/45">
-            <span>Partnered with <span class="font-bold" style="color: #FF4242">{d.partner}</span></span>
-            <span>Sponsored by <span class="font-bold" style="color: #4D7DFF">{d.sponsor}</span></span>
+          <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-heading text-[10.5px] sm:text-[11.5px] font-semibold uppercase tracking-[0.22em] text-white/40">
+            <span>Partnered with <span class="font-bold tracking-[0.14em]" style="color: #FF4242">{d.partner}</span></span>
+            <span class="hidden sm:block h-3 w-px bg-white/15" aria-hidden="true"></span>
+            <span>Sponsored by <span class="font-bold tracking-[0.14em]" style="color: #4D7DFF">{d.sponsor}</span></span>
           </div>
         </div>
 
