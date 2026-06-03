@@ -52,13 +52,6 @@ function getInitials(name: string): string {
       return (
         <article class:list={['mentor-feature', i > 0 && 'mentor-feature--divider']}>
 
-          <!-- Oversized name -->
-          <div class="name-anchor" aria-hidden="true">
-            <span class="font-display font-black uppercase name-text">
-              {mentor.name}
-            </span>
-          </div>
-
           <!-- Content grid: portrait + body -->
           <div class:list={[
             'feature-grid',
@@ -89,8 +82,11 @@ function getInitials(name: string): string {
             <!-- Editorial body -->
             <div class="feature-body">
 
-              <!-- Role eyebrow -->
-              <div class="role-eyebrow text-label-size font-heading">{mentor.role_tagline.toUpperCase()}</div>
+              <!-- Name + role, inline with the body text -->
+              <header class="feature-head">
+                <h3 class="name-text font-display font-black uppercase">{mentor.name}</h3>
+                <div class="role-eyebrow text-label-size font-heading">{mentor.role_tagline.toUpperCase()}</div>
+              </header>
 
               <!-- Two-column bio -->
               <div class="bio-columns">
@@ -132,22 +128,20 @@ function getInitials(name: string): string {
     background: var(--color-border);
   }
 
-  /* ── Name anchor: oversized Orbitron behind the card ── */
-  .name-anchor {
-    overflow: hidden;
-    margin-bottom: -0.15em; /* pull content up under the name for overlap feel */
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
+  /* ── Name sits at the top of the text column (inline with the body) ── */
+  .feature-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
   }
 
   .name-text {
-    display: block;
-    font-size: clamp(2.75rem, 7vw, 6rem);
+    margin: 0;
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
     letter-spacing: -0.03em;
-    line-height: 0.92;
+    line-height: 0.95;
     color: var(--color-text-primary);
-    padding-bottom: 0.12em;
   }
 
   /* ── Feature article ── */
@@ -169,13 +163,13 @@ function getInitials(name: string): string {
 
   @media (min-width: 1024px) {
     .feature-grid {
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 420px 1fr;
       gap: 5rem;
       align-items: start;
     }
 
     .feature-grid--portrait-right {
-      grid-template-columns: 1fr 360px;
+      grid-template-columns: 1fr 420px;
     }
 
     .feature-grid--portrait-right .portrait-wrap {
@@ -194,7 +188,7 @@ function getInitials(name: string): string {
 
   .portrait {
     width: 100%;
-    max-width: 360px;
+    max-width: 420px;
   }
 
   @media (max-width: 1023px) {
