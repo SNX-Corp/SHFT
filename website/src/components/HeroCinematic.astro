@@ -30,12 +30,13 @@ const d = entry!.data as {
     <!-- Centered content. The big wordmark itself lives in the nav (it morphs up on scroll); this slot reserves its space. -->
     <div class="hero-readable pointer-events-none relative z-[var(--z-hero-text)] content-width box-border max-w-full text-center" data-hero-copy>
       <div class="flex flex-col items-center">
-        <!-- Eyebrow -->
-        <div class="flex items-center gap-3 mb-6 sm:mb-8" data-hero-eyebrow>
+        <!-- Eyebrow (mirrored spacer on the right keeps the text optically centered) -->
+        <div class="flex items-center justify-center gap-3 mb-6 sm:mb-8" data-hero-eyebrow>
           <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
           <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/80">
             {d.eyebrow}
           </span>
+          <span class="block w-1.5 h-1.5 rounded-full invisible" aria-hidden="true"></span>
         </div>
 
         <!-- Logo slot: the morphing wordmark sits centered here at rest -->
