@@ -10,6 +10,8 @@ const d = entry!.data as {
   headline_line_2: string;
   headline_line_3: string;
   subtitle: string;
+  partner: string;
+  sponsor: string;
   cta_primary_label: string;
   cta_primary_href: string;
   cta_secondary_label: string;
@@ -49,10 +51,16 @@ const d = entry!.data as {
         <!-- Logo slot: the morphing wordmark sits centered here at rest -->
         <div class="hero-logo-slot" data-hero-logo-slot aria-hidden="true"></div>
 
-        <!-- Tagline -->
-        <p class="font-heading font-medium text-[1.1rem] sm:text-[clamp(1.25rem,1.8vw,1.6rem)] text-white/75 max-w-2xl mt-8 sm:mt-10 leading-relaxed" data-hero-sub>
-          {d.subtitle}
-        </p>
+        <!-- Tagline + credibility lines -->
+        <div class="mt-8 sm:mt-10 flex flex-col items-center gap-3.5" data-hero-sub>
+          <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(1rem,1.3vw,1.15rem)] text-white/70 max-w-xl leading-relaxed">
+            {d.subtitle}
+          </p>
+          <div class="flex flex-col items-center gap-1.5 font-heading text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.18em] text-white/45">
+            <span>Partnered with <span class="text-accent font-bold">{d.partner}</span></span>
+            <span>Sponsored by <span class="text-accent font-bold">{d.sponsor}</span></span>
+          </div>
+        </div>
 
         <!-- CTA -->
         <div class="pointer-events-auto mt-8 sm:mt-10" data-hero-cta>
