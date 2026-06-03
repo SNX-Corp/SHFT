@@ -12,17 +12,9 @@ const d = entry!.data as {
   price_card_label: string;
   price_description: string;
   payment_steps: Array<{ title: string; description: string }>;
-  referral_label: string;
-  referral_text: string;
   breakdown_label: string;
   cost_breakdown: Array<{ label: string; description: string }>;
-  transparency_note: string;
 };
-
-// Convert simple **bold** markdown to <strong class="text-white">…</strong> in dark-bg copy
-function renderInlineMd(text: string, strongClass = 'text-white') {
-  return text.replace(/\*\*(.+?)\*\*/g, `<strong class="${strongClass}">$1</strong>`);
-}
 ---
 
 <section id="pricing" class="py-16 lg:py-28 bg-surface-alt text-text-inverse">
@@ -49,8 +41,8 @@ function renderInlineMd(text: string, strongClass = 'text-white') {
           {d.price_description}
         </p>
 
-        <!-- Payment steps -->
-        <div class="space-y-6 mb-10">
+        <!-- Join steps -->
+        <div class="space-y-6">
           {d.payment_steps.map((step, i) => (
             <div class="flex gap-4">
               <div class:list={[
@@ -63,12 +55,6 @@ function renderInlineMd(text: string, strongClass = 'text-white') {
               </div>
             </div>
           ))}
-        </div>
-
-        <!-- Referral highlight -->
-        <div class="bg-accent/10 border border-accent/20 p-6">
-          <div class="font-heading font-bold text-[14px] text-accent mb-2">{d.referral_label}</div>
-          <p class="font-body text-[14px] text-white/60 leading-relaxed" set:html={renderInlineMd(d.referral_text)}></p>
         </div>
       </div>
 
