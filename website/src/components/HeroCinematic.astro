@@ -54,9 +54,9 @@ const d = entry!.data as {
       <!-- Logo slot: the morphing wordmark sits centred here at rest -->
       <div class="hero-logo-slot" data-hero-logo-slot aria-hidden="true"></div>
 
-      <!-- Copy: tagline + credibility strip + CTA, hugging the wordmark from below -->
-      <div class="self-start flex flex-col items-center pt-8 sm:pt-10">
-        <div class="flex flex-col items-center gap-5" data-hero-sub>
+      <!-- Copy: tagline + credibility strip + CTA, hugging the wordmark from below (tight, lifted) -->
+      <div class="self-start flex flex-col items-center pt-3 sm:pt-4">
+        <div class="flex flex-col items-center gap-3" data-hero-sub>
           <p class="font-heading font-medium text-[0.98rem] sm:text-[clamp(1rem,1.3vw,1.15rem)] text-white/85 max-w-xl leading-relaxed">
             {d.subtitle}
           </p>
@@ -66,8 +66,8 @@ const d = entry!.data as {
             <span>Sponsored by <span class="font-bold tracking-[0.14em]" style="color: #6E97FF">{d.sponsor}</span></span>
           </div>
         </div>
-        <div class="pointer-events-auto mt-8 sm:mt-10" data-hero-cta>
-          <Button href={d.cta_primary_href} variant="primary" size="large" data-open-join-modal>{d.cta_primary_label}</Button>
+        <div class="pointer-events-auto mt-5" data-hero-cta>
+          <Button href={d.cta_primary_href} variant="outline-accent" size="large" class="backdrop-blur-[2px]" data-open-join-modal>{d.cta_primary_label}</Button>
         </div>
       </div>
     </div>

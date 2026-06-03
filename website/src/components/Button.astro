@@ -1,7 +1,7 @@
 ---
 interface Props {
   href?: string;
-  variant?: 'primary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'outline' | 'outline-accent' | 'ghost';
   size?: 'default' | 'large';
   class?: string;
   [key: string]: any;
@@ -21,6 +21,7 @@ const sizeClasses = {
 const variantClasses = {
   primary: 'bg-accent text-accent-text hover:bg-accent-hover active:scale-[0.97]',
   outline: 'border border-border text-text-primary hover:border-text-primary hover:bg-surface active:scale-[0.97]',
+  'outline-accent': 'border-2 border-accent text-accent hover:bg-accent hover:text-accent-text active:scale-[0.97]',
   ghost: 'text-text-secondary hover:text-text-primary',
 };
 
