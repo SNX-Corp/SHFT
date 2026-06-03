@@ -191,7 +191,7 @@ const navLinks = d.links;
 
   // Geometry of the morph (recomputed on load + resize)
   let dy = 0; // vertical offset from nav-center to hero-center
-  let heroScale = 4; // how much bigger the logo is in the hero
+  let dockScale = 0.25; // docked nav logo size relative to the (crisp) hero size
 
   function measure() {
     if (!brand || !slot) return;
@@ -200,14 +200,31 @@ const navLinks = d.links;
     const slotRect = slot.getBoundingClientRect();
     const slotCenterViewportTop = slotRect.top + window.scrollY + slotRect.height / 2;
     dy = slotCenterViewportTop - navCenterY;
-    const logoH = brand.offsetHeight || 28;
-    const scaleByHeight = (slotRect.height || logoH * 4) / logoH;
-    // Never let the wordmark grow wider than the viewport. On narrow phones the
-    // 18vh slot height would otherwise blow the wordmark past both edges and clip
-    // the outer letters, so cap the hero scale by the available width too.
-    const baseW = brand.offsetWidth || logoH * 4.5;
-    const scaleByWidth = (window.innerWidth * 0.9) / baseW;
-    heroScale = Math.max(1, Math.min(scaleByHeight, scaleByWidth));
+
+    // Docked nav logo height (matches the CSS .brand-logo height values).
+    const navLogoH = window.matchMedia('(min-width: 1024px)').matches ? 28 : 22;
+
+    // Natural aspect ratio of the wordmark, used for the width cap.
+    const aspect =
+      brandLight && brandLight.naturalWidth && brandLight.naturalHeight
+        ? brandLight.naturalWidth / brandLight.naturalHeight
+        : 1225 / 364;
+
+    // Hero display height = the slot height, but never wide enough to overflow the
+    // viewport (cap to ~90vw on narrow phones so the outer letters never clip).
+    const maxHeroHByWidth = (window.innerWidth * 0.9) / aspect;
+    const heroH = Math.max(navLogoH, Math.min(slotRect.height || navLogoH * 4, maxHeroHByWidth));
+
+    // Render the wordmark at its full hero height so it stays crisp. We then scale
+    // DOWN to dock (sharp); the old approach rendered it tiny and scaled UP, which
+    // blurred the raster on high-DPI screens. Set the width explicitly too: the
+    // logo is position:fixed left:50%, so an auto width gets clamped to the space
+    // up to the right edge and the image squishes.
+    brand.style.height = heroH + 'px';
+    brand.style.width = heroH * aspect + 'px';
+
+    // Docked scale (< 1): shrink the crisp hero logo down to nav size.
+    dockScale = navLogoH / heroH;
   }
 
   function setBars(dark: boolean) {
@@ -235,7 +252,7 @@ const navLinks = d.links;
 
     // Ride the logo up with the page; scale it into the nav only in the last bit.
     if (brand) {
-      const scale = 1 + (heroScale - 1) * (1 - ease);
+      const scale = dockScale + (1 - dockScale) * (1 - ease);
       brand.style.transform = `translate(-50%, -50%) translateY(${offset}px) scale(${scale})`;
       // Opacity is owned by the hero intro timeline (logo fades in first).
       // Only clickable once docked in the nav, so it never blocks the hero.
