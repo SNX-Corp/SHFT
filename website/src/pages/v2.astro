@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import HeroCinematic from '../components/HeroCinematic.astro';
+import Vision from '../components/parents/Vision.astro';
+import Mentor from '../components/parents/Mentor.astro';
+import Partnership from '../components/parents/Partnership.astro';
+import Pricing from '../components/parents/Pricing.astro';
+import WhatYouGet from '../components/parents/WhatYouGet.astro';
+import SeasonTimeline from '../components/parents/SeasonTimeline.astro';
+import Expectations from '../components/parents/Expectations.astro';
+import FAQ from '../components/parents/FAQ.astro';
+import Contact from '../components/parents/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Team SHFT - FRC Robotics"
+  description="Team SHFT is an Ontario community FRC program built around serious mentorship, competitive engineering, and a real path for students to grow."
+>
+  <Nav />
+  <HeroCinematic />
+  <Vision />
+  <Mentor />
+  <Partnership />
+  <Pricing />
+  <WhatYouGet />
+  <SeasonTimeline />
+  <Expectations />
+  <FAQ />
+  <Contact />
+  <Footer />
+</BaseLayout>
