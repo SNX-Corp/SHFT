@@ -10,42 +10,36 @@ const d = entry!.data as {
   back_to_top_label: string;
   nav_links: Array<{ label: string; href: string }>;
 };
+const year = new Date().getFullYear();
 ---
 
 <footer class="bg-surface-alt text-text-inverse">
-  <div class="content-width py-14 lg:py-20">
-    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-14">
-      <div>
-        <img
-          src="/images/logo/wordmark.png"
-          alt="Team SHFT"
-          class="h-10 lg:h-14 w-auto"
-        />
-        <p class="font-body text-[14px] text-white/55 mt-3 max-w-sm">
+  <div class="content-width py-16 lg:py-20">
+    <!-- Top: brand block + link columns -->
+    <div class="flex flex-col gap-12 sm:flex-row sm:justify-between sm:gap-10">
+      <!-- Brand -->
+      <div class="max-w-xs">
+        <img src="/images/logo/wordmark.png" alt="Team SHFT" class="h-9 lg:h-11 w-auto" />
+        <p class="font-body text-[13.5px] text-white/55 mt-5 leading-relaxed">
           {d.tagline}
         </p>
       </div>
 
-      <div class="flex flex-col sm:items-end gap-6">
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+      <!-- Link columns -->
+      <div class="flex gap-14 sm:gap-20">
+        <nav class="flex flex-col items-start gap-3.5">
+          <span class="footer-label">Explore</span>
           {d.nav_links.map((link) => (
-            <a
-              href={link.href}
-              class="font-heading text-[12px] font-bold uppercase tracking-[0.12em] text-white/60 hover:text-accent transition-colors duration-200 py-[13px] -my-[13px]"
-            >
+            <a href={link.href} class="footer-link">
               <RollText text={link.label} />
             </a>
           ))}
-        </div>
+        </nav>
 
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <div class="flex flex-col items-start gap-3.5">
+          <span class="footer-label">Follow</span>
           {social.map((s) => (
-            <a
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white/55 hover:text-accent transition-colors duration-200 py-[13px] -my-[13px]"
-            >
+            <a href={s.url} target="_blank" rel="noopener noreferrer" class="footer-link">
               <RollText text={s.platform} />
             </a>
           ))}
@@ -53,16 +47,40 @@ const d = entry!.data as {
       </div>
     </div>
 
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-8 border-t border-white/10">
-      <p class="font-body text-[12.5px] text-white/45">
-        &copy; {new Date().getFullYear()} {d.copyright_name}. All rights reserved.
+    <!-- Bottom bar -->
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pt-8 mt-14 border-t border-white/10">
+      <p class="font-body text-[12.5px] text-white/40">
+        &copy; {year} {d.copyright_name}. All rights reserved.
       </p>
-      <a
-        href="#hero"
-        class="font-heading text-[11px] font-semibold uppercase tracking-[0.15em] text-white/40 hover:text-accent transition-colors duration-200 py-[14px] -my-[14px]"
-      >
+      <a href="#hero" class="footer-link self-start sm:self-auto">
         <RollText text={d.back_to_top_label} />
       </a>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-label {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 0.25rem;
+  }
+  .footer-link {
+    display: block;
+    width: fit-content;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.15s ease;
+  }
+  .footer-link:hover {
+    color: var(--color-accent);
+  }
+</style>
