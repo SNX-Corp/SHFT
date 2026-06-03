@@ -31,7 +31,7 @@ mentors:
       - label: Expertise
         value: Design & Manufacturing, Operations, Strategy, AI-Coding
       - label: Achievement
-        value: Coach for the fastest growing team in Ontario
+        value: Coach for the fastest-growing team in Ontario
       - label: Competition
         value: Provincials & Worlds Qualifier. Better. Every. Year.
       - label: Recognition

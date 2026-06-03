@@ -15,7 +15,7 @@ cards:
     accent: false
   - number: "03"
     title: "Direct Mentorship"
-    description: "With a focused roster of 20 students, every child gets serious attention. 3-4 days per week, 15-20 hours of hands-on learning with professional mentors who have competed at the highest level."
+    description: "With a focused roster of 20 students, every child gets serious attention. 3–4 days per week, 15–20 hours of hands-on learning with professional mentors who have competed at the highest level."
     accent: false
   - number: "04"
     title: "Real Engineering Skills"
