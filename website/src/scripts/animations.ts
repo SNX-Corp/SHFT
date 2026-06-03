@@ -201,8 +201,9 @@ if (prefersReducedMotion) {
   /*  Initial hidden states                                           */
   /* ---------------------------------------------------------------- */
 
-  // Hero - futuristic sequential reveal (logo -> paragraph -> button)
-  gsap.set('[data-brand-logo]', { opacity: 0, filter: 'blur(16px)' });
+  // Hero - the logo is shown instantly (already in place as the preloader doors
+  // split open); only the paragraph + button fade in behind it.
+  gsap.set('[data-brand-logo]', { opacity: 1, filter: 'none' });
   gsap.set('[data-hero-eyebrow]', { y: 16, opacity: 0, filter: 'blur(8px)' });
   gsap.set('[data-hero-sub]', { y: 16, opacity: 0, filter: 'blur(8px)' });
   gsap.set('[data-hero-cta]', { y: 16, opacity: 0, filter: 'blur(8px)' });
@@ -262,13 +263,7 @@ if (prefersReducedMotion) {
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' }, paused: true });
 
   heroTl
-    // Beat 1 - the logo materialises out of the dark
-    .to(
-      '[data-brand-logo]',
-      { opacity: 1, filter: 'blur(0px)', duration: 1.2, ease: 'power2.out' },
-      0.3,
-    )
-    // Beat 2 - the paragraph (eyebrow + tagline)
+    // Paragraph (eyebrow + tagline) fades in behind the already-present logo
     .to(
       '[data-hero-eyebrow]',
       { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7 },
