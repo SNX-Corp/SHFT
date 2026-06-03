@@ -1,5 +1,5 @@
 ---
-cta_label: "Join SHIFT"
+cta_label: "Join SHFT"
 cta_href: "#contact"
 links:
   - label: "Vision"
