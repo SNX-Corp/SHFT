@@ -37,7 +37,7 @@ const intensityLabels: Record<string, string> = {
   data-no-reveal
 >
   <!-- Static, dimmed workshop backdrop -->
-  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/parents/shiftlab2.png');"></div>
+  <div class="absolute inset-0 bg-cover bg-right lg:bg-center" style="background-image: url('/images/parents/shiftlab2.png');"></div>
   <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(20,20,20,0.94) 0%, rgba(20,20,20,0.9) 45%, rgba(20,20,20,0.82) 100%);"></div>
   <div
     class="absolute inset-0 opacity-[0.05]"
@@ -72,7 +72,7 @@ const intensityLabels: Record<string, string> = {
         <div class="hidden lg:block absolute inset-x-0 bottom-0 h-16 z-10 pointer-events-none" style="background: linear-gradient(transparent, rgba(20,20,20,0.95));"></div>
 
         <div class="relative pl-8 lg:pl-12 lg:py-10" data-timeline-track>
-          <div class="absolute left-0 lg:left-4 top-0 bottom-0 w-px bg-white/15"></div>
+          <div class="absolute left-0 lg:left-6 top-0 bottom-0 w-px bg-white/15"></div>
 
           <div class="space-y-10 lg:space-y-12">
             {d.phases.map((phase) => (
@@ -80,7 +80,7 @@ const intensityLabels: Record<string, string> = {
                 <!-- Marker: lightning bolt centered on the line -->
                 <div
                   class:list={[
-                    "absolute top-[0.2rem] left-[-2rem] -translate-x-1/2 flex items-center justify-center w-[18px] h-[18px] rounded-full bg-[#161616]",
+                    "absolute top-[0.2rem] left-[-2rem] lg:left-[-1.5rem] -translate-x-1/2 flex items-center justify-center w-[18px] h-[18px] rounded-full bg-[#161616]",
                     phase.intensity === 'high' ? 'text-accent' : phase.intensity === 'medium' ? 'text-accent/70' : 'text-white/45',
                   ]}
                   data-timeline-phase={phase.period}
