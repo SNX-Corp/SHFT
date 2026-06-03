@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>SHFT Brand Guide</title>
+<title>SHFT Robotics Brand Guide</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,9 @@
   @page { size: 8.5in 11in; margin: 0.5in; }
 
   :root{
-    --bg:#FFFFFF; --surface:#F8F8F8; --ink:#1A1A1A; --border:#E5E5E5;
-    --secondary:#555555; --muted:#737373;
+    --ink:#1A1A1A; --panel:#202020; --line:#333333;
+    --white:#FFFFFF; --muted:#A3A3A3; --secondary:#555555;
+    --surface:#F8F8F8; --border:#E5E5E5; --text-muted:#737373;
     --lime:#A6FF00; --lime-hover:#8FE000; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
     --altf4:#A11D1D; --gold:#F5C518;
   }
@@ -22,22 +23,22 @@
 
   html,body{
     margin:0; padding:0;
-    background:#D0D0D0;
+    background:#0A0A0A;
     font-family:'Raleway',sans-serif;
-    color:var(--secondary);
+    color:var(--muted);
     line-height:1.6;
   }
 
-  /* The sheet. On screen it sits centered on a gray board. In print it fills the page. */
+  /* The sheet. On screen it sits centered on a near-black board. In print it fills the page. */
   .sheet{
     width:8.5in;
     margin:0.4in auto;
-    background:var(--bg);
-    color:var(--ink);
+    background:var(--ink);
+    color:var(--white);
     padding:0.7in;
   }
   @media print{
-    html,body{ background:#FFFFFF; }
+    html,body{ background:var(--ink); }
     .sheet{ width:auto; margin:0; padding:0; }
   }
 
@@ -53,39 +54,40 @@
     vertical-align:middle;
   }
 
-  section{ padding:30px 0; border-top:1px solid var(--border); }
+  section{ padding:30px 0; border-top:1px solid var(--line); }
   section:first-of-type{ border-top:0; }
 
   /* ---------- Header ---------- */
-  .header{ padding-bottom:8px; }
-  .header .mark{ height:54px; width:auto; display:block; margin-bottom:22px; }
+  .header{ padding-bottom:8px; position:relative; }
+  .header .mark{ height:60px; width:auto; display:block; margin-bottom:24px; }
   .header h1{
     font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
-    letter-spacing:-0.02em; color:var(--ink);
+    letter-spacing:-0.02em; color:var(--white);
     font-size:clamp(2.5rem,5vw,4rem); line-height:0.95; margin:0 0 14px;
   }
   .header .tag{
-    font-family:'Exo 2',sans-serif; font-weight:700; text-transform:uppercase;
-    letter-spacing:.04em; color:var(--ink); font-size:15px; margin:0;
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
+    letter-spacing:.04em; color:var(--white); font-size:16px; margin:0;
   }
-  .header .tag .lime{ color:var(--lime-dim); }
+  .header .tag .lime{ color:var(--lime); }
 
   h2.title{
-    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
-    letter-spacing:.01em; color:var(--ink); font-size:22px; margin:0 0 16px;
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    letter-spacing:-0.02em; color:var(--white); font-size:24px; margin:0 0 16px;
   }
-  p.lead{ color:var(--secondary); font-size:14px; max-width:6in; margin:0 0 18px; }
+  p.lead{ color:var(--muted); font-size:14px; max-width:6in; margin:0 0 18px; }
+  p.lead b{ color:var(--white); font-weight:600; }
 
   /* ---------- 01 Color ---------- */
   .swatches{
     display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
   }
-  .chip{ border:1px solid var(--border); background:var(--bg); }
-  .chip .fill{ height:70px; border-bottom:1px solid var(--border); }
+  .chip{ border:1px solid var(--line); background:var(--panel); }
+  .chip .fill{ height:70px; border-bottom:1px solid var(--line); }
   .chip .meta{ padding:9px 10px; }
   .chip .name{
     font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
-    text-transform:uppercase; letter-spacing:.04em; color:var(--ink);
+    text-transform:uppercase; letter-spacing:.04em; color:var(--white);
     display:block; line-height:1.2;
   }
   .chip .token{
@@ -94,16 +96,56 @@
   }
   .chip .hex{
     font-family:'Exo 2',sans-serif; font-weight:700; font-size:10.5px;
-    color:var(--secondary); display:block; margin-top:2px; letter-spacing:.02em;
+    color:var(--lime); display:block; margin-top:2px; letter-spacing:.02em;
   }
   .subhead{
     font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
     letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
     margin:26px 0 12px;
   }
+  .canon-note{
+    background:var(--panel); border-left:2px solid var(--lime);
+    padding:12px 16px; margin:22px 0 0;
+    font-family:'Exo 2',sans-serif; font-weight:600; font-size:11.5px;
+    color:var(--muted); letter-spacing:.01em;
+  }
+  .canon-note b{ color:var(--white); font-weight:700; }
+  .canon-note .bad{ color:var(--muted); text-decoration:line-through; }
+  .canon-note .good{ color:var(--lime); }
 
-  /* ---------- 02 Type ---------- */
-  .specimen{ border-top:1px solid var(--border); padding:18px 0; }
+  /* ---------- 02 Logo ---------- */
+  .logo-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .logo-box{ border:1px solid var(--line); padding:34px 24px; text-align:center; }
+  .logo-box.dark{ background:var(--ink); }
+  .logo-box.panel{ background:var(--panel); }
+  .logo-box img.wm{ width:78%; max-width:280px; height:auto; display:block; margin:0 auto; }
+  .logo-box img.em{ width:120px; height:auto; display:block; margin:0 auto; }
+  .logo-box .cap{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px;
+    letter-spacing:.16em; text-transform:uppercase; margin-top:18px; color:var(--muted);
+  }
+  .variations{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:20px; }
+  .var{ border:1px solid var(--line); padding:14px; }
+  .var .vlbl{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:12px;
+    text-transform:uppercase; letter-spacing:.04em; color:var(--white); margin-bottom:5px;
+  }
+  .var .vdesc{
+    font-family:'Raleway',sans-serif; font-weight:400; font-size:11px; color:var(--muted);
+  }
+  .rules-list{ list-style:none; padding:0; margin:20px 0 0; }
+  .rules-list li{
+    font-size:13px; color:var(--muted); padding:7px 0 7px 16px;
+    border-bottom:1px solid var(--line); position:relative;
+  }
+  .rules-list li::before{
+    content:""; position:absolute; left:0; top:14px;
+    width:8px; height:2px; background:var(--lime);
+  }
+  .rules-list li b{ color:var(--white); font-family:'Exo 2',sans-serif; font-weight:700; }
+
+  /* ---------- 03 Type ---------- */
+  .specimen{ border-top:1px solid var(--line); padding:18px 0; }
   .specimen:first-child{ border-top:0; padding-top:0; }
   .specimen .role{
     font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px;
@@ -112,14 +154,14 @@
   }
   .spec-orbitron{
     font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
-    letter-spacing:-0.02em; color:var(--ink); font-size:40px; line-height:0.95;
+    letter-spacing:-0.02em; color:var(--white); font-size:44px; line-height:0.95;
   }
   .spec-exo{
-    font-family:'Exo 2',sans-serif; font-weight:700; color:var(--ink);
+    font-family:'Exo 2',sans-serif; font-weight:700; color:var(--white);
     font-size:26px; line-height:1.1;
   }
   .spec-raleway{
-    font-family:'Raleway',sans-serif; font-weight:400; color:var(--secondary);
+    font-family:'Raleway',sans-serif; font-weight:400; color:var(--muted);
     font-size:16px; line-height:1.6; max-width:6in;
   }
   .specimen .note{
@@ -131,98 +173,115 @@
   table.scale th{
     text-align:left; font-family:'Exo 2',sans-serif; font-weight:700;
     font-size:10px; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--muted); padding:8px 10px; background:var(--surface);
-    border-bottom:1px solid var(--border);
+    color:var(--muted); padding:8px 10px; background:var(--panel);
+    border-bottom:1px solid var(--line);
   }
   table.scale td{
-    font-size:12px; color:var(--secondary); padding:8px 10px;
-    border-bottom:1px solid var(--border);
+    font-size:12px; color:var(--muted); padding:8px 10px;
+    border-bottom:1px solid var(--line);
   }
   table.scale td.step{
-    font-family:'Exo 2',sans-serif; font-weight:700; color:var(--ink);
+    font-family:'Exo 2',sans-serif; font-weight:700; color:var(--white);
     text-transform:uppercase; letter-spacing:.03em; font-size:11px;
   }
   table.scale td.val{
-    font-family:'Exo 2',sans-serif; font-weight:600; color:var(--ink); font-size:11.5px;
+    font-family:'Exo 2',sans-serif; font-weight:600; color:var(--lime); font-size:11.5px;
   }
 
-  /* ---------- 03 Logo ---------- */
-  .logo-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  .logo-box{ border:1px solid var(--border); padding:34px 24px; text-align:center; }
-  .logo-box.light{ background:var(--surface); }
-  .logo-box.dark{ background:var(--ink); border-color:var(--ink); }
-  .logo-box img{ width:78%; max-width:280px; height:auto; display:block; margin:0 auto; }
-  .logo-box .cap{
-    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px;
-    letter-spacing:.16em; text-transform:uppercase; margin-top:18px;
-  }
-  .logo-box.light .cap{ color:var(--muted); }
-  .logo-box.dark .cap{ color:#FFFFFF; }
-  .rules-list{ list-style:none; padding:0; margin:18px 0 0; }
-  .rules-list li{
-    font-size:13px; color:var(--secondary); padding:7px 0 7px 16px;
-    border-bottom:1px solid var(--border); position:relative;
-  }
-  .rules-list li::before{
-    content:""; position:absolute; left:0; top:14px;
-    width:8px; height:2px; background:var(--lime);
-  }
-  .rules-list li b{ color:var(--ink); font-family:'Exo 2',sans-serif; font-weight:700; }
-
-  /* ---------- 04 Principles ---------- */
-  .principles{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .principle{ border:1px solid var(--border); padding:18px; }
-  .principle .num{
-    font-family:'Orbitron',sans-serif; font-weight:800; font-size:13px;
-    color:var(--lime-dim); letter-spacing:.04em;
-  }
-  .principle h3{
+  /* ---------- 04 Two Looks ---------- */
+  .looks{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .look{ border:1px solid var(--line); }
+  .look .preview{ height:150px; display:flex; align-items:center; justify-content:center; }
+  .look .preview.dark{ background:var(--ink); }
+  .look .preview.light{ background:var(--white); }
+  .look .preview img{ width:62%; max-width:210px; height:auto; }
+  .look .body{ padding:16px 18px; background:var(--panel); }
+  .look h3{
     font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
-    letter-spacing:.02em; color:var(--ink); font-size:16px; margin:6px 0 6px;
+    letter-spacing:.02em; color:var(--white); font-size:15px; margin:0 0 6px;
   }
-  .principle p{ font-size:13px; color:var(--secondary); margin:0; }
-  .principle .ruletag{
-    display:inline-block; margin-top:10px; background:var(--lime); color:var(--ink);
-    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px;
-    letter-spacing:.04em; text-transform:uppercase; padding:4px 10px;
+  .look h3 .pill{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:9px;
+    letter-spacing:.1em; background:var(--lime); color:var(--lime-text);
+    padding:3px 8px; margin-left:8px; vertical-align:middle;
   }
+  .look p{ font-size:12.5px; color:var(--muted); margin:0; }
+  .look p b{ color:var(--white); font-weight:600; }
 
-  /* ---------- 05 Voice ---------- */
+  /* ---------- 05 Patterns ---------- */
+  .patterns{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .pattern{ border:1px solid var(--line); }
+  .pattern .canvas{ height:160px; position:relative; overflow:hidden; background:var(--ink); }
+  .dotgrid{
+    position:absolute; inset:0;
+    background-image:radial-gradient(var(--lime) 1.4px, transparent 1.6px);
+    background-size:18px 18px; opacity:.22;
+  }
+  .slashes{ position:absolute; inset:0; }
+  .slashes span{
+    position:absolute; top:-30%; height:160%; width:14px; background:var(--lime);
+    transform:rotate(20deg); opacity:.85;
+  }
+  .slashes span:nth-child(1){ left:30%; }
+  .slashes span:nth-child(2){ left:46%; }
+  .slashes span:nth-child(3){ left:62%; }
+  .pattern .body{ padding:14px 18px; background:var(--panel); }
+  .pattern h3{
+    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
+    letter-spacing:.02em; color:var(--white); font-size:14px; margin:0 0 5px;
+  }
+  .pattern p{ font-size:12px; color:var(--muted); margin:0; }
+
+  /* ---------- 06 Voice ---------- */
   .infobar{
-    background:var(--lime); color:var(--ink); padding:18px 22px; margin:0 0 18px;
+    background:var(--lime); color:var(--lime-text); padding:20px 24px; margin:0 0 18px;
   }
   .infobar .lbl{
-    font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px;
-    letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:6px;
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:10px;
+    letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:8px;
   }
   .infobar .quote{
+    font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
+    letter-spacing:-0.01em; font-size:26px; line-height:1.05;
+  }
+  .slogans{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:0 0 18px; }
+  .slogan{
+    border:1px solid var(--line); background:var(--panel); padding:18px 20px;
+  }
+  .slogan .slbl{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:9.5px;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:8px;
+  }
+  .slogan .stxt{
     font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
-    letter-spacing:.01em; font-size:20px; line-height:1.15;
+    letter-spacing:.01em; font-size:17px; line-height:1.15; color:var(--white);
   }
+  .slogan .stxt .lime{ color:var(--lime); }
   .voice-line{
-    font-size:13px; color:var(--secondary); padding:8px 0;
-    border-bottom:1px solid var(--border);
+    font-size:13px; color:var(--muted); padding:9px 0;
+    border-bottom:1px solid var(--line);
   }
-  .voice-line b{ color:var(--ink); font-family:'Exo 2',sans-serif; font-weight:700; }
+  .voice-line b{ color:var(--white); font-family:'Exo 2',sans-serif; font-weight:700; }
   .value-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
   .value-chips .vc{
-    background:var(--lime); color:var(--ink);
+    background:var(--lime); color:var(--lime-text);
     font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
     letter-spacing:.06em; font-size:13px; padding:11px 20px;
   }
 
   /* ---------- Footer ---------- */
   .foot{
-    margin-top:30px; background:var(--ink); color:#FFFFFF; padding:22px 24px;
+    margin-top:32px; background:var(--panel); border:1px solid var(--line);
+    color:var(--white); padding:24px;
   }
   .foot .fw{
     font-family:'Orbitron',sans-serif; font-weight:900; text-transform:uppercase;
-    letter-spacing:.02em; font-size:18px; color:#FFFFFF;
+    letter-spacing:-0.01em; font-size:20px; color:var(--white);
   }
   .foot .fw .lime{ color:var(--lime); }
   .foot .fmeta{
     font-family:'Exo 2',sans-serif; font-weight:600; font-size:11px;
-    color:#B5B5B5; letter-spacing:.03em; margin-top:10px;
+    color:var(--muted); letter-spacing:.03em; margin-top:12px; line-height:1.7;
   }
   .foot .fmeta b{ color:var(--lime); font-weight:700; }
 </style>
@@ -232,63 +291,50 @@
 
   <!-- ============ HEADER ============ -->
   <section class="header">
-    <img class="mark" src="../website/public/images/logo/wordmark-dark.png" alt="SHFT" />
+    <img class="mark" src="brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
     <h1>Brand Guide</h1>
-    <p class="tag"><span class="lime">SHIFT</span> our mindset. <span class="lime">ELEVATE</span> our impact.</p>
+    <p class="tag"><span class="lime">INNOVATE.</span> BUILD. COMPETE.</p>
   </section>
 
   <!-- ============ 01 COLOR ============ -->
   <section>
     <div class="seclabel"><span class="rule"></span><span class="txt">01 / Color</span></div>
     <h2 class="title">Color System</h2>
-    <p class="lead">White is the default ground. Lime is the one bright color and it earns attention by being rare. The dark <b style="color:var(--ink)">#1A1A1A</b> carries contrast sections and primary text.</p>
+    <p class="lead">Near-black <b>#1A1A1A</b> is the ground. White carries the type. The signature green <b>#A6FF00</b> is the one bright color: it earns attention by being rare. Use the token, not a remembered hex.</p>
 
     <div class="swatches">
       <div class="chip">
         <div class="fill" style="background:var(--lime)"></div>
-        <div class="meta"><span class="name">Accent</span><span class="token">--color-accent</span><span class="hex">#A6FF00</span></div>
+        <div class="meta"><span class="name">Signature Green</span><span class="token">--color-accent</span><span class="hex">#A6FF00</span></div>
       </div>
       <div class="chip">
         <div class="fill" style="background:var(--lime-hover)"></div>
-        <div class="meta"><span class="name">Accent Hover</span><span class="token">--color-accent-hover</span><span class="hex">#8FE000</span></div>
+        <div class="meta"><span class="name">Green Hover</span><span class="token">--color-accent-hover</span><span class="hex">#8FE000</span></div>
       </div>
       <div class="chip">
-        <div class="fill" style="background:#1A1A1A"></div>
-        <div class="meta"><span class="name">Accent Text</span><span class="token">--color-accent-text</span><span class="hex">#1A1A1A</span></div>
+        <div class="fill" style="background:var(--ink)"></div>
+        <div class="meta"><span class="name">Ink / Dark</span><span class="token">--color-surface-alt</span><span class="hex">#1A1A1A</span></div>
       </div>
       <div class="chip">
-        <div class="fill" style="background:var(--lime-dim)"></div>
-        <div class="meta"><span class="name">Accent Dim</span><span class="token">--color-accent-dim</span><span class="hex">#5A8C00</span></div>
-      </div>
-
-      <div class="chip">
-        <div class="fill" style="background:#FFFFFF"></div>
+        <div class="fill" style="background:var(--white);border-bottom:1px solid var(--line)"></div>
         <div class="meta"><span class="name">White</span><span class="token">--color-bg</span><span class="hex">#FFFFFF</span></div>
       </div>
+
       <div class="chip">
         <div class="fill" style="background:var(--surface)"></div>
         <div class="meta"><span class="name">Surface</span><span class="token">--color-surface</span><span class="hex">#F8F8F8</span></div>
       </div>
       <div class="chip">
-        <div class="fill" style="background:var(--ink)"></div>
-        <div class="meta"><span class="name">Ink</span><span class="token">--color-surface-alt</span><span class="hex">#1A1A1A</span></div>
-      </div>
-      <div class="chip">
         <div class="fill" style="background:var(--border)"></div>
         <div class="meta"><span class="name">Border</span><span class="token">--color-border</span><span class="hex">#E5E5E5</span></div>
       </div>
-
       <div class="chip">
         <div class="fill" style="background:var(--secondary)"></div>
         <div class="meta"><span class="name">Text Secondary</span><span class="token">--color-text-secondary</span><span class="hex">#555555</span></div>
       </div>
       <div class="chip">
-        <div class="fill" style="background:var(--muted)"></div>
+        <div class="fill" style="background:var(--text-muted)"></div>
         <div class="meta"><span class="name">Text Muted</span><span class="token">--color-text-muted</span><span class="hex">#737373</span></div>
-      </div>
-      <div class="chip">
-        <div class="fill" style="background:#FFFFFF;border-bottom:1px solid var(--border)"></div>
-        <div class="meta"><span class="name">Text Inverse</span><span class="token">--color-text-inverse</span><span class="hex">#FFFFFF</span></div>
       </div>
     </div>
 
@@ -303,24 +349,61 @@
         <div class="meta"><span class="name">Ranking Gold</span><span class="token">--color-gold</span><span class="hex">#F5C518</span></div>
       </div>
     </div>
+
+    <div class="canon-note">
+      <b>Canonical note.</b> The AI brand board shows <span class="bad">#8FE400</span> green and a navy <span class="bad">#0D0F1F</span> ground. Canonical is <span class="good">#A6FF00</span> green on <span class="good">#1A1A1A</span> dark. Never ship the off values.
+    </div>
   </section>
 
-  <!-- ============ 02 TYPE ============ -->
+  <!-- ============ 02 LOGO AND MARKS ============ -->
   <section>
-    <div class="seclabel"><span class="rule"></span><span class="txt">02 / Type</span></div>
+    <div class="seclabel"><span class="rule"></span><span class="txt">02 / Logo and Marks</span></div>
+    <h2 class="title">Logo and Marks</h2>
+    <p class="lead">The primary lockup is the <b>SHFT ROBOTICS</b> wordmark: white "SHFT" with the green lightning bolt as the "I", and "ROBOTICS" letter-spaced below. The emblem is an angular arrow-bolt that reads as an "S". Both sit white and green on the dark ground.</p>
+
+    <div class="logo-grid">
+      <div class="logo-box dark">
+        <img class="wm" src="brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS wordmark" />
+        <div class="cap">Primary Wordmark / On #1A1A1A</div>
+      </div>
+      <div class="logo-box panel">
+        <img class="em" src="brand-assets/icon-transparent.png" alt="SHFT emblem" />
+        <div class="cap">Emblem / Green Circle</div>
+      </div>
+    </div>
+
+    <div class="subhead">Emblem Variations</div>
+    <div class="variations">
+      <div class="var"><div class="vlbl">Primary</div><div class="vdesc">White and green on the dark ground.</div></div>
+      <div class="var"><div class="vlbl">Inverted</div><div class="vdesc">Dark mark on a green square.</div></div>
+      <div class="var"><div class="vlbl">White</div><div class="vdesc">Single-color white. Mono uses.</div></div>
+      <div class="var"><div class="vlbl">Icon</div><div class="vdesc">Emblem inside a green circle ring.</div></div>
+    </div>
+
+    <ul class="rules-list">
+      <li><b>Clear space.</b> Keep open space around the mark equal to the height of the emblem on all sides.</li>
+      <li><b>Minimum sizes.</b> Emblem 24px. Wordmark 80px wide.</li>
+      <li><b>Color.</b> Keep the bolt and "ROBOTICS" in green #A6FF00. White letters on dark, never recolor the bolt.</li>
+      <li><b>Primary lockup.</b> Use the SHFT ROBOTICS wordmark as the default. The emblem stands alone for avatars, stickers, and watermarks.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 03 TYPE ============ -->
+  <section>
+    <div class="seclabel"><span class="rule"></span><span class="txt">03 / Type</span></div>
     <h2 class="title">Typography</h2>
     <p class="lead">Orbitron for impact. Exo 2 for authority. Raleway for clarity. Typography carries the brand.</p>
 
     <div class="specimen">
       <div class="role">Display / Orbitron 900 Uppercase</div>
       <div class="spec-orbitron">SHFT</div>
-      <div class="note">Team name, display headlines, section numbers. Always uppercase, weight 700 to 900. Never body.</div>
+      <div class="note">Wordmark voice, display headlines, big statements. Always uppercase, weight 700 to 900. Tracking -0.02em. Never body.</div>
     </div>
 
     <div class="specimen">
       <div class="role">Heading / Exo 2 700</div>
       <div class="spec-exo">Compete from day one</div>
-      <div class="note">Section headings, buttons, nav, labels. Uppercase for labels and buttons. Weight 500 to 700.</div>
+      <div class="note">Section headings, buttons, nav, labels. Uppercase for labels and buttons. Weight 600 to 800.</div>
     </div>
 
     <div class="specimen">
@@ -328,7 +411,7 @@
       <div class="spec-raleway">A new Ontario FRC team built to compete from day one. Raleway carries body copy and descriptions at weight 400, with 500 for emphasis. Never uppercase at small sizes.</div>
     </div>
 
-    <div class="subhead">Type Scale. Real clamp values.</div>
+    <div class="subhead">Type Scale. Real clamp values from global.css.</div>
     <table class="scale">
       <thead><tr><th>Step</th><th>Value</th></tr></thead>
       <tbody>
@@ -336,86 +419,84 @@
         <tr><td class="step">H1</td><td class="val">clamp(2.5rem, 5vw, 4.5rem)</td></tr>
         <tr><td class="step">H2</td><td class="val">clamp(2rem, 4vw, 3.5rem)</td></tr>
         <tr><td class="step">H3</td><td class="val">clamp(1.5rem, 3vw, 2rem)</td></tr>
-        <tr><td class="step">Body Large</td><td class="val">1.25rem</td></tr>
-        <tr><td class="step">Body</td><td class="val">1rem</td></tr>
-        <tr><td class="step">Small</td><td class="val">0.875rem</td></tr>
-        <tr><td class="step">Caption</td><td class="val">0.75rem</td></tr>
+        <tr><td class="step">Body</td><td class="val">1rem, leading 1.6</td></tr>
         <tr><td class="step">Label</td><td class="val">0.6875rem, weight 700, uppercase, tracking 0.2em</td></tr>
       </tbody>
     </table>
   </section>
 
-  <!-- ============ 03 LOGO ============ -->
+  <!-- ============ 04 TWO LOOKS ============ -->
   <section>
-    <div class="seclabel"><span class="rule"></span><span class="txt">03 / Logo</span></div>
-    <h2 class="title">Logo and Marks</h2>
-    <p class="lead">The primary mark is the S-Mark from SS.svg: an ink top hook and bottom hook plus a lime diagonal connector. That lime diagonal is the only color in the logo. Pair the dark wordmark on light, the light wordmark on dark.</p>
+    <div class="seclabel"><span class="rule"></span><span class="txt">04 / Two Looks</span></div>
+    <h2 class="title">Dark Primary, Light Variant</h2>
+    <p class="lead">The brand runs on a near-black and white system with one green accent. Both looks share the rule: square edges, <b>border-radius: 0</b>.</p>
 
-    <div class="logo-grid">
-      <div class="logo-box light">
-        <img src="../website/public/images/logo/wordmark-dark.png" alt="SHFT dark wordmark on white" />
-        <div class="cap">Dark Wordmark / On White</div>
+    <div class="looks">
+      <div class="look">
+        <div class="preview dark"><img src="brand-assets/wordmark-shft-robotics.png" alt="SHFT on dark" /></div>
+        <div class="body">
+          <h3>Dark<span class="pill">Primary</span></h3>
+          <p>Ground <b>#1A1A1A</b>, white type, green accent. Matches the real hoodies, banner, flag, robot, and social. The marketing kit ships in this look.</p>
+        </div>
       </div>
-      <div class="logo-box dark">
-        <img src="../website/public/images/logo/wordmark.png" alt="SHFT light wordmark on dark" />
-        <div class="cap">Light Wordmark / On #1A1A1A</div>
-      </div>
-    </div>
-
-    <ul class="rules-list">
-      <li><b>Clear space.</b> Keep open space around the mark equal to the height of the S-mark on all sides.</li>
-      <li><b>Minimum sizes.</b> S-mark 24px. Wordmark 80px wide.</li>
-      <li><b>Color.</b> Keep the lime diagonal as the only color. Ink hooks on light, white hooks on dark.</li>
-      <li><b>Vector.</b> The S-Mark source is SS.svg. The maple-leaf crest is the secondary Canadian accent.</li>
-    </ul>
-  </section>
-
-  <!-- ============ 04 PRINCIPLES ============ -->
-  <section>
-    <div class="seclabel"><span class="rule"></span><span class="txt">04 / Principles</span></div>
-    <h2 class="title">Design Principles</h2>
-
-    <div class="principles">
-      <div class="principle">
-        <div class="num">01</div>
-        <h3>Sharp, Not Soft</h3>
-        <p>Angular geometry, no rounded corners, aggressive crops. Softness signals uncertainty.</p>
-        <span class="ruletag">border-radius: 0</span>
-      </div>
-      <div class="principle">
-        <div class="num">02</div>
-        <h3>White Canvas</h3>
-        <p>Let white space work. Color is accent, not background. The neon green earns attention by being rare.</p>
-        <span class="ruletag">bg: #FFFFFF</span>
-      </div>
-      <div class="principle">
-        <div class="num">03</div>
-        <h3>Motion With Purpose</h3>
-        <p>Every animation serves hierarchy. Nothing moves just to move.</p>
-        <span class="ruletag">ease: expo.out</span>
-      </div>
-      <div class="principle">
-        <div class="num">04</div>
-        <h3>Type First</h3>
-        <p>Typography carries the brand. When in doubt, make the text bigger.</p>
-        <span class="ruletag">font-weight: 900</span>
+      <div class="look">
+        <div class="preview light"><img src="brand-assets/wordmark-shft-robotics.png" alt="SHFT on light" style="filter:invert(1) hue-rotate(180deg) saturate(0)" /></div>
+        <div class="body">
+          <h3>Light<span class="pill">Variant</span></h3>
+          <p>Ground <b>#FFFFFF</b>, ink #1A1A1A type, green used sparingly. This is the website style, preserved in the light variant kit.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 05 VOICE ============ -->
+  <!-- ============ 05 PATTERNS ============ -->
   <section>
-    <div class="seclabel"><span class="rule"></span><span class="txt">05 / Voice</span></div>
+    <div class="seclabel"><span class="rule"></span><span class="txt">05 / Patterns</span></div>
+    <h2 class="title">Brand Patterns</h2>
+    <p class="lead">Use lightly, never noisy. Keep green at low opacity on the dark ground so the type stays the hero.</p>
+
+    <div class="patterns">
+      <div class="pattern">
+        <div class="canvas"><div class="dotgrid"></div></div>
+        <div class="body">
+          <h3>Dot Grid</h3>
+          <p>A regular grid of small green dots at 8 to 22 percent opacity. Backgrounds and texture fields.</p>
+        </div>
+      </div>
+      <div class="pattern">
+        <div class="canvas"><div class="slashes"><span></span><span></span><span></span></div></div>
+        <div class="body">
+          <h3>Speed Slashes</h3>
+          <p>Three parallel diagonal bars. A corner accent for energy and motion. Hard angles, never curved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 VOICE ============ -->
+  <section>
+    <div class="seclabel"><span class="rule"></span><span class="txt">06 / Voice</span></div>
     <h2 class="title">Voice and Copy</h2>
 
     <div class="infobar">
       <span class="lbl">Official Tagline</span>
-      <div class="quote">SHIFT our mindset. ELEVATE our impact.</div>
+      <div class="quote">INNOVATE. BUILD. COMPETE.</div>
     </div>
 
-    <div class="voice-line"><b>Footer line.</b> Shift the standard.</div>
+    <div class="slogans">
+      <div class="slogan">
+        <span class="slbl">Campaign Slogan</span>
+        <div class="stxt">WE DON'T FOLLOW. <span class="lime">WE SHFT.</span></div>
+      </div>
+      <div class="slogan">
+        <span class="slbl">Campaign Slogan</span>
+        <div class="stxt">BUILDING THE FUTURE ONE <span class="lime">SHIFT</span> AT A TIME.</div>
+      </div>
+    </div>
+
+    <div class="voice-line"><b>Site line.</b> Shift the standard.</div>
     <div class="voice-line"><b>Hero.</b> A new Ontario FRC team built to compete from day one.</div>
-    <div class="voice-line"><b>Vision.</b> A LAUNCHPAD. Top 10 in Ontario. Year one.</div>
+    <div class="voice-line"><b>Vision.</b> Top 10 in Ontario. Year one.</div>
     <div class="voice-line"><b>Writing rule.</b> No em dashes anywhere. Short, declarative lines. Restructure with a period or a colon instead.</div>
 
     <div class="subhead">Brand Values</div>
@@ -429,8 +510,11 @@
 
   <!-- ============ FOOTER ============ -->
   <div class="foot">
-    <div class="fw">SHIFT THE <span class="lime">STANDARD.</span></div>
-    <div class="fmeta">Source of truth: website/src/styles/global.css and /brand. Lime <b>#A6FF00</b>, proof Pantone 802/809 C for print.</div>
+    <div class="fw">WE DON'T FOLLOW. <span class="lime">WE SHFT.</span></div>
+    <div class="fmeta">
+      Team SHFT ROBOTICS. Ontario FRC team. Founded 2025. Team number: Number pending. Instagram <b>@shftrobotics</b>. shftrobotics.com<br>
+      Source of truth: marketing/BRAND.md and website/src/styles/global.css. Signature green <b>#A6FF00</b> on dark <b>#1A1A1A</b>.
+    </div>
   </div>
 
 </div>

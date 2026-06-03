@@ -9,25 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FFFFFF;
-    --surface: #F8F8F8;
     --ink: #1A1A1A;
-    --border: #E5E5E5;
-    --secondary: #555555;
-    --muted: #737373;
+    --panel: #202020;
+    --line: #333333;
+    --white: #FFFFFF;
+    --muted: #A3A3A3;
     --lime: #A6FF00;
     --lime-hover: #8FE000;
     --lime-text: #1A1A1A;
     --lime-dim: #5A8C00;
-    /* tint filter to recolor the white bolt-mask PNG to SHFT lime */
-    --bolt-lime: brightness(0) saturate(100%) invert(83%) sepia(64%)
-                 saturate(2000%) hue-rotate(31deg) brightness(110%) contrast(105%);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Raleway', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--white);
     padding: 48px 24px 80px;
     line-height: 1.6;
   }
@@ -46,18 +42,18 @@
   header { margin-bottom: 8px; }
   h1 {
     font-family: 'Orbitron'; font-weight: 900; font-size: 30px;
-    letter-spacing: -0.02em; text-transform: uppercase; color: var(--ink);
+    letter-spacing: -0.02em; text-transform: uppercase; color: var(--white);
     line-height: 1.05;
   }
-  .sub { color: var(--secondary); font-size: 14px; margin-top: 8px; font-weight: 500; }
-  .sub code { font-family: 'Exo 2'; font-weight: 700; color: var(--ink); }
+  .sub { color: var(--muted); font-size: 14px; margin-top: 8px; font-weight: 500; }
+  .sub code { font-family: 'Exo 2'; font-weight: 700; color: var(--white); }
 
   /* ---- info bar (the one allowed lime block) ---- */
   .banner {
     margin: 22px 0 40px;
     border: 0;
     background: var(--lime);
-    color: var(--ink);
+    color: var(--lime-text);
     padding: 14px 18px;
     border-radius: 0;
     font-family: 'Exo 2';
@@ -75,21 +71,21 @@
   @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
 
   .card {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: var(--panel);
+    border: 1px solid var(--line);
     border-radius: 0;
     padding: 20px;
   }
   .card h2 {
     font-family: 'Orbitron'; font-size: 14px; font-weight: 800;
     text-transform: uppercase; letter-spacing: -0.01em;
-    color: var(--ink); margin-bottom: 4px;
+    color: var(--white); margin-bottom: 4px;
   }
-  .card .note { font-size: 12px; color: var(--secondary); margin-bottom: 16px; font-weight: 500; }
+  .card .note { font-size: 12px; color: var(--muted); margin-bottom: 16px; font-weight: 500; }
 
   .stage {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--ink);
+    border: 1px solid var(--line);
     border-radius: 0;
     min-height: 320px;
     display: flex;
@@ -101,23 +97,22 @@
 
   /* ---- shared garment ink ---- */
   .wm {
-    /* white wordmark PNG sits on dark garments as-is (letters white, bolt lime) */
+    /* white wordmark PNG (letters white, bolt lime) sits on dark garments as-is */
     width: 60%;
     max-width: 280px;
     height: auto;
     display: block;
   }
-  .bolt {
+  .emblem {
     width: auto;
     display: block;
-    filter: var(--bolt-lime);
   }
 
   /* ============ TEE ============ (realistic dark garment) */
   .tee {
     position: relative;
     width: 260px; height: 300px;
-    background: var(--ink);
+    background: #0E0E0E;
     /* simple tee silhouette via clip-path */
     clip-path: polygon(
       30% 0, 38% 6%, 62% 6%, 70% 0,
@@ -146,7 +141,7 @@
   .hoodie {
     position: relative;
     width: 270px; height: 300px;
-    background: var(--ink);
+    background: #11141A;
     clip-path: polygon(
       28% 4%, 38% 0, 62% 0, 72% 4%,
       100% 18%, 90% 36%, 82% 30%, 82% 100%,
@@ -156,18 +151,18 @@
   .hoodie .hood {
     position: absolute; top: 0; left: 50%; transform: translateX(-50%);
     width: 96px; height: 30px;
-    background: #111; border-radius: 0 0 60px 60px;
+    background: #0C0F14; border-radius: 0 0 60px 60px;
   }
   .hoodie .pocket {
     position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
     width: 130px; height: 60px;
     border: 2px solid #000; border-radius: 6px;
   }
-  .hoodie .chest-bolt {
-    position: absolute; top: 70px; left: 64%;
+  .hoodie .chest-emblem {
+    position: absolute; top: 70px; left: 62%;
     height: 46px;
   }
-  .hoodie .chest-bolt img { height: 100%; }
+  .hoodie .chest-emblem img { height: 100%; }
   .back-tag {
     position: absolute; bottom: 8px; right: 12px;
     font-family: 'Exo 2'; font-size: 9px; color: var(--muted); font-weight: 600;
@@ -178,12 +173,12 @@
   .sticker {
     position: relative;
     width: 170px; height: 170px;
-    background: var(--ink);
+    background: #0E0E0E;
     border-radius: 0;
-    box-shadow: 0 0 0 6px #ffffff, 0 8px 24px rgba(0,0,0,0.18);
+    box-shadow: 0 0 0 6px #ffffff, 0 8px 24px rgba(0,0,0,0.5);
     display: flex; align-items: center; justify-content: center;
   }
-  .sticker .bolt { height: 96px; }
+  .sticker .emblem { height: 110px; }
   .sticker-label {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
     font-family: 'Exo 2'; font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
@@ -198,30 +193,30 @@
   .cap .crown {
     position: absolute; top: 0; left: 20px;
     width: 200px; height: 110px;
-    background: var(--ink);
+    background: #11141A;
     border-radius: 110px 110px 16px 16px;
   }
   .cap .brim {
     position: absolute; bottom: 18px; left: 0;
     width: 150px; height: 34px;
-    background: #111;
+    background: #0C0F14;
     border-radius: 0 0 40px 80px;
     transform: rotate(-2deg);
   }
-  .cap .front-bolt {
-    position: absolute; top: 30px; left: 92px;
-    height: 56px; z-index: 2;
+  .cap .front-emblem {
+    position: absolute; top: 26px; left: 88px;
+    height: 60px; z-index: 2;
   }
-  .cap .front-bolt img { height: 100%; }
+  .cap .front-emblem img { height: 100%; }
 
   footer {
-    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
-    color: var(--secondary); font-size: 12px; font-weight: 500;
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 12px; font-weight: 500;
   }
-  footer code { font-family: 'Exo 2'; font-weight: 700; color: var(--ink); }
+  footer code { font-family: 'Exo 2'; font-weight: 700; color: var(--white); }
   .legend {
     display: flex; gap: 20px; flex-wrap: wrap; margin-top: 12px;
-    font-size: 12px; color: var(--secondary); font-weight: 500;
+    font-size: 12px; color: var(--muted); font-weight: 500;
   }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .sw { width: 14px; height: 14px; border-radius: 0; display: inline-block; }
@@ -235,10 +230,10 @@
       <span class="txt">01 / MERCH PLACEMENT</span>
     </div>
     <h1>SHFT Merch Placement Mockups</h1>
-    <p class="sub">Lime <code>#A6FF00</code> on black. Uses the existing <code>wordmark.png</code> + <code>bolt-mask.png</code>.</p>
+    <p class="sub">Lime <code>#A6FF00</code> on black. Uses the official <code>wordmark-shft-robotics.png</code> + <code>icon-transparent.png</code>.</p>
   </header>
 
-  <div class="banner">Placement mockup, not final art. CSS shapes stand in for real garments. Bolt is the existing PNG tinted lime for preview. Get true vectors before printing (see vector-plan.md).</div>
+  <div class="banner">Placement mockup, not final art. CSS shapes stand in for real garments. Get true vectors before printing (see vector-plan.md).</div>
 
   <div class="grid">
 
@@ -250,7 +245,7 @@
         <div class="tee">
           <div class="collar"></div>
           <div class="print">
-            <img src="../../website/public/images/logo/wordmark.png" alt="SHFT wordmark on tee" />
+            <img src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS wordmark on tee" />
             <div class="subcopy">Ontario Community FRC Team</div>
           </div>
         </div>
@@ -260,11 +255,11 @@
     <!-- HOODIE -->
     <div class="card">
       <h2>Hoodie</h2>
-      <p class="note">Black heavyweight fleece. Small lime bolt left chest. Big wordmark / "SHIFT THE STANDARD." on the back.</p>
+      <p class="note">Black heavyweight fleece. Small lime emblem left chest. Big wordmark / "SHIFT THE STANDARD." on the back.</p>
       <div class="stage">
         <div class="hoodie">
           <div class="hood"></div>
-          <div class="chest-bolt"><img src="../../website/public/images/logo/bolt-mask.png" alt="lime bolt left chest" class="bolt" /></div>
+          <div class="chest-emblem"><img src="../brand-assets/icon-transparent.png" alt="lime emblem left chest" class="emblem" /></div>
           <div class="pocket"></div>
         </div>
         <div class="back-tag">back: wordmark / tagline</div>
@@ -274,10 +269,10 @@
     <!-- STICKER / PATCH -->
     <div class="card">
       <h2>Sticker / Patch</h2>
-      <p class="note">Die-cut vinyl or embroidered patch. Lime bolt alone. The most reusable mark.</p>
+      <p class="note">Die-cut vinyl or embroidered patch. Lime emblem alone. The most reusable mark.</p>
       <div class="stage">
         <div class="sticker">
-          <img src="../../website/public/images/logo/bolt-mask.png" alt="lime bolt sticker" class="bolt" />
+          <img src="../brand-assets/icon-transparent.png" alt="lime emblem sticker" class="emblem" />
           <div class="sticker-label">@shftrobotics</div>
         </div>
       </div>
@@ -286,11 +281,11 @@
     <!-- CAP -->
     <div class="card">
       <h2>Cap</h2>
-      <p class="note">Black structured 6-panel. Embroidered lime bolt front. Fluoro poly thread.</p>
+      <p class="note">Black structured 6-panel. Embroidered lime emblem front. Fluoro poly thread.</p>
       <div class="stage">
         <div class="cap">
           <div class="crown"></div>
-          <div class="front-bolt"><img src="../../website/public/images/logo/bolt-mask.png" alt="embroidered lime bolt on cap" class="bolt" /></div>
+          <div class="front-emblem"><img src="../brand-assets/icon-transparent.png" alt="embroidered lime emblem on cap" class="emblem" /></div>
           <div class="brim"></div>
         </div>
       </div>
@@ -302,10 +297,10 @@
     <div>Color reference: lime <code>#A6FF00</code> (fluorescent. Proof to Pantone 802 C / 809 C, confirm physical swatch). Black <code>#1A1A1A</code>.</div>
     <div class="legend">
       <span><i class="sw" style="background:#A6FF00"></i> SHFT Lime: bolt / accent</span>
-      <span><i class="sw" style="background:#1A1A1A;border:1px solid #E5E5E5"></i> SHFT Black: garment</span>
-      <span><i class="sw" style="background:#FFFFFF;border:1px solid #E5E5E5"></i> White: letters</span>
+      <span><i class="sw" style="background:#1A1A1A;border:1px solid #333333"></i> SHFT Black: garment</span>
+      <span><i class="sw" style="background:#FFFFFF;border:1px solid #333333"></i> White: letters</span>
     </div>
-    <div style="margin-top:12px;">Placement mockup only. Final art requires a true vector wordmark + bolt. See <code>vector-plan.md</code> and <code>merch-specs.md</code>.</div>
+    <div style="margin-top:12px;">Placement mockup only. Final art requires a true vector wordmark + emblem. See <code>vector-plan.md</code> and <code>merch-specs.md</code>.</div>
   </footer>
 </div>
 </body>
