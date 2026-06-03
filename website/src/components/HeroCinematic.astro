@@ -17,8 +17,11 @@ const d = entry!.data as {
 <section id="hero" class="hero-stage relative min-h-[100svh] flex flex-col bg-surface-alt" data-hero>
   <!-- MAIN STAGE -->
   <div class="relative flex-1 flex items-center justify-center overflow-hidden">
-    <!-- Full-bleed background video -->
-    <video class="hero-bg-media" autoplay muted loop playsinline preload="metadata" poster="/videos/hero-left-poster.jpg" aria-hidden="true">
+    <!-- Full-bleed background: a poster image sits behind the video so that if
+         autoplay is blocked (e.g. iOS Low Power Mode) a clean still shows instead
+         of a tap-to-play control. -->
+    <img class="hero-bg-media" src="/videos/hero-left-poster.jpg" alt="" aria-hidden="true" />
+    <video class="hero-bg-media hero-bg-video" autoplay muted loop playsinline preload="metadata" poster="/videos/hero-left-poster.jpg" aria-hidden="true" tabindex="-1">
       <source src="/videos/hero-left.mp4" type="video/mp4" />
     </video>
     <!-- Readability scrim: darkens the centre (behind the copy) + top/bottom, keeps the edges of the video alive -->
@@ -108,6 +111,12 @@ const d = entry!.data as {
     filter: brightness(0.66) saturate(1.04) contrast(1.04);
   }
 
+  /* When autoplay is blocked (iOS Low Power Mode), hide the video so the poster
+     image behind it shows cleanly instead of a tap-to-play control. */
+  .hero-bg-video.autoplay-blocked {
+    display: none;
+  }
+
   /* Scrim: a soft dark pool behind the centred copy + top/bottom falloff */
   .hero-scrim {
     position: absolute;
@@ -126,11 +135,25 @@ const d = entry!.data as {
 </style>
 
 <script>
-  // Belt-and-suspenders: a few browsers defer muted autoplay until an explicit play() call.
-  document.querySelectorAll<HTMLVideoElement>('.hero-bg-media').forEach((vid) => {
+  // Belt-and-suspenders: a few browsers defer muted autoplay until an explicit
+  // play() call. If autoplay is blocked outright (iOS Low Power Mode), hide the
+  // video so the poster image shows cleanly instead of a tap-to-play control.
+  document.querySelectorAll<HTMLVideoElement>('video.hero-bg-video').forEach((vid) => {
     vid.muted = true;
     const tryPlay = () => vid.play().catch(() => {});
     if (vid.readyState >= 2) tryPlay();
     vid.addEventListener('canplay', tryPlay, { once: true });
+
+    // After a beat, if it is still paused, autoplay was blocked: reveal the poster.
+    window.setTimeout(() => {
+      if (vid.paused) vid.classList.add('autoplay-blocked');
+    }, 900);
+
+    // Honour a real user interaction by bringing the video back if they want it.
+    const onIntent = () => {
+      vid.play().then(() => vid.classList.remove('autoplay-blocked')).catch(() => {});
+    };
+    window.addEventListener('touchstart', onIntent, { once: true, passive: true });
+    window.addEventListener('click', onIntent, { once: true });
   });
 </script>

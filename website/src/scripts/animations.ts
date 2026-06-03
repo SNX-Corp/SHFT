@@ -168,7 +168,6 @@ if (prefersReducedMotion) {
   // Make everything visible immediately - no animations
   gsap.set(
     [
-      '[data-brand-logo]',
       '[data-hero-splash]',
       '[data-hero-eyebrow]',
       '[data-hero-word]',
@@ -196,6 +195,11 @@ if (prefersReducedMotion) {
     ].join(','),
     { opacity: 1, y: 0, x: 0, scale: 1, clearProps: 'all' },
   );
+  // The brand logo defaults to CSS opacity:0 and is revealed by JS; the
+  // clearProps above would leave it invisible (this is what breaks the hero
+  // logo under iOS Low Power Mode / Reduce Motion). Re-show it explicitly. Its
+  // transform stays owned by the nav morph script.
+  gsap.set('[data-brand-logo]', { opacity: 1, filter: 'none' });
 } else {
   /* ---------------------------------------------------------------- */
   /*  Initial hidden states                                           */
