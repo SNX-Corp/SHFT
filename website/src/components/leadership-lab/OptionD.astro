@@ -1,0 +1,327 @@
+---
+import { getEntry } from 'astro:content';
+import SectionLabel from '../SectionLabel.astro';
+
+const entry = await getEntry('sections', 'mentors');
+const d = entry!.data as {
+  section_number: string;
+  section_label: string;
+  headline_line_1: string;
+  headline_line_2: string;
+  mentors: Array<{
+    name: string;
+    role_tagline: string;
+    bio_1: string;
+    bio_2: string;
+    quote: string;
+    credentials: Array<{ label: string; value: string }>;
+  }>;
+};
+
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+}
+---
+
+<section id="lead-d" class="od-section">
+  <div class="od-inner content-width">
+
+    <!-- Section header -->
+    <div class="od-header">
+      <SectionLabel number={d.section_number} text={d.section_label} />
+      <h2 class="od-headline font-display font-black text-h2-size">
+        <span class="title-shine is-dark delay-1">{d.headline_line_1}</span><br />
+        <span class="title-shine is-dark delay-2">{d.headline_line_2}</span>
+      </h2>
+    </div>
+
+    <!-- Mentor list -->
+    <div class="od-mentors">
+      {d.mentors.map((mentor, i) => (
+        <article class:list={['od-mentor', i > 0 && 'od-mentor--divided']}>
+
+          <!-- Portrait placeholder -->
+          <div class="od-avatar-wrap" aria-hidden="true">
+            <div class="od-avatar">
+              <span class="od-avatar__initials">{getInitials(mentor.name)}</span>
+            </div>
+            <div class="od-avatar-ring"></div>
+          </div>
+
+          <!-- Role eyebrow -->
+          <p class="od-role">{mentor.role_tagline}</p>
+
+          <!-- Name -->
+          <h3 class="od-name font-display font-black">{mentor.name.toUpperCase()}</h3>
+
+          <!-- Bio -->
+          <div class="od-bio">
+            <p>{mentor.bio_1}</p>
+            <p>{mentor.bio_2}</p>
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="od-quote">
+            <span class="od-quote__mark" aria-hidden="true">&ldquo;</span>
+            <span class="od-quote__text">{mentor.quote}</span>
+            <span class="od-quote__mark" aria-hidden="true">&rdquo;</span>
+          </blockquote>
+
+          <!-- Credentials -->
+          <ul class="od-credentials" role="list">
+            {mentor.credentials.map((item) => (
+              <li class="od-chip">
+                <span class="od-chip__label">{item.label}</span>
+                <span class="od-chip__sep" aria-hidden="true"></span>
+                <span class="od-chip__value">{item.value}</span>
+              </li>
+            ))}
+          </ul>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ─── Section shell ──────────────────────────────────────── */
+.od-section {
+  background-color: var(--color-bg);
+  padding-block: clamp(5rem, 10vw, 9rem);
+  overflow-x: hidden;
+}
+
+.od-inner {
+  /* content-width utility handles max-width + padding */
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.od-header {
+  text-align: center;
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+/* Override SectionLabel default left-alignment for centered layout */
+.od-header :global(.flex) {
+  justify-content: center;
+}
+
+.od-headline {
+  margin-top: 0;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* ─── Mentor list ────────────────────────────────────────── */
+.od-mentors {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── Single mentor block ────────────────────────────────── */
+.od-mentor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.od-mentor--divided {
+  border-top: 1px solid var(--color-border);
+}
+
+/* ─── Avatar ─────────────────────────────────────────────── */
+.od-avatar-wrap {
+  position: relative;
+  width: clamp(7rem, 14vw, 9.5rem);
+  height: clamp(7rem, 14vw, 9.5rem);
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+/* Outer lime ring that "breathes" */
+.od-avatar-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  opacity: 0.6;
+  animation: od-ring-breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes od-ring-breathe {
+  0%, 100% { transform: scale(1);    opacity: 0.45; }
+  50%       { transform: scale(1.04); opacity: 0.85; }
+}
+
+.od-avatar {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--color-surface-alt);
+  display: grid;
+  place-items: center;
+  /* Subtle inner gradient for depth */
+  background-image: radial-gradient(
+    circle at 38% 30%,
+    #2e2e2e 0%,
+    var(--color-surface-alt) 65%
+  );
+}
+
+.od-avatar__initials {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  user-select: none;
+}
+
+/* ─── Role eyebrow ───────────────────────────────────────── */
+.od-role {
+  font-family: var(--font-heading);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-mega);
+  text-transform: uppercase;
+  color: var(--color-accent-dim);
+  margin: 0 0 0.6rem;
+}
+
+/* ─── Name ───────────────────────────────────────────────── */
+.od-name {
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin: 0 0 2rem;
+}
+
+/* ─── Bio ────────────────────────────────────────────────── */
+.od-bio {
+  max-width: 60ch;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 2.25rem;
+}
+
+.od-bio p {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ─── Quote ──────────────────────────────────────────────── */
+.od-quote {
+  max-width: 52ch;
+  width: 100%;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.15em;
+  flex-wrap: wrap;
+}
+
+.od-quote__mark {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.od-quote__text {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  /* Sit the text between the two marks */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ─── Credentials chips ──────────────────────────────────── */
+.od-credentials {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.5rem;
+  max-width: 62ch;
+  width: 100%;
+}
+
+.od-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.35em 0.9em;
+  background-color: var(--color-surface);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.od-chip:hover {
+  border-color: var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface));
+}
+
+.od-chip__label {
+  font-family: var(--font-heading);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.od-chip__sep {
+  display: block;
+  width: 1px;
+  height: 0.75em;
+  background-color: var(--color-border);
+  flex-shrink: 0;
+}
+
+.od-chip__value {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .od-avatar-ring {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+</style>

@@ -1,0 +1,41 @@
+---
+// Design lab: 5 leadership-section options to pick from. Dev-only page.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OptionA from '../components/leadership-lab/OptionA.astro';
+import OptionB from '../components/leadership-lab/OptionB.astro';
+import OptionC from '../components/leadership-lab/OptionC.astro';
+import OptionD from '../components/leadership-lab/OptionD.astro';
+import OptionE from '../components/leadership-lab/OptionE.astro';
+---
+
+<BaseLayout title="SHFT — Leadership design options" showJoinModal={false}>
+  <div class="lab-bar">Option A · Polished Split</div>
+  <OptionA />
+  <div class="lab-bar">Option B · Editorial Magazine</div>
+  <OptionB />
+  <div class="lab-bar">Option C · Dark Dossier</div>
+  <OptionC />
+  <div class="lab-bar">Option D · Minimal Centered</div>
+  <OptionD />
+  <div class="lab-bar">Option E · Duo Cards</div>
+  <OptionE />
+  <div class="lab-bar">End of options</div>
+
+  <style>
+    .lab-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #0c0c0c;
+      color: #a6ff00;
+      font-family: 'Exo 2 Variable', 'Exo 2', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 12px clamp(20px, 5vw, 64px);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(166, 255, 0, 0.25);
+    }
+  </style>
+</BaseLayout>
