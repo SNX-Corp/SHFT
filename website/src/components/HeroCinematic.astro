@@ -30,13 +30,18 @@ const d = entry!.data as {
     <!-- Centered content. The big wordmark itself lives in the nav (it morphs up on scroll); this slot reserves its space. -->
     <div class="hero-readable pointer-events-none relative z-[var(--z-hero-text)] content-width box-border max-w-full text-center" data-hero-copy>
       <div class="flex flex-col items-center">
-        <!-- Eyebrow (mirrored spacer on the right keeps the text optically centered) -->
-        <div class="flex items-center justify-center gap-3 mb-6 sm:mb-8" data-hero-eyebrow>
-          <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
-          <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/80">
-            {d.eyebrow}
-          </span>
-          <span class="block w-1.5 h-1.5 rounded-full invisible" aria-hidden="true"></span>
+        <!-- Eyebrow: white maple leaf crest above the descriptor -->
+        <div class="flex flex-col items-center gap-2.5 mb-6 sm:mb-8" data-hero-eyebrow>
+          <svg viewBox="0 0 512 512" class="w-[22px] h-[22px] text-white/90" fill="currentColor" aria-hidden="true" style="filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5));">
+            <path d="M383.8 351.7c2.5-2.5 105.2-92.4 105.2-92.4l-17.5-7.5c-10-4.2-7.5-12.6-5-20.1s20.1-67.7 20.1-67.7l-50.2 10c-7.5 1.7-12.6-2.5-15.1-7.5l-12.6-37.6-65.2 65.2c-2.5 2.5-15.1 12.6-12.6-10l27.6-145.6-42.7 25.1c-7.5 4.2-15.1 4.2-20.1-5L256 0l-37.6 75.3c-5 9.2-12.6 9.2-20.1 5l-42.7-25.1 27.6 145.6c2.5 22.6-10.1 12.6-12.6 10l-65.2-65.2-12.6 37.6c-2.5 5-7.5 9.2-15.1 7.5l-50.2-10s17.6 60.2 20.1 67.7-5 15.9-5 20.1L23 259.3s102.7 89.9 105.2 92.4 2.5 5 0 12.6l-7.5 25.1c30.1-2.5 105.2-10 105.2-10 7.5 0 7.5 5 7.5 7.5L228.4 512h55.3l-5-115.1c0-2.5 0-7.5 7.5-7.5 0 0 75.1 7.5 105.2 10l-7.5-25.1c-2.5-7.5-2.5-10 .5-12.6z"/>
+          </svg>
+          <div class="flex items-center justify-center gap-3">
+            <span class="block w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
+            <span class="font-heading font-semibold text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/80">
+              {d.eyebrow}
+            </span>
+            <span class="block w-1.5 h-1.5 rounded-full invisible" aria-hidden="true"></span>
+          </div>
         </div>
 
         <!-- Logo slot: the morphing wordmark sits centered here at rest -->
