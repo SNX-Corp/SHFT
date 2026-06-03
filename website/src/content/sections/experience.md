@@ -11,7 +11,7 @@ cards:
     accent: true
   - number: "02"
     title: "Private Practice Field"
-    description: "We are securing an official FRC practice field. Your child will have access to a regulation playing surface for testing and driver practice - something most teams can only dream of."
+    description: "We are securing an official FRC practice field. Your child will have access to a regulation playing surface for testing and driver practice. Most teams can only dream of that."
     accent: false
   - number: "03"
     title: "Direct Mentorship"
@@ -23,10 +23,10 @@ cards:
     accent: true
   - number: "05"
     title: "Competition Pathway"
-    description: "District events → District Championship → World Championship in Houston. We don't participate - we compete to win. The ALT-F4 partnership gives us a real shot from year one."
+    description: "District events → District Championship → World Championship in Houston. We don't participate. We compete to win. The ALT-F4 partnership gives us a real shot from year one."
     accent: false
   - number: "06"
     title: "University Portfolio"
-    description: "FRC is one of the most recognized STEM extracurriculars by top universities. Your child builds a real portfolio - not just a line on a resume. MIT, Waterloo, U of T - they all know what FRC means."
+    description: "FRC is one of the most recognized STEM extracurriculars by top universities. Your child builds a real portfolio, not just a line on a resume. MIT, Waterloo, and U of T all know what FRC means."
     accent: false
 ---

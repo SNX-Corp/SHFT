@@ -3,7 +3,7 @@ section_number: "06"
 section_label: "THE SEASON"
 headline_line_1: "A YEAR IN"
 headline_line_2: "THE LIFE."
-intro: "FRC follows a structured season. Here's what your child's year looks like - from first workshop to championship stage."
+intro: "FRC follows a structured season. Here's what your child's year looks like, from first workshop to championship stage."
 phases:
   - period: "JUN – AUG"
     title: "Off-Season Foundation"

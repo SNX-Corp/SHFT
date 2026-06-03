@@ -195,6 +195,12 @@ function getInitials(name: string): string {
     .portrait {
       max-width: 100%;
     }
+    /* The big name heading sits directly under the portrait when stacked, so the
+       caption pinned to the portrait would repeat the name twice in a row. Drop
+       it on mobile and let the portrait read as a clean photo block. */
+    .portrait-caption {
+      display: none;
+    }
   }
 
   .portrait-bg {

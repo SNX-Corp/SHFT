@@ -5,22 +5,31 @@ interface Props {
   inverted?: boolean;
 }
 
-const { number, text, inverted = false } = Astro.props;
+const { number, text } = Astro.props;
 ---
 
-<div class="flex items-center gap-4 mb-12">
-  <div
-    class:list={[
-      'w-8 h-px',
-      inverted ? 'bg-accent' : 'bg-accent',
-    ]}
-  />
-  <span
-    class:list={[
-      'text-label-size font-heading',
-      inverted ? 'text-text-muted' : 'text-text-muted',
-    ]}
-  >
-    {number} - {text}
+<div class="flex items-center gap-3 mb-12">
+  <span class="w-8 h-px bg-accent shrink-0" aria-hidden="true"></span>
+  <span class="flex items-center gap-2 text-label-size font-heading text-text-muted">
+    <span>{number}</span>
+    <svg
+      class="section-bolt shrink-0 text-accent"
+      viewBox="0 0 24 24"
+      width="12"
+      height="12"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+    <span>{text}</span>
   </span>
 </div>
+
+<style>
+  /* Lightning bolt echoes the SHFT logo mark. Subtle lime glow to make it read as
+     an accent without shouting. */
+  .section-bolt {
+    filter: drop-shadow(0 0 5px rgba(166, 255, 0, 0.45));
+  }
+</style>

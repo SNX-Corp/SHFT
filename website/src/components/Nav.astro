@@ -201,7 +201,13 @@ const navLinks = d.links;
     const slotCenterViewportTop = slotRect.top + window.scrollY + slotRect.height / 2;
     dy = slotCenterViewportTop - navCenterY;
     const logoH = brand.offsetHeight || 28;
-    heroScale = Math.max(1, (slotRect.height || logoH * 4) / logoH);
+    const scaleByHeight = (slotRect.height || logoH * 4) / logoH;
+    // Never let the wordmark grow wider than the viewport. On narrow phones the
+    // 18vh slot height would otherwise blow the wordmark past both edges and clip
+    // the outer letters, so cap the hero scale by the available width too.
+    const baseW = brand.offsetWidth || logoH * 4.5;
+    const scaleByWidth = (window.innerWidth * 0.9) / baseW;
+    heroScale = Math.max(1, Math.min(scaleByHeight, scaleByWidth));
   }
 
   function setBars(dark: boolean) {
@@ -288,12 +294,15 @@ const navLinks = d.links;
       bar1.style.transform = 'rotate(45deg) translateY(4px)';
       bar2.style.transform = 'rotate(-45deg) translateY(-4px)';
       setBars(true);
+      // Hide the floating hero wordmark so it doesn't bleed over the menu links.
+      if (brand) { brand.style.opacity = '0'; brand.style.pointerEvents = 'none'; }
       document.body.style.overflow = 'hidden';
     } else {
       mobileMenu.classList.add('opacity-0', 'pointer-events-none');
       mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
       bar1.style.transform = '';
       bar2.style.transform = '';
+      if (brand) brand.style.opacity = '1';
       document.body.style.overflow = '';
       update();
     }

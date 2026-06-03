@@ -1,26 +1,46 @@
 ---
 // Per-character rolling hover (landonorris.com style): each letter is a
 // clipped box holding two stacked copies. On hover of the parent, every
-// letter rolls up with a staggered delay, creating a wave. Spaces render as
-// real spaces so long strings still wrap at word boundaries.
+// letter rolls up with a staggered delay, creating a wave.
+//
+// Characters are inline-block, which on their own create line-break
+// opportunities between every letter. To stop long strings from wrapping
+// mid-word (e.g. "e / xperience"), each word is wrapped in a nowrap box so
+// breaks only ever happen at the real spaces between words.
 interface Props {
   text: string;
   class?: string;
 }
 const { text, class: className } = Astro.props;
-const chars = [...text];
+const words = text.split(' ');
+let ri = 0;
 ---
 <span class:list={['text-roll', className]} aria-label={text}>
-  {chars.map((ch, i) =>
-    ch === ' ' ? (
-      ' '
-    ) : (
-      <span class="text-roll__char" style={`--ri:${i}`} aria-hidden="true">
-        <span class="text-roll__col">
-          <span>{ch}</span>
-          <span>{ch}</span>
-        </span>
+  {words.map((word, wi) => (
+    <>
+      <span class="text-roll__word">
+        {[...word].map((ch) => {
+          const i = ri++;
+          return (
+            <span class="text-roll__char" style={`--ri:${i}`} aria-hidden="true">
+              <span class="text-roll__col">
+                <span>{ch}</span>
+                <span>{ch}</span>
+              </span>
+            </span>
+          );
+        })}
       </span>
-    )
-  )}
+      {wi < words.length - 1 ? ' ' : ''}
+    </>
+  ))}
 </span>
+
+<style>
+  /* Keep each word's per-character spans together; only break at the spaces
+     between words so nothing ever splits mid-word. */
+  .text-roll__word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+</style>

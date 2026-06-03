@@ -3,7 +3,7 @@ section_number: "03"
 section_label: "STRATEGIC PARTNERSHIP"
 headline_line_1: "BACKED BY"
 headline_line_2: "ALT-F4."
-intro: "Team SHFT has a sister-team partnership with Team 7558 ALT-F4 - one of the fastest-growing FRC teams in Canadian history. This isn't just a name on paper. It's a competitive advantage your child gets from day one."
+intro: "Team SHFT has a sister-team partnership with Team 7558 ALT-F4, one of the fastest-growing FRC teams in Canadian history. This isn't just a name on paper. It's a competitive advantage your child gets from day one."
 stat_card:
   team_label: "Team 7558 (ALT-F4)"
   year: "2026"
@@ -31,5 +31,5 @@ cards:
   - title: "Competition Strategy"
     description: "Coordinated scouting, match strategy, and game analysis between both teams during competitions."
   - title: "Path to Championships"
-    description: "The partnership is designed to give both teams the best shot at DCMP qualification - and beyond."
+    description: "The partnership is designed to give both teams the best shot at DCMP qualification and beyond."
 ---
