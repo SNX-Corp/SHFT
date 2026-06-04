@@ -16,7 +16,7 @@ students:
     description: "Come ready to listen, ask questions, and push yourself. We will make you a superstar if you let us."
 parents:
   - title: "Refer Other Families"
-    description: "Share SHFT if it fits: If you know a family who would thrive here, an introduction is welcome and never expected. Each family you refer who joins allows us to offer $1,000 off."
+    description: "Share SHFT if it fits: If you know a family who would thrive here, an introduction is welcome and never expected. Each family you introduce who joins helps keep the program sustainable, and we pass $1,000 back to you."
   - title: "Advocate for the Program"
     description: "Help other parents understand why this investment is worth it, and be part of the community however you can, whether that is cheering at events, lending a skill, or simply showing up."
   - title: "Connect Us With Sponsors"
