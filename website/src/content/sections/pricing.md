@@ -28,7 +28,7 @@ cost_breakdown:
   - label: "Food & Meals"
     description: "During build sessions and competitions"
   - label: "Robot Transport"
-    description: "Getting the robot and equipment to and from competitions. Student travel is not included."
+    description: "Getting the robot and equipment to and from competitions."
   - label: "Professional Coaching"
     description: "Expert mentorship and instruction"
 ---
