@@ -3,7 +3,7 @@ section_number: "03"
 section_label: "STRATEGIC PARTNERSHIP"
 headline_line_1: "BACKED BY"
 headline_line_2: "ALT-F4."
-intro: "Team SHFT has a sister-team partnership with Team 7558 ALT-F4, one of the fastest-growing FRC teams in Canadian history. Along with the word-play, SHFT will share the same learning structure curated through years of off-season training."
+intro: "Team SHFT has a sister-team partnership with Team 7558 ALT-F4, one of the fastest-growing FRC teams in Canadian history. Along with the word-play, SHFT will share the same ALT-F4 learning structure curated through years of off-season training."
 stat_card:
   team_label: "Team 7558 (ALT-F4)"
   year: "2026"
