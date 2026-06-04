@@ -13,7 +13,7 @@ faqs:
   - question: "What is FRC?"
     answer: "FIRST Robotics Competition (FRC) is the premier high school robotics competition in the world. Teams of students design, build, and program 120-pound industrial robots to compete in a new game each year. FRC is backed by Fortune 500 companies and recognized by top universities as one of the strongest extracurriculars a student can have."
   - question: "What does the ALT-F4 partnership mean for my child?"
-    answer: "Team SHFT has a sister-team relationship with Team 7558 ALT-F4, one of the fastest-growing teams in Canadian FRC history. This means shared resources, joint practice sessions, and technical mentorship from ALT-F4's experienced mentors. At district competitions, strong partnerships like this can be the difference between going home and qualifying for the District Championship."
+    answer: "Team SHFT has a sister-team relationship with Team 7558 ALT-F4, one of the fastest-growing teams in Canadian FRC history. This means shared resources, joint practice sessions, and technical mentorship from ALT-F4's experienced mentors."
   - question: "Is there financial aid available?"
     answer: "1. We offer a referral program: every family you refer earns you a $1,000 discount. 2. As a Rookie team, we encourage parents to help us connect with businesses for sponsorship opportunities, which helps keep costs sustainable."
   - question: "How does this help with university applications?"

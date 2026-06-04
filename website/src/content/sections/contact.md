@@ -2,7 +2,7 @@
 eyebrow: "NEXT STEPS"
 headline_line_1: "LET'S"
 headline_line_2: "TALK."
-intro: "We meet with every family one-on-one. Discuss your child's goals and whether SHFT is the right fit."
+intro: "We meet with every family one-on-one to discuss your child's goals and whether SHFT is the right fit."
 cta_label: "Join SHFT"
 cta_href: "#join"
 modal_eyebrow: "LET'S CONNECT"
