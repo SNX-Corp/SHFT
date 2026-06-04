@@ -3,15 +3,15 @@ section_number: "05"
 section_label: "THE EXPERIENCE"
 headline_line_1: "WHAT YOUR CHILD"
 headline_line_2: "ACTUALLY GETS."
-intro: "This isn't a classroom. It's a launchpad. Here's what your child actually gets, and why families who understand the value never look back."
+intro: "This isn't a classroom. It's an educational launchpad. Here's what your child actually gets, and why families who join tend to stay for years."
 cards:
   - number: "01"
     title: "World-Class Facility"
-    description: "A professionally equipped workshop with industrial tools, organized inventory, and purpose-built workbenches for serious robot work."
+    description: "A professionally equipped workshop with industrial tools, organized inventory, and purpose-built workstations."
     accent: true
   - number: "02"
-    title: "Private Practice Field"
-    description: "We are securing an official FRC practice field. Your child will have access to a regulation playing surface for testing and driver practice. Most teams can only dream of that."
+    title: "Practice Field Access"
+    description: "We are working to secure a regulation field for testing, driver practice, and autons."
     accent: false
   - number: "03"
     title: "Direct Mentorship"
@@ -23,7 +23,7 @@ cards:
     accent: true
   - number: "05"
     title: "Competition Pathway"
-    description: "District events → District Championship → World Championship in Houston. We don't participate. We compete to win. The ALT-F4 partnership gives us a real shot from year one."
+    description: "District events → District Championship → World Championship in Houston."
     accent: false
   - number: "06"
     title: "University Portfolio"

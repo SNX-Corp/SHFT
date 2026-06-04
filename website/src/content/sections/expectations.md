@@ -16,9 +16,9 @@ students:
     description: "Come ready to listen, ask questions, and push yourself. We will make you a superstar if you let us."
 parents:
   - title: "Refer Other Families"
-    description: "Every referral saves you $1,000 and helps us build the team your child deserves to be part of."
+    description: "Share SHFT if it fits: If you know a family who would thrive here, an introduction is welcome and never expected. Each family you refer who joins allows us to offer $1,000 off."
   - title: "Advocate for the Program"
-    description: "Help other parents understand why this investment is worth it. The best teams have the strongest parent communities."
+    description: "Help other parents understand why this investment is worth it, and be part of the community however you can, whether that is cheering at events, lending a skill, or simply showing up."
   - title: "Connect Us With Sponsors"
     description: "Know a business that supports STEM education? An introduction can help keep costs sustainable for all families."
   - title: "Trust the Process"

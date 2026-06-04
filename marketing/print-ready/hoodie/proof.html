@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHFT ROBOTICS — Hoodie Print Placement Proof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@400;500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A6FF00;
+    --ink:#1A1A1A;
+    --stage:#ECECEE;
+    --stage-2:#E2E2E5;
+    --hoodie:#1C1C1E;
+    --hoodie-shade:#141416;
+    --hoodie-hi:#262629;
+    --line:#9AA0A6;
+    --label-ink:#2A2D31;
+    --label-muted:#6B7177;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#cfd1d4;}
+  .stage{
+    position:relative;
+    width:1500px;height:1700px;
+    margin:0 auto;
+    background:
+      radial-gradient(120% 90% at 50% 22%, #F4F4F6 0%, var(--stage) 46%, var(--stage-2) 100%);
+    overflow:hidden;
+    font-family:'Raleway',sans-serif;
+  }
+
+  /* ---------- header chrome ---------- */
+  .header{position:absolute;top:54px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .h-title{font-family:'Orbitron',sans-serif;font-weight:900;font-size:34px;letter-spacing:1px;color:var(--ink);}
+  .h-title .accent{color:#7FB800;}
+  .h-sub{font-family:'Exo 2',sans-serif;font-weight:500;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--label-muted);margin-top:8px;}
+  .h-meta{text-align:right;font-family:'Exo 2',sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--label-muted);line-height:1.7;}
+  .h-meta b{color:var(--label-ink);font-weight:700;}
+
+  /* ---------- floor shadow ---------- */
+  .floor-shadow{
+    position:absolute;left:50%;top:1255px;transform:translateX(-50%);
+    width:760px;height:90px;
+    background:radial-gradient(50% 50% at 50% 50%, rgba(20,22,26,.30) 0%, rgba(20,22,26,0) 70%);
+    filter:blur(4px);
+  }
+
+  /* ---------- HOODIE (front) ---------- */
+  .hoodie{
+    position:absolute;left:50%;top:300px;transform:translateX(-50%);
+    width:820px;height:980px;
+    filter:drop-shadow(0 34px 46px rgba(20,22,26,.30));
+  }
+  .hoodie svg{display:block;width:100%;height:100%;}
+
+  /* ---------- placement art on garment ---------- */
+  .art{position:absolute;}
+  .art img{display:block;width:100%;height:auto;}
+
+  /* left chest: compact SHFT, ~95mm wide.
+     Hoodie body printable front width ~= 480mm of CSS? We map CSS->mm via the back view scale.
+     On this front mock the chest mark sits left of center, upper torso. */
+  .art-chest{
+    /* width set to represent 95mm at the proof's mm scale (see .scalebar) */
+    width:120px;   /* 95mm -> see scale note in spec */
+    top:560px;left:830px;
+  }
+
+  /* ---------- BACK VIEW (secondary, smaller) ---------- */
+  .back-card{
+    position:absolute;left:90px;top:1330px;
+    width:430px;height:300px;
+  }
+  .back-label{
+    font-family:'Exo 2',sans-serif;font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--label-muted);margin-bottom:14px;
+  }
+  .back-hoodie{position:relative;width:300px;height:300px;filter:drop-shadow(0 14px 20px rgba(20,22,26,.22));}
+  .back-hoodie svg{display:block;width:100%;height:100%;}
+  .art-back{
+    position:absolute;width:188px;top:108px;left:56px;
+  }
+
+  /* ---------- call-out lines + labels ---------- */
+  .callout-line{position:absolute;background:var(--line);}
+  .callout-dot{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%);}
+  .callout-box{
+    position:absolute;
+    background:#FFFFFF;border:1.5px solid #D2D5D9;border-radius:2px;
+    padding:11px 15px;min-width:190px;
+    box-shadow:0 4px 14px rgba(20,22,26,.10);
+  }
+  .callout-box .cb-tag{font-family:'Exo 2',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:5px;}
+  .callout-box .cb-spec{font-family:'Raleway',sans-serif;font-weight:500;font-size:13px;color:var(--label-ink);line-height:1.55;}
+  .callout-box .cb-spec b{font-weight:700;color:var(--ink);}
+  .callout-box .cb-file{font-family:'Exo 2',sans-serif;font-weight:600;font-size:11px;letter-spacing:.5px;color:#7FB800;margin-top:6px;}
+  .chip{display:inline-flex;align-items:center;gap:6px;margin-top:7px;}
+  .swatch{width:13px;height:13px;border-radius:2px;border:1px solid rgba(0,0,0,.18);}
+  .swatch-lime{background:var(--lime);}
+  .swatch-white{background:#fff;}
+  .chip span{font-family:'Exo 2',sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--label-muted);}
+
+  /* ---------- scale bar ---------- */
+  .scalebar{position:absolute;left:90px;top:1648px;display:flex;align-items:center;gap:14px;}
+  .scalebar .bar{position:relative;height:10px;width:100px;border-left:2px solid var(--label-ink);border-right:2px solid var(--label-ink);border-bottom:2px solid var(--label-ink);}
+  .scalebar .lab{font-family:'Exo 2',sans-serif;font-weight:600;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--label-muted);}
+
+  /* ---------- footer ---------- */
+  .footer{position:absolute;right:90px;bottom:54px;text-align:right;font-family:'Exo 2',sans-serif;font-weight:500;font-size:12.5px;letter-spacing:1px;color:var(--label-muted);line-height:1.8;}
+  .footer b{color:var(--label-ink);font-weight:700;}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- header -->
+  <div class="header">
+    <div>
+      <div class="h-title">SHFT<span class="accent">.</span> ROBOTICS</div>
+      <div class="h-sub">Pullover Hoodie &middot; Print Placement Proof</div>
+    </div>
+    <div class="h-meta">
+      <div>Item: <b>Black Pullover Hoodie</b></div>
+      <div>Method: <b>Screen Print</b></div>
+      <div>Colors: <b>White + Lime Spot</b></div>
+    </div>
+  </div>
+
+  <!-- floor shadow under main hoodie -->
+  <div class="floor-shadow"></div>
+
+  <!-- ===================== MAIN HOODIE FRONT ===================== -->
+  <div class="hoodie">
+    <svg viewBox="0 0 820 980" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#232326"/>
+          <stop offset="0.5" stop-color="#1C1C1E"/>
+          <stop offset="1" stop-color="#161618"/>
+        </linearGradient>
+        <linearGradient id="hoodGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#202023"/>
+          <stop offset="1" stop-color="#161618"/>
+        </linearGradient>
+      </defs>
+
+      <!-- body -->
+      <path d="M210 250
+               C150 270 120 300 95 360
+               L40 540 L120 575 L150 470
+               L150 940 Q150 958 168 958
+               L652 958 Q670 958 670 940
+               L670 470 L700 575 L780 540
+               L725 360 C700 300 670 270 610 250
+               L520 222
+               C520 222 470 250 410 250
+               C350 250 300 222 300 222 Z"
+            fill="url(#bodyGrad)"/>
+
+      <!-- rib hem -->
+      <rect x="150" y="912" width="520" height="46" rx="6" fill="#141416"/>
+      <g stroke="#0E0E10" stroke-width="2" opacity="0.7">
+        <line x1="190" y1="916" x2="190" y2="954"/>
+        <line x1="250" y1="916" x2="250" y2="954"/>
+        <line x1="310" y1="916" x2="310" y2="954"/>
+        <line x1="370" y1="916" x2="370" y2="954"/>
+        <line x1="410" y1="916" x2="410" y2="954"/>
+        <line x1="450" y1="916" x2="450" y2="954"/>
+        <line x1="510" y1="916" x2="510" y2="954"/>
+        <line x1="570" y1="916" x2="570" y2="954"/>
+        <line x1="630" y1="916" x2="630" y2="954"/>
+      </g>
+
+      <!-- sleeves shading -->
+      <path d="M95 360 L40 540 L120 575 L150 470 L150 360 Z" fill="#171719" opacity=".6"/>
+      <path d="M725 360 L780 540 L700 575 L670 470 L670 360 Z" fill="#171719" opacity=".6"/>
+
+      <!-- kangaroo pocket -->
+      <path d="M250 720 L570 720 L600 860 Q600 868 590 868 L230 868 Q220 868 220 860 Z"
+            fill="none" stroke="#101012" stroke-width="3"/>
+      <path d="M250 720 L290 760 M570 720 L530 760" stroke="#101012" stroke-width="3" fill="none"/>
+
+      <!-- hood -->
+      <path d="M300 222
+               C300 222 270 150 410 150
+               C550 150 520 222 520 222
+               C520 222 470 250 410 250
+               C350 250 300 222 300 222 Z"
+            fill="url(#hoodGrad)" stroke="#101012" stroke-width="2"/>
+      <!-- hood inner -->
+      <path d="M330 215 C330 180 360 168 410 168 C460 168 490 180 490 215 C460 232 430 238 410 238 C390 238 360 232 330 215 Z"
+            fill="#101012"/>
+      <!-- neck rib -->
+      <path d="M300 222 C350 250 470 250 520 222" fill="none" stroke="#0E0E10" stroke-width="6"/>
+
+      <!-- drawstrings -->
+      <line x1="388" y1="232" x2="382" y2="330" stroke="#3A3A3E" stroke-width="5" stroke-linecap="round"/>
+      <line x1="432" y1="232" x2="438" y2="330" stroke="#3A3A3E" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="382" cy="334" r="6" fill="#48484C"/>
+      <circle cx="438" cy="334" r="6" fill="#48484C"/>
+
+      <!-- subtle center seam highlight -->
+      <line x1="410" y1="250" x2="410" y2="912" stroke="#000" stroke-width="1" opacity=".15"/>
+    </svg>
+  </div>
+
+  <!-- LEFT CHEST ART (real vector) -->
+  <div class="art art-chest">
+    <img src="../../brand-assets/shft.svg" alt="SHFT compact mark — left chest">
+  </div>
+
+  <!-- ===================== BACK VIEW (secondary) ===================== -->
+  <div class="back-card">
+    <div class="back-label">Back &middot; Upper Back Print</div>
+    <div class="back-hoodie">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bodyGradB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#232326"/>
+            <stop offset="1" stop-color="#161618"/>
+          </linearGradient>
+        </defs>
+        <!-- back body -->
+        <path d="M84 78
+                 C62 86 52 96 44 118 L22 188 L52 200 L60 158
+                 L60 286 Q60 292 66 292 L234 292 Q240 292 240 286
+                 L240 158 L248 200 L278 188 L256 118
+                 C248 96 238 86 216 78
+                 L196 70 L104 70 Z"
+              fill="url(#bodyGradB)"/>
+        <!-- hood lump (back) -->
+        <path d="M104 70 C104 44 124 36 150 36 C176 36 196 44 196 70 C176 80 164 82 150 82 C136 82 124 80 104 70 Z"
+              fill="#1A1A1C" stroke="#101012" stroke-width="1.5"/>
+        <!-- neck rib -->
+        <path d="M104 70 C124 80 176 80 196 70" fill="none" stroke="#0E0E10" stroke-width="4"/>
+        <!-- hem -->
+        <rect x="60" y="276" width="180" height="16" rx="3" fill="#141416"/>
+      </svg>
+      <!-- back wordmark art (real vector) -->
+      <div class="art art-back">
+        <img src="../../brand-assets/wordmark.svg" alt="SHFT ROBOTICS wordmark — upper back">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CALL-OUTS ===================== -->
+
+  <!-- chest call-out: dot on art, line out to box on right -->
+  <div class="callout-dot" style="left:890px;top:600px;"></div>
+  <div class="callout-line" style="left:890px;top:600px;width:230px;height:2px;"></div>
+  <div class="callout-line" style="left:1118px;top:520px;width:2px;height:82px;"></div>
+  <div class="callout-box" style="left:1118px;top:436px;">
+    <div class="cb-tag">1 &middot; Left Chest</div>
+    <div class="cb-spec">
+      <b>95 mm</b> wide<br>
+      <b>180 mm</b> down from shoulder seam<br>
+      <b>60 mm</b> left of center
+    </div>
+    <div class="cb-file">file: shft.svg</div>
+    <div class="chip"><span class="swatch swatch-white"></span><span>White</span><span class="swatch swatch-lime" style="margin-left:8px;"></span><span>Lime spot</span></div>
+  </div>
+
+  <!-- back call-out -->
+  <div class="callout-dot" style="left:336px;top:1480px;"></div>
+  <div class="callout-line" style="left:520px;top:1480px;width:2px;height:0px;"></div>
+  <div class="callout-line" style="left:336px;top:1480px;width:0px;"></div>
+  <div class="callout-line" style="left:336px;top:1410px;width:2px;height:70px;"></div>
+  <div class="callout-line" style="left:336px;top:1410px;width:520px;height:2px;"></div>
+  <div class="callout-line" style="left:856px;top:1410px;width:2px;height:60px;"></div>
+  <div class="callout-box" style="left:600px;top:1470px;">
+    <div class="cb-tag">2 &middot; Upper Back</div>
+    <div class="cb-spec">
+      <b>300 mm</b> wide, centered<br>
+      Top edge <b>80 mm</b> below collar seam<br>
+      Full SHFT ROBOTICS lockup
+    </div>
+    <div class="cb-file">file: wordmark.svg</div>
+    <div class="chip"><span class="swatch swatch-white"></span><span>White</span><span class="swatch swatch-lime" style="margin-left:8px;"></span><span>Lime spot</span></div>
+  </div>
+
+  <!-- chest width tick under the mark -->
+  <div class="callout-line" style="left:830px;top:660px;width:120px;height:2px;background:#7FB800;"></div>
+  <div class="callout-line" style="left:830px;top:654px;width:2px;height:14px;background:#7FB800;"></div>
+  <div class="callout-line" style="left:950px;top:654px;width:2px;height:14px;background:#7FB800;"></div>
+
+  <!-- scale + colors panel -->
+  <div class="callout-box" style="left:1090px;top:1330px;min-width:320px;">
+    <div class="cb-tag">Print Colors &middot; 2 Spot</div>
+    <div class="cb-spec" style="margin-top:4px;">
+      <b>White</b> opaque plastisol or water-base
+    </div>
+    <div class="chip"><span class="swatch swatch-lime"></span><span>Lime #A6FF00</span></div>
+    <div class="cb-spec" style="margin-top:8px;">
+      Proof lime against <b>Pantone 802 C</b> or <b>809 C</b>,
+      or a neon ink. Confirm a physical swatch.
+      Do not run lime as flat CMYK.
+    </div>
+  </div>
+
+  <!-- scale bar -->
+  <div class="scalebar">
+    <div class="lab">Scale ref</div>
+    <div class="bar" style="width:79px;">
+      <div style="position:absolute;left:0;right:0;bottom:-22px;text-align:center;font-family:'Exo 2',sans-serif;font-weight:600;font-size:11px;color:var(--label-muted);">50 mm</div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div><b>SHFT ROBOTICS</b> &middot; shftrobotics.com</div>
+    <div>@shftrobotics</div>
+    <div>Placement proof &middot; not to absolute scale &middot; verify on first article</div>
+  </div>
+
+</div>
+</body>
+</html>

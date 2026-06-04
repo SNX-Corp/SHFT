@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SHFT ROBOTICS  |  STICKER: bolt-roundel
+  75 mm circular die-cut roundel. Green bolt centered in a black disc with a white keyline.
+  Colors: BLACK #1A1A1A (disc), WHITE #FFFFFF (keyline), LIME #A6FF00 (bolt, spot color Pantone 802 C / 809 C).
+  CUT CONTOUR: the magenta (#FF00FF) 1pt path id="CutContour" is the die line. Do not print. Spot name "CutContour".
+  Canvas 600 x 600 user units = 75 mm finished (8 unit/mm). Bleed disc extends past the die line.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <clipPath id="discClip">
+      <circle cx="300" cy="300" r="278"/>
+    </clipPath>
+  </defs>
+
+  <!-- bleed: black disc printed slightly larger than the cut line -->
+  <circle cx="300" cy="300" r="292" fill="#1A1A1A"/>
+
+  <!-- artwork clipped to the printed disc -->
+  <g clip-path="url(#discClip)">
+    <circle cx="300" cy="300" r="278" fill="#1A1A1A"/>
+    <!-- white keyline ring -->
+    <circle cx="300" cy="300" r="262" fill="none" stroke="#FFFFFF" stroke-width="14"/>
+    <!-- bolt: source viewBox 541.12 151.81 454.23 719.97; scale 0.46, centered -->
+    <g transform="translate(300 300) scale(0.46) translate(-768.235 -511.795)">
+      <path d="M684.95,719.3l-103.4,113.02c-12.93,14.13-24.12,28.24-40.43,39.46l62.93-117.69,114.21-209.8-89.99,7.09,169-188.16,189.7-208.77c2.3-2.53,4.39-2.64,5.99-1.59,2.33,1.53,2.39,3.5,1,6.29l-56.97,114.27-90.09,175.1,91.91-5.95-140.81,152.91-113.04,123.83Z" fill="#A6FF00"/>
+    </g>
+  </g>
+
+  <!-- DIE LINE: cut contour, magenta 1pt, does not print -->
+  <circle id="CutContour" cx="300" cy="300" r="278" fill="none" stroke="#FF00FF" stroke-width="1.333"/>
+</svg>

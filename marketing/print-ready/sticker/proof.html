@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHFT ROBOTICS — Sticker Pack Placement Proof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Exo+2:wght@500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1A1A;
+    --lime:#A6FF00;
+    --paper:#E9EBED;
+    --paper-2:#DDE0E3;
+    --line:#9AA0A6;
+    --label:#5B6066;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#C7CACE;font-family:'Raleway',sans-serif;display:flex;justify-content:center;align-items:flex-start;padding:24px;}
+
+  .stage{
+    position:relative;
+    width:1400px;height:1000px;
+    background:
+      radial-gradient(120% 90% at 50% 18%, #F4F6F7 0%, var(--paper) 46%, var(--paper-2) 100%);
+    overflow:hidden;
+  }
+
+  /* header chrome */
+  .head{position:absolute;top:34px;left:48px;right:48px;display:flex;justify-content:space-between;align-items:flex-end;}
+  .head h1{font-family:'Orbitron',sans-serif;font-weight:800;font-size:26px;letter-spacing:.02em;color:var(--ink);}
+  .head .sub{font-family:'Exo 2',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--label);margin-top:6px;}
+  .head .meta{text-align:right;font-family:'Exo 2',sans-serif;font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);line-height:1.7;}
+  .head .meta b{color:var(--ink);}
+
+  /* sticker row */
+  .row{position:absolute;top:300px;left:0;right:0;display:flex;justify-content:center;align-items:flex-start;gap:96px;}
+
+  .item{position:relative;width:320px;display:flex;flex-direction:column;align-items:center;}
+
+  /* the physical sticker disc, drawn in CSS */
+  .disc{
+    position:relative;width:300px;height:300px;border-radius:50%;
+    box-shadow:0 22px 34px rgba(26,26,26,.22), 0 4px 10px rgba(26,26,26,.14);
+  }
+  .disc.solid{background:var(--ink);border:7px solid #FFFFFF;}
+  .disc.clear{background:transparent;box-shadow:0 22px 30px rgba(26,26,26,.18);}
+
+  .disc .art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .disc .art img{display:block;}
+
+  /* gloss laminate highlight */
+  .disc .gloss{
+    position:absolute;inset:0;border-radius:50%;pointer-events:none;
+    background:linear-gradient(135deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,.10) 26%, rgba(255,255,255,0) 46%);
+  }
+  .disc.clear .gloss{
+    background:linear-gradient(135deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,0) 42%);
+  }
+
+  /* white halo backing for the kiss-cut bolt */
+  .halo{filter:drop-shadow(0 0 0 #fff);}
+
+  /* labels */
+  .name{margin-top:30px;font-family:'Orbitron',sans-serif;font-weight:600;font-size:15px;letter-spacing:.04em;color:var(--ink);text-transform:uppercase;}
+  .file{margin-top:7px;font-family:'Exo 2',sans-serif;font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--label);}
+  .desc{margin-top:9px;font-family:'Raleway',sans-serif;font-weight:500;font-size:11.5px;color:#6A6F75;text-align:center;max-width:280px;line-height:1.5;}
+
+  /* diameter callout */
+  .dim{position:absolute;top:-34px;left:50%;transform:translateX(-50%);display:flex;align-items:center;width:300px;}
+  .dim .bar{flex:1;height:1px;background:var(--line);position:relative;}
+  .dim .bar::before,.dim .bar::after{content:"";position:absolute;top:-4px;width:1px;height:9px;background:var(--line);}
+  .dim .bar::before{left:0;}
+  .dim .bar::after{right:0;}
+  .dim .val{font-family:'Exo 2',sans-serif;font-weight:700;font-size:11px;letter-spacing:.1em;color:var(--ink);background:var(--paper);padding:0 8px;}
+
+  /* footer / legend chrome */
+  .foot{position:absolute;bottom:30px;left:48px;right:48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #C2C7CC;padding-top:16px;}
+  .swatches{display:flex;gap:22px;align-items:center;}
+  .sw{display:flex;align-items:center;gap:9px;font-family:'Exo 2',sans-serif;font-weight:600;font-size:11px;letter-spacing:.04em;color:var(--label);}
+  .chip{width:18px;height:18px;border-radius:3px;border:1px solid rgba(0,0,0,.12);}
+  .cut-key{display:flex;align-items:center;gap:9px;font-family:'Exo 2',sans-serif;font-weight:600;font-size:11px;letter-spacing:.04em;color:var(--label);}
+  .cut-line{width:26px;height:0;border-top:1.5px dashed #FF00FF;}
+  .foot .note{font-family:'Raleway',sans-serif;font-weight:500;font-size:11px;color:#7A7F85;}
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <div class="head">
+      <div>
+        <h1>SHFT ROBOTICS</h1>
+        <div class="sub">Sticker Pack &middot; Die-Cut Placement Proof</div>
+      </div>
+      <div class="meta">
+        <div>Gloss Vinyl &middot; Kiss / Die-Cut</div>
+        <div>Spot Lime <b>PANTONE 802 C</b></div>
+        <div>Scale shown 1:1 reference</div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- 1. BOLT ROUNDEL -->
+      <div class="item">
+        <div class="disc solid">
+          <div class="dim"><div class="bar"></div><span class="val" style="position:absolute;left:50%;transform:translateX(-50%);">75 mm</span></div>
+          <div class="art">
+            <img src="../../brand-assets/bolt.svg" alt="bolt" width="118" height="187">
+          </div>
+          <div class="gloss"></div>
+        </div>
+        <div class="name">Bolt Roundel</div>
+        <div class="file">bolt-roundel.svg</div>
+        <div class="desc">Green bolt on a black disc with a white keyline. Circular die-cut.</div>
+      </div>
+
+      <!-- 2. SHFT ROUNDEL -->
+      <div class="item">
+        <div class="disc solid">
+          <div class="dim"><div class="bar"></div><span class="val" style="position:absolute;left:50%;transform:translateX(-50%);">75 mm</span></div>
+          <div class="art">
+            <img src="../../brand-assets/shft.svg" alt="shft" width="210" height="118">
+          </div>
+          <div class="gloss"></div>
+        </div>
+        <div class="name">SHFT Roundel</div>
+        <div class="file">shft-roundel.svg</div>
+        <div class="desc">Compact SHFT mark on a black disc with a white keyline. Circular die-cut.</div>
+      </div>
+
+      <!-- 3. BOLT KISS-CUT -->
+      <div class="item">
+        <div class="disc clear">
+          <div class="dim"><div class="bar"></div><span class="val" style="position:absolute;left:50%;transform:translateX(-50%);">70 mm tall</span></div>
+          <div class="art">
+            <!-- white halo behind the bolt -->
+            <div style="position:relative;width:160px;height:230px;display:flex;align-items:center;justify-content:center;">
+              <img src="../../brand-assets/bolt-white.svg" alt="halo" width="150" height="238"
+                   style="position:absolute;filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 4px #fff);">
+              <img src="../../brand-assets/bolt.svg" alt="bolt" width="118" height="187" style="position:relative;">
+            </div>
+          </div>
+          <div class="gloss"></div>
+        </div>
+        <div class="name">Bolt Kiss-Cut</div>
+        <div class="file">bolt-diecut.svg</div>
+        <div class="desc">Bare bolt on transparent vinyl with a white keyline halo. Kiss-cut to contour.</div>
+      </div>
+
+    </div>
+
+    <div class="foot">
+      <div class="swatches">
+        <div class="sw"><span class="chip" style="background:#A6FF00;"></span> LIME &middot; PANTONE 802 C</div>
+        <div class="sw"><span class="chip" style="background:#1A1A1A;"></span> INK &middot; #1A1A1A</div>
+        <div class="sw"><span class="chip" style="background:#FFFFFF;"></span> WHITE &middot; keyline</div>
+        <div class="cut-key"><span class="cut-line"></span> CutContour &middot; die line, magenta, does not print</div>
+      </div>
+      <div class="note">@shftrobotics &middot; shftrobotics.com</div>
+    </div>
+
+  </div>
+</body>
+</html>

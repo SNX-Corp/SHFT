@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SHFT Robotics Sponsorship Package</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  @page { size: Letter; margin: 0; }
+
+  :root{
+    --ink:#1A1A1A;
+    --panel:#202020;
+    --panel-2:#151515;
+    --line:#333333;
+    --line-soft:#2A2A2A;
+    --white:#FFFFFF;
+    --muted:#A3A3A3;
+    --muted-2:#737373;
+    --lime:#A6FF00;
+    --lime-hover:#8FE000;
+    --lime-text:#1A1A1A;
+  }
+
+  *{ box-sizing:border-box; border-radius:0; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html, body{ margin:0; padding:0; background:#0b0b0b; color:var(--white); font-family:'Raleway',sans-serif; }
+  body{ -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; text-decoration:none; }
+
+  .page{
+    width:8.5in;
+    height:11in;
+    margin:0 auto;
+    background:var(--ink);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+    padding:0.54in 0.56in;
+    page-break-after:always;
+    display:flex;
+    flex-direction:column;
+    isolation:isolate;
+  }
+  .page:last-child{ page-break-after:auto; }
+
+  .page::before{
+    content:"";
+    position:absolute;
+    inset:auto -0.15in -0.15in auto;
+    width:3.6in;
+    height:3.6in;
+    background-image:radial-gradient(var(--lime) 1px, transparent 1px);
+    background-size:0.22in 0.22in;
+    opacity:0.105;
+    z-index:-1;
+  }
+
+  .page::after{
+    content:"";
+    position:absolute;
+    top:0.38in;
+    right:0.42in;
+    width:1.55in;
+    height:0.22in;
+    background:
+      linear-gradient(115deg, transparent 0 18%, var(--lime) 18% 35%, transparent 35% 42%, var(--lime) 42% 59%, transparent 59% 66%, var(--lime) 66% 84%, transparent 84%);
+    opacity:0.92;
+    z-index:-1;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:0.3in;
+    padding-bottom:0.2in;
+    border-bottom:1px solid var(--line);
+  }
+  .wordmark{ height:0.46in; width:auto; display:block; }
+  .doc-meta{
+    font-family:'Exo 2',sans-serif;
+    text-align:right;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    color:var(--muted);
+    font-size:8.5pt;
+    line-height:1.35;
+    font-weight:700;
+  }
+  .doc-meta strong{ color:var(--white); font-weight:800; }
+
+  .label{
+    display:flex;
+    align-items:center;
+    gap:0.12in;
+    margin:0.34in 0 0.14in;
+    font-family:'Exo 2',sans-serif;
+    font-size:8.7pt;
+    font-weight:800;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .label::before{ content:""; width:0.34in; height:2px; background:var(--lime); }
+
+  h1,h2,h3,p{ margin:0; }
+  .display{
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-0.035em;
+    line-height:0.9;
+    color:var(--white);
+  }
+  .cover-title{ font-size:47pt; max-width:7.1in; }
+  .cover-title .lime{ color:var(--lime); }
+  .section-title{ font-size:34pt; line-height:0.95; max-width:6.7in; }
+  .lede{
+    max-width:6.4in;
+    margin-top:0.22in;
+    font-size:15pt;
+    line-height:1.45;
+    color:var(--muted);
+    font-weight:500;
+  }
+  .body-copy{
+    font-size:10.8pt;
+    line-height:1.55;
+    color:var(--muted);
+  }
+  .body-copy strong{ color:var(--white); font-weight:600; }
+
+  .cover-grid{
+    margin-top:auto;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:0.18in;
+    align-items:stretch;
+  }
+  .hero-panel{
+    background:var(--lime);
+    color:var(--ink);
+    padding:0.26in;
+    min-height:1.88in;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .hero-panel b{
+    font-family:'Orbitron',sans-serif;
+    font-size:23pt;
+    line-height:0.96;
+    text-transform:uppercase;
+    letter-spacing:-0.02em;
+  }
+  .hero-panel span{
+    font-family:'Exo 2',sans-serif;
+    font-weight:800;
+    font-size:9.5pt;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .stat-stack{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0.08in;
+  }
+  .stat{
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:0.16in;
+    min-height:0.56in;
+  }
+  .stat b{
+    display:block;
+    font-family:'Orbitron',sans-serif;
+    font-size:18pt;
+    line-height:1;
+    color:var(--lime);
+  }
+  .stat span{
+    display:block;
+    margin-top:0.04in;
+    font-family:'Exo 2',sans-serif;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.11em;
+    font-size:7.6pt;
+    font-weight:800;
+  }
+
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.18in;
+    margin-top:0.34in;
+  }
+  .card{
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:0.2in;
+    min-height:1.4in;
+  }
+  .card.green{ background:var(--lime); color:var(--ink); border-color:var(--lime); }
+  .card h3{
+    font-family:'Exo 2',sans-serif;
+    font-size:13pt;
+    line-height:1.05;
+    font-weight:800;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    margin-bottom:0.09in;
+  }
+  .card.green h3{ color:var(--ink); }
+  .card p{ font-size:9.8pt; line-height:1.48; color:var(--muted); }
+  .card.green p{ color:rgba(26,26,26,0.76); font-weight:500; }
+
+  .rail{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0.12in;
+    margin-top:0.24in;
+  }
+  .rail-item{
+    border-top:3px solid var(--lime);
+    background:var(--panel);
+    padding:0.14in;
+    min-height:0.95in;
+  }
+  .rail-item b{
+    display:block;
+    font-family:'Exo 2',sans-serif;
+    font-size:10pt;
+    line-height:1.15;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .rail-item span{
+    display:block;
+    margin-top:0.06in;
+    font-size:8.6pt;
+    color:var(--muted);
+    line-height:1.35;
+  }
+
+  .budget{
+    margin-top:0.32in;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.14in;
+  }
+  .budget-row{
+    display:flex;
+    justify-content:space-between;
+    gap:0.12in;
+    align-items:baseline;
+    border-bottom:1px solid var(--line);
+    padding:0.12in 0;
+    font-family:'Exo 2',sans-serif;
+  }
+  .budget-row span{
+    color:var(--white);
+    font-weight:700;
+    font-size:10pt;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .budget-row b{
+    color:var(--lime);
+    font-size:13pt;
+  }
+  .budget-note{
+    margin-top:auto;
+    border:1px solid var(--line);
+    background:var(--panel-2);
+    padding:0.16in;
+    color:var(--muted);
+    font-size:9.5pt;
+    line-height:1.45;
+  }
+
+  .tier-table{
+    margin-top:0.24in;
+    border:1px solid var(--line);
+  }
+  .tier-row{
+    display:grid;
+    grid-template-columns:1.2in 1.08in 1fr;
+    min-height:0.74in;
+    border-bottom:1px solid var(--line);
+  }
+  .tier-row:last-child{ border-bottom:0; }
+  .tier-row.head{
+    min-height:0.34in;
+    background:var(--lime);
+    color:var(--ink);
+    font-family:'Exo 2',sans-serif;
+    font-size:8pt;
+    font-weight:800;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+  .tier-row > div{
+    padding:0.11in 0.13in;
+    border-right:1px solid var(--line);
+  }
+  .tier-row > div:last-child{ border-right:0; }
+  .tier-name{
+    font-family:'Orbitron',sans-serif;
+    font-size:12pt;
+    font-weight:900;
+    line-height:1;
+    text-transform:uppercase;
+    letter-spacing:-0.02em;
+  }
+  .tier-amount{
+    font-family:'Exo 2',sans-serif;
+    color:var(--lime);
+    font-size:13pt;
+    font-weight:800;
+  }
+  .tier-copy{
+    color:var(--muted);
+    font-size:8.75pt;
+    line-height:1.38;
+  }
+  .tier-copy strong{ color:var(--white); font-weight:700; }
+
+  .benefit-grid{
+    margin-top:0.3in;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:0.14in;
+  }
+  .benefit{
+    border-left:3px solid var(--lime);
+    background:var(--panel);
+    padding:0.16in 0.17in;
+    min-height:1.04in;
+  }
+  .benefit b{
+    display:block;
+    font-family:'Exo 2',sans-serif;
+    font-size:10.4pt;
+    font-weight:800;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+  }
+  .benefit span{
+    display:block;
+    color:var(--muted);
+    font-size:8.8pt;
+    line-height:1.42;
+    margin-top:0.07in;
+  }
+
+  .cta-band{
+    margin-top:auto;
+    display:grid;
+    grid-template-columns:1fr 1.5in;
+    gap:0.2in;
+    align-items:stretch;
+  }
+  .cta-copy{
+    background:var(--lime);
+    color:var(--ink);
+    padding:0.24in;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .cta-copy b{
+    font-family:'Orbitron',sans-serif;
+    font-size:24pt;
+    line-height:0.95;
+    text-transform:uppercase;
+    letter-spacing:-0.02em;
+  }
+  .cta-copy span{
+    margin-top:0.08in;
+    font-family:'Exo 2',sans-serif;
+    font-size:10pt;
+    font-weight:800;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  .qr{
+    border:1.5px solid var(--white);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:0.12in;
+    text-align:center;
+  }
+  .qr-box{
+    width:1.04in;
+    height:1.04in;
+    border:1.5px solid var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-family:'Exo 2',sans-serif;
+    font-size:8pt;
+    font-weight:800;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    line-height:1.25;
+  }
+  .qr span{
+    margin-top:0.08in;
+    font-family:'Exo 2',sans-serif;
+    color:var(--lime);
+    font-weight:800;
+    font-size:8.6pt;
+    letter-spacing:0.03em;
+  }
+
+  .footer{
+    margin-top:0.26in;
+    padding-top:0.14in;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:0.18in;
+    font-family:'Exo 2',sans-serif;
+    color:var(--muted);
+    font-size:7.6pt;
+    font-weight:800;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  .footer .lime{ color:var(--lime); }
+
+  .contact-grid{
+    margin-top:0.3in;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.16in;
+  }
+  .checklist{
+    margin:0.12in 0 0;
+    padding:0;
+    list-style:none;
+  }
+  .checklist li{
+    border-bottom:1px solid var(--line);
+    padding:0.1in 0;
+    display:flex;
+    gap:0.1in;
+    color:var(--muted);
+    font-size:9.4pt;
+    line-height:1.35;
+  }
+  .checklist li::before{
+    content:"";
+    flex:0 0 0.12in;
+    width:0.12in;
+    height:0.12in;
+    margin-top:0.02in;
+    background:var(--lime);
+  }
+
+  @media screen{
+    body{
+      padding:24px 16px;
+      overflow-x:auto;
+    }
+    .page{
+      box-shadow:0 20px 70px rgba(0,0,0,0.45);
+      margin:0 auto 24px;
+      transform-origin:top center;
+    }
+    @media (max-width:900px){
+      .page{
+        transform:scale(calc((100vw - 32px) / 816));
+        margin-bottom:calc(24px - (11in * (1 - ((100vw - 32px) / 816))));
+      }
+    }
+  }
+
+  @media print{
+    html, body{ background:transparent; }
+    .page{ margin:0; box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>2026 Partner Package</strong><br />Ontario FRC Program</div>
+  </div>
+
+  <div class="label">01 / Sponsor Package</div>
+  <h1 class="display cover-title">Build the future one <span class="lime">SHFT</span> at a time.</h1>
+  <p class="lede">Partner with the Ontario FRC team built to compete from day one. Your support funds the robot, tools, travel, mentorship, and the student engineers who will carry this work forward.</p>
+
+  <div class="cover-grid">
+    <div class="hero-panel">
+      <b>Founding sponsors become part of the origin story.</b>
+      <span>Innovate. Build. Compete.</span>
+    </div>
+    <div class="stat-stack">
+      <div class="stat"><b>2025</b><span>Program founded</span></div>
+      <div class="stat"><b>FRC</b><span>Global robotics competition</span></div>
+      <div class="stat"><b>7558</b><span>ALT-F4 sister-team support</span></div>
+    </div>
+  </div>
+
+  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">@SHFTROBOTICS</span><span>SHFTROBOTICS.COM</span></div>
+</section>
+
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>Why Partner</strong><br />Impact plus visibility</div>
+  </div>
+
+  <div class="label">02 / The Opportunity</div>
+  <h2 class="display section-title">A serious STEM program needs serious partners.</h2>
+  <p class="lede">SHFT is not another after-school robotics club. We are building a professional-grade engineering program for students who want real ownership, real tools, and a team standard they can grow into.</p>
+
+  <div class="split">
+    <div class="card green">
+      <h3>Students get the work</h3>
+      <p>CAD, programming, fabrication, strategy, media, business operations, sponsor communication, and leadership. Students do not just watch. They build.</p>
+    </div>
+    <div class="card">
+      <h3>Sponsors get the story</h3>
+      <p>Your logo travels on the robot, pit, apparel, website, and social channels. More importantly, your company is tied to a clear local talent pipeline.</p>
+    </div>
+    <div class="card">
+      <h3>Mentorship compounds</h3>
+      <p>SHFT is backed by mentors with proven FRC experience and a sister-team relationship with Team 7558 ALT-F4, one of Canada's fastest-rising programs.</p>
+    </div>
+    <div class="card">
+      <h3>Community sees it</h3>
+      <p>Competitions, demos, open houses, school events, and sponsor updates turn support into visible momentum across the season.</p>
+    </div>
+  </div>
+
+  <div class="rail">
+    <div class="rail-item"><b>Brand visibility</b><span>Robot, shirts, pit banner, website, sponsor wall, social, and event materials.</span></div>
+    <div class="rail-item"><b>Recruiting signal</b><span>Meet future engineers, operators, designers, programmers, and builders early.</span></div>
+    <div class="rail-item"><b>Local proof</b><span>A concrete STEM investment families, students, and community partners can see.</span></div>
+  </div>
+
+  <div class="footer"><span>Partner value</span><span class="lime">Visibility. Talent. Impact.</span><span>Page 02</span></div>
+</section>
+
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>What You Fund</strong><br />Season infrastructure</div>
+  </div>
+
+  <div class="label">03 / Funding Map</div>
+  <h2 class="display section-title">Every dollar moves the robot forward.</h2>
+  <p class="lede">FRC is one of the most resource-intensive STEM programs in high school. Sponsors make the season possible and keep the student experience serious from day one.</p>
+
+  <div class="budget">
+    <div>
+      <div class="budget-row"><span>Robot parts</span><b>Drive, structure, mechanisms</b></div>
+      <div class="budget-row"><span>Electronics</span><b>Control system, sensors</b></div>
+      <div class="budget-row"><span>Tools</span><b>Fabrication and repair</b></div>
+      <div class="budget-row"><span>Registration</span><b>Official FRC events</b></div>
+    </div>
+    <div>
+      <div class="budget-row"><span>Travel</span><b>Transport and logistics</b></div>
+      <div class="budget-row"><span>Field elements</span><b>Practice and testing</b></div>
+      <div class="budget-row"><span>Safety</span><b>PPE and shop systems</b></div>
+      <div class="budget-row"><span>Outreach</span><b>Demos and open house</b></div>
+    </div>
+  </div>
+
+  <div class="benefit-grid">
+    <div class="benefit"><b>Cash support</b><span>Directly funds purchases, registration, shipping, and event costs.</span></div>
+    <div class="benefit"><b>In-kind support</b><span>Materials, machining, printing, tools, food, transportation, space, and services count toward tier value.</span></div>
+    <div class="benefit"><b>Mentor support</b><span>Engineers, designers, machinists, operators, marketers, and project managers can mentor students.</span></div>
+    <div class="benefit"><b>Event support</b><span>Host a demo, sponsor an open house, or bring SHFT to a company STEM day.</span></div>
+  </div>
+
+  <div class="budget-note"><strong>Draft note:</strong> before public launch, replace this qualitative map with SHFT's approved season budget and donation-processing details.</div>
+
+  <div class="footer"><span>What sponsors fund</span><span class="lime">Robot. Tools. Travel. Students.</span><span>Page 03</span></div>
+</section>
+
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>Sponsor Tiers</strong><br />Cumulative recognition</div>
+  </div>
+
+  <div class="label">04 / Partnership Levels</div>
+  <h2 class="display section-title">Choose the level that fits your impact.</h2>
+  <p class="lede">Benefits are cumulative. In-kind contributions are welcomed and credited by fair market value when they offset real season costs.</p>
+
+  <div class="tier-table">
+    <div class="tier-row head"><div>Tier</div><div>Support</div><div>Recognition</div></div>
+    <div class="tier-row">
+      <div class="tier-name">Founding Partner</div>
+      <div class="tier-amount">$10,000+</div>
+      <div class="tier-copy"><strong>Premier logo placement</strong> on robot, pit banner, team apparel, website, sponsor wall, season video, social launch post, and open house materials. Includes company robot demo or student tech showcase.</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-name">Platinum</div>
+      <div class="tier-amount">$5,000+</div>
+      <div class="tier-copy"><strong>Large logo placement</strong> on robot, pit banner, team apparel, website, sponsor wall, and sponsor social feature. Includes workshop tour or sponsor-site demo when schedule allows.</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-name">Gold</div>
+      <div class="tier-amount">$2,500+</div>
+      <div class="tier-copy"><strong>Medium logo placement</strong> on robot or pit banner, team apparel, website, sponsor wall, social thank-you, and season recap update.</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-name">Silver</div>
+      <div class="tier-amount">$1,000+</div>
+      <div class="tier-copy"><strong>Small logo placement</strong> on pit banner or team apparel, website sponsor listing, sponsor wall, and social thank-you.</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-name">Bronze</div>
+      <div class="tier-amount">$500+</div>
+      <div class="tier-copy"><strong>Name or logo listing</strong> on website and sponsor wall, plus a social thank-you and end-of-season appreciation note.</div>
+    </div>
+    <div class="tier-row">
+      <div class="tier-name">Community</div>
+      <div class="tier-amount">$250+</div>
+      <div class="tier-copy"><strong>Name listing</strong> on the website community wall and a team thank-you note. Built for families, alumni, and local supporters.</div>
+    </div>
+  </div>
+
+  <div class="footer"><span>Sponsor tiers</span><span class="lime">Cumulative benefits</span><span>Page 04</span></div>
+</section>
+
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>Deliverables</strong><br />Beyond logo placement</div>
+  </div>
+
+  <div class="label">05 / Sponsor Experience</div>
+  <h2 class="display section-title">Make the partnership visible.</h2>
+  <p class="lede">Great sponsorship is more than a logo. SHFT can create real touchpoints that make your support visible to students, employees, families, and the community.</p>
+
+  <div class="benefit-grid">
+    <div class="benefit"><b>Robot demo</b><span>Bring the robot to your office, plant, school event, or community day for a student-led demo.</span></div>
+    <div class="benefit"><b>Open house</b><span>Invite sponsors to see the shop, meet students, and watch prototypes become competition hardware.</span></div>
+    <div class="benefit"><b>Season updates</b><span>Send sponsor updates during build season and a polished recap after competition.</span></div>
+    <div class="benefit"><b>Talent pathway</b><span>Connect students with real engineering, manufacturing, software, design, and operations career stories.</span></div>
+    <div class="benefit"><b>Co-branded moments</b><span>Feature sponsor support in kickoff, reveal, open house, and competition recap content.</span></div>
+    <div class="benefit"><b>In-kind showcase</b><span>Show how donated material, machining, tools, food, or services changed the season.</span></div>
+  </div>
+
+  <div class="split">
+    <div class="card green">
+      <h3>What makes SHFT different</h3>
+      <p>Founding sponsors are early enough to shape the story. Your support will be visible as the program becomes real.</p>
+    </div>
+    <div class="card">
+      <h3>What we need from sponsors</h3>
+      <p>A high-resolution logo, website URL, contact name, approved recognition name, contribution details, and any restrictions for public posts.</p>
+    </div>
+  </div>
+
+  <div class="footer"><span>Sponsor experience</span><span class="lime">Visible partnership</span><span>Page 05</span></div>
+</section>
+
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>Next Step</strong><br />Become a sponsor</div>
+  </div>
+
+  <div class="label">06 / Join the Build</div>
+  <h2 class="display section-title">Ready to sponsor SHFT?</h2>
+  <p class="lede">Start with a short conversation. We will confirm the right tier, collect your logo, and make sure every recognition detail is correct before anything goes public.</p>
+
+  <div class="contact-grid">
+    <div class="card green">
+      <h3>Contact</h3>
+      <p><strong>Email:</strong> [FILL: sponsor email]<br /><strong>Website:</strong> shftrobotics.com<br /><strong>Instagram:</strong> @shftrobotics<br /><strong>Location:</strong> Ontario, Canada</p>
+    </div>
+    <div class="card">
+      <h3>Sponsor checklist</h3>
+      <ul class="checklist">
+        <li>Choose a tier or describe in-kind support.</li>
+        <li>Send SVG, PNG, or vector logo files.</li>
+        <li>Confirm sponsor display name and URL.</li>
+        <li>Confirm payment or donation-processing details.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="split">
+    <div class="card">
+      <h3>Good sponsor fits</h3>
+      <p>Engineering, manufacturing, software, trades, logistics, design, education, finance, local business, food, printing, transportation, and community foundations.</p>
+    </div>
+    <div class="card">
+      <h3>Best timing</h3>
+      <p>Commit before kickoff and before apparel production for full current-season benefits. Late-season sponsors are still welcomed and carried into the next cycle.</p>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="cta-copy">
+      <b>Partner with SHFT.</b>
+      <span>Help students build what comes next.</span>
+    </div>
+    <div class="qr">
+      <div class="qr-box">QR<br />CODE</div>
+      <span>SPONSOR FORM</span>
+    </div>
+  </div>
+
+  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Innovate. Build. Compete.</span><span>Page 06</span></div>
+</section>
+
+</body>
+</html>

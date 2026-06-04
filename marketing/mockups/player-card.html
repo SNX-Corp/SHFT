@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SHFT ROBOTICS Holo Player Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg0:#0A0A0A;
+    --bg1:#141414;
+    --bg2:#1A1A1A;
+    --green:#A6FF00;
+    --green-deep:#6fae00;
+    --white:#FFFFFF;
+    --grey:#A3A3A3;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:#050505; }
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    font-family:'Raleway',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:40px;
+  }
+
+  /* ============== STAGE ============== */
+  .stage{
+    position:relative;
+    width:1200px;
+    height:1680px;
+    overflow:hidden;
+    background:
+      radial-gradient(140% 90% at 50% 18%, #1c1c1c 0%, #131313 40%, #0c0c0c 68%, #060606 100%);
+    color:var(--white);
+    isolation:isolate;
+  }
+
+  /* faint dot-grid behind card */
+  .stage-grid{
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(166,255,0,.10) 1px, transparent 1.4px);
+    background-size:34px 34px;
+    opacity:.5;
+    mix-blend-mode:screen;
+    z-index:1;
+  }
+  /* diagonal speed slashes */
+  .stage-slashes{
+    position:absolute; inset:-10%;
+    background:repeating-linear-gradient(115deg,
+       rgba(166,255,0,0) 0px,
+       rgba(166,255,0,0) 64px,
+       rgba(166,255,0,.05) 64px,
+       rgba(166,255,0,.05) 66px);
+    mix-blend-mode:screen;
+    z-index:1;
+  }
+  /* big ambient bloom behind card */
+  .stage-bloom{
+    position:absolute; left:50%; top:46%;
+    width:1100px; height:1400px;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(closest-side, rgba(166,255,0,.22) 0%, rgba(166,255,0,.08) 42%, rgba(166,255,0,0) 70%);
+    filter:blur(40px);
+    mix-blend-mode:screen;
+    z-index:1;
+  }
+
+  /* ============== CARD WRAPPER (perspective tilt) ============== */
+  .card-wrap{
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%) perspective(2200px) rotateX(4deg) rotateY(-5deg);
+    transform-style:preserve-3d;
+    z-index:3;
+  }
+
+  .card{
+    position:relative;
+    width:880px;
+    height:1300px;
+    padding:18px;                 /* foil border thickness */
+    background:
+      conic-gradient(from 210deg at 50% 50%,
+        #6fae00 0deg, #d8ff7a 40deg, #A6FF00 90deg,
+        #4f7d00 150deg, #eaffb0 210deg, #A6FF00 270deg,
+        #5b9000 320deg, #6fae00 360deg);
+    box-shadow:
+      0 0 0 2px rgba(166,255,0,.55),
+      0 0 60px rgba(166,255,0,.45),
+      0 50px 90px rgba(0,0,0,.75),
+      0 14px 34px rgba(0,0,0,.6);
+    isolation:isolate;
+  }
+  /* moving foil glints on the border */
+  .card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(125deg,
+      transparent 30%, rgba(255,255,255,.85) 47%, rgba(255,255,255,.0) 56%, transparent 70%);
+    mix-blend-mode:overlay;
+    pointer-events:none;
+    z-index:9;
+  }
+  /* inner bevel line */
+  .card::after{
+    content:"";
+    position:absolute; inset:11px;
+    border:2px solid rgba(255,255,255,.18);
+    pointer-events:none;
+    z-index:8;
+  }
+
+  /* ============== CARD FACE ============== */
+  .face{
+    position:relative;
+    width:100%; height:100%;
+    background:
+      radial-gradient(120% 70% at 50% 0%, #1d2410 0%, #131712 28%, #0c0c0c 60%, #080808 100%);
+    overflow:hidden;
+    z-index:2;
+  }
+  /* holo sheen layer across whole face */
+  .face .holo{
+    position:absolute; inset:0;
+    background:
+      conic-gradient(from 0deg at 30% 20%,
+        rgba(255,0,170,.16), rgba(0,200,255,.16), rgba(166,255,0,.20),
+        rgba(255,210,0,.14), rgba(180,0,255,.16), rgba(255,0,170,.16));
+    mix-blend-mode:screen;
+    opacity:.55;
+    z-index:4;
+    pointer-events:none;
+  }
+  /* diagonal sheen sweep on the face */
+  .face .sheen{
+    position:absolute; top:-40%; left:-30%;
+    width:70%; height:200%;
+    transform:rotate(18deg);
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.10) 45%, rgba(255,255,255,.22) 50%, rgba(255,255,255,.10) 55%, transparent);
+    mix-blend-mode:screen;
+    z-index:6;
+    pointer-events:none;
+  }
+  /* dot grid inside face */
+  .face .dots{
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(166,255,0,.13) 1px, transparent 1.3px);
+    background-size:24px 24px;
+    opacity:.45;
+    z-index:3;
+    mix-blend-mode:screen;
+  }
+
+  /* ---- TOP CHROME ---- */
+  .topbar{
+    position:absolute; top:0; left:0; right:0;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 30px 18px;
+    z-index:7;
+  }
+  .rarity{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Exo 2',sans-serif; font-weight:800;
+    font-size:14px; letter-spacing:.22em; text-transform:uppercase;
+    color:#0a0a0a;
+    background:linear-gradient(180deg,#eaffb0,#A6FF00);
+    padding:8px 14px;
+    box-shadow:0 0 22px rgba(166,255,0,.6), inset 0 0 0 1px rgba(255,255,255,.4);
+  }
+  .rarity .dot{
+    width:8px; height:8px; background:#0a0a0a; transform:rotate(45deg);
+  }
+  .serial{
+    font-family:'Exo 2',sans-serif; font-weight:700;
+    font-size:13px; letter-spacing:.28em; color:var(--grey);
+    text-transform:uppercase;
+    border:1px solid rgba(166,255,0,.4);
+    padding:7px 12px;
+    background:rgba(166,255,0,.05);
+  }
+  .serial b{ color:var(--green); }
+
+  /* ---- HERO EMBLEM ---- */
+  .hero{
+    position:absolute; top:118px; left:0; right:0;
+    height:560px;
+    display:flex; align-items:center; justify-content:center;
+    z-index:6;
+  }
+  .hero .ring-glow{
+    position:absolute; width:520px; height:520px;
+    border-radius:50%;
+    background:radial-gradient(closest-side, rgba(166,255,0,.5) 0%, rgba(166,255,0,.18) 48%, rgba(166,255,0,0) 72%);
+    filter:blur(8px);
+    mix-blend-mode:screen;
+  }
+  .hero .spin{
+    position:absolute; width:470px; height:470px; border-radius:50%;
+    background:conic-gradient(from 0deg, rgba(166,255,0,0), rgba(166,255,0,.7), rgba(255,255,255,.0), rgba(166,255,0,.45), rgba(166,255,0,0));
+    mask:radial-gradient(closest-side, transparent 68%, #000 70%, #000 73%, transparent 75%);
+    -webkit-mask:radial-gradient(closest-side, transparent 68%, #000 70%, #000 73%, transparent 75%);
+    mix-blend-mode:screen;
+    opacity:.85;
+  }
+  .hero img{
+    position:relative;
+    width:420px; height:420px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 30px rgba(166,255,0,.85)) drop-shadow(0 18px 40px rgba(0,0,0,.7));
+    z-index:2;
+  }
+  /* floor reflection of emblem */
+  .hero .reflect{
+    position:absolute; bottom:-150px; left:50%;
+    width:420px; height:420px;
+    transform:translateX(-50%) scaleY(-1);
+    object-fit:contain;
+    opacity:.22;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.6), transparent 55%);
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,.6), transparent 55%);
+    filter:blur(1px);
+    z-index:1;
+  }
+
+  /* ---- NAME PLATE ---- */
+  .nameplate{
+    position:absolute; top:648px; left:42px; right:42px;
+    z-index:7;
+    text-align:center;
+  }
+  .nameplate .kick{
+    font-family:'Exo 2',sans-serif; font-weight:700;
+    font-size:15px; letter-spacing:.5em; text-transform:uppercase;
+    color:var(--green);
+    margin-bottom:10px;
+    text-shadow:0 0 14px rgba(166,255,0,.7);
+  }
+  .nameplate .plate{
+    position:relative;
+    background:linear-gradient(180deg, rgba(166,255,0,.14), rgba(166,255,0,.02));
+    border-top:2px solid rgba(166,255,0,.85);
+    border-bottom:2px solid rgba(166,255,0,.85);
+    padding:16px 10px 18px;
+    box-shadow:inset 0 0 40px rgba(166,255,0,.12);
+  }
+  .nameplate .name{
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:78px; line-height:.9; letter-spacing:.02em;
+    text-transform:uppercase;
+    color:#fff;
+    text-shadow:
+      0 0 4px rgba(255,255,255,.6),
+      0 0 22px rgba(166,255,0,.85),
+      0 0 48px rgba(166,255,0,.55);
+  }
+  .nameplate .name .g{ color:var(--green); }
+  .nameplate .sub{
+    margin-top:8px;
+    font-family:'Orbitron',sans-serif; font-weight:700;
+    font-size:25px; letter-spacing:.42em; text-transform:uppercase;
+    color:var(--green);
+    text-shadow:0 0 18px rgba(166,255,0,.65);
+  }
+
+  /* ---- TAGLINE STRIP ---- */
+  .tagstrip{
+    position:absolute; top:838px; left:42px; right:42px;
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    z-index:7;
+    font-family:'Exo 2',sans-serif; font-weight:800;
+    font-size:16px; letter-spacing:.32em; text-transform:uppercase;
+    color:#dfffb0;
+  }
+  .tagstrip span{ opacity:.95; }
+  .tagstrip i{
+    display:inline-block; width:7px; height:7px;
+    background:var(--green); transform:rotate(45deg);
+    box-shadow:0 0 12px var(--green);
+  }
+
+  /* ---- STAT TILES ---- */
+  .stats{
+    position:absolute; top:910px; left:42px; right:42px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+    z-index:7;
+  }
+  .tile{
+    position:relative;
+    background:linear-gradient(180deg, rgba(20,24,12,.9), rgba(8,8,8,.92));
+    border:1px solid rgba(166,255,0,.35);
+    padding:18px 12px 16px;
+    text-align:center;
+    overflow:hidden;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 22px rgba(0,0,0,.5);
+  }
+  .tile::before{
+    content:""; position:absolute; top:0; left:0; width:26px; height:26px;
+    background:linear-gradient(135deg, var(--green) 0 50%, transparent 50%);
+    opacity:.55;
+  }
+  .tile .tlabel{
+    font-family:'Exo 2',sans-serif; font-weight:700;
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--grey);
+    margin-bottom:8px;
+  }
+  .tile .tval{
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:30px; line-height:1; color:#fff;
+    text-shadow:0 0 16px rgba(166,255,0,.5);
+  }
+  .tile .tval.green{ color:var(--green); text-shadow:0 0 18px rgba(166,255,0,.8); }
+  .tile .tval small{ font-size:14px; font-weight:800; }
+
+  /* second stat row : full-width spec bars */
+  .specs{
+    position:absolute; top:1066px; left:42px; right:42px;
+    display:flex; flex-direction:column; gap:12px;
+    z-index:7;
+  }
+  .spec{
+    display:flex; align-items:center; gap:14px;
+  }
+  .spec .sl{
+    width:148px; flex:none;
+    font-family:'Exo 2',sans-serif; font-weight:700;
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--grey);
+  }
+  .spec .bar{
+    position:relative; flex:1; height:14px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(166,255,0,.25);
+    overflow:hidden;
+  }
+  .spec .bar span{
+    position:absolute; top:0; left:0; bottom:0;
+    background:linear-gradient(90deg,#5b9000,#A6FF00);
+    box-shadow:0 0 14px rgba(166,255,0,.7);
+  }
+  .spec .sv{
+    width:54px; flex:none; text-align:right;
+    font-family:'Orbitron',sans-serif; font-weight:800;
+    font-size:15px; color:var(--green);
+  }
+
+  /* ---- PARTNERS ---- */
+  .partners{
+    position:absolute; top:1176px; left:42px; right:42px;
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    z-index:7;
+    font-family:'Exo 2',sans-serif; font-weight:700;
+    font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--grey);
+  }
+  .partners .pl{ color:#6f6f6f; letter-spacing:.3em; }
+  .partners .chip{
+    color:#fff;
+    border:1px solid rgba(166,255,0,.4);
+    background:rgba(166,255,0,.06);
+    padding:6px 14px;
+  }
+
+  /* ---- BOTTOM SLOGAN ---- */
+  .footer{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:18px 30px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    z-index:7;
+    border-top:1px solid rgba(166,255,0,.3);
+    background:linear-gradient(0deg, rgba(166,255,0,.08), transparent);
+  }
+  .footer .slogan{
+    font-family:'Orbitron',sans-serif; font-weight:800;
+    font-size:18px; letter-spacing:.14em; text-transform:uppercase;
+    color:#fff;
+  }
+  .footer .slogan b{ color:var(--green); text-shadow:0 0 16px rgba(166,255,0,.8); }
+  .footer .boltmini{
+    width:30px; height:30px;
+    filter:drop-shadow(0 0 12px rgba(166,255,0,.9));
+  }
+
+  /* grain overlay */
+  .grain{
+    position:absolute; inset:0; z-index:20; pointer-events:none;
+    opacity:.10; mix-blend-mode:overlay;
+  }
+  /* card vignette for depth */
+  .vignette{
+    position:absolute; inset:0; z-index:10; pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="stage-grid"></div>
+    <div class="stage-slashes"></div>
+    <div class="stage-bloom"></div>
+
+    <div class="card-wrap">
+      <div class="card">
+        <div class="face">
+          <div class="dots"></div>
+          <div class="holo"></div>
+          <div class="sheen"></div>
+
+          <!-- TOP CHROME -->
+          <div class="topbar">
+            <div class="rarity"><i class="dot"></i> Holo Rare</div>
+            <div class="serial">NO. <b>001</b> / 2025</div>
+          </div>
+
+          <!-- HERO EMBLEM -->
+          <div class="hero">
+            <div class="ring-glow"></div>
+            <div class="spin"></div>
+            <img class="reflect" src="../brand-assets/icon-transparent.png" alt="">
+            <img src="../brand-assets/icon-transparent.png" alt="SHFT emblem">
+          </div>
+
+          <!-- NAME PLATE -->
+          <div class="nameplate">
+            <div class="kick">FRC TEAM 7558</div>
+            <div class="plate">
+              <div class="name">SH<span class="g">F</span>T</div>
+              <div class="sub">ROBOTICS</div>
+            </div>
+          </div>
+
+          <!-- TAGLINE -->
+          <div class="tagstrip">
+            <span>Innovate</span><i></i><span>Build</span><i></i><span>Compete</span>
+          </div>
+
+          <!-- STAT TILES -->
+          <div class="stats">
+            <div class="tile">
+              <div class="tlabel">Established</div>
+              <div class="tval">EST <small>2025</small></div>
+            </div>
+            <div class="tile">
+              <div class="tlabel">Region</div>
+              <div class="tval green" style="font-size:24px">ONTARIO</div>
+            </div>
+            <div class="tile">
+              <div class="tlabel">Season Goal</div>
+              <div class="tval">TOP <span class="g" style="color:var(--green)">10</span></div>
+            </div>
+          </div>
+
+          <!-- SPEC BARS -->
+          <div class="specs">
+            <div class="spec">
+              <div class="sl">Innovation</div>
+              <div class="bar"><span style="width:94%"></span></div>
+              <div class="sv">94</div>
+            </div>
+            <div class="spec">
+              <div class="sl">Build Speed</div>
+              <div class="bar"><span style="width:88%"></span></div>
+              <div class="sv">88</div>
+            </div>
+            <div class="spec">
+              <div class="sl">Drive Skill</div>
+              <div class="bar"><span style="width:91%"></span></div>
+              <div class="sv">91</div>
+            </div>
+          </div>
+
+          <!-- PARTNERS -->
+          <div class="partners">
+            <span class="pl">Powered by</span>
+            <span class="chip">ALT-F4</span>
+            <span class="chip">WCP</span>
+          </div>
+
+          <!-- FOOTER SLOGAN -->
+          <div class="footer">
+            <div class="slogan">WE DON'T FOLLOW. <b>WE SHFT.</b></div>
+            <img class="boltmini" src="../brand-assets/bolt.svg" alt="bolt">
+          </div>
+
+          <div class="vignette"></div>
+
+          <!-- GRAIN -->
+          <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+            <filter id="cardgrain">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+              <feColorMatrix type="saturate" values="0"/>
+            </filter>
+            <rect width="100%" height="100%" filter="url(#cardgrain)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE GRAIN -->
+    <svg class="grain" style="opacity:.07" xmlns="http://www.w3.org/2000/svg">
+      <filter id="stagegrain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#stagegrain)"/>
+    </svg>
+  </div>
+
+</body>
+</html>

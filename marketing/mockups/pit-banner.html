@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHFT ROBOTICS Pit Banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --ink-2:#1A1A1A;
+    --green:#A6FF00;
+    --white:#FFFFFF;
+    --grey:#A3A3A3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    background:#050505;
+    width:100%;
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Raleway',sans-serif;
+  }
+
+  /* ================= STAGE ================= */
+  .stage{
+    position:relative;
+    width:1920px;
+    height:1080px;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 50% 38%, #1A1A1A 0%, #131313 38%, #0A0A0A 72%, #050505 100%);
+    flex:0 0 auto;
+    isolation:isolate;
+  }
+
+  /* ---- floor plane gradient (subtle stage horizon) ---- */
+  .floor{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:46%;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.7) 100%);
+    z-index:5;
+    pointer-events:none;
+  }
+  .horizon{
+    position:absolute;
+    left:0;right:0;
+    bottom:46%;
+    height:2px;
+    background:linear-gradient(90deg, transparent, rgba(166,255,0,.20) 30%, rgba(166,255,0,.45) 50%, rgba(166,255,0,.20) 70%, transparent);
+    box-shadow:0 0 30px rgba(166,255,0,.25);
+    z-index:5;
+    pointer-events:none;
+  }
+
+  /* ---- perspective floor grid (green, fading up) ---- */
+  .grid-floor{
+    position:absolute;
+    left:-30%;right:-30%;
+    bottom:0;
+    height:46%;
+    background-image:
+      linear-gradient(rgba(166,255,0,.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(166,255,0,.10) 1px, transparent 1px);
+    background-size:90px 90px, 90px 90px;
+    transform:perspective(620px) rotateX(68deg);
+    transform-origin:bottom center;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.85) 60%, #000 100%);
+            mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.85) 60%, #000 100%);
+    z-index:4;
+    pointer-events:none;
+  }
+
+  /* ---- crossing spotlights ---- */
+  .spot{
+    position:absolute;
+    top:-26%;
+    width:760px;
+    height:1620px;
+    z-index:3;
+    mix-blend-mode:screen;
+    pointer-events:none;
+    filter:blur(34px);
+    /* feather the long edges so it reads as a soft beam, not a slab */
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+            mask-image:linear-gradient(90deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  }
+  .spot.left{
+    left:4%;
+    transform:rotate(26deg);
+    transform-origin:top center;
+    background:linear-gradient(180deg,
+      rgba(166,255,0,.30) 0%,
+      rgba(166,255,0,.13) 28%,
+      rgba(166,255,0,.04) 60%,
+      rgba(166,255,0,0) 88%);
+    -webkit-clip-path:polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+            clip-path:polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+  }
+  .spot.right{
+    right:4%;
+    transform:rotate(-26deg);
+    transform-origin:top center;
+    background:linear-gradient(180deg,
+      rgba(220,255,180,.24) 0%,
+      rgba(166,255,0,.11) 30%,
+      rgba(166,255,0,.035) 62%,
+      rgba(166,255,0,0) 90%);
+    -webkit-clip-path:polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+            clip-path:polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+  }
+  /* spotlight emitters (bright bloom at the rig) */
+  .emitter{
+    position:absolute;
+    top:-30px;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--green);
+    z-index:6;
+    filter:blur(6px) drop-shadow(0 0 40px var(--green)) drop-shadow(0 0 80px var(--green));
+    pointer-events:none;
+  }
+  .emitter.l{left:calc(4% + 340px);}
+  .emitter.r{right:calc(4% + 340px);}
+
+  /* ---- diagonal speed-slash texture ---- */
+  .slashes{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    opacity:.5;
+    background-image:repeating-linear-gradient(
+      -68deg,
+      transparent 0px,
+      transparent 70px,
+      rgba(166,255,0,.045) 70px,
+      rgba(166,255,0,.045) 72px,
+      transparent 72px,
+      transparent 150px);
+    -webkit-mask-image:radial-gradient(110% 90% at 50% 45%, #000 35%, transparent 80%);
+            mask-image:radial-gradient(110% 90% at 50% 45%, #000 35%, transparent 80%);
+  }
+
+  /* ---- dot grid texture ---- */
+  .dots{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    opacity:.6;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1.2px, transparent 1.2px);
+    background-size:34px 34px;
+    -webkit-mask-image:radial-gradient(120% 100% at 50% 40%, #000 30%, transparent 75%);
+            mask-image:radial-gradient(120% 100% at 50% 40%, #000 30%, transparent 75%);
+  }
+
+  /* ================= GHOST BOLT ================= */
+  .ghost-bolt{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:920px;
+    height:auto;
+    transform:translate(-50%,-52%) rotate(8deg);
+    z-index:1;
+    opacity:.20;
+    filter:drop-shadow(0 0 90px rgba(166,255,0,.6)) drop-shadow(0 0 30px rgba(166,255,0,.5));
+    pointer-events:none;
+  }
+  .ghost-bolt svg{width:100%;height:100%;display:block;}
+
+  /* faint outline echo bolts */
+  .echo-bolt{
+    position:absolute;
+    top:50%;left:50%;
+    width:920px;height:auto;
+    transform:translate(-50%,-52%) rotate(8deg);
+    z-index:1;
+    opacity:.09;
+    pointer-events:none;
+  }
+  .echo-bolt svg{width:100%;height:100%;display:block;}
+  .echo-bolt path{fill:none;stroke:var(--green);stroke-width:6;}
+  .echo-bolt.a{transform:translate(-50%,-52%) rotate(8deg) scale(1.18);}
+  .echo-bolt.b{transform:translate(-50%,-52%) rotate(8deg) scale(1.42);opacity:.05;}
+
+  /* ================= CONTENT ================= */
+  .content{
+    position:absolute;
+    inset:0;
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  /* top kicker bar */
+  .kicker{
+    margin-top:96px;
+    display:inline-flex;
+    align-items:center;
+    gap:18px;
+    font-family:'Exo 2',sans-serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:.62em;
+    text-transform:uppercase;
+    color:var(--green);
+    text-shadow:0 0 18px rgba(166,255,0,.6);
+  }
+  .kicker .line{
+    width:120px;height:2px;
+    background:linear-gradient(90deg, transparent, var(--green));
+  }
+  .kicker .line.r{background:linear-gradient(90deg, var(--green), transparent);}
+  .kicker .dot{
+    width:9px;height:9px;
+    background:var(--green);
+    transform:rotate(45deg);
+    box-shadow:0 0 14px var(--green);
+  }
+
+  /* wordmark block */
+  .mark-wrap{
+    position:relative;
+    margin-top:78px;
+    perspective:1600px;
+  }
+  .wordmark{
+    position:relative;
+    width:1180px;
+    height:auto;
+    display:block;
+    transform:rotateX(7deg);
+    filter:
+      drop-shadow(0 18px 40px rgba(0,0,0,.7))
+      drop-shadow(0 0 40px rgba(166,255,0,.22));
+  }
+  /* floor reflection of the wordmark */
+  .wordmark-refl{
+    position:absolute;
+    left:0;
+    top:100%;
+    width:1180px;
+    height:auto;
+    transform:scaleY(-1) translateY(8px) rotateX(7deg);
+    opacity:.28;
+    -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.55) 0%, transparent 55%);
+            mask-image:linear-gradient(180deg, rgba(0,0,0,.55) 0%, transparent 55%);
+    filter:blur(.5px);
+    pointer-events:none;
+  }
+
+  /* headline slogan */
+  .headline{
+    margin-top:60px;
+    position:relative;
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    font-size:84px;
+    line-height:.96;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    text-align:center;
+    color:var(--white);
+    text-shadow:
+      0 0 2px rgba(255,255,255,.5),
+      0 4px 30px rgba(0,0,0,.8);
+  }
+  .headline .shft{
+    color:var(--green);
+    position:relative;
+    text-shadow:
+      0 0 6px rgba(166,255,0,.9),
+      0 0 28px rgba(166,255,0,.7),
+      0 0 60px rgba(166,255,0,.45),
+      0 0 100px rgba(166,255,0,.3);
+  }
+  /* foil/holo sheen swept across the headline */
+  .headline::after{
+    content:"WE DON'T FOLLOW. WE SHFT.";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(105deg,
+      transparent 35%,
+      rgba(255,255,255,.85) 48%,
+      rgba(166,255,0,.55) 52%,
+      transparent 64%);
+    -webkit-background-clip:text;
+            background-clip:text;
+    color:transparent;
+    mix-blend-mode:screen;
+    pointer-events:none;
+    opacity:.7;
+  }
+
+  /* sub tagline pill */
+  .tagline{
+    margin-top:42px;
+    display:inline-flex;
+    align-items:center;
+    gap:26px;
+    padding:14px 34px;
+    border:1px solid rgba(166,255,0,.4);
+    background:
+      linear-gradient(180deg, rgba(166,255,0,.07), rgba(166,255,0,.02));
+    box-shadow:
+      inset 0 0 30px rgba(166,255,0,.08),
+      0 0 30px rgba(0,0,0,.5);
+    font-family:'Exo 2',sans-serif;
+    font-weight:800;
+    font-size:24px;
+    letter-spacing:.5em;
+    text-transform:uppercase;
+    color:var(--white);
+  }
+  .tagline b{color:var(--green);text-shadow:0 0 14px rgba(166,255,0,.6);}
+  .tagline .sep{
+    color:var(--green);
+    font-size:14px;
+    transform:translateY(-1px);
+  }
+
+  /* ================= PARTNER ROW ================= */
+  .partners{
+    position:absolute;
+    bottom:54px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:11;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    width:88%;
+  }
+  .partners .rule{
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(163,163,163,.35) 20%, rgba(163,163,163,.35) 80%, transparent);
+  }
+  .partner-inner{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    font-family:'Exo 2',sans-serif;
+  }
+  .p-label{
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--grey);
+  }
+  .p-logos{
+    display:flex;
+    align-items:center;
+    gap:46px;
+  }
+  .p-logo{
+    display:inline-flex;
+    align-items:center;
+    gap:11px;
+    font-family:'Orbitron',sans-serif;
+    font-weight:800;
+    font-size:26px;
+    letter-spacing:.04em;
+    color:var(--white);
+    opacity:.82;
+  }
+  .p-logo .chip{
+    width:12px;height:12px;
+    background:var(--green);
+    transform:rotate(45deg);
+    box-shadow:0 0 10px rgba(166,255,0,.55);
+  }
+  .p-divider{
+    width:1px;height:26px;
+    background:rgba(163,163,163,.4);
+  }
+
+  /* corner emblem */
+  .emblem{
+    position:absolute;
+    top:52px;left:60px;
+    width:118px;height:118px;
+    z-index:11;
+    filter:drop-shadow(0 0 22px rgba(166,255,0,.45));
+  }
+  .emblem img{width:100%;height:100%;display:block;}
+  .team-no{
+    position:absolute;
+    top:64px;right:64px;
+    z-index:11;
+    text-align:right;
+    font-family:'Exo 2',sans-serif;
+  }
+  .team-no .lbl{
+    display:block;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.4em;
+    color:var(--grey);
+    text-transform:uppercase;
+  }
+  .team-no .val{
+    display:block;
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    font-size:40px;
+    letter-spacing:.06em;
+    color:var(--green);
+    text-shadow:0 0 18px rgba(166,255,0,.5);
+    margin-top:2px;
+  }
+
+  /* ---- vignette ---- */
+  .vignette{
+    position:absolute;
+    inset:0;
+    z-index:12;
+    pointer-events:none;
+    background:radial-gradient(120% 120% at 50% 42%, transparent 48%, rgba(0,0,0,.45) 78%, rgba(0,0,0,.85) 100%);
+  }
+  /* edge cinematic darkening */
+  .edge-glow{
+    position:absolute;
+    inset:0;z-index:12;pointer-events:none;
+    box-shadow:inset 0 0 200px rgba(0,0,0,.6);
+  }
+
+  /* ---- film grain ---- */
+  .grain{
+    position:absolute;
+    inset:0;
+    z-index:13;
+    pointer-events:none;
+    opacity:.10;
+    mix-blend-mode:overlay;
+  }
+  .grain svg{width:100%;height:100%;}
+
+  /* corner ticks (square UI chrome) */
+  .tick{position:absolute;z-index:11;width:34px;height:34px;border:2px solid rgba(166,255,0,.55);}
+  .tick.tl{top:30px;left:30px;border-right:none;border-bottom:none;}
+  .tick.tr{top:30px;right:30px;border-left:none;border-bottom:none;}
+  .tick.bl{bottom:30px;left:30px;border-right:none;border-top:none;}
+  .tick.br{bottom:30px;right:30px;border-left:none;border-top:none;}
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <!-- depth + light layers -->
+    <div class="grid-floor"></div>
+    <div class="spot left"></div>
+    <div class="spot right"></div>
+    <div class="emitter l"></div>
+    <div class="emitter r"></div>
+    <div class="floor"></div>
+    <div class="horizon"></div>
+
+    <!-- textures -->
+    <div class="slashes"></div>
+    <div class="dots"></div>
+
+    <!-- ghost bolt + echoes -->
+    <div class="echo-bolt b">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="541.12 151.81 454.23 719.97"><path d="M684.95,719.3l-103.4,113.02c-12.93,14.13-24.12,28.24-40.43,39.46l62.93-117.69,114.21-209.8-89.99,7.09,169-188.16,189.7-208.77c2.3-2.53,4.39-2.64,5.99-1.59,2.33,1.53,2.39,3.5,1,6.29l-56.97,114.27-90.09,175.1,91.91-5.95-140.81,152.91-113.04,123.83Z"/></svg>
+    </div>
+    <div class="echo-bolt a">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="541.12 151.81 454.23 719.97"><path d="M684.95,719.3l-103.4,113.02c-12.93,14.13-24.12,28.24-40.43,39.46l62.93-117.69,114.21-209.8-89.99,7.09,169-188.16,189.7-208.77c2.3-2.53,4.39-2.64,5.99-1.59,2.33,1.53,2.39,3.5,1,6.29l-56.97,114.27-90.09,175.1,91.91-5.95-140.81,152.91-113.04,123.83Z"/></svg>
+    </div>
+    <div class="ghost-bolt">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="541.12 151.81 454.23 719.97"><path d="M684.95,719.3l-103.4,113.02c-12.93,14.13-24.12,28.24-40.43,39.46l62.93-117.69,114.21-209.8-89.99,7.09,169-188.16,189.7-208.77c2.3-2.53,4.39-2.64,5.99-1.59,2.33,1.53,2.39,3.5,1,6.29l-56.97,114.27-90.09,175.1,91.91-5.95-140.81,152.91-113.04,123.83Z" fill="#A6FF00"/></svg>
+    </div>
+
+    <!-- corner emblem + team number -->
+    <div class="emblem"><img src="../brand-assets/icon-transparent.png" alt="SHFT emblem"></div>
+    <div class="team-no">
+      <span class="lbl">FIRST Robotics</span>
+      <span class="val">7558</span>
+    </div>
+
+    <!-- main content -->
+    <div class="content">
+      <div class="kicker">
+        <span class="line"></span>
+        <span class="dot"></span>
+        <span>Innovate</span><span>&middot;</span><span>Build</span><span>&middot;</span><span>Compete</span>
+        <span class="dot"></span>
+        <span class="line r"></span>
+      </div>
+
+      <div class="mark-wrap">
+        <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS">
+        <img class="wordmark-refl" src="../brand-assets/wordmark-shft-robotics.png" alt="">
+      </div>
+
+      <h1 class="headline">WE DON'T FOLLOW. WE <span class="shft">SHFT.</span></h1>
+
+      <div class="tagline">
+        <span>Building The Future</span>
+        <span class="sep">&#9670;</span>
+        <span>One <b>SHFT</b> At A Time</span>
+      </div>
+    </div>
+
+    <!-- partner lockup -->
+    <div class="partners">
+      <div class="rule"></div>
+      <div class="partner-inner">
+        <span class="p-label">Powered By</span>
+        <div class="p-logos">
+          <span class="p-logo"><span class="chip"></span>ALT&#8209;F4</span>
+          <span class="p-divider"></span>
+          <span class="p-logo"><span class="chip"></span>WCP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- finishing overlays -->
+    <div class="edge-glow"></div>
+    <div class="vignette"></div>
+
+    <span class="tick tl"></span>
+    <span class="tick tr"></span>
+    <span class="tick bl"></span>
+    <span class="tick br"></span>
+
+    <!-- film grain -->
+    <div class="grain">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <filter id="grainFilter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+      </svg>
+    </div>
+
+  </div>
+</body>
+</html>
