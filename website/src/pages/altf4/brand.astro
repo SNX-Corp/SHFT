@@ -1,0 +1,156 @@
+---
+import Altf4Layout from '../../layouts/Altf4Layout.astro';
+import Nav from '../../components/altf4/Nav.astro';
+import Footer from '../../components/altf4/Footer.astro';
+
+const colors = [
+  { name: 'Pure Black', hex: '#000000', use: 'The logo. Wordmark fills.', dark: true },
+  { name: 'Ground Black', hex: '#0A0A0A', use: 'Primary backgrounds, screens.', dark: true },
+  { name: 'Surface', hex: '#131313', use: 'Cards, raised panels.', dark: true },
+  { name: 'Brand Red', hex: '#FF0000', use: 'The one accent. Leaf, F4 keys, CTAs.', dark: true },
+  { name: 'Red Deep', hex: '#7F0000', use: 'Shadows, pressed states, depth.', dark: true },
+  { name: 'White', hex: '#FFFFFF', use: 'Type on dark, light variant ground.', dark: false },
+  { name: 'Dim', hex: '#A3A3A3', use: 'Secondary text, captions.', dark: true },
+  { name: 'Border', hex: '#2A2A2A', use: 'Hairlines, dividers.', dark: true },
+];
+
+const fonts = [
+  { name: 'Orbitron', cls: 'var(--font-af-display)', role: 'Display', sample: 'ALT-F4', note: 'Wordmark voice, big numbers, hero statements. Weight 900. Always uppercase.' },
+  { name: 'Exo 2', cls: 'var(--font-af-head)', role: 'Heading', sample: 'Innovate. Build.', note: 'Section headings, buttons, UI. Weight 600–800.' },
+  { name: 'Raleway', cls: 'var(--font-af-body)', role: 'Body', sample: 'Built by students, backed by industry.', note: 'Paragraphs and long-form. Weight 400–500.' },
+  { name: 'Mono', cls: 'var(--font-af-mono)', role: 'Data / Labels', sample: 'EPA 1864 · #3 CAN', note: 'Stats, keycap chips, eyebrow labels, the terminal voice.' },
+];
+
+const dos = [
+  'Keep the logo on pure black or pure white only.',
+  'Preserve the red maple leaf and red F4 keys at all times.',
+  'Give the logo clear space equal to the height of the "A".',
+  'Use one red. Never introduce a second accent colour.',
+  'Keep every corner sharp. Radius is always zero.',
+];
+const donts = [
+  'Don\'t recolour the wordmark or drop the maple leaf.',
+  'Don\'t place the logo on busy photos without a dark scrim.',
+  'Don\'t stretch, skew, rotate or add gradients to the mark.',
+  'Don\'t round corners or add drop shadows to the letters.',
+  'Don\'t use red as a large background fill behind body text.',
+];
+---
+
+<Altf4Layout title="ALT-F4 · Brand Guidelines">
+  <Nav />
+
+  <!-- HERO -->
+  <header class="af-section" style="padding-top:5rem;border-bottom:1px solid var(--color-af-border);">
+    <div class="af-wrap">
+      <div class="af-eyebrow" style="margin-bottom:1.5rem;">Brand Guidelines · v1.0</div>
+      <h1 class="af-display" style="font-size:clamp(2.6rem,8vw,6rem);">Brand<br/><span style="color:var(--color-af-red);">System</span></h1>
+      <p class="af-lead" style="max-width:54ch;margin-top:1.5rem;">How ALT-F4 looks, reads and feels. Black, white and one decisive red. Sharp angles, no curves, built like a robot.</p>
+    </div>
+  </header>
+
+  <!-- LOGO -->
+  <section class="af-section">
+    <div class="af-wrap">
+      <div class="af-eyebrow" style="margin-bottom:2rem;">01 · The Logo</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;" class="af-2col">
+        <div style="background:#000;border:1px solid var(--color-af-border);padding:3.5rem;display:flex;align-items:center;justify-content:center;min-height:280px;">
+          <img src="/images/altf4/logo-white.png" alt="ALT-F4 on black" style="max-height:120px;width:auto;" />
+        </div>
+        <div style="background:#fff;border:1px solid var(--color-af-border);padding:3.5rem;display:flex;align-items:center;justify-content:center;min-height:280px;">
+          <img src="/images/altf4/logo.png" alt="ALT-F4 on white" style="max-height:120px;width:auto;" />
+        </div>
+      </div>
+      <p class="af-body" style="max-width:62ch;">
+        The wordmark spells <strong style="color:#fff;">ALT-F4</strong>, the keyboard command, rendered in heavy angular blocks. A red Canadian maple leaf sits inside the "A". The "F4" is drawn as two outlined red keycaps, the team's signature. Use the white-letter version on dark, the black-letter version on light. The leaf and keys stay red in both.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:2.5rem;" class="af-2col">
+        <div class="af-card">
+          <div class="af-mono" style="color:var(--color-af-red);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem;">Do</div>
+          {dos.map((d) => (<p class="af-body" style="font-size:.88rem;padding:.4rem 0;border-top:1px solid var(--color-af-border);">{d}</p>))}
+        </div>
+        <div class="af-card">
+          <div class="af-mono" style="color:var(--color-af-muted);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem;">Don't</div>
+          {donts.map((d) => (<p class="af-body" style="font-size:.88rem;padding:.4rem 0;border-top:1px solid var(--color-af-border);">{d}</p>))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR -->
+  <section class="af-section" style="background:var(--color-af-pure);border-block:1px solid var(--color-af-border);">
+    <div class="af-wrap">
+      <div class="af-eyebrow" style="margin-bottom:2rem;">02 · Colour</div>
+      <p class="af-body" style="max-width:60ch;margin-bottom:2rem;">A near-black ground, white type, and a single uncompromising red taken straight from the logo. No second accent. Red is a scalpel, not a paint roller.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="af-colorgrid">
+        {colors.map((c) => (
+          <div style="border:1px solid var(--color-af-border);">
+            <div style={`background:${c.hex};height:120px;border-bottom:1px solid var(--color-af-border);`}></div>
+            <div style="padding:1rem;background:var(--color-af-surface);">
+              <div style="font-family:var(--font-af-head);font-weight:700;font-size:.95rem;">{c.name}</div>
+              <div class="af-mono" style="font-size:.72rem;color:var(--color-af-red);margin:.2rem 0 .5rem;">{c.hex}</div>
+              <div class="af-body" style="font-size:.78rem;">{c.use}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section class="af-section">
+    <div class="af-wrap">
+      <div class="af-eyebrow" style="margin-bottom:2rem;">03 · Typography</div>
+      <div style="display:grid;gap:14px;">
+        {fonts.map((f) => (
+          <div class="af-card" style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:center;">
+            <div>
+              <div class="af-mono" style="font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--color-af-red);">{f.role}</div>
+              <div style="font-family:var(--font-af-head);font-weight:800;font-size:1.3rem;margin:.4rem 0;">{f.name}</div>
+              <p class="af-body" style="font-size:.82rem;">{f.note}</p>
+            </div>
+            <div style={`font-family:${f.cls};font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:${f.role==='Display'?900:600};color:#fff;${f.role==='Display'?'text-transform:uppercase;letter-spacing:-.02em;':''}`}>{f.sample}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTIF -->
+  <section class="af-section" style="background:var(--color-af-pure);border-block:1px solid var(--color-af-border);">
+    <div class="af-wrap">
+      <div class="af-eyebrow" style="margin-bottom:2rem;">04 · Motifs & Voice</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="af-2col">
+        <div>
+          <h3 class="af-h3" style="margin-bottom:1rem;">The keycap</h3>
+          <p class="af-body" style="margin-bottom:1.5rem;">Borrowed from the F4 keys in the logo. Use it for labels, tags and call-outs.</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+            <span class="af-key">Alt</span><span class="af-key">F4</span><span class="af-key">Innovate</span><span class="af-key">Build</span><span class="af-key">Compete</span>
+          </div>
+          <h3 class="af-h3" style="margin-bottom:1rem;">Speed slashes</h3>
+          <p class="af-body" style="margin-bottom:1rem;">Diagonal red bars for energy and motion. Keep them sparing.</p>
+          <div class="af-slashes" style="height:40px;opacity:.85;"></div>
+        </div>
+        <div>
+          <h3 class="af-h3" style="margin-bottom:1rem;">Voice</h3>
+          <p class="af-body" style="margin-bottom:1rem;">Confident, technical, never arrogant. Short declaratives. Numbers over adjectives. We let results speak.</p>
+          <div style="border-left:2px solid var(--color-af-red);padding-left:1.25rem;margin-bottom:1.5rem;">
+            <p class="af-lead" style="font-size:1.1rem;color:#fff;">"We build the robot first. The trophies follow."</p>
+          </div>
+          <p class="af-mono" style="font-size:.72rem;letter-spacing:.14em;color:var(--color-af-muted);text-transform:uppercase;">Tagline · Innovate. Build. Compete.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+  <style>
+    @media (max-width: 880px) {
+      .af-2col { grid-template-columns: 1fr !important; }
+      .af-colorgrid { grid-template-columns: repeat(2,1fr) !important; }
+      .af-card[style*="grid-template-columns:1fr 2fr"] { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</Altf4Layout>

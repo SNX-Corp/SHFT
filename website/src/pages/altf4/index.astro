@@ -1,0 +1,294 @@
+---
+import Altf4Layout from '../../layouts/Altf4Layout.astro';
+import Nav from '../../components/altf4/Nav.astro';
+import Footer from '../../components/altf4/Footer.astro';
+import EpaChart from '../../components/altf4/EpaChart.astro';
+
+const stats = [
+  { num: '#3', label: 'In Canada · 2026' },
+  { num: 'Top 2%', label: 'Worldwide EPA' },
+  { num: '213–96', label: 'All-Time Record' },
+  { num: '7', label: 'Seasons Competing' },
+];
+
+const robots = [
+  { name: 'Vision', year: '2025' },
+  { name: 'Ventura', year: '2024' },
+  { name: 'Venus', year: '2023' },
+  { name: 'Vertigo', year: '2022' },
+  { name: 'Viper', year: '2020' },
+  { name: 'Orion', year: '2019' },
+];
+
+const mentors = [
+  { name: 'Nosh Pestonji', role: 'Robotics Coordinator', note: 'Designs experiential STEM programs.' },
+  { name: 'Noeen Kashif', role: 'FRC Specialist', note: 'Mechanical Engineering, TMU.' },
+  { name: 'Samir Shaikh', role: 'Electrical Lead', note: 'CEO, Machine Vision Direct.' },
+  { name: 'Vanshil Shah', role: 'Mechanical Mentor', note: 'Software Engineer, Google.' },
+  { name: 'Zaeem Mohamed', role: 'Mentor', note: 'Mechatronics Engineering, Waterloo.' },
+  { name: 'Shiro Brattain', role: 'Mentor', note: 'Mechatronics Engineering.' },
+];
+
+const tiers = [
+  {
+    name: 'Bronze', price: '$500', popular: false,
+    perks: ['Logo on team website', 'Social media shout-out', 'Logo on pit banner', 'Sponsor receipt'],
+  },
+  {
+    name: 'Silver', price: '$1,500', popular: false,
+    perks: ['Everything in Bronze', 'Logo on team apparel', 'Medium decal on robot', 'Dedicated social feature'],
+  },
+  {
+    name: 'Gold', price: '$3,000', popular: true,
+    perks: ['Everything in Silver', 'Prime placement on robot', 'Logo on travel banner', 'Mentor & recruiting access'],
+  },
+  {
+    name: 'Title', price: '$5,000+', popular: false,
+    perks: ['Everything in Gold', 'Naming-tier recognition', 'Largest robot placement', 'Custom engagement & visits'],
+  },
+];
+
+const placements = [
+  { k: 'Robot', d: 'Your decal travels to every competition on a top-3-in-Canada machine.' },
+  { k: 'Apparel', d: 'Team shirts, hoodies and pit crew gear worn all season.' },
+  { k: 'Banners', d: 'Pit wall and travel banners seen by thousands at each event.' },
+  { k: 'Digital', d: 'Website, livestream graphics and an active social feed.' },
+  { k: 'Outreach', d: 'Community demos, school events and STEM workshops.' },
+  { k: 'Receipts', d: 'Official sponsor documentation through our school.' },
+];
+---
+
+<Altf4Layout>
+  <Nav />
+
+  <!-- ===================== HERO ===================== -->
+  <header style="position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;">
+    <div style="position:absolute;inset:0;">
+      <img src="/images/altf4/robot-reveal.jpg" alt="ALT-F4 robot" style="width:100%;height:100%;object-fit:cover;opacity:.4;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.6) 0%,rgba(10,10,10,.75) 55%,#0A0A0A 100%);"></div>
+    </div>
+    <div class="af-gridbg" style="position:absolute;inset:0;opacity:.5;"></div>
+
+    <div class="af-wrap" style="position:relative;z-index:2;padding-block:6rem;">
+      <div class="af-eyebrow" style="margin-bottom:1.5rem;">2026 Sponsorship Package · FRC 7558</div>
+      <img src="/images/altf4/logo-white.png" alt="ALT-F4" style="height:clamp(80px,14vw,150px);width:auto;margin-bottom:1.75rem;" />
+      <h1 class="af-display" style="font-size:clamp(2.4rem,6.5vw,5.5rem);max-width:18ch;">
+        Ontario's fastest-rising<br/><span style="color:var(--color-af-red);">robotics</span> team.
+      </h1>
+      <p class="af-lead" style="max-width:54ch;margin-top:1.5rem;">
+        We climbed from rank 35 to the <strong style="color:#fff;">top 3 in Canada</strong> in seven seasons. Put your brand on a machine that wins, and a program that builds the next generation of engineers.
+      </p>
+      <div style="display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;">
+        <a href="#tiers" class="af-btn af-btn-primary">View Sponsorship Tiers</a>
+        <a href="#performance" class="af-btn af-btn-ghost">See the Numbers</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;margin-top:2.5rem;">
+        <span class="af-key">Next</span>
+        <span class="af-mono" style="font-size:.78rem;color:var(--color-af-dim);letter-spacing:.05em;">Barrie District Event &nbsp;·&nbsp; <span id="af-countdown" style="color:var(--color-af-red);">--</span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== STAT BAR ===================== -->
+  <section style="border-top:1px solid var(--color-af-border);border-bottom:1px solid var(--color-af-border);background:var(--color-af-pure);">
+    <div class="af-wrap" style="display:grid;grid-template-columns:repeat(4,1fr);">
+      {stats.map((s, i) => (
+        <div class="af-reveal" style={`padding:2.25rem 1rem;text-align:center;${i>0?'border-left:1px solid var(--color-af-border);':''}`}>
+          <div class="af-stat-num" style="color:var(--color-af-red);">{s.num}</div>
+          <div class="af-stat-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===================== WHY SPONSOR ===================== -->
+  <section class="af-section">
+    <div class="af-wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;" class="af-2col">
+        <div class="af-reveal">
+          <div class="af-eyebrow" style="margin-bottom:1.25rem;">The Opportunity</div>
+          <h2 class="af-h2">More than a logo.<br/>A pipeline to talent.</h2>
+          <p class="af-body" style="margin-top:1.5rem;">
+            ALT-F4 is a student-run FIRST Robotics Competition team at Bayview Glen in Toronto. Every season, 30+ students in grades 9–12 design, build, wire and code a 125-pound robot in six weeks, then compete against the best teams in the world.
+          </p>
+          <p class="af-body" style="margin-top:1rem;">
+            Sponsoring us is high-visibility marketing and a direct investment in STEM. Your support funds materials, tools and travel, and your brand rides with a team that consistently finishes near the top of Canada.
+          </p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.75rem;">
+            <span class="af-key">Engineering</span>
+            <span class="af-key">Mentorship</span>
+            <span class="af-key">Community</span>
+            <span class="af-key">Brand Reach</span>
+          </div>
+        </div>
+        <div class="af-reveal" style="position:relative;">
+          <img src="/images/altf4/team-design.jpg" alt="Students designing" style="width:100%;height:440px;object-fit:cover;border:1px solid var(--color-af-border);" />
+          <div class="af-cut" style="position:absolute;inset:0;pointer-events:none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PERFORMANCE ===================== -->
+  <section id="performance" class="af-section" style="background:var(--color-af-pure);border-block:1px solid var(--color-af-border);">
+    <div class="af-wrap">
+      <div style="max-width:62ch;margin-bottom:3rem;" class="af-reveal">
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;">Performance</div>
+        <h2 class="af-h2">The numbers don't lie.</h2>
+        <p class="af-lead" style="margin-top:1.25rem;">
+          EPA (Expected Points Added) is the standard rating for FRC strength. Ours has climbed every era of the team. In 2026 we hit a <strong style="color:#fff;">norm EPA of 1864</strong>, ranking <strong style="color:var(--color-af-red);">#3 in all of Canada</strong> and inside the top 2% of teams worldwide.
+        </p>
+      </div>
+
+      <div class="af-reveal" style="margin-bottom:2.5rem;">
+        <EpaChart />
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-af-border);border:1px solid var(--color-af-border);" class="af-perfgrid">
+        {[
+          { n: '#35 → #3', l: 'Canada rank climb' },
+          { n: '68.9%', l: 'All-time win rate' },
+          { n: '98th', l: 'Global EPA percentile' },
+          { n: '309', l: 'Matches played' },
+        ].map((s) => (
+          <div class="af-reveal" style="background:var(--color-af-black);padding:1.75rem;">
+            <div class="af-stat-num" style="font-size:clamp(1.5rem,2.6vw,2.1rem);">{s.n}</div>
+            <div class="af-stat-label">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEAM ===================== -->
+  <section id="team" class="af-section">
+    <div class="af-wrap">
+      <div style="max-width:60ch;margin-bottom:3rem;" class="af-reveal">
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;">The Team</div>
+        <h2 class="af-h2">Built by students.<br/>Backed by industry.</h2>
+        <p class="af-body" style="margin-top:1.25rem;">
+          Our mission is to give students room to grow through technology and design while building real skills: critical thinking, collaboration and communication. Mentors from Google, Waterloo, TMU and local industry guide every subsystem.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:2.5rem;" class="af-photos">
+        <img src="/images/altf4/team-jerseys.jpg" alt="Team in jerseys" style="width:100%;height:260px;object-fit:cover;border:1px solid var(--color-af-border);" class="af-reveal" />
+        <img src="/images/altf4/drive-team.jpg" alt="Drive team at the field" style="width:100%;height:260px;object-fit:cover;border:1px solid var(--color-af-border);" class="af-reveal" />
+        <img src="/images/altf4/team-celebrate.jpg" alt="Team celebrating" style="width:100%;height:260px;object-fit:cover;border:1px solid var(--color-af-border);" class="af-reveal" />
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;" class="af-mentors">
+        {mentors.map((m) => (
+          <div class="af-card af-reveal">
+            <div class="af-h3" style="font-family:var(--font-af-head);font-weight:700;">{m.name}</div>
+            <div class="af-mono" style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-af-red);margin:.4rem 0 .6rem;">{m.role}</div>
+            <p class="af-body" style="font-size:.88rem;">{m.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ROBOTS ===================== -->
+  <section id="robots" class="af-section" style="background:var(--color-af-pure);border-block:1px solid var(--color-af-border);">
+    <div class="af-wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;" class="af-2col">
+        <div class="af-reveal" style="position:relative;">
+          <img src="/images/altf4/robot-pit.jpg" alt="ALT-F4 robot 7558" style="width:100%;height:480px;object-fit:cover;border:1px solid var(--color-af-border);" />
+        </div>
+        <div class="af-reveal">
+          <div class="af-eyebrow" style="margin-bottom:1.25rem;">The Machines</div>
+          <h2 class="af-h2">Seven seasons.<br/>One trajectory.</h2>
+          <p class="af-body" style="margin-top:1.25rem;margin-bottom:1.75rem;">
+            From Orion in our rookie year to Vision in 2025, every robot pushes further than the last. Here is the lineage your brand joins.
+          </p>
+          <div style="border-top:1px solid var(--color-af-border);">
+            {robots.map((r) => (
+              <div style="display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--color-af-border);">
+                <span class="af-display" style="font-size:1.5rem;">{r.name}</span>
+                <span class="af-mono" style="color:var(--color-af-muted);font-size:.85rem;letter-spacing:.1em;">{r.year}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TIERS ===================== -->
+  <section id="tiers" class="af-section">
+    <div class="af-wrap">
+      <div style="text-align:center;max-width:54ch;margin:0 auto 3rem;" class="af-reveal">
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;justify-content:center;">Sponsorship Tiers</div>
+        <h2 class="af-h2">Choose your level.</h2>
+        <p class="af-body" style="margin-top:1rem;">All amounts in CAD. In-kind donations of materials, tools or services are welcome and matched to an equivalent tier.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="af-tiers">
+        {tiers.map((t) => (
+          <div class="af-card af-reveal" style={`display:flex;flex-direction:column;${t.popular?'border-color:var(--color-af-red);background:var(--color-af-surface-2);':''}`}>
+            {t.popular && <div class="af-mono" style="font-size:.6rem;letter-spacing:.2em;color:var(--color-af-red);text-transform:uppercase;margin-bottom:.75rem;">★ Most Popular</div>}
+            <div class="af-display" style="font-size:1.4rem;">{t.name}</div>
+            <div class="af-stat-num" style="color:#fff;margin:.75rem 0 1.25rem;font-size:2.2rem;">{t.price}</div>
+            <ul style="list-style:none;padding:0;margin:0;flex:1;">
+              {t.perks.map((p) => (
+                <li class="af-body" style="font-size:.85rem;padding:.5rem 0;border-top:1px solid var(--color-af-border);display:flex;gap:.5rem;">
+                  <span style="color:var(--color-af-red);">/</span><span>{p}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="#contact" class="af-btn af-btn-ghost" style="margin-top:1.5rem;justify-content:center;width:100%;">Select {t.name}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PLACEMENT ===================== -->
+  <section class="af-section" style="background:var(--color-af-pure);border-block:1px solid var(--color-af-border);">
+    <div class="af-wrap">
+      <div style="max-width:54ch;margin-bottom:3rem;" class="af-reveal">
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;">Where Your Brand Lives</div>
+        <h2 class="af-h2">Seen everywhere we go.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;" class="af-place">
+        {placements.map((p) => (
+          <div class="af-card af-reveal">
+            <div class="af-h3" style="font-family:var(--font-af-display);font-weight:900;text-transform:uppercase;font-size:1.1rem;color:var(--color-af-red);">{p.k}</div>
+            <p class="af-body" style="font-size:.9rem;margin-top:.75rem;">{p.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT CTA ===================== -->
+  <section id="contact" class="af-section" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;">
+      <img src="/images/altf4/robot-carry.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.2;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,#0A0A0A,rgba(10,10,10,.7),#0A0A0A);"></div>
+    </div>
+    <div class="af-wrap" style="position:relative;z-index:2;text-align:center;">
+      <div class="af-eyebrow" style="margin-bottom:1.5rem;justify-content:center;">Partner With Us</div>
+      <h2 class="af-display" style="font-size:clamp(2rem,5vw,4rem);max-width:18ch;margin:0 auto;">Let's build something fast.</h2>
+      <p class="af-lead" style="max-width:50ch;margin:1.5rem auto 0;">Reach out and we'll send a tailored proposal within 48 hours. We'd love to show you what your support makes possible.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;">
+        <a href="mailto:mpestonji@bayviewglen.ca?subject=ALT-F4%20Sponsorship" class="af-btn af-btn-primary">Email the Team</a>
+        <a href="https://team7558.com" class="af-btn af-btn-ghost">Visit team7558.com</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+  <style>
+    @media (max-width: 880px) {
+      .af-2col { grid-template-columns: 1fr !important; }
+      .af-perfgrid, .af-tiers { grid-template-columns: repeat(2,1fr) !important; }
+    }
+    @media (max-width: 720px) {
+      section > .af-wrap [style*="repeat(4,1fr)"] { grid-template-columns: repeat(2,1fr) !important; }
+      .af-photos, .af-mentors, .af-place { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</Altf4Layout>

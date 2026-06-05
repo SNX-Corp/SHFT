@@ -1,0 +1,70 @@
+---
+/*
+  Statbotics EPA trajectory for FRC 7558 (ALT-F4).
+  Metric: normalized EPA (Statbotics' cross-year comparable rating).
+  Source: api.statbotics.io/v3/team_years?team=7558  (pulled 2026-06).
+*/
+const data = [
+  { year: '2019', epa: 1610, rank: 35 },
+  { year: '2020', epa: 1619, rank: 18 },
+  { year: '2023', epa: 1693, rank: 11 },
+  { year: '2024', epa: 1661, rank: 13 },
+  { year: '2025', epa: 1758, rank: 11 },
+  { year: '2026', epa: 1864, rank: 3 },
+];
+
+const W = 820, H = 380;
+const padL = 30, padR = 30, padT = 36, padB = 46;
+const plotW = W - padL - padR;
+const plotH = H - padT - padB;
+const yMin = 1560, yMax = 1900;
+const n = data.length;
+
+const x = (i: number) => padL + (i * plotW) / (n - 1);
+const y = (v: number) => padT + (1 - (v - yMin) / (yMax - yMin)) * plotH;
+
+const pts = data.map((d, i) => ({ ...d, cx: x(i), cy: y(d.epa) }));
+const linePath = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.cx.toFixed(1)},${p.cy.toFixed(1)}`).join(' ');
+const areaPath = `${linePath} L${x(n - 1).toFixed(1)},${(padT + plotH).toFixed(1)} L${padL.toFixed(1)},${(padT + plotH).toFixed(1)} Z`;
+
+const yTicks = [1600, 1700, 1800, 1900];
+---
+
+<div class="af-card" style="background:var(--color-af-pure);padding:1.5rem 1.25rem;">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="ALT-F4 normalized EPA by season, 2019 to 2026" style="width:100%;height:auto;display:block;">
+    <defs>
+      <linearGradient id="afGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FF0000" stop-opacity="0.28" />
+        <stop offset="100%" stop-color="#FF0000" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+
+    {yTicks.map((t) => (
+      <g>
+        <line class="af-chart-grid" x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} />
+        <text class="af-chart-axis" x={padL} y={y(t) - 6}>{t}</text>
+      </g>
+    ))}
+
+    <path class="af-chart-area" d={areaPath} />
+    <path class="af-chart-line" d={linePath} />
+
+    {pts.map((p) => (
+      <g>
+        <text class="af-chart-axis" x={p.cx} y={H - 22} text-anchor="middle">{p.year}</text>
+        {p.rank <= 11 && (
+          <text x={p.cx} y={p.cy - 16} text-anchor="middle"
+            style="font-family:var(--font-af-mono);font-size:11px;font-weight:700;fill:#fff;">#{p.rank}</text>
+        )}
+        <circle class="af-chart-dot" cx={p.cx} cy={p.cy} r={p.year === '2026' ? 7 : 5} />
+        {p.year === '2026' && (
+          <circle cx={p.cx} cy={p.cy} r="13" fill="none" stroke="#FF0000" stroke-width="1.5" opacity="0.5" />
+        )}
+      </g>
+    ))}
+  </svg>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;flex-wrap:wrap;gap:.5rem;">
+    <span class="af-mono" style="font-size:.66rem;letter-spacing:.14em;color:var(--color-af-muted);text-transform:uppercase;">Normalized EPA · Statbotics · # = rank in Canada</span>
+    <span class="af-mono" style="font-size:.66rem;letter-spacing:.14em;color:var(--color-af-red);text-transform:uppercase;">+254 EPA since rookie year</span>
+  </div>
+</div>

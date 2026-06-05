@@ -1,0 +1,28 @@
+---
+const links = [
+  { href: '/altf4#performance', label: 'Performance' },
+  { href: '/altf4#team', label: 'Team' },
+  { href: '/altf4#robots', label: 'Robots' },
+  { href: '/altf4#tiers', label: 'Sponsor' },
+  { href: '/altf4/brand', label: 'Brand' },
+];
+---
+<nav class="af-nav">
+  <div class="af-wrap" style="display:flex;align-items:center;justify-content:space-between;height:64px;">
+    <a href="/altf4" aria-label="ALT-F4 home" style="display:flex;align-items:center;gap:.6rem;">
+      <img src="/images/altf4/logo-white.png" alt="ALT-F4" style="height:26px;width:auto;" />
+      <span class="af-mono" style="font-size:.62rem;letter-spacing:.2em;color:var(--color-af-muted);text-transform:uppercase;border-left:1px solid var(--color-af-border);padding-left:.6rem;">7558</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:1.5rem;" class="af-navlinks">
+      {links.map((l) => (
+        <a href={l.href} class="af-mono" style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--color-af-dim);transition:color .15s;" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='var(--color-af-dim)'">{l.label}</a>
+      ))}
+      <a href="/altf4#contact" class="af-btn af-btn-primary" style="padding:.6rem 1.1rem;font-size:.72rem;box-shadow:3px 3px 0 0 var(--color-af-red-deep);">Become a Sponsor</a>
+    </div>
+  </div>
+</nav>
+<style>
+  @media (max-width: 880px) {
+    .af-navlinks a:not(.af-btn) { display: none; }
+  }
+</style>

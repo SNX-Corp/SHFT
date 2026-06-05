@@ -1,0 +1,62 @@
+---
+import '../styles/altf4.css';
+import '../fonts/index.ts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'ALT-F4 · FRC Team 7558 · Sponsorship',
+  description = 'ALT-F4 is FRC Team 7558, one of the fastest-rising competitive robotics teams in Ontario. Partner with us.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/images/altf4/logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/altf4/robot-reveal.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+  </head>
+  <body class="af">
+    <slot />
+    <script>
+      // scroll reveal
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        }
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.af-reveal').forEach((el, i) => {
+        (el as HTMLElement).style.transitionDelay = `${Math.min(i % 4, 3) * 60}ms`;
+        io.observe(el);
+      });
+
+      // live countdown to Barrie District Event (event week 2026 — Mar 26, 2026)
+      const target = new Date('2026-03-26T09:00:00-04:00').getTime();
+      const cd = document.getElementById('af-countdown');
+      if (cd) {
+        const tick = () => {
+          const d = target - Date.now();
+          if (d <= 0) { cd.textContent = 'LIVE NOW'; return; }
+          const days = Math.floor(d / 86400000);
+          const hrs = Math.floor((d % 86400000) / 3600000);
+          const min = Math.floor((d % 3600000) / 60000);
+          const sec = Math.floor((d % 60000) / 1000);
+          cd.textContent = `${String(days).padStart(2,'0')}d ${String(hrs).padStart(2,'0')}h ${String(min).padStart(2,'0')}m ${String(sec).padStart(2,'0')}s`;
+        };
+        tick(); setInterval(tick, 1000);
+      }
+    </script>
+  </body>
+</html>
