@@ -466,20 +466,24 @@
 
   @media screen{
     body{
-      padding:24px 16px;
-      overflow-x:auto;
+      padding:22px 16px;
+      overflow-x:hidden;
     }
+    /* On screen, let each page size to its content. Kills the dead space that
+       a fixed 11in print height leaves at the bottom of every page. */
     .page{
+      height:auto;
+      min-height:0;
+      overflow:visible;
       box-shadow:0 20px 70px rgba(0,0,0,0.45);
-      margin:0 auto 24px;
-      transform-origin:top center;
+      margin:0 auto 22px;
+      zoom:var(--pz, 1);
     }
-    @media (max-width:900px){
-      .page{
-        transform:scale(calc((100vw - 32px) / 816));
-        margin-bottom:calc(24px - (11in * (1 - ((100vw - 32px) / 816))));
-      }
-    }
+    /* These blocks pin to the bottom via margin-top:auto on a fixed-height page;
+       with auto height that collapses, so restore deliberate spacing. */
+    .cover-grid{ margin-top:0.42in; }
+    .budget-note{ margin-top:0.3in; }
+    .cta-band{ margin-top:0.34in; }
   }
 
   @media print{
@@ -504,13 +508,13 @@
 
   <div class="cover-grid">
     <div class="hero-panel">
-      <b>Founding sponsors become part of the origin story.</b>
-      <span>Year one. 2026 FRC season.</span>
+      <b>A top-15 world team is backing SHFT from day one.</b>
+      <span>ALT-F4 &middot; 14th in the world &middot; 3rd in Canada &middot; 2026</span>
     </div>
     <div class="stat-stack">
-      <div class="stat"><b>2025</b><span>Program founded</span></div>
-      <div class="stat"><b>FRC</b><span>Global robotics competition</span></div>
-      <div class="stat"><b>7558</b><span>ALT-F4 sister-team support</span></div>
+      <div class="stat"><b>2026</b><span>SHFT rookie season</span></div>
+      <div class="stat"><b>$140K</b><span>First-season goal</span></div>
+      <div class="stat"><b>WCP</b><span>Backed rookie team</span></div>
     </div>
   </div>
 
@@ -691,50 +695,34 @@
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>Logo Placement</strong><br />Illustrative mockup</div>
+    <div class="doc-meta"><strong>Logo Placement</strong><br />How sponsors appear</div>
   </div>
 
   <div class="label">06 / Logo Placement</div>
   <h2 class="display section-title">Where your logo lives.</h2>
-  <p class="body-copy" style="margin-top:0.1in"><strong style="color:#fff">Illustrative mockup.</strong> Sponsor logos shown are placeholders. Robot placement is reserved for Founding Partner and Platinum tiers, per FIRST robot rules.</p>
+  <p class="body-copy" style="margin-top:0.1in"><strong style="color:#fff">This is how sponsor logos ride into competition.</strong> On the robot, in front of every camera and judge at the event. Robot placement is reserved for Founding Partner and Platinum tiers, per FIRST robot rules.</p>
 
-  <div class="card" style="margin-top:0.18in;min-height:auto;padding:0.16in 0.2in">
-    <svg viewBox="0 0 1000 470" width="100%" style="display:block" role="img" aria-label="Illustrative FRC robot showing sponsor logo zones by tier">
-      <!-- ground -->
-      <line x1="40" y1="430" x2="700" y2="430" stroke="#A6FF00" stroke-width="3"/>
-      <!-- wheels -->
-      <g fill="#151515" stroke="#A6FF00" stroke-width="3">
-        <circle cx="300" cy="392" r="44"/><circle cx="430" cy="392" r="44"/><circle cx="560" cy="392" r="44"/>
-      </g>
-      <g fill="none" stroke="#404040" stroke-width="3"><circle cx="300" cy="392" r="15"/><circle cx="430" cy="392" r="15"/><circle cx="560" cy="392" r="15"/></g>
-      <!-- intake arm -->
-      <path d="M250 270 L150 350" stroke="#A6FF00" stroke-width="6" fill="none"/>
-      <circle cx="140" cy="356" r="24" fill="#151515" stroke="#A6FF00" stroke-width="3"/>
-      <!-- main body -->
-      <rect x="250" y="180" width="370" height="200" fill="#202020" stroke="#A6FF00" stroke-width="3"/>
-      <!-- bumper -->
-      <rect x="234" y="338" width="402" height="46" fill="#1A1A1A" stroke="#A6FF00" stroke-width="3"/>
-      <text x="435" y="368" text-anchor="middle" fill="#A6FF00" font-family="'Exo 2',sans-serif" font-weight="800" font-size="21" letter-spacing="3">TEAM SHFT</text>
-      <!-- elevator tower -->
-      <rect x="546" y="74" width="74" height="166" fill="#202020" stroke="#A6FF00" stroke-width="3"/>
-      <circle cx="583" cy="74" r="28" fill="#151515" stroke="#A6FF00" stroke-width="3"/>
-      <!-- Zone A: Founding (large) -->
-      <rect x="280" y="202" width="220" height="92" fill="#A6FF00" fill-opacity="0.10" stroke="#A6FF00" stroke-width="2" stroke-dasharray="7 5"/>
-      <text x="390" y="255" text-anchor="middle" fill="#FFFFFF" font-family="'Exo 2',sans-serif" font-weight="800" font-size="20" letter-spacing="2">YOUR LOGO</text>
-      <!-- Zone B: Platinum (medium) -->
-      <rect x="554" y="120" width="58" height="78" fill="#A6FF00" fill-opacity="0.10" stroke="#A6FF00" stroke-width="2" stroke-dasharray="6 4"/>
-      <text x="583" y="164" text-anchor="middle" fill="#FFFFFF" font-family="'Exo 2',sans-serif" font-weight="800" font-size="12">LOGO</text>
-      <!-- leader lines + labels -->
-      <line x1="500" y1="220" x2="720" y2="160" stroke="#737373" stroke-width="1.5"/>
-      <text x="732" y="156" fill="#A6FF00" font-family="'Exo 2',sans-serif" font-weight="800" font-size="19">FOUNDING PARTNER</text>
-      <text x="732" y="179" fill="#A3A3A3" font-family="'Exo 2',sans-serif" font-weight="700" font-size="13" letter-spacing="1">LARGE ROBOT PLACEMENT</text>
-      <line x1="612" y1="150" x2="720" y2="266" stroke="#737373" stroke-width="1.5"/>
-      <text x="732" y="262" fill="#A6FF00" font-family="'Exo 2',sans-serif" font-weight="800" font-size="19">PLATINUM</text>
-      <text x="732" y="285" fill="#A3A3A3" font-family="'Exo 2',sans-serif" font-weight="700" font-size="13" letter-spacing="1">MEDIUM ROBOT PLACEMENT</text>
-    </svg>
+  <div class="card" style="margin-top:0.18in;min-height:auto;padding:0.16in 0.18in">
+    <div style="display:grid;grid-template-columns:0.82fr 1.18fr;gap:0.14in;align-items:stretch">
+      <figure style="margin:0;display:flex;flex-direction:column">
+        <div style="position:relative;flex:1;min-height:1.78in;background:#0c0c0c;overflow:hidden">
+          <img src="robot-sponsors-2056.jpeg" alt="FRC Team 2056 robot driving at competition with sponsor logos on the panel above the bumper" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" />
+          <span style="position:absolute;left:0;top:0;background:var(--lime);color:var(--lime-text);font-family:'Exo 2',sans-serif;font-weight:800;font-size:7.5pt;letter-spacing:0.06em;text-transform:uppercase;padding:0.03in 0.08in">FRC 2056</span>
+        </div>
+        <figcaption style="font-family:'Raleway',sans-serif;font-size:8pt;line-height:1.4;color:#A3A3A3;margin-top:0.08in">Logos ride on the robot itself, moving in front of every camera in the arena.</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column">
+        <div style="position:relative;flex:1;min-height:1.78in;background:#0c0c0c;overflow:hidden">
+          <img src="robot-sponsors-1323.jpeg" alt="FRC Team 1323 MadTown Robotics robot with a full sponsor panel listing more than a dozen sponsor logos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block" />
+          <span style="position:absolute;left:0;top:0;background:var(--lime);color:var(--lime-text);font-family:'Exo 2',sans-serif;font-weight:800;font-size:7.5pt;letter-spacing:0.06em;text-transform:uppercase;padding:0.03in 0.08in">FRC 1323 &middot; MADTOWN</span>
+        </div>
+        <figcaption style="font-family:'Raleway',sans-serif;font-size:8pt;line-height:1.4;color:#A3A3A3;margin-top:0.08in">A full panel carries a dozen-plus sponsors. Founding partners sit largest and first.</figcaption>
+      </figure>
+    </div>
+    <p style="font-family:'Raleway',sans-serif;font-size:8pt;line-height:1.45;color:#737373;margin:0.12in 0 0">Photos are other FRC teams, shown as real examples of sponsor placement. SHFT's first competition robot debuts in the 2026 season.</p>
   </div>
 
-  <div style="margin-top:0.2in">
+  <div style="margin-top:0.16in">
     <div class="label" style="margin:0 0 0.1in">Sponsor wall &middot; slots open</div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.1in">
       <div style="border:1px dashed #404040;background:#151515;padding:0.13in 0.08in;text-align:center"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:9.5pt;letter-spacing:0.05em;color:#fff">FOUNDING</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-top:0.04in">Slot open</div></div>
@@ -745,7 +733,18 @@
     </div>
   </div>
 
-  <div class="footer"><span>Logo placement</span><span class="lime">Illustrative mockup</span><span>Page 06</span></div>
+  <div style="margin-top:0.16in">
+    <div class="label" style="margin:0 0 0.1in">Team apparel &middot; logo on the back</div>
+    <div class="card" style="min-height:auto;padding:0.14in;display:flex;justify-content:center">
+      <div style="position:relative;width:100%;max-width:2.05in;aspect-ratio:1 / 1;background:#0c0c0c;overflow:hidden">
+        <video style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block" autoplay muted loop playsinline>
+          <source src="../video/tee-sponsors.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span>Logo placement</span><span class="lime">Real team photos</span><span>Page 06</span></div>
 </section>
 
 <section class="page">
@@ -791,9 +790,9 @@
 
   <div class="label">08 / Join the Build</div>
   <h2 class="display section-title">Ready to sponsor SHFT?</h2>
-  <p class="lede">Start with a short conversation. We will confirm the right tier, collect your logo, and make sure every recognition detail is correct before anything goes public.</p>
+  <p class="lede">Start with a short conversation. We confirm the right tier, collect your logo, and get every detail right before anything goes public.</p>
 
-  <div class="contact-grid" style="margin-top:0.2in">
+  <div class="contact-grid" style="margin-top:0.14in">
     <div class="card green">
       <h3>Contact</h3>
       <p><strong>Sponsorship contact:</strong> Malhar Soni, Head Coach, Team SHFT<br /><strong>Email:</strong> <a href="mailto:team@shftrobotics.com">team@shftrobotics.com</a><br /><strong>Website:</strong> shftrobotics.com<br /><strong>Instagram:</strong> @shftrobotics<br /><strong>Location:</strong> North York, Ontario</p>
@@ -810,7 +809,7 @@
     </div>
   </div>
 
-  <div class="split" style="margin-top:0.18in">
+  <div class="split" style="margin-top:0.12in">
     <div class="card">
       <h3>Good sponsor fits</h3>
       <p>Engineering, manufacturing, software, trades, logistics, design, education, finance, local business, food, printing, transportation, and community foundations.</p>
@@ -835,6 +834,19 @@
 
   <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Founding partners, 2026 season.</span><span>Page 08</span></div>
 </section>
+
+<script>
+  /* Fit each 8.5in page to the viewport width on screen (not print).
+     zoom keeps layout in normal flow, so auto-height pages stack with no gaps. */
+  (function () {
+    var fit = function () {
+      var s = Math.min(1, (window.innerWidth - 32) / 816);
+      document.documentElement.style.setProperty('--pz', s);
+    };
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
 
 </body>
 </html>
