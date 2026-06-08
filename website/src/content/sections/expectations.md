@@ -13,7 +13,7 @@ students:
   - title: "15–20 Hours Per Week"
     description: "3–4 days a week during the season. This is a real commitment. So is the reward."
   - title: "Be Coachable"
-    description: "Come ready to listen, ask questions, and push yourself. We will make you a superstar if you let us."
+    description: "Come ready to listen, ask questions, and push yourself. Show up coachable and we'll teach you everything we know."
 parents:
   - title: "Refer Other Families"
     description: "Share SHFT if it fits: If you know a family who would thrive here, an introduction is welcome and never expected. Each family you introduce who joins helps keep the program sustainable, and we pass $1,000 back to you."

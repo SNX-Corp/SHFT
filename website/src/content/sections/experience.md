@@ -3,7 +3,7 @@ section_number: "05"
 section_label: "THE EXPERIENCE"
 headline_line_1: "WHAT YOUR CHILD"
 headline_line_2: "ACTUALLY GETS."
-intro: "This isn't a classroom. It's an educational launchpad. Here's what your child actually gets, and why families who join tend to stay for years."
+intro: "Here's what your child actually gets, and why families who join tend to stay for years."
 cards:
   - number: "01"
     title: "World-Class Facility"
@@ -27,6 +27,6 @@ cards:
     accent: false
   - number: "06"
     title: "University Portfolio"
-    description: "FRC is one of the most recognized STEM extracurriculars by top universities. Your child builds a real portfolio, not just a line on a resume. MIT, Waterloo, and U of T all know what FRC means."
+    description: "FRC is one of the most recognized STEM extracurriculars by top universities. Your child builds a real portfolio of proven engineering work. MIT, Waterloo, and U of T all know what FRC means."
     accent: false
 ---

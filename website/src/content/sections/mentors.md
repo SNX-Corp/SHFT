@@ -16,8 +16,6 @@ mentors:
         value: Strategy · Robot Design · Game Analysis · AI-Coding
       - label: Competition
         value: 10+ years of VEX & FRC
-      - label: Recognition
-        value: Unlock maximum potential.
       - label: Philosophy
         value: Students first. Standard always.
   - name: Noeen Kashif
@@ -33,7 +31,7 @@ mentors:
       - label: Achievement
         value: Coach for the fastest-growing team in Ontario
       - label: Competition
-        value: Provincials & Worlds Qualifier. Better. Every. Year.
+        value: Provincials and Worlds qualifier with ALT-F4.
       - label: Recognition
         value: Program execution & discipline
       - label: Philosophy

@@ -10,7 +10,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: "What if my child has no prior robotics experience?",
-    answer: "Experience is preferred but not required. What we require is work ethic. If your child is willing to show up, put in the hours, and learn - we will teach them everything. CAD, fabrication, wiring, programming, strategy. We will make every student a superstar if they commit to the process.",
+    answer: "Experience is preferred but not required. What we require is work ethic. If your child is willing to show up, put in the hours, and learn - we will teach them everything. CAD, fabrication, wiring, programming, strategy. Every student who commits to the process grows.",
   },
   {
     question: "What is the time commitment?",
