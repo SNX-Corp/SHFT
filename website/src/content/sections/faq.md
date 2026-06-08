@@ -5,7 +5,7 @@ headline_line_1: "QUESTIONS"
 headline_line_2: "ANSWERED."
 faqs:
   - question: "What's included in the program?"
-    answer: "FRC is one of the most resource-intensive programs in STEM education, and SHFT is built to remove every barrier to competing at the top. The program covers the competition robot, tools, parts, FRC registration, a dedicated facility, food during build sessions, robot transport, and professional coaching. We walk every family through the full details one-on-one when we meet, and we refuse to cut corners on your child's experience."
+    answer: "FRC is one of the most resource-intensive programs in STEM education, and SHFT is built to remove every barrier to competing at the top. The program covers the competition robot, tools, parts, registration for two district events and the Provincial Championship, a dedicated facility, food during build sessions, robot transport, and professional coaching. The one cost families cover separately is hotels and travel if the team reaches the Provincial Championship (DCMP) or the World Championship in Houston. We walk every family through the full details one-on-one when we meet."
   - question: "What if my child has no prior robotics experience?"
     answer: "Experience is preferred but not required. What we require is work ethic. If your child is willing to show up, put in the hours, and learn, we will teach them everything. CAD, fabrication, wiring, programming, strategy. Every student will grow if they commit to the process."
   - question: "What is the time commitment?"
