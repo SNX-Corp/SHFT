@@ -9,7 +9,7 @@ modal_eyebrow: "LET'S CONNECT"
 modal_headline: "Talk to Malhar."
 modal_subtitle: "Reach out directly. No forms, no waiting."
 contact_name: "Malhar Soni"
-contact_role: "Head Coach"
+contact_role: "Team Director & Head Coach"
 contact_email: "team@shftrobotics.com"
 contact_phone: "+1 (647) 878-6114"
 steps:

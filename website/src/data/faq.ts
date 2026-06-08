@@ -34,6 +34,6 @@ export const faqs: FAQ[] = [
   },
   {
     question: "How do I sign up?",
-    answer: "Step 1: Express interest and meet with our Lead Mentor, Malhar, for a one-on-one conversation about your child's goals. Step 2: Secure your spot with a $1,000 deposit. Step 3: Use the time before September to earn referral discounts. Step 4: Pay the remaining balance by September and we begin.",
+    answer: "Step 1: Express interest and meet with our Team Director and Head Coach, Malhar, for a one-on-one conversation about your child's goals. Step 2: Secure your spot with a $1,000 deposit. Step 3: Use the time before September to earn referral discounts. Step 4: Pay the remaining balance by September and we begin.",
   },
 ];

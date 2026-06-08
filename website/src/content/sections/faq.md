@@ -19,5 +19,5 @@ faqs:
   - question: "How does this help with university applications?"
     answer: "FRC is one of the most recognized extracurriculars in engineering and STEM admissions. Students build a real engineering portfolio, develop leadership and teamwork skills, and often receive direct mentorship letters. Many FRC alumni attend MIT, Waterloo Engineering, U of T, and other top programs. They credit FRC as a decisive factor."
   - question: "How do I sign up?"
-    answer: "Step 1: Express interest and meet with our Head Coach, Malhar, for a one-on-one conversation about your child's goals. Step 2: Lock in your spot for the season. Step 3: Use the time before September to earn referral discounts. Step 4: We kick off the season in September."
+    answer: "Step 1: Express interest and meet with our Team Director and Head Coach, Malhar, for a one-on-one conversation about your child's goals. Step 2: Lock in your spot for the season. Step 3: Use the time before September to earn referral discounts. Step 4: We kick off the season in September."
 ---
