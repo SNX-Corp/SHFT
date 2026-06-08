@@ -12,6 +12,7 @@ const stats = [
 ];
 
 const robots = [
+  { name: 'Vanguard', year: '2026' },
   { name: 'Vision', year: '2025' },
   { name: 'Ventura', year: '2024' },
   { name: 'Venus', year: '2023' },
@@ -32,28 +33,27 @@ const mentors = [
 const tiers = [
   {
     name: 'Bronze', price: '$500', popular: false,
-    perks: ['Logo on team website', 'Social media shout-out', 'Logo on pit banner', 'Sponsor receipt'],
+    perks: ['Logo on team website', 'Logo on team poster', 'Social media shout-out', 'Sponsor receipt'],
   },
   {
     name: 'Silver', price: '$1,500', popular: false,
-    perks: ['Everything in Bronze', 'Logo on team apparel', 'Medium decal on robot', 'Dedicated social feature'],
+    perks: ['Everything in Bronze', 'Small decal on robot', 'Credit at team introduction', 'Dedicated social feature'],
   },
   {
     name: 'Gold', price: '$3,000', popular: true,
-    perks: ['Everything in Silver', 'Prime placement on robot', 'Logo on travel banner', 'Mentor & recruiting access'],
+    perks: ['Everything in Silver', 'Corner logo on robot', 'Featured at team introduction', 'Mentor & recruiting access'],
   },
   {
     name: 'Title', price: '$5,000+', popular: false,
-    perks: ['Everything in Gold', 'Naming-tier recognition', 'Largest robot placement', 'Custom engagement & visits'],
+    perks: ['Everything in Gold', 'Naming-tier recognition', 'Centre logo on robot, most prominent spot', 'Custom engagement & visits'],
   },
 ];
 
 const placements = [
-  { k: 'Robot', d: 'Your decal travels to every competition on a top-3-in-Canada machine.' },
-  { k: 'Apparel', d: 'Team shirts, hoodies and pit crew gear worn all season.' },
-  { k: 'Banners', d: 'Pit wall and travel banners seen by thousands at each event.' },
+  { k: 'Robot', d: 'Your logo rides on a top-3-in-Canada machine at every competition. Corner placement at Gold, centre placement at Title.' },
+  { k: 'Poster', d: 'Your logo on the team poster shown at events and around the school.' },
+  { k: 'Team Introduction', d: 'Your name credited when the team is introduced at competitions.' },
   { k: 'Digital', d: 'Website, livestream graphics and an active social feed.' },
-  { k: 'Outreach', d: 'Community demos, school events and STEM workshops.' },
   { k: 'Receipts', d: 'Official sponsor documentation through our school.' },
 ];
 ---
@@ -200,7 +200,7 @@ const placements = [
           <div class="af-eyebrow" style="margin-bottom:1.25rem;">The Machines</div>
           <h2 class="af-h2">Seven seasons.<br/>One trajectory.</h2>
           <p class="af-body" style="margin-top:1.25rem;margin-bottom:1.75rem;">
-            From Orion in 2019 to Vision in 2025, each robot carries what the last one taught us. Here is the lineage your brand joins.
+            From Orion in 2019 to Vanguard in 2026, each robot carries what the last one taught us. Here is the lineage your brand joins.
           </p>
           <div style="border-top:1px solid var(--color-af-border);">
             {robots.map((r) => (
