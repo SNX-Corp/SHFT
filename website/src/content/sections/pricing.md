@@ -18,7 +18,7 @@ cost_breakdown:
   - label: "Competition Robot"
     description: "A full competition robot, built fresh each season"
   - label: "Competition Registration"
-    description: "FRC district & championship fees"
+    description: "FRC district event fees"
   - label: "Tools & Equipment"
     description: "Professional-grade workshop inventory"
   - label: "Parts & Shipping"
