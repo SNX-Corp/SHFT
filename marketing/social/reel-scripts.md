@@ -65,18 +65,18 @@ Every tool you'll learn to use here. None of it requires you to know it first. W
 
 | # | Time | Shot | On-screen text | Notes |
 |---|------|------|----------------|-------|
-| 1 | 0-3s | Black screen, lime bolt flickers on like power surging | TOP 10 IN ONTARIO | Big Orbitron. Let it breathe. |
+| 1 | 0-3s | Black screen, lime bolt flickers on like power surging | THE GOAL: TOP 10 IN ONTARIO | Big Orbitron. Let it breathe. |
 | 2 | 3-5s | Same frame, second line snaps in | YEAR ONE | Beat drop here. |
 | 3 | 5-8s | Robot driving fast across the shop floor, low angle | most rookies aim to survive | Motion shot. |
 | 4 | 8-11s | Team working together, tight crew shot | we aim to rank | Group energy. |
-| 5 | 11-14s | Close-up of the bolt logo on a shirt or banner | not just a team / a launchpad | |
-| 6 | 14-16s | Wordmark on black, CTA | SHFT / get on the launchpad / link in bio | |
+| 5 | 11-14s | Close-up of the bolt logo on a shirt or banner | coached by the mentors behind FRC 7558 ALT-F4 | |
+| 6 | 14-16s | Wordmark on black, CTA | SHFT / come to the open house / link in bio | |
 
 **Audio idea:** a building cinematic / phonk track with a hard drop at the 3s mark to land "YEAR ONE." Cut visuals on the drop.
 
 **Caption (use hype-01 from captions.md):**
-Top 10 in Ontario. Year one. That is the goal, and we are not joking about it. SHFT was built by mentors who have already taken a team from nothing to the top of Canadian FRC. This is not another club. It is a launchpad. Get on the launchpad. Link in bio.
-`#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #competition #FRC2026`
+Top 10 in Ontario. Year one. That is the goal, and we are not joking about it. SHFT was built by mentors who have already taken a team from nothing to the top of Canadian FRC. Come to the open house. Link in bio.
+`#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #competition #FRC2027`
 
 ---
 
@@ -108,15 +108,15 @@ Meet the people building SHFT from zero. Designers, builders, coders, and a few 
 
 | # | Time | Shot | On-screen text | Notes |
 |---|------|------|----------------|-------|
-| 1 | 0-3s | Shop lights flick on, robot sitting ready | ONE NIGHT. ONE DECISION. | Strong cold open. |
+| 1 | 0-3s | Shop lights flick on, robot sitting ready | ONE EVENING. COME LOOK AROUND. | Strong cold open. |
 | 2 | 3-6s | Quick pan across the build space, energy | come see what SHFT actually is | |
 | 3 | 6-9s | Card / overlay with the key details | "[FILL: date] / [FILL: time]" | Big readable text. |
 | 4 | 9-12s | Location shot or map pin graphic | "[FILL: location]" | |
-| 5 | 12-13s | A friendly "no pressure" beat, someone waving | any experience. any grade. just come. | |
+| 5 | 12-13s | A friendly "no pressure" beat, someone waving | any experience. grades 8 to 12. just come. | |
 | 6 | 13-15s | Wordmark, CTA | SHFT / RSVP link in bio | |
 
 **Audio idea:** a clean, modern, slightly hyped track. Nothing too busy. The details need to read clearly, so let the visuals lead and keep the audio supportive.
 
 **Caption (use info-01 from captions.md):**
-One night. One decision. Info night is `[FILL: date]` at `[FILL: time]`, `[FILL: location]`. Come see the shop, meet the team, and find out exactly what joining SHFT looks like. No commitment. Just come see it. RSVP at the link in bio.
+One evening. Come look around. Info night is `[FILL: date]` at `[FILL: time]`, `[FILL: location]`. Come see the shop, meet the team, and find out exactly what joining SHFT looks like. No commitment. Just come see it. RSVP at the link in bio.
 `#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #infonight #HighSchool`

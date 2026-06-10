@@ -1,3 +1,5 @@
+**HOUSE RULE: The meet-the-team and behind-the-scenes themes describe real members and real sessions. Post them only after the first cohort exists and the footage is real. Until then use the recruiting, info-night, and goal themes only.**
+
 # SHFT Captions
 
 24+ ready-to-paste captions for Instagram and TikTok. Built to recruit students to a brand-new Ontario FRC team. Copy a block, swap any `[FILL: ...]`, post.
@@ -13,7 +15,7 @@
 - **CORE:** `#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics`
 - **ONTARIO:** `#Ontario #OntarioFIRST #FRCOntario #FIRSTCanada #robotics`
 - **RECRUIT:** `#NoExperienceNeeded #STEM #HighSchool #joinus #buildseason`
-- **HYPE:** `#FRC2026 #omegabots #FIRSTRobotics #competition #engineering`
+- **HYPE:** `#FRC2027 #FIRSTRobotics #competition #engineering`
 
 > Note: replace generic FRC tags with your **regional event tag** once announced (for example a district or off-season tag). Local tags out-recruit global ones.
 
@@ -106,8 +108,6 @@ Walk in knowing nothing. Walk out building robots.
 
 Build season is intense and it is the best part. A game drops, the clock starts, and a room full of students turns a blank table into a competition machine.
 
-There is nothing else like it in high school.
-
 **CTA:** Build with us this season. Link in bio.
 
 `#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #buildseason #engineering`
@@ -160,7 +160,7 @@ This could be your second home.
 
 No alumni, no trophy case, no legacy to coast on. Just mentors who have taken a team from zero to the top of Canadian FRC, and students willing to put in the work.
 
-We build the culture first. The trophies follow.
+We build the culture first.
 
 **CTA:** Build it with us. Link in bio.
 
@@ -214,7 +214,7 @@ That arc happens to everyone here. Including you.
 
 Neither were half of us. Some of the best people on a robotics team run the camera, the spreadsheet, the social account, or the strategy board.
 
-There is no single type of person who belongs here. There is just you, in or out.
+There is no single type of person who belongs here.
 
 **CTA:** You belong here. Link in bio.
 
@@ -242,11 +242,9 @@ A new team is the easiest team to join.
 
 That is the goal, and we are not joking about it. SHFT was built by mentors who have already taken a team from nothing to the top of Canadian FRC.
 
-This is not another club. It is a launchpad.
+**CTA:** Come to the open house. Link in bio.
 
-**CTA:** Get on the launchpad. Link in bio.
-
-`#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #competition #FRC2026`
+`#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #competition #FRC2027`
 
 ---
 
@@ -266,22 +264,18 @@ You will never forget your first one.
 ### hype-03
 **First line:** Shift the standard.
 
-A new Ontario FRC team built to compete from day one. We are not here to participate. We are here to win, and to build people who can.
-
-Better. Every. Year.
+A new Ontario FRC team built to compete from day one. Our goal is top 10 in Ontario in year one. We say it out loud because our mentors have made this climb before with FRC 7558.
 
 **CTA:** Raise the standard with us. Link in bio.
 
-`#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #competition #FRC2026`
+`#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #competition #FRC2027`
 
 ---
 
 ### hype-04
-**First line:** Most rookie teams aim to survive. We aim to rank.
+**First line:** Our goal in year one: rank in the top 10 in Ontario.
 
-The difference is the people behind it. Proven mentors, a real program, and students who want more than a club on a resume.
-
-Not just a team. A launchpad.
+The difference is the people behind it. Mentors who coached FRC 7558 ALT-F4 from 35th in Canada to 3rd. The program is built on what worked there.
 
 **CTA:** Launch with us. Link in bio.
 
@@ -292,7 +286,7 @@ Not just a team. A launchpad.
 ## Theme: Info night promo
 
 ### info-01
-**First line:** One night. One decision.
+**First line:** One evening. Come look around.
 
 Info night is `[FILL: date]` at `[FILL: time]`, `[FILL: location]`. Come see the shop, meet the team, and find out exactly what joining SHFT looks like.
 
@@ -353,7 +347,7 @@ Come alone or bring the whole friend group.
 
 A founding season only happens once. After this, every new member joins a team that already exists. Right now you can help build the thing itself.
 
-The window is closing. Decide.
+Applications close in December. Come see us before then.
 
 **CTA:** Apply before tryouts close. Link in bio.
 
@@ -365,8 +359,6 @@ The window is closing. Decide.
 **First line:** Doors close tonight.
 
 Tryouts for SHFT close `[FILL: date]`. If you have been thinking about it all month, this is the moment to stop thinking and send the message.
-
-You will not regret showing up. You might regret not.
 
 **CTA:** DM us "JOIN" now or use the link in bio.
 

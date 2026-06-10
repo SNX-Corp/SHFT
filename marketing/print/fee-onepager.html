@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SHFT Robotics Fee Sheet 2026-27</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+
+  :root{
+    --ink:#1A1A1A; --panel:#F2F2F2; --line:#D4D4D4;
+    --white:#FFFFFF; --muted:#737373; --dark2:#404040;
+    --lime:#A6FF00; --lime-text:#1A1A1A; --lime-dim:#5A8C00;
+  }
+
+  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ margin:0; padding:0; background:#E8E8E8; }
+
+  .page{
+    width:8.5in; height:11in;
+    margin:0 auto;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Raleway',sans-serif;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+    padding:0.62in 0.68in 0;
+  }
+
+  .content{ position:relative; z-index:1; display:flex; flex-direction:column; height:100%; }
+
+  /* HEADER */
+  .header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:0.2in; border-bottom:2px solid var(--ink); margin-bottom:0.3in;
+  }
+  .brand-name{
+    font-family:'Orbitron',sans-serif; font-weight:900; font-size:16pt;
+    letter-spacing:0.06em; color:var(--ink); text-transform:uppercase;
+  }
+  .sheet-label{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:9pt;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);
+    text-align:right; line-height:1.4;
+  }
+  .sheet-label span{ display:block; color:var(--ink); font-size:10pt; }
+
+  /* H1 */
+  h1{
+    font-family:'Orbitron',sans-serif; font-weight:900; font-size:30pt;
+    letter-spacing:-0.01em; text-transform:uppercase; color:var(--ink);
+    margin:0 0 0.28in; line-height:1.05;
+  }
+
+  /* BIG NUMBER */
+  .big-number-block{
+    background:var(--ink); color:var(--white);
+    padding:0.28in 0.36in; margin-bottom:0.36in;
+    display:flex; align-items:baseline; gap:0.2in; flex-wrap:wrap;
+  }
+  .big-number{
+    font-family:'Orbitron',sans-serif; font-weight:900; font-size:42pt;
+    letter-spacing:-0.02em; color:var(--lime); line-height:1;
+  }
+  .big-number-note{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:14pt;
+    letter-spacing:0.04em; text-transform:uppercase; color:var(--white); opacity:0.8;
+  }
+
+  /* SECTION LABEL */
+  .seclabel{
+    display:flex; align-items:center; gap:10px; margin-bottom:0.14in;
+  }
+  .seclabel .rule{ display:inline-block; width:28px; height:2px; background:var(--lime-dim); }
+  .seclabel .txt{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:9pt;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);
+  }
+
+  /* COVERED LIST */
+  .covered-list{ list-style:none; margin:0 0 0.34in; padding:0; }
+  .covered-list li{
+    display:flex; align-items:flex-start; gap:0.16in;
+    font-family:'Raleway',sans-serif; font-weight:500; font-size:13pt; color:var(--ink);
+    padding:0.1in 0; border-bottom:1px solid var(--line); line-height:1.45;
+  }
+  .covered-list li:first-child{ border-top:1px solid var(--line); }
+  .covered-list .bullet{
+    flex:0 0 auto; width:10px; height:10px; background:var(--lime-dim);
+    margin-top:5px;
+  }
+
+  /* NOT INCLUDED */
+  .not-included{
+    background:var(--panel); padding:0.2in 0.26in;
+    margin-bottom:0.34in; border-left:3px solid var(--lime-dim);
+  }
+  .not-included .ni-label{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:9pt;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;
+  }
+  .not-included p{
+    font-family:'Raleway',sans-serif; font-weight:500; font-size:12.5pt;
+    color:var(--dark2); margin:0; line-height:1.45;
+  }
+
+  /* HOW PAYING WORKS */
+  .paying-block{
+    margin-bottom:0.34in;
+  }
+  .paying-block p{
+    font-family:'Raleway',sans-serif; font-weight:500; font-size:13pt;
+    color:var(--ink); margin:0; line-height:1.55;
+  }
+
+  /* TIMELINE STRIP */
+  .timeline-strip{
+    background:var(--ink); color:var(--white);
+    padding:0.18in 0.26in; margin-bottom:0.3in;
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:9.5pt;
+    letter-spacing:0.1em; text-transform:uppercase; line-height:1.7;
+  }
+  .timeline-strip .dot{ color:var(--lime); margin:0 0.1in; }
+
+  /* CLOSING LINE */
+  .closing{
+    font-family:'Raleway',sans-serif; font-weight:600; font-size:14pt;
+    color:var(--ink); line-height:1.45; margin-bottom:0;
+    border-top:1px solid var(--line); padding-top:0.22in;
+  }
+
+  /* FOOTER */
+  .footer{
+    margin-top:auto;
+    padding:0.18in 0; border-top:2px solid var(--ink);
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:9pt;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--muted);
+    padding-bottom:0.42in;
+  }
+  .footer .name{ color:var(--ink); font-weight:800; }
+  .footer .handle{ color:var(--lime-dim); font-weight:800; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="content">
+
+      <!-- HEADER -->
+      <div class="header">
+        <div class="brand-name">SHFT ROBOTICS</div>
+        <div class="sheet-label">
+          <span>FEE SHEET</span>
+          2026-27 FOUNDING COHORT
+        </div>
+      </div>
+
+      <!-- H1 -->
+      <h1>What $8,000 covers</h1>
+
+      <!-- BIG NUMBER -->
+      <div class="big-number-block">
+        <div class="big-number">$8,000 CAD</div>
+        <div class="big-number-note">for the year, all in.</div>
+      </div>
+
+      <!-- COVERED -->
+      <div class="seclabel">
+        <span class="rule"></span>
+        <span class="txt">Included</span>
+      </div>
+      <ul class="covered-list">
+        <li><span class="bullet"></span>Registration for two Ontario district events</li>
+        <li><span class="bullet"></span>All parts and materials for the robot</li>
+        <li><span class="bullet"></span>Tools and the workshop at 26 Mallard Rd, year-round, including a full regulation FRC practice field</li>
+        <li><span class="bullet"></span>Food at team meetings</li>
+        <li><span class="bullet"></span>All coaching and instruction</li>
+      </ul>
+
+      <!-- NOT INCLUDED -->
+      <div class="not-included">
+        <div class="ni-label">Not included</div>
+        <p>Hotels and travel, only if the team advances to the provincial championship or Worlds.</p>
+      </div>
+
+      <!-- HOW PAYING WORKS -->
+      <div class="seclabel">
+        <span class="rule"></span>
+        <span class="txt">How paying works</span>
+      </div>
+      <div class="paying-block">
+        <p>A $500 deposit holds a seat and comes off the fee. Refund terms are provided in writing before you pay a dollar. Payment schedule options are covered at your family meeting.</p>
+      </div>
+
+      <!-- TIMELINE STRIP -->
+      <div class="timeline-strip">
+        Training begins September 2026
+        <span class="dot">&middot;</span>
+        Competition season January to April 2027
+        <span class="dot">&middot;</span>
+        Enrollment closes December 2026
+        <span class="dot">&middot;</span>
+        20 to 25 seats
+      </div>
+
+      <!-- CLOSING LINE -->
+      <p class="closing">If the number is the obstacle, talk to us. Money is a safe conversation here.</p>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <span><span class="name">Malhar Soni</span>, Team Director</span>
+        <span>647-878-6114 &nbsp;&middot;&nbsp; team@shftrobotics.com</span>
+        <span>shftrobotics.com</span>
+        <span class="handle">@shftrobotics</span>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

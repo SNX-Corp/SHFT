@@ -26,7 +26,7 @@
     color:var(--white);
     font-family:'Raleway',sans-serif;
     position:relative; overflow:hidden;
-    padding:0.9in 0.85in 0;
+    padding:0.6in 0.85in 0;
     display:flex; flex-direction:column;
   }
 
@@ -39,136 +39,239 @@
 
   .layer{ position:relative; z-index:2; display:flex; flex-direction:column; height:100%; }
 
-  .top{ display:flex; align-items:center; justify-content:space-between; padding-bottom:0.28in; border-bottom:1px solid var(--line); }
-  .wordmark{ height:0.92in; width:auto; }
-  .crest-top{ display:flex; align-items:center; gap:0.18in; }
+  /* TOP BAR */
+  .top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:0.22in; border-bottom:1px solid var(--line);
+  }
+  .wordmark{ height:0.7in; width:auto; }
   .teamtag{
-    font-family:'Exo 2',sans-serif; font-weight:800; font-size:15pt;
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:13pt;
     letter-spacing:0.18em; color:var(--white); text-transform:uppercase; text-align:right; line-height:1.3;
   }
-  .teamtag small{ display:block; color:var(--muted); font-weight:700; font-size:10pt; letter-spacing:0.2em; }
+  .teamtag small{ display:block; color:var(--muted); font-weight:700; font-size:9pt; letter-spacing:0.2em; }
 
-  /* section label */
-  .seclabel{ margin:0.9in 0 0.16in; display:flex; align-items:center; gap:14px; }
-  .seclabel .rule{ display:inline-block; width:40px; height:3px; background:var(--lime); }
-  .seclabel .txt{
-    font-family:'Exo 2',sans-serif; font-weight:700; font-size:15px;
-    letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);
+  /* KICKER */
+  .kicker-label{
+    margin:0.24in 0 0.08in; display:flex; align-items:center; gap:14px;
+  }
+  .kicker-label .rule{ display:inline-block; width:40px; height:3px; background:var(--lime); }
+  .kicker-label .txt{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:13pt;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--lime);
   }
 
-  /* huge headline, the whole point */
+  /* HEADLINE */
   .headline{
     font-family:'Orbitron',sans-serif; font-weight:900;
     text-transform:uppercase; line-height:0.92; letter-spacing:-0.02em;
-    color:var(--white);
-    font-size:104pt; margin:0;
-    max-width:9.2in;
+    color:var(--white); font-size:66pt; margin:0 0 0.2in;
+    max-width:9.4in;
   }
-  .headline .markline{ display:inline-block; color:var(--lime); border-bottom:12px solid var(--lime); }
 
-  .kicker{
-    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase;
-    letter-spacing:0.04em; color:var(--white); font-size:28pt; line-height:1.15;
-    margin-top:0.5in; max-width:8in;
+  /* SUB */
+  .sub{
+    font-family:'Raleway',sans-serif; font-weight:500; font-size:14pt;
+    color:var(--muted); max-width:8.4in; line-height:1.45; margin:0 0 0.3in;
   }
-  .kicker .sub{ display:block; color:var(--muted); font-family:'Raleway',sans-serif; font-weight:500; font-size:19pt; letter-spacing:0; text-transform:none; margin-top:0.2in; line-height:1.4; }
 
-  /* info night bar (the one allowed lime block) */
-  .infonight{
-    margin-top:0.5in;
-    background:var(--lime); color:var(--ink); border-radius:0;
-    padding:0.26in 0.34in;
-    font-family:'Exo 2',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:0.04em;
-    font-size:20pt; line-height:1.3;
+  /* WHY SHFT */
+  .why-label{
+    display:flex; align-items:center; gap:14px; margin-bottom:0.2in;
   }
-  .infonight .lbl{ font-size:12pt; letter-spacing:0.2em; opacity:0.72; display:block; margin-bottom:5px; }
+  .why-label .rule{ display:inline-block; width:40px; height:3px; background:var(--lime); }
+  .why-label .txt{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:12pt;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--muted);
+  }
 
-  /* bottom band: CTA + QR, anchored */
-  .bottom{ margin-top:auto; display:flex; align-items:stretch; gap:0.4in; padding-bottom:0.6in; }
-  .cta{
-    flex:1; background:var(--lime); color:var(--lime-text); border-radius:0;
-    display:flex; flex-direction:column; justify-content:center; padding:0.4in 0.5in;
+  .why-list{ list-style:none; margin:0 0 0.28in; padding:0; display:flex; flex-direction:column; gap:0; }
+  .why-list li{
+    display:flex; align-items:baseline; gap:0.22in;
+    padding:0.1in 0;
+    border-bottom:1px solid var(--line);
+    font-family:'Raleway',sans-serif; font-weight:500; font-size:12pt; color:var(--muted);
+    line-height:1.4;
   }
-  .cta .big{
-    font-family:'Orbitron',sans-serif; font-weight:900;
-    text-transform:uppercase; font-size:54pt; line-height:0.96; letter-spacing:-0.02em;
+  .why-list li:first-child{ border-top:1px solid var(--line); }
+  .why-list .num{
+    font-family:'Orbitron',sans-serif; font-weight:900; font-size:11pt;
+    color:var(--lime); letter-spacing:0.04em; flex:0 0 0.46in; text-align:right;
   }
-  .cta .small{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:18pt; letter-spacing:0.04em; margin-top:0.14in; text-transform:uppercase; }
 
-  .qr{
-    flex:0 0 2.7in; width:2.7in; border:1.5px solid var(--white); border-radius:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0.2in;
+  /* TWO BOXES */
+  .boxes{ display:flex; gap:0.28in; margin-bottom:0.24in; }
+  .box{
+    flex:1; border:1px solid var(--line); padding:0.2in 0.26in;
   }
-  .qr .qbox{
-    width:1.9in; height:1.9in; border:1.5px solid var(--white); border-radius:0;
-    display:flex; align-items:center; justify-content:center; color:var(--muted);
-    font-family:'Exo 2',sans-serif; font-weight:700; font-size:13pt; letter-spacing:0.1em; text-transform:uppercase; text-align:center; margin-bottom:0.16in;
+  .box .box-title{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:12pt;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--white); margin-bottom:0.1in;
   }
-  .qr .url{ font-family:'Exo 2',sans-serif; font-weight:800; font-size:16pt; color:var(--white); letter-spacing:0.02em; }
+  .box .box-body{
+    font-family:'Raleway',sans-serif; font-weight:500; font-size:11pt;
+    color:var(--muted); line-height:1.4;
+  }
 
-  /* single dark footer strip */
+  /* FEE BAND */
+  .fee-band{
+    background:var(--lime); color:var(--lime-text); padding:0.2in 0.3in;
+    margin-bottom:0.22in;
+  }
+  .fee-band .fee-label{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:11pt;
+    letter-spacing:0.18em; text-transform:uppercase; opacity:0.65; margin-bottom:6px;
+  }
+  .fee-band .fee-main{
+    font-family:'Orbitron',sans-serif; font-weight:900; font-size:20pt;
+    letter-spacing:-0.01em; line-height:1.1;
+  }
+  .fee-band .fee-note{
+    font-family:'Raleway',sans-serif; font-weight:600; font-size:13pt;
+    margin-top:6px; opacity:0.75;
+  }
+
+  /* TIMELINE */
+  .timeline{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:11pt;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--muted);
+    margin-bottom:0.2in; line-height:1.5;
+  }
+  .timeline .dot{ color:var(--lime); margin:0 0.12in; }
+
+  /* BOTTOM FOOTER */
+  .bottom{
+    margin-top:auto;
+    display:flex; align-items:stretch; gap:0.36in;
+    padding-bottom:0.3in;
+  }
+  .footer-cta{
+    flex:1; display:flex; flex-direction:column; justify-content:center; gap:0.1in;
+  }
+  .footer-cta .visit{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:13pt;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:4px;
+  }
+  .footer-cta .visit span{ color:var(--white); }
+  .footer-cta .contact{
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:11pt;
+    letter-spacing:0.04em; color:var(--muted);
+  }
+  .footer-cta .contact .handle{ color:var(--lime); font-weight:800; }
+
+  .qr-block{
+    flex:0 0 2.1in; width:2.1in;
+    border:1.5px solid var(--white);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0.18in;
+  }
+  .qr-block img.qr-img{ width:1.2in; height:1.2in; display:block; margin-bottom:0.1in; }
+  .qr-block .qr-label{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:10pt;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--white);
+  }
+
+  /* FOOT STRIP */
   .footstrip{
     margin:0 -0.85in;
-    padding:0.28in 0.85in;
-    background:var(--panel); color:var(--white);
+    padding:0.22in 0.85in;
+    background:var(--panel);
     border-top:1px solid var(--line);
     display:flex; align-items:center; justify-content:space-between;
-    font-family:'Exo 2',sans-serif; font-weight:700; font-size:13pt; letter-spacing:0.06em;
-    text-transform:uppercase;
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:13pt;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--white);
   }
-  .footstrip .crest{ display:flex; align-items:center; gap:0.2in; color:var(--muted); }
-  .footstrip .crest img{ height:0.5in; width:auto; }
-  .footstrip .crest b{ font-weight:800; letter-spacing:0.06em; }
-  .footstrip .tagline{ color:var(--white); }
-  .footstrip .handle{ color:var(--lime); font-weight:800; font-size:15pt; letter-spacing:0.04em; }
+  .footstrip .tagline{ color:var(--lime); }
 </style>
 </head>
 <body>
   <div class="page">
     <div class="layer">
+
+      <!-- TOP BAR -->
       <div class="top">
         <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-        <div class="crest-top">
-          <div class="teamtag">FRC TEAM [FILL: #]<small>ONTARIO, CANADA</small></div>
+        <div class="teamtag">
+          FIRST ROBOTICS COMPETITION TEAM
+          <small>NORTH YORK, ON</small>
         </div>
       </div>
 
-      <div class="seclabel">
+      <!-- KICKER -->
+      <div class="kicker-label">
         <span class="rule"></span>
-        <span class="txt">01 / JOIN THE TEAM</span>
+        <span class="txt">FOUNDING COHORT &nbsp;&middot;&nbsp; ENROLLING NOW</span>
       </div>
 
-      <h1 class="headline">SHIFT THE<br/><span class="markline">STANDARD.</span></h1>
+      <!-- HEADLINE -->
+      <h1 class="headline">JOIN SHFT ROBOTICS.</h1>
 
-      <div class="kicker">
-        Build a real competition robot.
-        <span class="sub">No experience needed. Win, travel, learn the tools.</span>
+      <!-- SUB -->
+      <p class="sub">A competitive FRC robotics team in North York for grades 8 to 12. No experience required. Students design, build, and program a full-size competition robot and compete across Ontario.</p>
+
+      <!-- WHY SHFT -->
+      <div class="why-label">
+        <span class="rule"></span>
+        <span class="txt">WHY SHFT</span>
       </div>
 
-      <div class="infonight">
-        <span class="lbl">Info Night</span>
-        [FILL: DATE] at [FILL: TIME] &nbsp;/&nbsp; [FILL: PLACE / ROOM / ADDRESS]
+      <ol class="why-list">
+        <li><span class="num">01</span><span>Team Director and Head Coach Malhar Soni; Voluntary Mentor Noeen Kashif. They mentor FRC Team 7558 ALT-F4: 35th in Canada in 2019, 3rd in 2026.</span></li>
+        <li><span class="num">02</span><span>Sister-team partnership with Team 7558 ALT-F4: shared designs, joint practice, coordinated scouting.</span></li>
+        <li><span class="num">03</span><span>Sponsored by WCP (West Coast Products), whose parts run on competition robots worldwide.</span></li>
+        <li><span class="num">04</span><span>A dedicated workshop at 26 Mallard Rd with a full regulation FRC practice field.</span></li>
+        <li><span class="num">05</span><span>A four-month CAD course before build season, then real fabrication, wiring, and programming.</span></li>
+        <li><span class="num">06</span><span>Every student builds a portfolio: CAD models, code they wrote, and a robot they helped put on the field.</span></li>
+        <li><span class="num">07</span><span>Our goal in year one: a top-10 finish in Ontario. We say it out loud because our mentors have made this climb before.</span></li>
+      </ol>
+
+      <!-- TWO BOXES -->
+      <div class="boxes">
+        <div class="box">
+          <div class="box-title">BUILT FROM THE GROUND UP</div>
+          <div class="box-body">Every student is trained into a role and coached until they own it, through a season of structured workshops. We don't take it easy.</div>
+        </div>
+        <div class="box">
+          <div class="box-title">PART OF THE COMMUNITY</div>
+          <div class="box-body">Team SHFT is excited to learn from the FRC community and share resources along the way.</div>
+        </div>
       </div>
 
+      <!-- FEE BAND -->
+      <div class="fee-band">
+        <div class="fee-label">Program Fee</div>
+        <div class="fee-main">THE PROGRAM FEE IS $8,000 FOR THE YEAR.</div>
+        <div class="fee-note">It covers registration, parts, tools, the facility, food, and coaching. We meet with every family one-on-one before anyone commits.</div>
+      </div>
+
+      <!-- TIMELINE -->
+      <div class="timeline">
+        Training begins September 2026
+        <span class="dot">&middot;</span>
+        First competition season January to April 2027
+        <span class="dot">&middot;</span>
+        Enrollment closes December 2026
+        <span class="dot">&middot;</span>
+        20 to 25 spots
+      </div>
+
+      <!-- BOTTOM: CTA + QR -->
       <div class="bottom">
-        <div class="cta">
-          <div class="big">Join SHFT</div>
-          <div class="small">Scan &nbsp;/&nbsp; shftrobotics.com</div>
+        <div class="footer-cta">
+          <div class="visit">FOR MORE INFO VISIT <span>shftrobotics.com</span></div>
+          <div class="contact">647-878-6114 &nbsp;&middot;&nbsp; team@shftrobotics.com &nbsp;&middot;&nbsp; <span class="handle">@shftrobotics</span> on Instagram</div>
         </div>
-        <div class="qr">
-          <div class="qbox">QR<br/>CODE</div>
-          <div class="url">shftrobotics.com</div>
+        <div class="qr-block">
+          <img class="qr-img" src="../brand-assets/qr-shftrobotics.png" alt="QR code: shftrobotics.com" />
+          <div class="qr-label">SCAN TO APPLY</div>
         </div>
       </div>
 
+      <!-- FOOT STRIP -->
       <div class="footstrip">
-        <div class="crest">
-          <img src="../brand-assets/icon-transparent.png" alt="SHFT" />
-          <b>SHFT ROBOTICS &nbsp;/&nbsp; ONTARIO</b>
-        </div>
-        <div class="tagline">INNOVATE. BUILD. COMPETE.</div>
-        <div class="handle">@SHFTROBOTICS</div>
+        <span>SHFT ROBOTICS &nbsp;&middot;&nbsp; NORTH YORK, ON</span>
+        <span class="tagline">SHIFT THE STANDARD.</span>
       </div>
+
     </div>
   </div>
 </body>
