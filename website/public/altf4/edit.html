@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ALT-F4 Sponsor Page Editor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --black:#0A0A0A; --pure:#000; --surface:#131313; --surface2:#1B1B1B; --line:#2A2A2A;
+    --white:#fff; --dim:#A3A3A3; --muted:#6B6B6B; --red:#FF0000; --red-bright:#FF2B2B;
+    --green:#22C55E;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; height:100%; background:var(--pure); color:var(--white); font-family:'Raleway',sans-serif; }
+  body{ display:flex; flex-direction:column; height:100vh; overflow:hidden; }
+
+  header{
+    flex:0 0 auto; display:flex; align-items:center; gap:14px;
+    padding:10px 18px; background:var(--black); border-bottom:1px solid var(--line);
+  }
+  header .mark{ font-family:'Orbitron',sans-serif; font-weight:900; font-size:15px; letter-spacing:-0.01em; }
+  header .mark .red{ color:var(--red); }
+  header .sub{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+  header .spacer{ flex:1; }
+  .status{ font-family:'Exo 2',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.04em; color:var(--dim); min-width:120px; text-align:right; }
+  .status.ok{ color:var(--green); }
+  .status.err{ color:var(--red-bright); }
+
+  .btn{
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:11.5px; letter-spacing:0.06em;
+    text-transform:uppercase; padding:8px 14px; border:1px solid var(--line); background:transparent;
+    color:var(--white); cursor:pointer; transition:background .15s, color .15s, border-color .15s;
+  }
+  .btn:hover{ border-color:var(--muted); }
+  .btn.primary{ background:var(--red); color:#fff; border-color:var(--red); }
+  .btn.primary:hover{ background:var(--red-bright); }
+  .btn.ghost{ color:var(--dim); }
+  .btn.ghost:hover{ color:var(--white); background:var(--surface); }
+  .btn:active{ transform:scale(.97); }
+
+  main{ flex:1 1 auto; display:grid; grid-template-columns:420px 1fr; min-height:0; }
+
+  .editor{ overflow-y:auto; border-right:1px solid var(--line); background:var(--black); }
+  .editor-inner{ padding:6px 0 60px; }
+  .hint{
+    margin:14px 16px; padding:12px 13px; background:var(--surface); border:1px solid var(--line);
+    border-left:3px solid var(--red); font-size:12px; line-height:1.5; color:var(--dim);
+  }
+  .hint b{ color:var(--white); }
+  .hint code{ font-family:'Exo 2',monospace; background:var(--pure); padding:1px 5px; color:var(--red-bright); }
+
+  .group{ border-top:1px solid var(--line); }
+  .group-head{
+    position:sticky; top:0; z-index:2; background:var(--black);
+    padding:9px 16px; font-family:'Exo 2',sans-serif; font-weight:800; font-size:11px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--red);
+    border-bottom:1px solid var(--line); cursor:pointer; display:flex; align-items:center; gap:8px;
+  }
+  .group-head .chev{ transition:transform .15s; color:var(--muted); }
+  .group.collapsed .chev{ transform:rotate(-90deg); }
+  .group.collapsed .fields{ display:none; }
+  .fields{ padding:6px 16px 14px; }
+
+  .field{ margin:12px 0; }
+  .field label{
+    display:block; font-family:'Exo 2',sans-serif; font-weight:700; font-size:10.5px;
+    letter-spacing:0.04em; text-transform:uppercase; color:var(--dim); margin-bottom:5px;
+  }
+  .field textarea{
+    width:100%; resize:vertical; min-height:34px; background:var(--pure); color:var(--white);
+    border:1px solid var(--line); padding:8px 9px; font-family:'Raleway',sans-serif; font-size:13px;
+    line-height:1.45; outline:none; transition:border-color .15s;
+  }
+  .field textarea:focus{ border-color:var(--red); }
+  .field.changed textarea{ border-left:3px solid var(--red); }
+  .field .revert{
+    float:right; font-size:10px; color:var(--muted); cursor:pointer; text-transform:uppercase;
+    letter-spacing:0.05em; font-family:'Exo 2',sans-serif; font-weight:700; display:none;
+  }
+  .field.changed .revert{ display:inline; }
+  .field .revert:hover{ color:var(--red); }
+
+  .preview{ position:relative; background:var(--pure); min-height:0; }
+  .preview iframe{ width:100%; height:100%; border:0; display:block; background:var(--pure); }
+  .preview .barhint{
+    position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+    font-family:'Exo 2',sans-serif; font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--muted); background:rgba(19,19,19,.9); border:1px solid var(--line); padding:6px 12px;
+    pointer-events:none;
+  }
+
+  .modal-bg{ position:fixed; inset:0; background:rgba(0,0,0,.78); display:none; align-items:center; justify-content:center; z-index:50; }
+  .modal-bg.open{ display:flex; }
+  .modal{ width:480px; max-width:92vw; background:var(--black); border:1px solid var(--line); }
+  .modal h3{ margin:0; padding:16px 18px; font-family:'Orbitron',sans-serif; font-weight:900; font-size:15px; text-transform:uppercase; letter-spacing:-0.01em; border-bottom:1px solid var(--line); }
+  .modal .body{ padding:18px; font-size:13px; line-height:1.55; color:var(--dim); }
+  .modal .body b{ color:var(--white); }
+  .modal label{ display:block; font-family:'Exo 2',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--dim); margin:14px 0 5px; }
+  .modal input{ width:100%; background:var(--pure); border:1px solid var(--line); color:var(--white); padding:9px 10px; font-family:'Raleway',sans-serif; font-size:13px; outline:none; }
+  .modal input:focus{ border-color:var(--red); }
+  .modal .actions{ padding:14px 18px; border-top:1px solid var(--line); display:flex; gap:10px; justify-content:flex-end; }
+  .modal .msg{ margin-top:12px; font-size:12px; line-height:1.5; }
+  .modal .msg.ok{ color:var(--green); }
+  .modal .msg.err{ color:var(--red-bright); }
+  a.link{ color:var(--red-bright); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark">ALT<span class="red">-F4</span> Sponsor Editor</div>
+  <div class="sub">Edit text, see it live, publish</div>
+  <div class="spacer"></div>
+  <span class="status" id="status">Loading…</span>
+  <button class="btn ghost" id="btnReset">Reset all</button>
+  <button class="btn" id="btnDownload">Download JSON</button>
+  <button class="btn primary" id="btnPublish">Publish</button>
+</header>
+
+<main>
+  <section class="editor">
+    <div class="editor-inner">
+      <div class="hint">
+        <b>How this works.</b> Every box below is one piece of text on the sponsor page. Type, and the preview on the right updates instantly. Wrap a word in <code>*stars*</code> for <span style="color:var(--red)">red</span>, or <code>**double**</code> for white. Press Enter for a line break. Changed boxes show a red edge. When it looks right, hit <b>Publish</b> and it goes live, or <b>Download JSON</b> to save the file yourself. Nothing is public until you publish.
+      </div>
+      <div id="form"></div>
+    </div>
+  </section>
+  <section class="preview">
+    <iframe id="frame" title="Sponsor page preview"></iframe>
+    <div class="barhint">Live preview · changes are local until you publish</div>
+  </section>
+</main>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h3>Publish to the live site</h3>
+    <div class="body">
+      Publishing saves your text to GitHub. The live sponsor page reads it within a few minutes, no rebuild needed.
+      <p style="margin:12px 0 0">You need a <b>GitHub token</b> with <b>Contents: read & write</b> on <b>SNX-Corp/SHFT</b>. Create a fine-grained token at <a class="link" href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">github.com/settings/tokens</a>. It is stored only in this browser.</p>
+      <label>GitHub token</label>
+      <input id="ghToken" type="password" placeholder="github_pat_…" autocomplete="off" />
+      <label>What changed (commit message)</label>
+      <input id="ghMsg" type="text" placeholder="Update ALT-F4 sponsor page copy" />
+      <div class="msg" id="ghMsgOut"></div>
+    </div>
+    <div class="actions">
+      <button class="btn ghost" id="btnCancel">Cancel</button>
+      <button class="btn primary" id="btnDoPublish">Publish now</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var REPO = 'SNX-Corp/SHFT';
+  var BRANCH = 'main';
+  var PATH = 'website/public/altf4/content.json';
+  var PREVIEW_KEY = 'altf4_sponsor_preview';
+  var TOKEN_KEY = 'altf4_gh_token';
+  var CANDIDATES = ['/altf4/', '/altf4'];
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var statusEl = $('#status');
+  var formEl = $('#form');
+  var frame = $('#frame');
+
+  var defaults = {}, current = {}, meta = {}, groupOrder = [], srcIndex = 0;
+
+  function setStatus(msg, cls) { statusEl.textContent = msg; statusEl.className = 'status' + (cls ? ' ' + cls : ''); }
+
+  // rendered HTML -> editable source (newlines, **white**, *red*)
+  function toSource(el) {
+    var html = el.innerHTML
+      .replace(/<br\s*\/?>/gi, '\n')
+      .replace(/<strong[^>]*class="af-wht"[^>]*>([\s\S]*?)<\/strong>/gi, '**$1**')
+      .replace(/<span[^>]*class="af-red"[^>]*>([\s\S]*?)<\/span>/gi, '*$1*');
+    var d = document.createElement('div'); d.innerHTML = html;
+    return d.textContent.replace(/[ \t]+/g, ' ').replace(/ ?\n ?/g, '\n').trim();
+  }
+  // editable source -> rendered HTML
+  function render(val) {
+    var d = document.createElement('div'); d.textContent = String(val);
+    return d.innerHTML
+      .replace(/\n/g, '<br/>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong class="af-wht">$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<span class="af-red">$1</span>');
+  }
+
+  function loadPreview() { try { return JSON.parse(localStorage.getItem(PREVIEW_KEY) || '{}') || {}; } catch (e) { return {}; } }
+  function changedOnly() {
+    var out = {};
+    Object.keys(current).forEach(function (k) { if (current[k] !== defaults[k]) out[k] = current[k]; });
+    return out;
+  }
+  function savePreview() {
+    var diff = changedOnly();
+    localStorage.setItem(PREVIEW_KEY, JSON.stringify(diff));
+    var n = Object.keys(diff).length;
+    setStatus(n ? (n + ' change' + (n > 1 ? 's' : '') + ' · saved locally') : 'No changes yet', n ? 'ok' : '');
+  }
+  function frameDoc() { return frame.contentDocument || frame.contentWindow.document; }
+  function loadFrame(i) { srcIndex = i; frame.src = CANDIDATES[i] + '?cms=edit'; }
+
+  frame.addEventListener('load', function () {
+    var doc;
+    try { doc = frameDoc(); } catch (e) { setStatus('Cannot read preview (run from a server)', 'err'); return; }
+    var nodes = doc.querySelectorAll('[data-cms]');
+    if (!nodes.length) {
+      if (srcIndex + 1 < CANDIDATES.length) { loadFrame(srcIndex + 1); return; }
+      setStatus('No editable text found', 'err'); return;
+    }
+    scan(nodes);
+  });
+
+  function scan(nodes) {
+    defaults = {}; current = {}; meta = {}; groupOrder = [];
+    var saved = loadPreview();
+    nodes.forEach(function (el) {
+      var k = el.getAttribute('data-cms');
+      defaults[k] = toSource(el);
+      meta[k] = { label: el.getAttribute('data-label') || k, group: el.getAttribute('data-group') || 'Other' };
+      if (groupOrder.indexOf(meta[k].group) < 0) groupOrder.push(meta[k].group);
+      current[k] = (saved[k] != null) ? saved[k] : defaults[k];
+      if (saved[k] != null && saved[k] !== defaults[k]) el.innerHTML = render(saved[k]);
+    });
+    buildForm();
+    savePreview();
+  }
+
+  function buildForm() {
+    formEl.innerHTML = '';
+    groupOrder.forEach(function (g) {
+      var keys = Object.keys(meta).filter(function (k) { return meta[k].group === g; });
+      var group = document.createElement('div'); group.className = 'group';
+      var head = document.createElement('div'); head.className = 'group-head';
+      head.innerHTML = '<span class="chev">▾</span><span>' + g + '</span>';
+      head.addEventListener('click', function () { group.classList.toggle('collapsed'); });
+      var fields = document.createElement('div'); fields.className = 'fields';
+      keys.forEach(function (k) { fields.appendChild(makeField(k)); });
+      group.appendChild(head); group.appendChild(fields); formEl.appendChild(group);
+    });
+  }
+
+  function makeField(k) {
+    var wrap = document.createElement('div'); wrap.className = 'field'; wrap.dataset.key = k;
+    var lab = document.createElement('label'); lab.textContent = meta[k].label;
+    var rev = document.createElement('span'); rev.className = 'revert'; rev.textContent = 'revert';
+    lab.appendChild(rev);
+    var ta = document.createElement('textarea'); ta.value = current[k]; autosize(ta);
+    var markChanged = function () { wrap.classList.toggle('changed', current[k] !== defaults[k]); };
+    ta.addEventListener('input', function () {
+      current[k] = ta.value;
+      var el = frameDoc().querySelector('[data-cms="' + cssEsc(k) + '"]');
+      if (el) el.innerHTML = render(ta.value);
+      autosize(ta); markChanged(); savePreview();
+    });
+    rev.addEventListener('click', function () {
+      current[k] = defaults[k]; ta.value = defaults[k];
+      var el = frameDoc().querySelector('[data-cms="' + cssEsc(k) + '"]');
+      if (el) el.innerHTML = render(defaults[k]);
+      autosize(ta); markChanged(); savePreview();
+    });
+    markChanged();
+    wrap.appendChild(lab); wrap.appendChild(ta);
+    return wrap;
+  }
+
+  function cssEsc(s) { return s.replace(/"/g, '\\"'); }
+  function autosize(ta) { ta.style.height = 'auto'; ta.style.height = Math.min(260, ta.scrollHeight + 2) + 'px'; }
+
+  $('#btnReset').addEventListener('click', function () {
+    if (!confirm('Discard all your changes and go back to the current live text?')) return;
+    localStorage.removeItem(PREVIEW_KEY);
+    loadFrame(0);
+  });
+
+  $('#btnDownload').addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify(changedOnly(), null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'content.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setStatus('Downloaded content.json', 'ok');
+  });
+
+  var modal = $('#modalBg');
+  $('#btnPublish').addEventListener('click', function () {
+    if (!Object.keys(changedOnly()).length) { setStatus('Nothing to publish', 'err'); return; }
+    $('#ghToken').value = localStorage.getItem(TOKEN_KEY) || '';
+    $('#ghMsg').value = 'Update ALT-F4 sponsor page copy';
+    $('#ghMsgOut').textContent = ''; $('#ghMsgOut').className = 'msg';
+    modal.classList.add('open');
+  });
+  $('#btnCancel').addEventListener('click', function () { modal.classList.remove('open'); });
+  modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.remove('open'); });
+
+  function b64(str) { return btoa(unescape(encodeURIComponent(str))); }
+
+  $('#btnDoPublish').addEventListener('click', async function () {
+    var token = $('#ghToken').value.trim();
+    var msg = $('#ghMsg').value.trim() || 'Update ALT-F4 sponsor page copy';
+    var out = $('#ghMsgOut');
+    if (!token) { out.className = 'msg err'; out.textContent = 'Paste a GitHub token first.'; return; }
+    localStorage.setItem(TOKEN_KEY, token);
+    out.className = 'msg'; out.textContent = 'Publishing…';
+    var api = 'https://api.github.com/repos/' + REPO + '/contents/' + PATH;
+    var headers = { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' };
+    try {
+      var sha = null;
+      var g = await fetch(api + '?ref=' + BRANCH, { headers: headers });
+      if (g.status === 200) { sha = (await g.json()).sha; }
+      else if (g.status === 401) { out.className = 'msg err'; out.textContent = 'Token rejected (401). Needs Contents read & write on ' + REPO + '.'; return; }
+      var body = { message: msg, content: b64(JSON.stringify(changedOnly(), null, 2)), branch: BRANCH };
+      if (sha) body.sha = sha;
+      var p = await fetch(api, { method: 'PUT', headers: headers, body: JSON.stringify(body) });
+      if (p.ok) {
+        out.className = 'msg ok';
+        out.innerHTML = 'Published. The live page updates within a few minutes (it may cache briefly). You can close this.';
+        setStatus('Published to GitHub', 'ok');
+      } else {
+        var err = await p.json().catch(function () { return {}; });
+        out.className = 'msg err'; out.textContent = 'Publish failed (' + p.status + '): ' + (err.message || 'unknown error');
+      }
+    } catch (e) { out.className = 'msg err'; out.textContent = 'Network error: ' + e.message; }
+  });
+
+  setStatus('Loading…');
+  loadFrame(0);
+})();
+</script>
+</body>
+</html>
