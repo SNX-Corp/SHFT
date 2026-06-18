@@ -15,21 +15,24 @@ MKT_DIR="$(cd "$SRC_DIR/.." && pwd)"               # marketing
 OUT="${OUT_DIR:-${TMPDIR:-/tmp}/sponsor-deploy}"
 
 rm -rf "$OUT"
-mkdir -p "$OUT/brand-assets" "$OUT/video"
+mkdir -p "$OUT/brand-assets"
 
 # index.html = the package, with parent-relative asset paths flattened to root.
 sed -e 's#\.\./brand-assets/#brand-assets/#g' \
-    -e 's#\.\./video/#video/#g' \
     "$SRC_DIR/sponsor-package.html" > "$OUT/index.html"
 
+# edit.html = the in-browser copy editor (its iframe loads index.html).
+cp "$SRC_DIR/edit.html" "$OUT/"
+
+# content.json = published copy overrides, if any have been saved.
+[ -f "$SRC_DIR/content.json" ] && cp "$SRC_DIR/content.json" "$OUT/"
+
 # Sibling assets the page references at root.
-cp "$SRC_DIR/qr-email.svg"            "$OUT/"
+cp "$SRC_DIR/qr-email.svg"             "$OUT/"
 cp "$SRC_DIR/robot-sponsors-2056.jpeg" "$OUT/"
-cp "$SRC_DIR/robot-sponsors-1323.jpeg" "$OUT/"
 
 # Parent assets the page references via ../.
 cp "$MKT_DIR/brand-assets/wordmark-shft-robotics.png" "$OUT/brand-assets/"
-cp "$MKT_DIR/video/tee-sponsors.mp4"                   "$OUT/video/"
 
 # No-build static config so Vercel serves the folder as-is.
 cat > "$OUT/vercel.json" <<'JSON'
