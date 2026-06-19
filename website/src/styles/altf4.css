@@ -160,3 +160,8 @@
 @media (prefers-reduced-motion: reduce) {
   .af-reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* Accent utilities. Global (not scoped) so the CMS overlay can inject them at
+   runtime: *word* -> .af-red, **word** -> .af-wht. */
+.af-red { color: var(--color-af-red); }
+.af-wht { color: #fff; }

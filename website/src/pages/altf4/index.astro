@@ -7,7 +7,7 @@ import EpaChart from '../../components/altf4/EpaChart.astro';
 const stats = [
   { num: '#3', label: 'In Canada · 2026' },
   { num: 'Top 2%', label: 'Worldwide EPA' },
-  { num: '213–96', label: 'All-Time Record' },
+  { num: '213-96', label: 'All-Time Record' },
   { num: '7', label: 'Seasons Competing' },
 ];
 
@@ -32,25 +32,25 @@ const mentors = [
 
 const tiers = [
   {
-    name: 'Bronze', price: '$500', popular: false,
+    name: 'Bronze', price: '$500', highlight: false, badge: '',
     perks: ['Logo on team website', 'Logo on team poster', 'Social media shout-out', 'Sponsor receipt'],
   },
   {
-    name: 'Silver', price: '$1,500', popular: false,
+    name: 'Silver', price: '$1,500', highlight: false, badge: '',
     perks: ['Everything in Bronze', 'Small decal on robot', 'Credit at team introduction', 'Dedicated social feature'],
   },
   {
-    name: 'Gold', price: '$3,000', popular: true,
-    perks: ['Everything in Silver', 'Corner logo on robot', 'Featured at team introduction', 'Mentor & recruiting access'],
+    name: 'Gold', price: '$3,000', highlight: true, badge: 'Recommended',
+    perks: ['Everything in Silver', 'Corner logo on robot', 'Featured at team introduction', 'Recruit our grads for co-op or hiring'],
   },
   {
-    name: 'Title', price: '$5,000+', popular: false,
-    perks: ['Everything in Gold', 'Naming-tier recognition', 'Centre logo on robot, most prominent spot', 'Custom engagement & visits'],
+    name: 'Title', price: '$5,000+', highlight: false, badge: 'One per season',
+    perks: ['Everything in Gold', 'Naming-tier recognition', 'Centre logo on robot, the most prominent spot', 'One title partner per season'],
   },
 ];
 
 const placements = [
-  { k: 'Robot', d: 'Your logo rides on a top-3-in-Canada machine at every competition. Corner placement at Gold, centre placement at Title.' },
+  { k: 'Robot', d: 'Your logo rides on the competition robot, on the field at every event. Corner placement at Gold, centre at Title.' },
   { k: 'Poster', d: 'Your logo on the team poster shown at events and around the school.' },
   { k: 'Team Introduction', d: 'Your name credited when the team is introduced at competitions.' },
   { k: 'Digital', d: 'Website, livestream graphics and an active social feed.' },
@@ -70,21 +70,18 @@ const placements = [
     <div class="af-gridbg" style="position:absolute;inset:0;opacity:.5;"></div>
 
     <div class="af-wrap" style="position:relative;z-index:2;padding-block:6rem;">
-      <div class="af-eyebrow" style="margin-bottom:1.5rem;">2026 Sponsorship Package · FRC 7558</div>
+      <div class="af-eyebrow" style="margin-bottom:1.5rem;" data-cms="hero.eyebrow" data-label="Eyebrow label" data-group="Hero">2026 Sponsorship Package · FRC 7558</div>
       <img src="/images/altf4/logo-white.png" alt="ALT-F4" style="height:clamp(80px,14vw,150px);width:auto;margin-bottom:1.75rem;" />
-      <h1 class="af-display" style="font-size:clamp(2.4rem,6.5vw,5.5rem);max-width:18ch;">
-        From 35th to <span style="color:var(--color-af-red);">3rd in Canada.</span>
-      </h1>
-      <p class="af-lead" style="max-width:54ch;margin-top:1.5rem;">
-        ALT-F4 is a student robotics team in Toronto, ranked <strong style="color:#fff;">3rd in Canada in 2026</strong>. Put your brand on a team that competes at the top, and a program that trains the engineers behind it.
-      </p>
+      <h1 class="af-display" style="font-size:clamp(2.4rem,6.5vw,5.5rem);max-width:18ch;" data-cms="hero.h1" data-label="Headline (use *red*)" data-group="Hero">From 35th to <span class="af-red">3rd in Canada.</span></h1>
+      <p class="af-lead" style="max-width:54ch;margin-top:1.5rem;" data-cms="hero.lead" data-label="Sub-headline (use **white**)" data-group="Hero">ALT-F4 is a student-run robotics team at Bayview Glen in Toronto, ranked <strong class="af-wht">3rd in Canada in 2026</strong> by EPA. Put your brand on the robot, and back the students who build it.</p>
       <div style="display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;">
-        <a href="#tiers" class="af-btn af-btn-primary">View Sponsorship Tiers</a>
-        <a href="#performance" class="af-btn af-btn-ghost">See the Numbers</a>
+        <a href="#tiers" class="af-btn af-btn-primary" data-cms="hero.cta1" data-label="Primary button" data-group="Hero">View Sponsorship Tiers</a>
+        <a href="#performance" class="af-btn af-btn-ghost" data-cms="hero.cta2" data-label="Secondary button" data-group="Hero">See the Numbers</a>
       </div>
-      <div style="display:flex;align-items:center;gap:.75rem;margin-top:2.5rem;">
+      <div class="af-mono" style="margin-top:1.5rem;font-size:.82rem;color:var(--color-af-dim);letter-spacing:.04em;" data-cms="hero.ask" data-label="Price-floor line (use **white**)" data-group="Hero">Sponsorships from <strong class="af-wht">$500</strong> to title partnerships at <strong class="af-wht">$5,000+</strong>.</div>
+      <div style="display:flex;align-items:center;gap:.75rem;margin-top:1.75rem;">
         <span class="af-key">Next</span>
-        <span class="af-mono" style="font-size:.78rem;color:var(--color-af-dim);letter-spacing:.05em;">Barrie District Event &nbsp;·&nbsp; <span id="af-countdown" style="color:var(--color-af-red);">--</span></span>
+        <span class="af-mono" style="font-size:.78rem;color:var(--color-af-dim);letter-spacing:.05em;"><span data-cms="hero.next_event" data-label="Next event name" data-group="Hero">Barrie District Event</span> &nbsp;·&nbsp; <span id="af-countdown" style="color:var(--color-af-red);">--</span></span>
       </div>
     </div>
   </header>
@@ -94,8 +91,8 @@ const placements = [
     <div class="af-wrap" style="display:grid;grid-template-columns:repeat(4,1fr);">
       {stats.map((s, i) => (
         <div class="af-reveal" style={`padding:2.25rem 1rem;text-align:center;${i>0?'border-left:1px solid var(--color-af-border);':''}`}>
-          <div class="af-stat-num" style="color:var(--color-af-red);">{s.num}</div>
-          <div class="af-stat-label">{s.label}</div>
+          <div class="af-stat-num" style="color:var(--color-af-red);" data-cms={`stats.${i}.num`} data-label={`Stat ${i+1} number`} data-group="Stat bar">{s.num}</div>
+          <div class="af-stat-label" data-cms={`stats.${i}.label`} data-label={`Stat ${i+1} label`} data-group="Stat bar">{s.label}</div>
         </div>
       ))}
     </div>
@@ -106,20 +103,10 @@ const placements = [
     <div class="af-wrap">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;" class="af-2col">
         <div class="af-reveal">
-          <div class="af-eyebrow" style="margin-bottom:1.25rem;">The Opportunity</div>
-          <h2 class="af-h2">Students build the robot.<br/>Your brand rides with it.</h2>
-          <p class="af-body" style="margin-top:1.5rem;">
-            ALT-F4 is a student-run FIRST Robotics Competition team at Bayview Glen in Toronto. Each season, students in grades 9 to 12 design, build, wire and code a competition robot in a six-week season, then take it to district events across Ontario.
-          </p>
-          <p class="af-body" style="margin-top:1rem;">
-            Sponsoring us puts your name in front of those crowds and pays for the materials, tools and travel behind the team. Your brand rides with a team ranked 3rd in Canada.
-          </p>
-          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.75rem;">
-            <span class="af-key">Engineering</span>
-            <span class="af-key">Mentorship</span>
-            <span class="af-key">Community</span>
-            <span class="af-key">Brand Reach</span>
-          </div>
+          <div class="af-eyebrow" style="margin-bottom:1.25rem;" data-cms="why.eyebrow" data-label="Eyebrow" data-group="Why sponsor">The Opportunity</div>
+          <h2 class="af-h2" data-cms="why.h2" data-label="Heading (line break = new line)" data-group="Why sponsor">Students build the robot.<br/>Your brand rides with it.</h2>
+          <p class="af-body" style="margin-top:1.5rem;" data-cms="why.p1" data-label="Paragraph 1" data-group="Why sponsor">ALT-F4 is a student-run FIRST Robotics Competition team at Bayview Glen in Toronto. Each season, students in grades 9 to 12 design, build, wire and code a competition robot in a six-week season, then take it to district events across Ontario.</p>
+          <p class="af-body" style="margin-top:1rem;" data-cms="why.p2" data-label="Paragraph 2" data-group="Why sponsor">Sponsoring us pays for the materials, tools and travel that get the robot to competition, and puts your name in front of the crowds there.</p>
         </div>
         <div class="af-reveal" style="position:relative;">
           <img src="/images/altf4/team-design.jpg" alt="Students designing" style="width:100%;height:440px;object-fit:cover;border:1px solid var(--color-af-border);" />
@@ -133,11 +120,9 @@ const placements = [
   <section id="performance" class="af-section" style="background:var(--color-af-pure);border-block:1px solid var(--color-af-border);">
     <div class="af-wrap">
       <div style="max-width:62ch;margin-bottom:3rem;" class="af-reveal">
-        <div class="af-eyebrow" style="margin-bottom:1.25rem;">Performance</div>
-        <h2 class="af-h2">Every season, the rating climbs.</h2>
-        <p class="af-lead" style="margin-top:1.25rem;">
-          EPA (Expected Points Added) is the standard rating for FRC strength. Ours has climbed every era of the team. In 2026 we hit a <strong style="color:#fff;">norm EPA of 1864</strong>, ranking <strong style="color:var(--color-af-red);">#3 in all of Canada</strong> and inside the top 2% of teams worldwide.
-        </p>
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;" data-cms="perf.eyebrow" data-label="Eyebrow" data-group="Performance">Performance</div>
+        <h2 class="af-h2" data-cms="perf.h2" data-label="Heading (use *red*)" data-group="Performance">From <span class="af-red">#35 to #3</span> in Canada.</h2>
+        <p class="af-lead" style="margin-top:1.25rem;" data-cms="perf.lead" data-label="Paragraph (use **white** / *red*)" data-group="Performance">EPA (Expected Points Added) is the standard rating for FRC strength. Ours has risen every season we have competed. In 2026 we hit an EPA of <strong class="af-wht">1864</strong>: <span class="af-red">#3 in all of Canada</span> and inside the top 2% of teams worldwide.</p>
       </div>
 
       <div class="af-reveal" style="margin-bottom:2.5rem;">
@@ -150,10 +135,10 @@ const placements = [
           { n: '68.9%', l: 'All-time win rate' },
           { n: '98th', l: 'Global EPA percentile' },
           { n: '309', l: 'Matches played' },
-        ].map((s) => (
+        ].map((s, i) => (
           <div class="af-reveal" style="background:var(--color-af-black);padding:1.75rem;">
-            <div class="af-stat-num" style="font-size:clamp(1.5rem,2.6vw,2.1rem);">{s.n}</div>
-            <div class="af-stat-label">{s.l}</div>
+            <div class="af-stat-num" style="font-size:clamp(1.5rem,2.6vw,2.1rem);" data-cms={`perf.grid.${i}.n`} data-label={`Grid stat ${i+1} number`} data-group="Performance">{s.n}</div>
+            <div class="af-stat-label" data-cms={`perf.grid.${i}.l`} data-label={`Grid stat ${i+1} label`} data-group="Performance">{s.l}</div>
           </div>
         ))}
       </div>
@@ -164,11 +149,9 @@ const placements = [
   <section id="team" class="af-section">
     <div class="af-wrap">
       <div style="max-width:60ch;margin-bottom:3rem;" class="af-reveal">
-        <div class="af-eyebrow" style="margin-bottom:1.25rem;">The Team</div>
-        <h2 class="af-h2">Built by students.<br/>Backed by industry.</h2>
-        <p class="af-body" style="margin-top:1.25rem;">
-          Our mission is to give students room to grow through technology and design while building real skills: critical thinking, collaboration and communication. Mentors from Google, Waterloo, TMU and local industry guide every subsystem.
-        </p>
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;" data-cms="team.eyebrow" data-label="Eyebrow" data-group="Team">The Team</div>
+        <h2 class="af-h2" data-cms="team.h2" data-label="Heading (line break = new line)" data-group="Team">Built by students.<br/>Backed by industry.</h2>
+        <p class="af-body" style="margin-top:1.25rem;" data-cms="team.body" data-label="Paragraph" data-group="Team">Students design, wire and code a competition robot every season. Mentors from Google, Waterloo, TMU and local industry guide every subsystem.</p>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:2.5rem;" class="af-photos">
@@ -178,11 +161,11 @@ const placements = [
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;" class="af-mentors">
-        {mentors.map((m) => (
+        {mentors.map((m, i) => (
           <div class="af-card af-reveal">
-            <div class="af-h3" style="font-family:var(--font-af-head);font-weight:700;">{m.name}</div>
-            <div class="af-mono" style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-af-red);margin:.4rem 0 .6rem;">{m.role}</div>
-            <p class="af-body" style="font-size:.88rem;">{m.note}</p>
+            <div class="af-h3" style="font-family:var(--font-af-head);font-weight:700;" data-cms={`mentors.${i}.name`} data-label={`Mentor ${i+1} name`} data-group="Team">{m.name}</div>
+            <div class="af-mono" style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-af-red);margin:.4rem 0 .6rem;" data-cms={`mentors.${i}.role`} data-label={`Mentor ${i+1} role`} data-group="Team">{m.role}</div>
+            <p class="af-body" style="font-size:.88rem;" data-cms={`mentors.${i}.note`} data-label={`Mentor ${i+1} note`} data-group="Team">{m.note}</p>
           </div>
         ))}
       </div>
@@ -197,16 +180,14 @@ const placements = [
           <img src="/images/altf4/robot-pit.jpg" alt="ALT-F4 robot 7558" style="width:100%;height:480px;object-fit:cover;border:1px solid var(--color-af-border);" />
         </div>
         <div class="af-reveal">
-          <div class="af-eyebrow" style="margin-bottom:1.25rem;">The Machines</div>
-          <h2 class="af-h2">Seven seasons.<br/>One trajectory.</h2>
-          <p class="af-body" style="margin-top:1.25rem;margin-bottom:1.75rem;">
-            From Orion in 2019 to Vanguard in 2026, each robot carries what the last one taught us. Here is the lineage your brand joins.
-          </p>
+          <div class="af-eyebrow" style="margin-bottom:1.25rem;" data-cms="robots.eyebrow" data-label="Eyebrow" data-group="Robots">The Machines</div>
+          <h2 class="af-h2" data-cms="robots.h2" data-label="Heading (line break = new line)" data-group="Robots">Seven robots.<br/>Seven seasons.</h2>
+          <p class="af-body" style="margin-top:1.25rem;margin-bottom:1.75rem;" data-cms="robots.body" data-label="Paragraph" data-group="Robots">From Orion in 2019 to Vanguard in 2026. Each year, a new robot from a six-week build.</p>
           <div style="border-top:1px solid var(--color-af-border);">
-            {robots.map((r) => (
+            {robots.map((r, i) => (
               <div style="display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--color-af-border);">
-                <span class="af-display" style="font-size:1.5rem;">{r.name}</span>
-                <span class="af-mono" style="color:var(--color-af-muted);font-size:.85rem;letter-spacing:.1em;">{r.year}</span>
+                <span class="af-display" style="font-size:1.5rem;" data-cms={`robots.${i}.name`} data-label={`Robot ${i+1} name`} data-group="Robots">{r.name}</span>
+                <span class="af-mono" style="color:var(--color-af-muted);font-size:.85rem;letter-spacing:.1em;" data-cms={`robots.${i}.year`} data-label={`Robot ${i+1} year`} data-group="Robots">{r.year}</span>
               </div>
             ))}
           </div>
@@ -218,22 +199,26 @@ const placements = [
   <!-- ===================== TIERS ===================== -->
   <section id="tiers" class="af-section">
     <div class="af-wrap">
-      <div style="text-align:center;max-width:54ch;margin:0 auto 3rem;" class="af-reveal">
-        <div class="af-eyebrow" style="margin-bottom:1.25rem;justify-content:center;">Sponsorship Tiers</div>
-        <h2 class="af-h2">Choose your level.</h2>
-        <p class="af-body" style="margin-top:1rem;">All amounts in CAD. In-kind donations of materials, tools or services are welcome and matched to an equivalent tier.</p>
+      <div style="text-align:center;max-width:54ch;margin:0 auto 2rem;" class="af-reveal">
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;justify-content:center;" data-cms="tiers.eyebrow" data-label="Eyebrow" data-group="Tiers">Sponsorship Tiers</div>
+        <h2 class="af-h2" data-cms="tiers.h2" data-label="Heading" data-group="Tiers">Choose your level.</h2>
+        <p class="af-body" style="margin-top:1rem;" data-cms="tiers.body" data-label="Paragraph" data-group="Tiers">All amounts in CAD. In-kind donations of materials, tools or services are welcome and matched to an equivalent tier.</p>
+      </div>
+
+      <div class="af-reveal" style="text-align:center;margin-bottom:2.5rem;">
+        <span class="af-mono" style="display:inline-block;border:1px solid var(--color-af-red);color:var(--color-af-red);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1rem;" data-cms="tiers.proof" data-label="Proof banner above tiers" data-group="Tiers">You are backing the 3rd-ranked team in Canada.</span>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="af-tiers">
-        {tiers.map((t) => (
-          <div class="af-card af-reveal" style={`display:flex;flex-direction:column;${t.popular?'border-color:var(--color-af-red);background:var(--color-af-surface-2);':''}`}>
-            {t.popular && <div class="af-mono" style="font-size:.6rem;letter-spacing:.2em;color:var(--color-af-red);text-transform:uppercase;margin-bottom:.75rem;">★ Most Popular</div>}
-            <div class="af-display" style="font-size:1.4rem;">{t.name}</div>
-            <div class="af-stat-num" style="color:#fff;margin:.75rem 0 1.25rem;font-size:2.2rem;">{t.price}</div>
+        {tiers.map((t, i) => (
+          <div class="af-card af-reveal" style={`display:flex;flex-direction:column;${t.highlight?'border-color:var(--color-af-red);background:var(--color-af-surface-2);':''}`}>
+            {t.badge && <div class="af-mono" style="font-size:.6rem;letter-spacing:.2em;color:var(--color-af-red);text-transform:uppercase;margin-bottom:.75rem;" data-cms={`tiers.${i}.badge`} data-label={`${t.name} badge`} data-group="Tiers">★ {t.badge}</div>}
+            <div class="af-display" style="font-size:1.4rem;" data-cms={`tiers.${i}.name`} data-label={`Tier ${i+1} name`} data-group="Tiers">{t.name}</div>
+            <div class="af-stat-num" style="color:#fff;margin:.75rem 0 1.25rem;font-size:2.2rem;" data-cms={`tiers.${i}.price`} data-label={`Tier ${i+1} price`} data-group="Tiers">{t.price}</div>
             <ul style="list-style:none;padding:0;margin:0;flex:1;">
-              {t.perks.map((p) => (
+              {t.perks.map((p, j) => (
                 <li class="af-body" style="font-size:.85rem;padding:.5rem 0;border-top:1px solid var(--color-af-border);display:flex;gap:.5rem;">
-                  <span style="color:var(--color-af-red);">/</span><span>{p}</span>
+                  <span style="color:var(--color-af-red);">/</span><span data-cms={`tiers.${i}.perks.${j}`} data-label={`${t.name} perk ${j+1}`} data-group="Tiers">{p}</span>
                 </li>
               ))}
             </ul>
@@ -248,14 +233,14 @@ const placements = [
   <section class="af-section" style="background:var(--color-af-pure);border-block:1px solid var(--color-af-border);">
     <div class="af-wrap">
       <div style="max-width:54ch;margin-bottom:3rem;" class="af-reveal">
-        <div class="af-eyebrow" style="margin-bottom:1.25rem;">Where Your Brand Lives</div>
-        <h2 class="af-h2">Seen everywhere we go.</h2>
+        <div class="af-eyebrow" style="margin-bottom:1.25rem;" data-cms="place.eyebrow" data-label="Eyebrow" data-group="Placement">Where Your Brand Lives</div>
+        <h2 class="af-h2" data-cms="place.h2" data-label="Heading" data-group="Placement">Seen everywhere we go.</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;" class="af-place">
-        {placements.map((p) => (
+        {placements.map((p, i) => (
           <div class="af-card af-reveal">
-            <div class="af-h3" style="font-family:var(--font-af-display);font-weight:900;text-transform:uppercase;font-size:1.1rem;color:var(--color-af-red);">{p.k}</div>
-            <p class="af-body" style="font-size:.9rem;margin-top:.75rem;">{p.d}</p>
+            <div class="af-h3" style="font-family:var(--font-af-display);font-weight:900;text-transform:uppercase;font-size:1.1rem;color:var(--color-af-red);" data-cms={`placements.${i}.k`} data-label={`Placement ${i+1} title`} data-group="Placement">{p.k}</div>
+            <p class="af-body" style="font-size:.9rem;margin-top:.75rem;" data-cms={`placements.${i}.d`} data-label={`Placement ${i+1} text`} data-group="Placement">{p.d}</p>
           </div>
         ))}
       </div>
@@ -269,13 +254,13 @@ const placements = [
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,#0A0A0A,rgba(10,10,10,.7),#0A0A0A);"></div>
     </div>
     <div class="af-wrap" style="position:relative;z-index:2;text-align:center;">
-      <div class="af-eyebrow" style="margin-bottom:1.5rem;justify-content:center;">Partner With Us</div>
-      <h2 class="af-display" style="font-size:clamp(2rem,5vw,4rem);max-width:18ch;margin:0 auto;">Let's build something fast.</h2>
-      <p class="af-lead" style="max-width:50ch;margin:1.5rem auto 0;">Reach out and we'll send a proposal built around what you care about. We would love to show you what your support makes possible.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;">
-        <a href="mailto:mpestonji@bayviewglen.ca?subject=ALT-F4%20Sponsorship" class="af-btn af-btn-primary">Email the Team</a>
-        <a href="https://team7558.com" class="af-btn af-btn-ghost">Visit team7558.com</a>
+      <div class="af-eyebrow" style="margin-bottom:1.5rem;justify-content:center;" data-cms="contact.eyebrow" data-label="Eyebrow" data-group="Contact">Partner With Us</div>
+      <h2 class="af-display" style="font-size:clamp(2rem,5vw,4rem);max-width:18ch;margin:0 auto;" data-cms="contact.h2" data-label="Heading (use *red*)" data-group="Contact">Back a <span class="af-red">top-3</span> team in Canada.</h2>
+      <p class="af-lead" style="max-width:52ch;margin:1.5rem auto 0;" data-cms="contact.lead" data-label="Paragraph (use **white**)" data-group="Contact">Email us and we will send a one-page proposal with placement options and pricing. Sponsorships run from <strong class="af-wht">$500</strong> to title partnerships at <strong class="af-wht">$5,000+</strong>.</p>
+      <div style="margin-top:2.5rem;">
+        <a href="mailto:mpestonji@bayviewglen.ca?subject=ALT-F4%20Sponsorship&body=Hi%20Nosh%2C%0D%0A%0D%0AWe%27d%20like%20to%20talk%20about%20sponsoring%20ALT-F4%20(FRC%207558).%0D%0A%0D%0ACompany%3A%0D%0ATier%20of%20interest%3A%0D%0A%0D%0AThanks%2C" class="af-btn af-btn-primary" data-cms="contact.cta" data-label="Button text" data-group="Contact">Email the team</a>
       </div>
+      <div class="af-mono" style="margin-top:1.25rem;font-size:.8rem;color:var(--color-af-dim);letter-spacing:.04em;" data-cms="contact.person" data-label="Contact person line" data-group="Contact">Nosh Pestonji, Robotics Coordinator · mpestonji@bayviewglen.ca</div>
     </div>
   </section>
 
@@ -291,4 +276,40 @@ const placements = [
       .af-photos, .af-mentors, .af-place { grid-template-columns: 1fr !important; }
     }
   </style>
+
+  <!-- CMS overlay. The copy above is the default; a published content.json on
+       GitHub overrides any [data-cms] node so edits go live without a rebuild.
+       *word* -> red, **word** -> white, line breaks preserved. The editor loads
+       this page with ?cms=edit to read the raw defaults. -->
+  <script is:inline>
+    (function () {
+      var RAW = 'https://raw.githubusercontent.com/SNX-Corp/SHFT/main/website/public/altf4/content.json';
+      function render(val) {
+        var d = document.createElement('div');
+        d.textContent = String(val);
+        return d.innerHTML
+          .replace(/\n/g, '<br/>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong class="af-wht">$1</strong>')
+          .replace(/\*([^*]+)\*/g, '<span class="af-red">$1</span>');
+      }
+      function apply(data) {
+        if (!data) return;
+        document.querySelectorAll('[data-cms]').forEach(function (el) {
+          var k = el.getAttribute('data-cms');
+          if (data[k] != null && data[k] !== '') el.innerHTML = render(data[k]);
+        });
+      }
+      if (location.search.indexOf('cms=edit') > -1) return;
+      var local = null;
+      try { local = JSON.parse(localStorage.getItem('altf4_sponsor_preview') || 'null'); } catch (e) {}
+      if (local) { apply(local); return; }
+      function get(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }); }
+      // Works whether this page is hosted at /altf4 (main site) or at the root
+      // of its own standalone site. Published copy on GitHub is the source of truth.
+      get(RAW)
+        .then(function (d) { return d || get('/altf4/content.json'); })
+        .then(function (d) { return d || get('/content.json'); })
+        .then(apply);
+    })();
+  </script>
 </Altf4Layout>
