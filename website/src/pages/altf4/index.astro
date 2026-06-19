@@ -303,19 +303,13 @@ const placements = [
       var local = null;
       try { local = JSON.parse(localStorage.getItem('altf4_sponsor_preview') || 'null'); } catch (e) {}
       if (local) { apply(local); return; }
-      fetch(RAW, { cache: 'no-store' })
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (data) {
-          if (data) { apply(data); return; }
-          return fetch('/altf4/content.json', { cache: 'no-store' })
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(apply);
-        })
-        .catch(function () {
-          fetch('/altf4/content.json', { cache: 'no-store' })
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(apply).catch(function () {});
-        });
+      function get(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }); }
+      // Works whether this page is hosted at /altf4 (main site) or at the root
+      // of its own standalone site. Published copy on GitHub is the source of truth.
+      get(RAW)
+        .then(function (d) { return d || get('/altf4/content.json'); })
+        .then(function (d) { return d || get('/content.json'); })
+        .then(apply);
     })();
   </script>
 </Altf4Layout>
