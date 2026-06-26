@@ -1,5 +1,5 @@
 ---
-section_number: "05"
+section_number: "04"
 section_label: "THE EXPERIENCE"
 headline_line_1: "WHAT YOUR CHILD"
 headline_line_2: "ACTUALLY GETS."

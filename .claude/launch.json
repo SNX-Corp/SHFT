@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "marketing-hub",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "4200", "/Users/malharsoni/SHFT-repo/marketing"],
+      "port": 4200
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 ---
 items:
-  - Mentored by a top-3 Canada team
+  - Mentored by veteran FRC leaders
   - University portfolio
-  - ALT-F4 partnership
+  - Professional-grade workshop
   - WCP-sponsored team
   - 4-month CAD certification
   - Ontario community FRC team

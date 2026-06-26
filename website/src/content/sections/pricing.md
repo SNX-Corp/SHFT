@@ -1,5 +1,5 @@
 ---
-section_number: "04"
+section_number: "03"
 section_label: "THE PROGRAM"
 headline_line_1: "EVERYTHING"
 headline_line_2: "INCLUDED."

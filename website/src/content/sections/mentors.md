@@ -31,7 +31,7 @@ mentors:
       - label: Achievement
         value: Coach for the fastest-growing team in Ontario
       - label: Competition
-        value: Provincials and Worlds qualifier with ALT-F4.
+        value: Provincials and Worlds qualifier.
       - label: Recognition
         value: Program execution & discipline
       - label: Philosophy

@@ -1,5 +1,5 @@
 ---
-section_number: "07"
+section_number: "06"
 section_label: "EXPECTATIONS"
 headline_line_1: "WHAT WE ASK"
 headline_line_2: "OF YOU."

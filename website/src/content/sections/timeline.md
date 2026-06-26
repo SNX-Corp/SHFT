@@ -1,5 +1,5 @@
 ---
-section_number: "06"
+section_number: "05"
 section_label: "THE SEASON"
 headline_line_1: "A YEAR IN"
 headline_line_2: "THE LIFE."
@@ -11,7 +11,7 @@ phases:
     intensity: "low"
   - period: "SEP – DEC"
     title: "Pre-Season Training"
-    description: "Intensive skill development, advanced workshops, strategy analysis of previous games. Build subsystem prototypes. Partnership training with ALT-F4."
+    description: "Intensive skill development, advanced workshops, strategy analysis of previous games. Build subsystem prototypes."
     intensity: "medium"
   - period: "JANUARY"
     title: "Game Reveal & Design Sprint"
