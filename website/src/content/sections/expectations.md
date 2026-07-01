@@ -15,8 +15,8 @@ students:
   - title: "Be Coachable"
     description: "Come ready to listen, ask questions, and push yourself. Show up coachable and we'll teach you everything we know."
 parents:
-  - title: "Refer Other Families"
-    description: "Share SHFT if it fits: If you know a family who would thrive here, an introduction is welcome and never expected. Each family you introduce who joins helps keep the program sustainable, and we pass $1,000 back to you."
+  - title: "Spread the Word"
+    description: "Share SHFT if it fits. If you know a family who would thrive here, an introduction is welcome and never expected. Word of mouth is how the right students find us."
   - title: "Advocate for the Program"
     description: "Help other parents understand why this investment is worth it, and be part of the community however you can, whether that is cheering at events, lending a skill, or simply showing up."
   - title: "Connect Us With Sponsors"

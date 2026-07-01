@@ -15,7 +15,7 @@ export const seasonPhases: SeasonPhase[] = [
   {
     period: "SEP – DEC",
     title: "Pre-Season Training",
-    description: "Intensive skill development, advanced workshops, strategy analysis of previous games. Build subsystem prototypes. Partnership training with ALT-F4.",
+    description: "Intensive skill development, advanced workshops, strategy analysis of previous games. Build subsystem prototypes. Full-team practice sessions and design reviews.",
     intensity: "medium",
   },
   {

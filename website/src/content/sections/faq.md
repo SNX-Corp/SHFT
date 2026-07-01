@@ -13,9 +13,9 @@ faqs:
   - question: "What is FRC?"
     answer: "FIRST Robotics Competition (FRC) is the premier high school robotics competition in the world. Teams of students design, build, and program 120-pound industrial robots to compete in a new game each year. FRC is backed by Fortune 500 companies and recognized by top universities as one of the strongest extracurriculars a student can have."
   - question: "Is there financial aid available?"
-    answer: "1. We offer a referral program: every family you refer earns you a $1,000 discount. 2. As a Rookie team, we encourage parents to help us connect with businesses for sponsorship opportunities, which helps keep costs sustainable."
+    answer: "As a Rookie team, we lean on community sponsorship to keep costs sustainable. If you can help us connect with a business that supports STEM, that goes a long way. When we meet one-on-one, we will talk through what works for your family."
   - question: "How does this help with university applications?"
     answer: "FRC is one of the most recognized extracurriculars in engineering and STEM admissions. Students build a real engineering portfolio, develop leadership and teamwork skills, and often receive direct mentorship letters. Many FRC alumni attend MIT, Waterloo Engineering, U of T, and other top programs. They credit FRC as a decisive factor."
   - question: "How do I sign up?"
-    answer: "Step 1: Express interest and meet with our Team Director and Head Coach, Malhar, for a one-on-one conversation about your child's goals. Step 2: Lock in your spot for the season. Step 3: Use the time before September to earn referral discounts. Step 4: We kick off the season in September."
+    answer: "Step 1: Express interest and meet with our Team Director and Head Coach, Malhar, for a one-on-one conversation about your child's goals. Step 2: Lock in your spot for the season. Step 3: We kick off the season in September."
 ---
