@@ -17,8 +17,8 @@ students:
 parents:
   - title: "Spread the Word"
     description: "Share SHFT if it fits. If you know a family who would thrive here, an introduction is welcome and never expected. Word of mouth is how the right students find us."
-  - title: "Advocate for the Program"
-    description: "Help other parents understand why this investment is worth it, and be part of the community however you can, whether that is cheering at events, lending a skill, or simply showing up."
+  - title: "Be Part of It"
+    description: "Be part of the community however you can: cheering at events, lending a skill, or simply showing up."
   - title: "Connect Us With Sponsors"
     description: "Know a business that supports STEM education? An introduction can help keep costs sustainable for all families."
   - title: "Trust the Process"
