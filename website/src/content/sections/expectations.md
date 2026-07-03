@@ -22,5 +22,5 @@ parents:
   - title: "Connect Us With Sponsors"
     description: "Know a business that supports STEM education? An introduction can help keep costs sustainable for all families."
   - title: "Trust the Process"
-    description: "We've done this before. We know what it takes to build a championship-caliber team. Let us do what we do best."
+    description: "We've coached competitive FRC before. Give us room to coach, and we'll keep you in the loop."
 ---
