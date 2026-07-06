@@ -282,6 +282,30 @@
   }
   .give-band .benefit-grid{ margin-top:0; grid-template-columns:1fr 1fr; }
 
+  /* Video embed (2nd spot): plays on screen, still frame in the PDF. */
+  .give-video{ margin:0; display:flex; flex-direction:column; }
+  .give-video .video-frame{ position:relative; flex:1 1 auto; min-height:1.6in; background:#0c0c0c; border:1px solid var(--line); overflow:hidden; }
+  .give-video .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+  .give-video .video-poster{ display:none; }
+  .give-video figcaption{ margin-top:0.08in; font-family:'Raleway',sans-serif; font-size:8pt; line-height:1.4; color:#A3A3A3; }
+
+  /* Gracious Professionalism: big immersive photo, then the ethos copy. */
+  .gp-hero{ position:relative; margin:0.28in 0 0; width:100%; aspect-ratio:1.55 / 1; border:1px solid var(--line); overflow:hidden; background:#0c0c0c; }
+  .gp-hero img{ width:100%; height:100%; object-fit:cover; object-position:center 38%; display:block; }
+  .gp-hero .cap{
+    position:absolute; left:0; bottom:0; z-index:2; max-width:5in; padding:0.6in 0.24in 0.2in;
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:8.4pt; letter-spacing:0.06em;
+    text-transform:uppercase; color:#fff; border-left:4px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+  }
+  .gp-text{ display:grid; grid-template-columns:1fr 1fr; gap:0.34in; margin-top:0.3in; align-items:start; }
+  .gp-title{ font-size:31pt; line-height:0.95; }
+  .gp-title .lime{ color:var(--lime); }
+  .gp-lead{ margin-top:0.16in; font-size:12.5pt; line-height:1.4; color:#fff; font-weight:500; }
+  .gp-text .body-copy{ font-size:10.6pt; }
+  .gp-text .body-copy + .body-copy{ margin-top:0.14in; }
+  .gp-credit{ margin-top:0.16in; font-family:'Exo 2',sans-serif; font-size:8.2pt; line-height:1.45; color:var(--muted-2); }
+
   /* Download bar (screen only; pointless inside the PDF itself). */
   .pdf-bar{ margin:0 auto 6px; max-width:8.5in; text-align:center; }
   .pdf-dl{
@@ -676,6 +700,15 @@
     html, body{ background:transparent; }
     .page{ margin:0; box-shadow:none; }
     .pdf-bar{ display:none !important; }
+    /* PDF can't play video: swap the embed for a still frame + play glyph. */
+    .give-video .video-frame iframe{ display:none; }
+    .give-video .video-poster{ display:block; position:absolute; inset:0; z-index:2; }
+    .give-video .video-poster img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .give-video .vplay{
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:0.62in; height:0.62in; display:flex; align-items:center; justify-content:center;
+      background:rgba(0,0,0,0.55); color:var(--lime); font-size:15pt; padding-left:3px;
+    }
   }
 </style>
 </head>
@@ -746,9 +779,15 @@
   </div>
 
   <div class="give-band">
-    <figure class="give-photo">
-      <img src="frc-students.jpg" alt="FIRST Robotics students and a mentor working together on their robot at a competition" />
-      <figcaption data-cms="fund.photo_cap" data-label="Funding photo caption" data-group="02 · Funding">Students and mentors, hands on the robot.</figcaption>
+    <figure class="give-video">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/kIzxVyVAwOE?rel=0&amp;modestbranding=1" title="FIRST Sponsor Recap" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <a class="video-poster" href="https://youtu.be/kIzxVyVAwOE" target="_blank" rel="noopener">
+          <img src="frc-recap-poster.jpg" alt="FIRST Sponsor Recap video" />
+          <span class="vplay" aria-hidden="true">&#9654;</span>
+        </a>
+      </div>
+      <figcaption data-cms="fund.photo_cap" data-label="Funding video caption" data-group="02 · Funding">FIRST Sponsor Recap &middot; youtu.be/kIzxVyVAwOE</figcaption>
     </figure>
     <div class="benefit-grid">
       <div class="benefit"><b data-cms="fund.way1_title" data-label="Way to give 1 title" data-group="02 · Funding">Cash support</b><span data-cms="fund.way1_body" data-label="Way to give 1 body" data-group="02 · Funding">Directly funds purchases, registration, shipping, and event costs.</span></div>
@@ -860,14 +899,43 @@
   <div class="footer"><span>Why back a rookie</span><span class="lime">Real work. Real students.</span><span>Page 04</span></div>
 </section>
 
-<!-- ============ 05 / WHERE YOUR LOGO LIVES ============ -->
+<!-- ============ 05 / GRACIOUS PROFESSIONALISM ============ -->
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>How We Compete</strong><br />Philosophies &amp; ethos</div>
+  </div>
+
+  <div class="label">05 / Gracious Professionalism</div>
+
+  <figure class="gp-hero">
+    <img src="frc-gp.jpg" alt="Dr. Woodie Flowers greeting a FIRST Robotics team, students smiling and emotional" />
+    <figcaption class="cap" data-cms="gp.photo_cap" data-label="Photo caption" data-group="05 · Gracious Professionalism">A FIRST team meets Dr. Woodie Flowers, who named Gracious Professionalism.</figcaption>
+  </figure>
+
+  <div class="gp-text">
+    <div>
+      <h2 class="display gp-title" data-cms="gp.title" data-label="Headline (use *word* for green)" data-group="05 · Gracious Professionalism">Gracious <span class="lime">Professionalism.</span></h2>
+      <p class="gp-lead" data-cms="gp.lead" data-label="Lead sentence" data-group="05 · Gracious Professionalism">It is the ethos of FIRST, and it is how SHFT runs day to day: serious engineering, done with respect for the people around you.</p>
+    </div>
+    <div>
+      <p class="body-copy" data-cms="gp.body1" data-label="Paragraph 1 (use *word* for white)" data-group="05 · Gracious Professionalism">We are building a team where <strong>every student belongs</strong>, whatever their background, gender, or experience. Newcomers learn beside mentors who have built robots before. On event day we compete hard, then walk to the next pit and help a rival get running again.</p>
+      <p class="body-copy" data-cms="gp.body2" data-label="Paragraph 2 (use *word* for white)" data-group="05 · Gracious Professionalism">Back SHFT and your name rides with a team that competes the right way: <strong>fierce on the field, kind off it</strong>. That is the reputation your brand stands beside.</p>
+      <p class="gp-credit" data-cms="gp.credit" data-label="Credit line" data-group="05 · Gracious Professionalism">Gracious Professionalism&reg; was coined by Dr. Woodie Flowers (1943&ndash;2019), distinguished advisor to FIRST.</p>
+    </div>
+  </div>
+
+  <div class="footer"><span>How we compete</span><span class="lime">Fierce on the field. Kind off it.</span><span>Page 05</span></div>
+</section>
+
+<!-- ============ 06 / WHERE YOUR LOGO LIVES ============ -->
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
     <div class="doc-meta"><strong>Logo Placement</strong><br />How sponsors appear</div>
   </div>
 
-  <div class="label">05 / Logo Placement</div>
+  <div class="label">06 / Logo Placement</div>
   <h2 class="display section-title" data-cms="logo.title" data-label="Headline (use *word* for green)" data-group="05 · Logo Placement">Where your logo lives.</h2>
   <p class="body-copy" style="margin-top:0.1in" data-cms="logo.intro" data-label="Intro (use *word* for white)" data-group="05 · Logo Placement"><span class="lime">Sponsor logos ride into competition</span> on the robot, in the arena, and in every match photo from the season.</p>
 
@@ -907,7 +975,7 @@
     <div class="benefit"><b data-cms="logo.spot4_title" data-label="Spot 4 title" data-group="05 · Logo Placement">Online</b><span data-cms="logo.spot4_body" data-label="Spot 4 body" data-group="05 · Logo Placement">Your name and logo on the website sponsor wall and in season social posts.</span></div>
   </div>
 
-  <div class="footer"><span>Logo placement</span><span class="lime">On the robot. In the arena.</span><span>Page 05</span></div>
+  <div class="footer"><span>Logo placement</span><span class="lime">On the robot. In the arena.</span><span>Page 06</span></div>
 </section>
 
 <!-- ============ 06 / SAY YES ============ -->
@@ -917,7 +985,7 @@
     <div class="doc-meta"><strong>Next Step</strong><br />Become a sponsor</div>
   </div>
 
-  <div class="label">06 / Join the Build</div>
+  <div class="label">07 / Join the Build</div>
   <h2 class="display section-title" data-cms="close.title" data-label="Headline (use *word* for green)" data-group="06 · Say Yes">Ready to sponsor SHFT?</h2>
   <p class="lede" data-cms="close.lede" data-label="Paragraph" data-group="06 · Say Yes">Start with a short conversation. We confirm the right tier, collect your logo, and get every detail right before anything goes public.</p>
 
@@ -956,7 +1024,7 @@
     </div>
   </a>
 
-  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Founding partners, 2027 season.</span><span>Page 06</span></div>
+  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Founding partners, 2027 season.</span><span>Page 07</span></div>
 </section>
 
 <div class="pdf-bar">
