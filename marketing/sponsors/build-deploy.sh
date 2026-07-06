@@ -29,7 +29,13 @@ cp "$SRC_DIR/edit.html" "$OUT/"
 
 # Sibling assets the page references at root.
 cp "$SRC_DIR/qr-email.svg"             "$OUT/"
-cp "$SRC_DIR/robot-sponsors-2056.jpeg" "$OUT/"
+cp "$SRC_DIR/robot-1323-match.jpeg"    "$OUT/"
+cp "$SRC_DIR/robot-sponsors-1323.jpeg" "$OUT/"
+cp "$SRC_DIR/shop-lab-1.png"           "$OUT/"
+cp "$SRC_DIR/shop-lab-2.png"           "$OUT/"
+cp "$SRC_DIR/tee-sponsors.mp4"         "$OUT/"
+# Downloadable PDF of the deck, generated next to this script (see below).
+[ -f "$SRC_DIR/shft-sponsorship-package.pdf" ] && cp "$SRC_DIR/shft-sponsorship-package.pdf" "$OUT/"
 
 # Parent assets the page references via ../.
 cp "$MKT_DIR/brand-assets/wordmark-shft-robotics.png" "$OUT/brand-assets/"

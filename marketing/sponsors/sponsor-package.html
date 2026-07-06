@@ -237,6 +237,43 @@
     font-weight:800;
   }
 
+  /* Photo tile on the cover: real build space beside the founding message. */
+  .cover-photo{ position:relative; margin:0; border:1px solid var(--line); overflow:hidden; min-height:1.88in; background:#0c0c0c; }
+  .cover-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .cover-photo figcaption{
+    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:0.28in 0.16in 0.1in;
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:8.2pt; letter-spacing:0.1em;
+    text-transform:uppercase; color:#fff; border-left:3px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0));
+  }
+  .cover-right{ display:flex; flex-direction:column; gap:0.1in; }
+  .cover-right .hero-panel{ min-height:0; flex:1 1 auto; }
+  .stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.08in; }
+  .stat-row .stat{ min-height:0; padding:0.13in 0.14in; }
+  .stat-row .stat b{ font-size:16pt; }
+
+  /* Funding page: build-space photo beside the ways to give. */
+  .give-band{ display:grid; grid-template-columns:0.82fr 1.18fr; gap:0.18in; align-items:stretch; margin-top:0.24in; }
+  .give-photo{ position:relative; margin:0; border:1px solid var(--line); overflow:hidden; min-height:1.6in; background:#0c0c0c; }
+  .give-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .give-photo figcaption{
+    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:0.24in 0.14in 0.09in;
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:7.8pt; letter-spacing:0.1em;
+    text-transform:uppercase; color:#fff; border-left:3px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0));
+  }
+  .give-band .benefit-grid{ margin-top:0; grid-template-columns:1fr 1fr; }
+
+  /* Download bar (screen only; pointless inside the PDF itself). */
+  .pdf-bar{ margin:0 auto 6px; max-width:8.5in; text-align:center; }
+  .pdf-dl{
+    display:inline-flex; align-items:center; gap:0.1in;
+    background:var(--lime); color:var(--lime-text);
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:11pt;
+    letter-spacing:0.06em; text-transform:uppercase; padding:0.15in 0.32in;
+  }
+  .pdf-dl:hover{ background:var(--lime-hover); }
+
   .split{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -333,6 +370,69 @@
   }
   .tier-copy strong{ color:var(--white); font-weight:700; }
 
+  /* Tier cards (pricing-card layout) */
+  .tiers{ margin-top:0.26in; display:flex; flex-direction:column; gap:0.16in; }
+  .tier-card{ border:1px solid var(--line); background:var(--panel); padding:0.17in 0.19in; }
+  .tier-card.feat{ border:2px solid var(--lime); background:var(--panel-2); }
+  .tier-card .top{ display:flex; align-items:baseline; justify-content:space-between; gap:0.14in; }
+  .tier-card .tname{
+    font-family:'Orbitron',sans-serif; font-size:14pt; font-weight:900;
+    text-transform:uppercase; letter-spacing:-0.02em; line-height:1;
+  }
+  .tier-card .tprice{
+    font-family:'Orbitron',sans-serif; font-size:17pt; font-weight:900;
+    color:var(--lime); letter-spacing:-0.02em; line-height:1; white-space:nowrap;
+  }
+  .tier-card .tdesc{ margin-top:0.09in; color:var(--muted); font-size:8.8pt; line-height:1.46; }
+  .tier-card .tdesc strong{ color:var(--white); font-weight:700; }
+  .tier-tag{
+    display:inline-block; background:var(--lime); color:var(--lime-text);
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:7.4pt;
+    letter-spacing:0.1em; text-transform:uppercase; padding:0.025in 0.09in; margin-bottom:0.08in;
+  }
+  .tier-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0.16in; }
+
+  /* Cinematic robot showcase (page 5) */
+  .carousel{ position:relative; }
+  .showcase{ margin-top:0.18in; }
+  .car-track{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    border:1px solid var(--line); background:#0c0c0c;
+  }
+  .car-track::-webkit-scrollbar{ display:none; }
+  .slide{ margin:0; flex:0 0 100%; scroll-snap-align:center; }
+  .slide .stage{ position:relative; width:100%; aspect-ratio:16 / 9; overflow:hidden; background:#0c0c0c; }
+  .slide .stage img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:var(--pos,center); display:block; }
+  .slide .stage::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.32) 34%, rgba(0,0,0,0) 58%); }
+  .stage-cap{ position:absolute; left:0.3in; right:1.2in; bottom:0.26in; z-index:2; border-left:3px solid var(--lime); padding-left:0.17in; }
+  .stage-cap b{ display:block; font-family:'Exo 2',sans-serif; font-weight:800; font-size:17pt; letter-spacing:-0.01em; line-height:1.04; color:#fff; }
+  .stage-cap span{ display:block; margin-top:0.06in; font-family:'Raleway',sans-serif; font-size:10pt; color:rgba(255,255,255,0.86); }
+  .show-note{ font-family:'Raleway',sans-serif; font-size:8.4pt; line-height:1.45; color:#A3A3A3; margin-top:0.11in; }
+  /* Closing page: big square apparel video beside the contact card */
+  .close-feature{ display:grid; grid-template-columns:2.85in 1fr; gap:0.26in; align-items:center; }
+  .card-note{ margin-top:0.09in; padding-top:0.08in; border-top:1px solid rgba(26,26,26,0.2); font-size:9.2pt; line-height:1.4; }
+  .apparel-big{ margin:0; }
+  .apparel-big .media{ position:relative; width:100%; aspect-ratio:1 / 1; overflow:hidden; background:#0c0c0c; border:1px solid var(--line); }
+  .apparel-big .media video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .apparel-big figcaption{ font-family:'Raleway',sans-serif; font-size:8.2pt; line-height:1.4; color:#A3A3A3; margin-top:0.08in; }
+  .ex-tag{
+    position:absolute; left:0; top:0; z-index:2; background:var(--lime); color:var(--lime-text);
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:7.5pt; letter-spacing:0.06em;
+    text-transform:uppercase; padding:0.03in 0.08in;
+  }
+  .car-btn{
+    position:absolute; top:50%; transform:translateY(-50%); width:0.44in; height:0.44in; border:0;
+    background:rgba(0,0,0,0.55); color:#fff; font-family:'Exo 2',sans-serif; font-size:17pt; line-height:1;
+    cursor:pointer; z-index:3; display:flex; align-items:center; justify-content:center;
+  }
+  .car-btn:hover{ background:var(--lime); color:var(--lime-text); }
+  .car-btn.prev{ left:0.1in; } .car-btn.next{ right:0.1in; }
+  .car-dots{ display:flex; gap:0.07in; justify-content:center; margin-top:0.12in; }
+  .car-dots button{ width:0.1in; height:0.1in; padding:0; border:0; border-radius:50%; background:#555; cursor:pointer; }
+  .car-dots button.on{ background:var(--lime); }
+
   .benefit-grid{
     margin-top:0.3in;
     display:grid;
@@ -345,6 +445,10 @@
     padding:0.16in 0.17in;
     min-height:0.9in;
   }
+  .benefit-grid.row4{ grid-template-columns:repeat(4,1fr); gap:0.12in; }
+  .benefit-grid.row4 .benefit{ min-height:0; padding:0.13in 0.13in; }
+  .benefit-grid.row4 .benefit b{ font-size:9.6pt; letter-spacing:0.06em; }
+  .benefit-grid.row4 .benefit span{ font-size:8.2pt; margin-top:0.06in; }
   .benefit b{
     display:block;
     font-family:'Exo 2',sans-serif;
@@ -553,6 +657,7 @@
   @media print{
     html, body{ background:transparent; }
     .page{ margin:0; box-shadow:none; }
+    .pdf-bar{ display:none !important; }
   }
 </style>
 </head>
@@ -562,29 +667,35 @@
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>2026 Partner Package</strong><br />Ontario FRC Team</div>
+    <div class="doc-meta"><strong>2027 Partner Package</strong><br />Ontario FRC Team</div>
   </div>
 
   <div class="label">01 / Sponsor Package</div>
   <h1 class="display cover-title" data-cms="cover.title" data-label="Cover headline (use *word* for green)" data-group="01 · Cover">Your brand on the <span class="lime">build</span>.</h1>
-  <p class="lede" data-cms="cover.lede" data-label="Cover paragraph" data-group="01 · Cover">SHFT Robotics is North York's new FRC team, building our first competition robot for the 2026 season. Sponsors pay for the robot, the tools, the travel, and the shop where students build it.</p>
+  <p class="lede" data-cms="cover.lede" data-label="Cover paragraph" data-group="01 · Cover">SHFT Robotics is North York's new FRC team, building our first competition robot for the 2027 season. Sponsors pay for the robot, the tools, the travel, and the shop where students build it.</p>
 
   <div class="ask">
-    <div class="ask-num" data-cms="cover.ask_amount" data-label="The ask, big number" data-group="01 · Cover">$140,000</div>
-    <div class="ask-cap" data-cms="cover.ask_caption" data-label="The ask, caption (use *b* for white)" data-group="01 · Cover">What our first competition season costs. <b>Founding sponsors from $250 to $10,000+.</b></div>
+    <div class="ask-cap" data-cms="cover.ask_caption" data-label="The ask, caption (use *b* for white)" data-group="01 · Cover">Founding sponsors start at $250 and go up to $10,000+. <b>Every level keeps a student building.</b></div>
   </div>
 
   <a class="cta-btn" href="mailto:team@shftrobotics.com?subject=SHFT%20sponsorship" data-cms="cover.cta" data-label="Button text" data-group="01 · Cover">Become a sponsor</a>
 
   <div class="cover-grid">
-    <div class="hero-panel">
-      <b data-cms="cover.hero_title" data-label="Green panel headline" data-group="01 · Cover">Founding sponsor is only true once.</b>
-      <span data-cms="cover.hero_sub" data-label="Green panel subline" data-group="01 · Cover">Your logo on the first robot, the first reveal, the first apparel run.</span>
-    </div>
-    <div class="stat-stack">
-      <div class="stat"><b data-cms="cover.stat1_value" data-label="Stat 1 value" data-group="01 · Cover">$140K</b><span data-cms="cover.stat1_label" data-label="Stat 1 label" data-group="01 · Cover">First-season goal</span></div>
-      <div class="stat"><b data-cms="cover.stat2_value" data-label="Stat 2 value" data-group="01 · Cover">2026</b><span data-cms="cover.stat2_label" data-label="Stat 2 label" data-group="01 · Cover">First competition season</span></div>
-      <div class="stat"><b data-cms="cover.stat3_value" data-label="Stat 3 value" data-group="01 · Cover">6</b><span data-cms="cover.stat3_label" data-label="Stat 3 label" data-group="01 · Cover">Student subteams</span></div>
+    <figure class="cover-photo">
+      <img src="shop-lab-2.png" alt="The SHFT build shop in North York: workbenches, tool walls, and a central build table" />
+      <figcaption data-cms="cover.photo_cap" data-label="Cover photo caption" data-group="01 · Cover">Our build space in North York.</figcaption>
+    </figure>
+    <div class="cover-right">
+      <div class="hero-panel">
+        <b data-cms="cover.hero_title" data-label="Green panel headline" data-group="01 · Cover">A first season happens once.</b>
+        <p data-cms="cover.hero_mid" data-label="Green panel sentence" data-group="01 · Cover" style="font-family:'Exo 2',sans-serif;font-weight:600;font-size:10.5pt;line-height:1.4;color:rgba(26,26,26,0.82);margin:0">Sign on now and your name is part of how SHFT starts: the first robot, the first reveal, the first apparel run.</p>
+        <span data-cms="cover.hero_sub" data-label="Green panel subline" data-group="01 · Cover">Founding partner &middot; 2027 season</span>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b data-cms="cover.stat1_value" data-label="Stat 1 value" data-group="01 · Cover">2026</b><span data-cms="cover.stat1_label" data-label="Stat 1 label" data-group="01 · Cover">Team founded</span></div>
+        <div class="stat"><b data-cms="cover.stat2_value" data-label="Stat 2 value" data-group="01 · Cover">2027</b><span data-cms="cover.stat2_label" data-label="Stat 2 label" data-group="01 · Cover">First season</span></div>
+        <div class="stat"><b data-cms="cover.stat3_value" data-label="Stat 3 value" data-group="01 · Cover">6</b><span data-cms="cover.stat3_label" data-label="Stat 3 label" data-group="01 · Cover">Student subteams</span></div>
+      </div>
     </div>
   </div>
 
@@ -600,12 +711,12 @@
 
   <div class="label">02 / Funding Map</div>
   <h2 class="display section-title" data-cms="fund.title" data-label="Headline (use *word* for green)" data-group="02 · Funding">Every dollar moves the robot forward.</h2>
-  <p class="lede" data-cms="fund.lede" data-label="Paragraph" data-group="02 · Funding">Our first competition season runs on about $140,000: registration, parts, tools, travel, and the shop behind it. Here is exactly where it goes.</p>
+  <p class="lede" data-cms="fund.lede" data-label="Paragraph" data-group="02 · Funding">A competition season takes registration, parts, tools, travel, and a shop to build in. Here is exactly where sponsor support goes.</p>
 
   <div class="budget" style="display:block;margin-top:0.3in">
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.12in;font-family:'Exo 2',sans-serif">
-      <span style="font-weight:800;font-size:9pt;letter-spacing:0.14em;text-transform:uppercase;color:#A3A3A3" data-cms="fund.bar_label" data-label="Bar label" data-group="02 · Funding">Where your money goes</span>
-      <span style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:15pt;color:#A6FF00" data-cms="fund.bar_total" data-label="Bar total" data-group="02 · Funding">$140,000</span>
+      <span style="font-weight:800;font-size:9pt;letter-spacing:0.14em;text-transform:uppercase;color:#A3A3A3" data-cms="fund.bar_label" data-label="Bar label" data-group="02 · Funding">Where support goes</span>
+      <span style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:15pt;color:#A6FF00" data-cms="fund.bar_total" data-label="Bar total" data-group="02 · Funding">By share</span>
     </div>
     <div style="display:flex;width:100%;height:0.46in;border:1px solid #333">
       <div style="width:40%;background:#A6FF00"></div>
@@ -615,20 +726,26 @@
       <div style="width:10%;background:#2A4100"></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.12in;margin-top:0.18in">
-      <div style="border-top:3px solid #A6FF00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b1_label" data-label="Budget 1 label" data-group="02 · Funding">Robot &amp; electronics</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b1_amount" data-label="Budget 1 amount" data-group="02 · Funding">$56,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b1_pct" data-label="Budget 1 percent" data-group="02 · Funding">40%</div></div>
-      <div style="border-top:3px solid #7FCC00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b2_label" data-label="Budget 2 label" data-group="02 · Funding">Registration</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b2_amount" data-label="Budget 2 amount" data-group="02 · Funding">$28,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b2_pct" data-label="Budget 2 percent" data-group="02 · Funding">20%</div></div>
-      <div style="border-top:3px solid #5A8C00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b3_label" data-label="Budget 3 label" data-group="02 · Funding">Travel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b3_amount" data-label="Budget 3 amount" data-group="02 · Funding">$21,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b3_pct" data-label="Budget 3 percent" data-group="02 · Funding">15%</div></div>
-      <div style="border-top:3px solid #3E6100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b4_label" data-label="Budget 4 label" data-group="02 · Funding">Tools &amp; safety</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b4_amount" data-label="Budget 4 amount" data-group="02 · Funding">$21,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b4_pct" data-label="Budget 4 percent" data-group="02 · Funding">15%</div></div>
-      <div style="border-top:3px solid #2A4100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b5_label" data-label="Budget 5 label" data-group="02 · Funding">Outreach &amp; apparel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b5_amount" data-label="Budget 5 amount" data-group="02 · Funding">$14,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b5_pct" data-label="Budget 5 percent" data-group="02 · Funding">10%</div></div>
+      <div style="border-top:3px solid #A6FF00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b1_label" data-label="Budget 1 label" data-group="02 · Funding">Robot &amp; electronics</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b1_amount" data-label="Budget 1 amount" data-group="02 · Funding">40%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b1_pct" data-label="Budget 1 percent" data-group="02 · Funding">Largest single cost</div></div>
+      <div style="border-top:3px solid #7FCC00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b2_label" data-label="Budget 2 label" data-group="02 · Funding">Registration</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b2_amount" data-label="Budget 2 amount" data-group="02 · Funding">20%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b2_pct" data-label="Budget 2 percent" data-group="02 · Funding">Event entry fees</div></div>
+      <div style="border-top:3px solid #5A8C00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b3_label" data-label="Budget 3 label" data-group="02 · Funding">Travel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b3_amount" data-label="Budget 3 amount" data-group="02 · Funding">15%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b3_pct" data-label="Budget 3 percent" data-group="02 · Funding">Getting to events</div></div>
+      <div style="border-top:3px solid #3E6100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b4_label" data-label="Budget 4 label" data-group="02 · Funding">Tools &amp; safety</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b4_amount" data-label="Budget 4 amount" data-group="02 · Funding">15%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b4_pct" data-label="Budget 4 percent" data-group="02 · Funding">Building safely</div></div>
+      <div style="border-top:3px solid #2A4100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b5_label" data-label="Budget 5 label" data-group="02 · Funding">Outreach &amp; apparel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b5_amount" data-label="Budget 5 amount" data-group="02 · Funding">10%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b5_pct" data-label="Budget 5 percent" data-group="02 · Funding">Pit &amp; team gear</div></div>
     </div>
     <p class="body-copy" style="font-size:8.4pt;margin-top:0.12in;color:#737373" data-cms="fund.b1_note" data-label="Footnote under robot line" data-group="02 · Funding">Robot and electronics includes a practice robot, spare parts, and competition field elements to build on.</p>
   </div>
 
-  <div class="benefit-grid">
-    <div class="benefit"><b data-cms="fund.way1_title" data-label="Way to give 1 title" data-group="02 · Funding">Cash support</b><span data-cms="fund.way1_body" data-label="Way to give 1 body" data-group="02 · Funding">Directly funds purchases, registration, shipping, and event costs.</span></div>
-    <div class="benefit"><b data-cms="fund.way2_title" data-label="Way to give 2 title" data-group="02 · Funding">In-kind support</b><span data-cms="fund.way2_body" data-label="Way to give 2 body" data-group="02 · Funding">Materials, machining, printing, tools, food, transportation, space, and services count toward tier value.</span></div>
-    <div class="benefit"><b data-cms="fund.way3_title" data-label="Way to give 3 title" data-group="02 · Funding">Mentor support</b><span data-cms="fund.way3_body" data-label="Way to give 3 body" data-group="02 · Funding">Engineers, designers, machinists, operators, and project managers can mentor students.</span></div>
-    <div class="benefit"><b data-cms="fund.way4_title" data-label="Way to give 4 title" data-group="02 · Funding">Event support</b><span data-cms="fund.way4_body" data-label="Way to give 4 body" data-group="02 · Funding">Host a demo, sponsor an open house, or bring SHFT to a company STEM day.</span></div>
+  <div class="give-band">
+    <figure class="give-photo">
+      <img src="shop-lab-1.png" alt="Students' build space at SHFT: tool wall, workbenches, and a shared build table" />
+      <figcaption data-cms="fund.photo_cap" data-label="Funding photo caption" data-group="02 · Funding">Where the work happens.</figcaption>
+    </figure>
+    <div class="benefit-grid">
+      <div class="benefit"><b data-cms="fund.way1_title" data-label="Way to give 1 title" data-group="02 · Funding">Cash support</b><span data-cms="fund.way1_body" data-label="Way to give 1 body" data-group="02 · Funding">Directly funds purchases, registration, shipping, and event costs.</span></div>
+      <div class="benefit"><b data-cms="fund.way2_title" data-label="Way to give 2 title" data-group="02 · Funding">In-kind support</b><span data-cms="fund.way2_body" data-label="Way to give 2 body" data-group="02 · Funding">Materials, machining, printing, tools, food, transport, space, and services count toward tier value.</span></div>
+      <div class="benefit"><b data-cms="fund.way3_title" data-label="Way to give 3 title" data-group="02 · Funding">Mentor support</b><span data-cms="fund.way3_body" data-label="Way to give 3 body" data-group="02 · Funding">Engineers, designers, machinists, operators, and project managers can mentor students.</span></div>
+      <div class="benefit"><b data-cms="fund.way4_title" data-label="Way to give 4 title" data-group="02 · Funding">Event support</b><span data-cms="fund.way4_body" data-label="Way to give 4 body" data-group="02 · Funding">Host a demo, sponsor an open house, or bring SHFT to a company STEM day.</span></div>
+    </div>
   </div>
 
   <div class="budget-note"><strong data-cms="fund.note_lead" data-label="Funds-handled lead" data-group="02 · Funding">How funds are handled:</strong> <span data-cms="fund.note_body" data-label="Funds-handled body" data-group="02 · Funding">Contributions support a youth robotics program. We confirm the payee and any available tax treatment with you directly when you come on board, and every sponsor receives an acknowledgment and an invoice for their records.</span></div>
@@ -647,36 +764,49 @@
   <h2 class="display section-title" data-cms="tiers.title" data-label="Headline (use *word* for green)" data-group="03 · Tiers">Choose a tier.</h2>
   <p class="lede" data-cms="tiers.lede" data-label="Paragraph" data-group="03 · Tiers">Each level buys more logo placement and access. Benefits are cumulative. In-kind contributions are welcomed and credited at fair market value when they offset real season costs.</p>
 
-  <div class="tier-table">
-    <div class="tier-row head"><div>Tier</div><div>Support</div><div>Recognition</div></div>
-    <div class="tier-row">
-      <div class="tier-name" data-cms="tiers.t1_name" data-label="Tier 1 name" data-group="03 · Tiers">Founding Partner</div>
-      <div class="tier-amount" data-cms="tiers.t1_amount" data-label="Tier 1 amount" data-group="03 · Tiers">$10,000+</div>
-      <div class="tier-copy" data-cms="tiers.t1_copy" data-label="Tier 1 benefits (use *word* for white)" data-group="03 · Tiers">*Premier logo placement* on our first competition robot (debuting the 2026 season, per FIRST robot rules), plus pit banner, team apparel, website, sponsor wall, season recap, a social launch post, and open house materials. Includes a robot demo once our competition robot is built.</div>
+  <div class="tiers">
+    <div class="tier-card feat">
+      <span class="tier-tag">Most visible &middot; founding</span>
+      <div class="top">
+        <div class="tname" data-cms="tiers.t1_name" data-label="Tier 1 name" data-group="03 · Tiers">Founding Partner</div>
+        <div class="tprice" data-cms="tiers.t1_amount" data-label="Tier 1 amount" data-group="03 · Tiers">$10,000+</div>
+      </div>
+      <div class="tdesc" data-cms="tiers.t1_copy" data-label="Tier 1 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Premier logo, first position on the robot</strong> (debuts 2027, per FIRST robot rules). Pit banner, apparel, website, sponsor wall, season recap, a social launch post, and open house materials. Includes a robot demo once it is built.</div>
     </div>
-    <div class="tier-row">
-      <div class="tier-name" data-cms="tiers.t2_name" data-label="Tier 2 name" data-group="03 · Tiers">Platinum</div>
-      <div class="tier-amount" data-cms="tiers.t2_amount" data-label="Tier 2 amount" data-group="03 · Tiers">$5,000+</div>
-      <div class="tier-copy" data-cms="tiers.t2_copy" data-label="Tier 2 benefits (use *word* for white)" data-group="03 · Tiers">*Large logo placement* on our first competition robot (per FIRST robot rules), plus pit banner, team apparel, website, sponsor wall, and a sponsor social feature. Includes a workshop tour when the schedule allows.</div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-name" data-cms="tiers.t3_name" data-label="Tier 3 name" data-group="03 · Tiers">Gold</div>
-      <div class="tier-amount" data-cms="tiers.t3_amount" data-label="Tier 3 amount" data-group="03 · Tiers">$2,500+</div>
-      <div class="tier-copy" data-cms="tiers.t3_copy" data-label="Tier 3 benefits (use *word* for white)" data-group="03 · Tiers">*Medium logo placement* on the pit banner, team apparel, website, and sponsor wall, plus a social thank-you and a season recap update.</div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-name" data-cms="tiers.t4_name" data-label="Tier 4 name" data-group="03 · Tiers">Silver</div>
-      <div class="tier-amount" data-cms="tiers.t4_amount" data-label="Tier 4 amount" data-group="03 · Tiers">$1,000+</div>
-      <div class="tier-copy" data-cms="tiers.t4_copy" data-label="Tier 4 benefits (use *word* for white)" data-group="03 · Tiers">*Small logo placement* on the pit banner or team apparel, website sponsor listing, sponsor wall, and a social thank-you.</div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-name" data-cms="tiers.t5_name" data-label="Tier 5 name" data-group="03 · Tiers">Community</div>
-      <div class="tier-amount" data-cms="tiers.t5_amount" data-label="Tier 5 amount" data-group="03 · Tiers">$250+</div>
-      <div class="tier-copy" data-cms="tiers.t5_copy" data-label="Tier 5 benefits (use *word* for white)" data-group="03 · Tiers">*Name listing* on the website and sponsor wall, plus a social thank-you and an end-of-season note. Built for families, alumni, and local supporters.</div>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t2_name" data-label="Tier 2 name" data-group="03 · Tiers">Platinum</div>
+          <div class="tprice" data-cms="tiers.t2_amount" data-label="Tier 2 amount" data-group="03 · Tiers">$5,000+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t2_copy" data-label="Tier 2 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Large logo on the robot.</strong> Pit banner, apparel, website, sponsor wall, and a sponsor social feature. Workshop tour when the schedule allows.</div>
+      </div>
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t3_name" data-label="Tier 3 name" data-group="03 · Tiers">Gold</div>
+          <div class="tprice" data-cms="tiers.t3_amount" data-label="Tier 3 amount" data-group="03 · Tiers">$2,500+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t3_copy" data-label="Tier 3 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Medium logo.</strong> Pit banner, apparel, website, and sponsor wall, plus a social thank-you and a season recap update.</div>
+      </div>
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t4_name" data-label="Tier 4 name" data-group="03 · Tiers">Silver</div>
+          <div class="tprice" data-cms="tiers.t4_amount" data-label="Tier 4 amount" data-group="03 · Tiers">$1,000+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t4_copy" data-label="Tier 4 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Small logo.</strong> Pit banner or apparel, website listing, sponsor wall, and a social thank-you.</div>
+      </div>
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t5_name" data-label="Tier 5 name" data-group="03 · Tiers">Community</div>
+          <div class="tprice" data-cms="tiers.t5_amount" data-label="Tier 5 amount" data-group="03 · Tiers">$250+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t5_copy" data-label="Tier 5 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Name listing</strong> on the website and sponsor wall, plus a social thank-you. For families, alumni, and local supporters.</div>
+      </div>
     </div>
   </div>
 
-  <p class="body-copy" style="margin-top:0.16in" data-cms="tiers.foot" data-label="Closing note" data-group="03 · Tiers">Benefits reflect our planned first competition season. Some deliverables debut as the season ramps up. Robot placement is reserved for Founding Partner and Platinum, per FIRST robot rules.</p>
+  <p class="body-copy" style="margin-top:0.16in" data-cms="tiers.foot" data-label="Closing note" data-group="03 · Tiers">Benefits are cumulative and reflect our planned first season. Robot placement is reserved for Founding Partner and Platinum, per FIRST robot rules.</p>
 
   <div class="footer"><span>Sponsor tiers</span><span class="lime">Cumulative benefits</span><span>Page 03</span></div>
 </section>
@@ -690,11 +820,11 @@
 
   <div class="label">04 / Why Back a Rookie</div>
   <h2 class="display section-title" data-cms="who.title" data-label="Headline (use *word* for green)" data-group="04 · Who We Are">A team worth backing in year one.</h2>
-  <p class="lede" data-cms="who.lede" data-label="Paragraph" data-group="04 · Who We Are">You will not find a competition record here yet. What you will find is a real program: students doing the actual engineering, mentors who have built robots before, and a founding window that closes once.</p>
+  <p class="lede" data-cms="who.lede" data-label="Paragraph" data-group="04 · Who We Are">You will not find a competition record here yet. What you will find is a real program: students doing the actual engineering, and mentors who have built robots before.</p>
 
   <div class="who-grid">
     <div class="who-item"><b data-cms="who.fact1_title" data-label="Fact 1 title" data-group="04 · Who We Are">Who runs it</b><span data-cms="who.fact1_body" data-label="Fact 1 body" data-group="04 · Who We Are">Malhar Soni, Team Director and Head Coach, with mentors who have hands-on FRC build and competition experience on every subteam.</span></div>
-    <div class="who-item"><b data-cms="who.fact2_title" data-label="Fact 2 title" data-group="04 · Who We Are">Where we are</b><span data-cms="who.fact2_body" data-label="Fact 2 body" data-group="04 · Who We Are">Based in North York, Ontario. We compete at Ontario FRC events in the 2026 season.</span></div>
+    <div class="who-item"><b data-cms="who.fact2_title" data-label="Fact 2 title" data-group="04 · Who We Are">Where we are</b><span data-cms="who.fact2_body" data-label="Fact 2 body" data-group="04 · Who We Are">Based in North York, Ontario. We compete at Ontario FRC events in the 2027 season.</span></div>
     <div class="who-item"><b data-cms="who.fact3_title" data-label="Fact 3 title" data-group="04 · Who We Are">What students do</b><span data-cms="who.fact3_body" data-label="Fact 3 body" data-group="04 · Who We Are">Six subteams: CAD, programming, fabrication, strategy, media, and business. Students design, machine, and program the robot themselves.</span></div>
   </div>
 
@@ -729,19 +859,38 @@
 
   <div class="label">05 / Logo Placement</div>
   <h2 class="display section-title" data-cms="logo.title" data-label="Headline (use *word* for green)" data-group="05 · Logo Placement">Where your logo lives.</h2>
-  <p class="body-copy" style="margin-top:0.12in" data-cms="logo.intro" data-label="Intro (use *word* for white)" data-group="05 · Logo Placement">*This is how sponsor logos ride into competition.* On the robot itself, in the arena and in the match photos and video from every event. Robot placement is reserved for Founding Partner and Platinum, per FIRST robot rules.</p>
+  <p class="body-copy" style="margin-top:0.1in" data-cms="logo.intro" data-label="Intro (use *word* for white)" data-group="05 · Logo Placement"><span class="lime">Sponsor logos ride into competition</span> on the robot, in the arena, and in every match photo from the season.</p>
 
-  <div class="card" style="margin-top:0.2in;min-height:auto;padding:0.18in">
-    <figure style="margin:0">
-      <div style="position:relative;width:100%;aspect-ratio:16 / 9;background:#0c0c0c;overflow:hidden">
-        <img src="robot-sponsors-2056.jpeg" alt="An FRC robot driving at competition with sponsor logos mounted on the panel above the bumper" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" />
-        <span style="position:absolute;left:0;top:0;background:var(--lime);color:var(--lime-text);font-family:'Exo 2',sans-serif;font-weight:800;font-size:7.5pt;letter-spacing:0.06em;text-transform:uppercase;padding:0.03in 0.08in">Example · FRC 2056</span>
-      </div>
-      <figcaption style="font-family:'Raleway',sans-serif;font-size:8.6pt;line-height:1.45;color:#A3A3A3;margin-top:0.1in" data-cms="logo.caption" data-label="Photo caption" data-group="05 · Logo Placement">A sponsor panel rides on the robot, moving in front of every camera in the arena. Founding partners sit largest and first. Photo is another FRC team, shown as a real example. SHFT's first competition robot debuts in 2026.</figcaption>
-    </figure>
+  <div class="carousel showcase" id="robotCar">
+    <div class="car-track">
+      <figure class="slide">
+        <div class="stage" style="--pos:center 42%">
+          <span class="ex-tag">Example &middot; FRC 1323</span>
+          <img src="robot-1323-match.jpeg" alt="An FRC robot competing on the field, sponsor logos printed across the panel above its bumper" />
+          <div class="stage-cap">
+            <b>Your logo rides into every match.</b>
+            <span>On the robot, in the arena, on every camera.</span>
+          </div>
+        </div>
+      </figure>
+      <figure class="slide">
+        <div class="stage" style="--pos:center 52%">
+          <span class="ex-tag">Example &middot; FRC 1323</span>
+          <img src="robot-sponsors-1323.jpeg" alt="An FRC robot whose side panels are covered in sponsor logos" />
+          <div class="stage-cap">
+            <b>Room for every partner.</b>
+            <span>Founding sponsors sit largest, and first.</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <button class="car-btn prev" type="button" aria-label="Previous">&#8249;</button>
+    <button class="car-btn next" type="button" aria-label="Next">&#8250;</button>
+    <div class="car-dots" aria-hidden="true"></div>
   </div>
+  <p class="show-note" data-cms="logo.caption" data-label="Photo caption" data-group="05 · Logo Placement">Robot placement is reserved for Founding Partner and Platinum, per FIRST rules. Photos are from another FRC team, shown as real examples. SHFT's first competition robot debuts in 2027.</p>
 
-  <div class="benefit-grid" style="margin-top:0.24in">
+  <div class="benefit-grid row4" style="margin-top:0.2in">
     <div class="benefit"><b data-cms="logo.spot1_title" data-label="Spot 1 title" data-group="05 · Logo Placement">On the robot</b><span data-cms="logo.spot1_body" data-label="Spot 1 body" data-group="05 · Logo Placement">A sponsor panel carries your logo into every match, in the arena and on camera.</span></div>
     <div class="benefit"><b data-cms="logo.spot2_title" data-label="Spot 2 title" data-group="05 · Logo Placement">In the pit</b><span data-cms="logo.spot2_body" data-label="Spot 2 body" data-group="05 · Logo Placement">The pit banner faces every team, family, and judge who walks the event floor.</span></div>
     <div class="benefit"><b data-cms="logo.spot3_title" data-label="Spot 3 title" data-group="05 · Logo Placement">On apparel</b><span data-cms="logo.spot3_body" data-label="Spot 3 body" data-group="05 · Logo Placement">Sponsor logos ride on team shirts at events, demos, and outreach.</span></div>
@@ -762,12 +911,16 @@
   <h2 class="display section-title" data-cms="close.title" data-label="Headline (use *word* for green)" data-group="06 · Say Yes">Ready to sponsor SHFT?</h2>
   <p class="lede" data-cms="close.lede" data-label="Paragraph" data-group="06 · Say Yes">Start with a short conversation. We confirm the right tier, collect your logo, and get every detail right before anything goes public.</p>
 
-  <div class="deadline">
+  <div class="deadline" style="padding:0.13in 0.2in;margin-top:0.12in">
     <div class="deadline-label" data-cms="close.deadline_label" data-label="Deadline sentence" data-group="06 · Say Yes">Founding placement on the first robot, pit, and apparel closes when our season starts:</div>
     <div class="deadline-date" data-cms="close.deadline_date" data-label="Deadline date (big)" data-group="06 · Say Yes">September 10</div>
   </div>
 
-  <div class="contact-grid" style="margin-top:0.2in">
+  <div class="close-feature" style="margin-top:0.14in">
+    <figure class="apparel-big">
+      <div class="media"><span class="ex-tag">On apparel</span><video src="tee-sponsors.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+      <figcaption data-cms="close.apparel_note" data-label="Apparel note" data-group="06 · Say Yes">Founding partners ride on team apparel, worn at every event, demo, and outreach day.</figcaption>
+    </figure>
     <div class="card green">
       <h3 data-cms="close.contact_title" data-label="Contact card title" data-group="06 · Say Yes">Contact</h3>
       <p>
@@ -777,16 +930,7 @@
         <strong>Instagram:</strong> <span data-cms="close.contact_ig" data-label="Instagram" data-group="06 · Say Yes">@shftrobotics</span><br />
         <strong>Location:</strong> <span data-cms="close.contact_loc" data-label="Location" data-group="06 · Say Yes">North York, Ontario</span>
       </p>
-    </div>
-    <div class="card">
-      <h3 data-cms="close.checklist_title" data-label="Checklist title" data-group="06 · Say Yes">Sponsor checklist</h3>
-      <ul class="checklist">
-        <li data-cms="close.check1" data-label="Checklist item 1" data-group="06 · Say Yes">Choose a tier or describe in-kind support.</li>
-        <li data-cms="close.check2" data-label="Checklist item 2" data-group="06 · Say Yes">Send an SVG, PNG, or vector logo file.</li>
-        <li data-cms="close.check3" data-label="Checklist item 3" data-group="06 · Say Yes">Confirm your sponsor display name and URL.</li>
-        <li data-cms="close.check4" data-label="Checklist item 4" data-group="06 · Say Yes">Confirm payment or donation details.</li>
-      </ul>
-      <p class="body-copy" style="margin-top:0.1in" data-cms="close.checklist_note" data-label="Checklist note" data-group="06 · Say Yes">We send an invoice and payment instructions once you choose a tier.</p>
+      <p class="card-note" data-cms="close.checklist_note" data-label="To-start line" data-group="06 · Say Yes"><strong>To start:</strong> pick a tier, send a vector logo, and confirm your display name. We send an invoice once you choose.</p>
     </div>
   </div>
 
@@ -802,8 +946,12 @@
     </div>
   </a>
 
-  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Founding partners, 2026 season.</span><span>Page 06</span></div>
+  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Founding partners, 2027 season.</span><span>Page 06</span></div>
 </section>
+
+<div class="pdf-bar">
+  <a class="pdf-dl" href="shft-sponsorship-package.pdf" download data-cms="close.pdf_label" data-label="PDF download button" data-group="06 · Say Yes">&#8681;&nbsp; Download the package (PDF)</a>
+</div>
 
 <script>
   /* CMS overlay. The inline copy above is the default, so the deck works and
@@ -854,6 +1002,34 @@
     };
     fit();
     window.addEventListener('resize', fit);
+  })();
+
+  /* Robot carousel: arrows, swipe (native scroll-snap), and dots. */
+  (function () {
+    var car = document.getElementById('robotCar');
+    if (!car) return;
+    var track = car.querySelector('.car-track');
+    var slides = car.querySelectorAll('.slide');
+    var dots = car.querySelector('.car-dots');
+    var cur = function () { return Math.round(track.scrollLeft / track.clientWidth); };
+    var go = function (i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+    };
+    slides.forEach(function (_, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      if (i === 0) b.className = 'on';
+      b.addEventListener('click', function () { go(i); });
+      dots.appendChild(b);
+    });
+    var sync = function () {
+      var c = cur();
+      dots.querySelectorAll('button').forEach(function (d, i) { d.className = i === c ? 'on' : ''; });
+    };
+    car.querySelector('.next').addEventListener('click', function () { go(cur() + 1); });
+    car.querySelector('.prev').addEventListener('click', function () { go(cur() - 1); });
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); });
   })();
 </script>
 
