@@ -31,7 +31,7 @@ cp "$SRC_DIR/edit.html" "$OUT/"
 cp "$SRC_DIR/qr-email.svg"             "$OUT/"
 cp "$SRC_DIR/robot-1323-match.jpeg"    "$OUT/"
 cp "$SRC_DIR/robot-sponsors-1323.jpeg" "$OUT/"
-cp "$SRC_DIR/frc-kickoff.jpg"          "$OUT/"
+cp "$SRC_DIR/frc-first-team.jpg"       "$OUT/"
 cp "$SRC_DIR/frc-students.jpg"         "$OUT/"
 cp "$SRC_DIR/tee-sponsors.mp4"         "$OUT/"
 # Downloadable PDF of the deck, generated next to this script (see below).

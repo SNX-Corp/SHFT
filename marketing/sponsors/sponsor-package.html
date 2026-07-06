@@ -251,6 +251,24 @@
   .stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.08in; }
   .stat-row .stat{ min-height:0; padding:0.13in 0.14in; }
   .stat-row .stat b{ font-size:16pt; }
+  /* Big cover photo: fills the bottom half of page 1. */
+  .cover-hero{
+    position:relative; margin:0.24in 0 0; width:100%;
+    flex:1 1 auto; min-height:4.7in;
+    border:1px solid var(--line); overflow:hidden; background:#0c0c0c;
+  }
+  .cover-hero img{ width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
+  .cover-hero .cap{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding:1in 0.34in 0.26in; border-left:4px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.93) 8%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 100%);
+  }
+  .cover-hero .hstats{ display:flex; gap:0.42in; margin-bottom:0.16in; }
+  .cover-hero .hstats b{ display:block; font-family:'Orbitron',sans-serif; font-weight:900; font-size:17pt; line-height:1; color:var(--lime); }
+  .cover-hero .hstats span{ display:block; margin-top:0.03in; font-family:'Exo 2',sans-serif; font-size:7.4pt; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.82); }
+  .cover-hero .htitle{ display:block; font-family:'Orbitron',sans-serif; font-weight:900; font-size:23pt; line-height:0.98; letter-spacing:-0.02em; text-transform:uppercase; color:#fff; }
+  .cover-hero .htitle .lime{ color:var(--lime); }
+  .cover-hero .sub{ display:block; margin-top:0.1in; font-family:'Exo 2',sans-serif; font-weight:700; font-size:9pt; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.85); }
 
   /* Funding page: build-space photo beside the ways to give. */
   .give-band{ display:grid; grid-template-columns:0.82fr 1.18fr; gap:0.18in; align-items:stretch; margin-top:0.24in; }
@@ -680,26 +698,18 @@
 
   <a class="cta-btn" href="mailto:team@shftrobotics.com?subject=SHFT%20sponsorship" data-cms="cover.cta" data-label="Button text" data-group="01 · Cover">Become a sponsor</a>
 
-  <div class="cover-grid">
-    <figure class="cover-photo">
-      <img src="frc-kickoff.jpg" alt="A large group of FIRST Robotics Competition students together at a season kickoff event" />
-      <figcaption data-cms="cover.photo_cap" data-label="Cover photo caption" data-group="01 · Cover">FIRST Robotics Competition kickoff.</figcaption>
-    </figure>
-    <div class="cover-right">
-      <div class="hero-panel">
-        <b data-cms="cover.hero_title" data-label="Green panel headline" data-group="01 · Cover">A first season happens once.</b>
-        <p data-cms="cover.hero_mid" data-label="Green panel sentence" data-group="01 · Cover" style="font-family:'Exo 2',sans-serif;font-weight:600;font-size:10.5pt;line-height:1.4;color:rgba(26,26,26,0.82);margin:0">Sign on now and your name is part of how SHFT starts: the first robot, the first reveal, the first apparel run.</p>
-        <span data-cms="cover.hero_sub" data-label="Green panel subline" data-group="01 · Cover">Founding partner &middot; 2027 season</span>
+  <figure class="cover-hero">
+    <img src="frc-first-team.jpg" alt="A FIRST Robotics Competition team gathered around the giant FIRST logo at the championship" />
+    <figcaption class="cap">
+      <div class="hstats">
+        <div><b data-cms="cover.stat1_value" data-label="Stat 1 value" data-group="01 · Cover">2026</b><span data-cms="cover.stat1_label" data-label="Stat 1 label" data-group="01 · Cover">Team founded</span></div>
+        <div><b data-cms="cover.stat2_value" data-label="Stat 2 value" data-group="01 · Cover">2027</b><span data-cms="cover.stat2_label" data-label="Stat 2 label" data-group="01 · Cover">First season</span></div>
+        <div><b data-cms="cover.stat3_value" data-label="Stat 3 value" data-group="01 · Cover">6</b><span data-cms="cover.stat3_label" data-label="Stat 3 label" data-group="01 · Cover">Student subteams</span></div>
       </div>
-      <div class="stat-row">
-        <div class="stat"><b data-cms="cover.stat1_value" data-label="Stat 1 value" data-group="01 · Cover">2026</b><span data-cms="cover.stat1_label" data-label="Stat 1 label" data-group="01 · Cover">Team founded</span></div>
-        <div class="stat"><b data-cms="cover.stat2_value" data-label="Stat 2 value" data-group="01 · Cover">2027</b><span data-cms="cover.stat2_label" data-label="Stat 2 label" data-group="01 · Cover">First season</span></div>
-        <div class="stat"><b data-cms="cover.stat3_value" data-label="Stat 3 value" data-group="01 · Cover">6</b><span data-cms="cover.stat3_label" data-label="Stat 3 label" data-group="01 · Cover">Student subteams</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">@SHFTROBOTICS</span><span>SHFTROBOTICS.COM</span></div>
+      <b class="htitle" data-cms="cover.hero_title" data-label="Photo overlay headline (use *word* for green)" data-group="01 · Cover">A first season happens once.</b>
+      <span class="sub" data-cms="cover.hero_sub" data-label="Photo overlay subline" data-group="01 · Cover">Founding partner &middot; 2027 season &middot; FIRST Robotics Competition</span>
+    </figcaption>
+  </figure>
 </section>
 
 <!-- ============ 02 / WHERE THE MONEY GOES ============ -->
