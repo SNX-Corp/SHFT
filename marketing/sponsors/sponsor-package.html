@@ -709,6 +709,13 @@
       width:0.62in; height:0.62in; display:flex; align-items:center; justify-content:center;
       background:rgba(0,0,0,0.55); color:var(--lime); font-size:15pt; padding-left:3px;
     }
+    /* The carousel is a screen feature. In print it must not overflow the page
+       width (a multi-slide flex track blows out the layout and makes Chrome
+       shrink the whole page). Show only the first slide, clipped. */
+    .car-track{ overflow:hidden !important; }
+    .slide:not(:first-child){ display:none !important; }
+    .car-btn, .car-dots{ display:none !important; }
+    html, body{ width:8.5in; overflow:hidden; }
   }
 </style>
 </head>
