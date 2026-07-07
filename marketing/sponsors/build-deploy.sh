@@ -35,7 +35,7 @@ cp "$SRC_DIR/robot-pit.jpg"            "$OUT/"
 cp "$SRC_DIR/robot-apparel-6358.jpg"   "$OUT/"
 cp "$SRC_DIR/frc-first-team.jpg"       "$OUT/"
 cp "$SRC_DIR/frc-gp.jpg"               "$OUT/"
-cp "$SRC_DIR/frc-students.jpg"         "$OUT/"
+cp "$SRC_DIR/frc-fund-girl.jpg"        "$OUT/"
 cp "$SRC_DIR/tee-sponsors.mp4"         "$OUT/"
 # Downloadable PDF of the deck, generated next to this script (see below).
 [ -f "$SRC_DIR/shft-sponsorship-package.pdf" ] && cp "$SRC_DIR/shft-sponsorship-package.pdf" "$OUT/"
