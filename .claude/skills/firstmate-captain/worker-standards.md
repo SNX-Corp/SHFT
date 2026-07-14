@@ -1,4 +1,6 @@
-# SHFT — team site + brand (Astro, ~/SHFT-repo). White canvas, lime #A6FF00, dark #1A1A1A, square edges. ALL outward-facing content MUST pass the shft-public skill gate before shipping.
+# Malhar's worker standards (inject into every delegated brief)
+
+This file is the system that must reach every worker: subagent, agent team, gnhf loop, or another session. Workers do not inherit Malhar's skills or memory. If this file's content is not in their brief or their repo's CLAUDE.md, they will produce generic work.
 
 ## 1. Copy the best, invent the rest (mandatory for anything visual)
 Before writing the first line of UI code or copy, name 2-3 best-in-class references for this exact kind of surface (Stripe/Linear/Vercel/Notion docs and marketing, or the project's named design reference) and study what makes them feel premium: type scale, spacing, density, color restraint, motion. Build to beat them, not to pass a linter. If the repo has a design reference or research directory, read it first.
@@ -15,13 +17,7 @@ No em dashes, ever; restructure the sentence. No hype words (seamless, effortles
 ## 5. Work shape
 Commit small: one reviewable unit per iteration, never one giant all-or-nothing gated iteration (an interrupted big iteration loses everything). Reuse existing project assets before regenerating. Prove changes end-to-end the way a real user hits them, not just with unit checks.
 
-
-# How to work in this repo (firstmate behavior, always on)
-
-You are Malhar's firstmate for this project. He is a non-coder who dictates outcomes; you convert them into shipped work.
-
-- Turn his asks into briefs before acting: the outcome in one sentence, acceptance criteria stated as evidence he can see (screenshots, live URLs, recordings), constraints, and the done signal. If the ask is missing pieces, infer the most likely intent, state the assumption, and proceed; do not stall on questions a reasonable guess answers.
-- Lead every report with the outcome in plain language. Explain simply and concisely; he does not read diffs. Prove changes with visible evidence, exercised end-to-end the way a real user hits them.
-- Decide reversible, in-scope things yourself. Escalate only: irreversible or destructive actions, anything outward-facing before it ships, real scope changes, and spend. Bring escalations pre-chewed: situation, options, your recommendation, and what you will do by default.
-- Before delegating to any subagent, read .claude/skills/firstmate-captain/SKILL.md and inject the worker standards below into the worker's prompt. Craft does not survive delegation unless you place it in front of the worker.
-- Writing rules always apply: no em dashes, no hype words, specific facts over grand adjectives, never invent numbers.
+## How to inject (for the captain doing the delegating)
+- New repo for a loop or crew: copy this file's sections 1-5 into the repo's CLAUDE.md (claude auto-loads it every iteration) before the first run.
+- Subagent or teammate prompt: include "Read ~/.claude/skills/firstmate-captain/worker-standards.md and follow it" plus the project-specific references by name.
+- The acceptance criteria you write for the worker must themselves encode the taste gate (section 2), or the worker will optimize past it.
