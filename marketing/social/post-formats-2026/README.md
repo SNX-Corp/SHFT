@@ -1,8 +1,19 @@
 # Instagram post formats (fall 2026)
 
-Eight on-brand frames, one per pillar plus a photo format and a story. Feed
-posts are 1080x1350 (4:5, Meta's current recommended feed size). The story is
-1080x1920 with text kept inside the safe zones.
+Two sets of on-brand frames. Feed posts are 1080x1350 (4:5, Meta's current
+recommended feed size). Stories are 1080x1920 with text kept inside the safe
+zones. A browsable preview of everything, with descriptions, is in
+`../../gallery/index.html`.
+
+## Set 2 (`v2-*.html` + `ig2.css`): varied layouts, photo backgrounds
+
+Five layout formats rotate (type poster, stat card, blurred photo tile, glass
+card, split band) so every post looks new while the grid stays one system. The
+photo backgrounds are real project photos: the lab (`assets/lab.png`) and
+competition footage stills (`assets/comp.jpg`, `assets/comp2.jpg`). The full
+grid mock is `preview/grid-preview.png`.
+
+## Set 1: flat typographic posters
 
 | File | Format | Pairs with caption |
 |------|--------|--------------------|
