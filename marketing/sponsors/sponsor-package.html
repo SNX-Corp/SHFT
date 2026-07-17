@@ -4,11 +4,16 @@
 <meta charset="utf-8" />
 <title>SHFT Robotics Sponsorship Package</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   @page { size: Letter; margin: 0; }
+
+  /* iOS Safari font boosting inflates text inside the zoomed pages and
+     collapses line heights. Lock text size to authored values. */
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
   :root{
     --ink:#1A1A1A;
@@ -117,6 +122,7 @@
   .cover-title{ font-size:47pt; max-width:7.1in; }
   .cover-title .lime{ color:var(--lime); }
   .section-title{ font-size:34pt; line-height:0.95; max-width:6.7in; }
+  .section-title .lime{ color:var(--lime); }
   .lede{
     max-width:6.4in;
     margin-top:0.22in;
@@ -125,12 +131,56 @@
     color:var(--muted);
     font-weight:500;
   }
+  .lede .lime{ color:var(--lime); }
   .body-copy{
     font-size:10.8pt;
     line-height:1.55;
     color:var(--muted);
   }
   .body-copy strong{ color:var(--white); font-weight:600; }
+  .body-copy .lime{ color:var(--lime); }
+
+  /* The ask, stated big on the cover. */
+  .ask{
+    margin-top:0.26in;
+    display:flex;
+    align-items:baseline;
+    gap:0.22in;
+    flex-wrap:wrap;
+  }
+  .ask-num{
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    font-size:44pt;
+    line-height:0.86;
+    letter-spacing:-0.035em;
+    color:var(--lime);
+  }
+  .ask-cap{
+    font-family:'Exo 2',sans-serif;
+    font-weight:700;
+    font-size:11pt;
+    line-height:1.32;
+    color:var(--muted);
+    max-width:3.1in;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .ask-cap b{ color:var(--white); font-weight:800; }
+
+  .cta-btn{
+    display:inline-block;
+    margin-top:0.24in;
+    background:var(--lime);
+    color:var(--lime-text);
+    font-family:'Exo 2',sans-serif;
+    font-weight:800;
+    font-size:10pt;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:0.13in 0.24in;
+    align-self:flex-start;
+  }
 
   .cover-grid{
     margin-top:auto;
@@ -150,8 +200,8 @@
   }
   .hero-panel b{
     font-family:'Orbitron',sans-serif;
-    font-size:23pt;
-    line-height:0.96;
+    font-size:18pt;
+    line-height:1.02;
     text-transform:uppercase;
     letter-spacing:-0.02em;
   }
@@ -191,6 +241,85 @@
     font-weight:800;
   }
 
+  /* Photo tile on the cover: real build space beside the founding message. */
+  .cover-photo{ position:relative; margin:0; border:1px solid var(--line); overflow:hidden; min-height:1.88in; background:#0c0c0c; }
+  .cover-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .cover-photo figcaption{
+    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:0.28in 0.16in 0.1in;
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:8.2pt; letter-spacing:0.1em;
+    text-transform:uppercase; color:#fff; border-left:3px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0));
+  }
+  .cover-right{ display:flex; flex-direction:column; gap:0.1in; }
+  .cover-right .hero-panel{ min-height:0; flex:1 1 auto; }
+  .stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.08in; }
+  .stat-row .stat{ min-height:0; padding:0.13in 0.14in; }
+  .stat-row .stat b{ font-size:16pt; }
+  /* Big cover photo: fills the bottom half of page 1. */
+  .cover-hero{
+    position:relative; margin:0.24in 0 0; width:100%;
+    flex:1 1 auto; min-height:4.7in;
+    border:1px solid var(--line); overflow:hidden; background:#0c0c0c;
+  }
+  .cover-hero img{ width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
+  .cover-hero .cap{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding:1in 0.34in 0.26in; border-left:4px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.93) 8%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 100%);
+  }
+  .cover-hero .hstats{ display:flex; gap:0.42in; margin-bottom:0.16in; }
+  .cover-hero .hstats b{ display:block; font-family:'Orbitron',sans-serif; font-weight:900; font-size:17pt; line-height:1; color:var(--lime); }
+  .cover-hero .hstats span{ display:block; margin-top:0.03in; font-family:'Exo 2',sans-serif; font-size:7.4pt; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.82); }
+  .cover-hero .htitle{ display:block; font-family:'Orbitron',sans-serif; font-weight:900; font-size:23pt; line-height:0.98; letter-spacing:-0.02em; text-transform:uppercase; color:#fff; }
+  .cover-hero .htitle .lime{ color:var(--lime); }
+  .cover-hero .sub{ display:block; margin-top:0.1in; font-family:'Exo 2',sans-serif; font-weight:700; font-size:9pt; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.85); }
+
+  /* Funding page: build-space photo beside the ways to give. */
+  .give-band{ display:grid; grid-template-columns:0.82fr 1.18fr; gap:0.18in; align-items:stretch; margin-top:0.24in; }
+  .give-photo{ position:relative; margin:0; border:1px solid var(--line); overflow:hidden; min-height:1.6in; background:#0c0c0c; }
+  .give-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .give-photo figcaption{
+    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:0.24in 0.14in 0.09in;
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:7.8pt; letter-spacing:0.1em;
+    text-transform:uppercase; color:#fff; border-left:3px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0));
+  }
+  .give-band .benefit-grid{ margin-top:0; grid-template-columns:1fr 1fr; }
+
+  /* Video embed (2nd spot): plays on screen, still frame in the PDF. */
+  .give-video{ margin:0; display:flex; flex-direction:column; }
+  .give-video .video-frame{ position:relative; flex:1 1 auto; min-height:1.6in; background:#0c0c0c; border:1px solid var(--line); overflow:hidden; }
+  .give-video .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+  .give-video .video-poster{ display:none; }
+  .give-video figcaption{ margin-top:0.08in; font-family:'Raleway',sans-serif; font-size:8pt; line-height:1.4; color:#A3A3A3; }
+
+  /* Gracious Professionalism: big immersive photo, then the ethos copy. */
+  .gp-hero{ position:relative; margin:0.28in 0 0; width:100%; aspect-ratio:1.55 / 1; border:1px solid var(--line); overflow:hidden; background:#0c0c0c; }
+  .gp-hero img{ width:100%; height:100%; object-fit:cover; object-position:center 38%; display:block; }
+  .gp-hero .cap{
+    position:absolute; left:0; bottom:0; z-index:2; max-width:5in; padding:0.6in 0.24in 0.2in;
+    font-family:'Exo 2',sans-serif; font-weight:700; font-size:8.4pt; letter-spacing:0.06em;
+    text-transform:uppercase; color:#fff; border-left:4px solid var(--lime);
+    background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+  }
+  .gp-text{ display:grid; grid-template-columns:1fr 1fr; gap:0.34in; margin-top:0.3in; align-items:start; }
+  .gp-title{ font-size:31pt; line-height:0.95; }
+  .gp-title .lime{ color:var(--lime); }
+  .gp-lead{ margin-top:0.16in; font-size:12.5pt; line-height:1.4; color:#fff; font-weight:500; }
+  .gp-text .body-copy{ font-size:10.6pt; }
+  .gp-text .body-copy + .body-copy{ margin-top:0.14in; }
+  .gp-credit{ margin-top:0.16in; font-family:'Exo 2',sans-serif; font-size:8.2pt; line-height:1.45; color:var(--muted-2); }
+
+  /* Download bar (screen only; pointless inside the PDF itself). */
+  .pdf-bar{ margin:0 auto 6px; max-width:8.5in; text-align:center; }
+  .pdf-dl{
+    display:inline-flex; align-items:center; gap:0.1in;
+    background:var(--lime); color:var(--lime-text);
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:11pt;
+    letter-spacing:0.06em; text-transform:uppercase; padding:0.15in 0.32in;
+  }
+  .pdf-dl:hover{ background:var(--lime-hover); }
+
   .split{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -217,59 +346,11 @@
   .card p{ font-size:9.8pt; line-height:1.48; color:var(--muted); }
   .card.green p{ color:rgba(26,26,26,0.76); font-weight:500; }
 
-  .rail{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:0.12in;
-    margin-top:0.24in;
-  }
-  .rail-item{
-    border-top:3px solid var(--lime);
-    background:var(--panel);
-    padding:0.14in;
-    min-height:0.95in;
-  }
-  .rail-item b{
-    display:block;
-    font-family:'Exo 2',sans-serif;
-    font-size:10pt;
-    line-height:1.15;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-  }
-  .rail-item span{
-    display:block;
-    margin-top:0.06in;
-    font-size:8.6pt;
-    color:var(--muted);
-    line-height:1.35;
-  }
-
   .budget{
     margin-top:0.32in;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:0.14in;
-  }
-  .budget-row{
-    display:flex;
-    justify-content:space-between;
-    gap:0.12in;
-    align-items:baseline;
-    border-bottom:1px solid var(--line);
-    padding:0.12in 0;
-    font-family:'Exo 2',sans-serif;
-  }
-  .budget-row span{
-    color:var(--white);
-    font-weight:700;
-    font-size:10pt;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-  }
-  .budget-row b{
-    color:var(--lime);
-    font-size:13pt;
   }
   .budget-note{
     margin-top:auto;
@@ -280,6 +361,7 @@
     font-size:9.5pt;
     line-height:1.45;
   }
+  .budget-note strong{ color:var(--white); }
 
   .tier-table{
     margin-top:0.24in;
@@ -287,8 +369,8 @@
   }
   .tier-row{
     display:grid;
-    grid-template-columns:1.2in 1.08in 1fr;
-    min-height:0.74in;
+    grid-template-columns:1.35in 1.15in 1fr;
+    min-height:0.82in;
     border-bottom:1px solid var(--line);
   }
   .tier-row:last-child{ border-bottom:0; }
@@ -303,30 +385,99 @@
     text-transform:uppercase;
   }
   .tier-row > div{
-    padding:0.11in 0.13in;
+    padding:0.12in 0.14in;
     border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
   }
+  .tier-row.head > div{ justify-content:center; }
   .tier-row > div:last-child{ border-right:0; }
   .tier-name{
     font-family:'Orbitron',sans-serif;
-    font-size:12pt;
+    font-size:13pt;
     font-weight:900;
     line-height:1;
     text-transform:uppercase;
     letter-spacing:-0.02em;
   }
   .tier-amount{
-    font-family:'Exo 2',sans-serif;
+    font-family:'Orbitron',sans-serif;
     color:var(--lime);
-    font-size:13pt;
-    font-weight:800;
+    font-size:18pt;
+    font-weight:900;
+    letter-spacing:-0.02em;
+    line-height:1;
   }
   .tier-copy{
     color:var(--muted);
     font-size:8.75pt;
-    line-height:1.38;
+    line-height:1.4;
   }
   .tier-copy strong{ color:var(--white); font-weight:700; }
+
+  /* Tier cards (pricing-card layout) */
+  .tiers{ margin-top:0.26in; display:flex; flex-direction:column; gap:0.16in; }
+  .tier-card{ border:1px solid var(--line); background:var(--panel); padding:0.17in 0.19in; }
+  .tier-card.feat{ border:2px solid var(--lime); background:var(--panel-2); }
+  .tier-card .top{ display:flex; align-items:baseline; justify-content:space-between; gap:0.14in; }
+  .tier-card .tname{
+    font-family:'Orbitron',sans-serif; font-size:14pt; font-weight:900;
+    text-transform:uppercase; letter-spacing:-0.02em; line-height:1;
+  }
+  .tier-card .tprice{
+    font-family:'Orbitron',sans-serif; font-size:17pt; font-weight:900;
+    color:var(--lime); letter-spacing:-0.02em; line-height:1; white-space:nowrap;
+  }
+  .tier-card .tdesc{ margin-top:0.09in; color:var(--muted); font-size:8.8pt; line-height:1.46; }
+  .tier-card .tdesc strong{ color:var(--white); font-weight:700; }
+  .tier-tag{
+    display:inline-block; background:var(--lime); color:var(--lime-text);
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:7.4pt;
+    letter-spacing:0.1em; text-transform:uppercase; padding:0.025in 0.09in; margin-bottom:0.08in;
+  }
+  .tier-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0.16in; }
+
+  /* Cinematic robot showcase (page 5) */
+  .carousel{ position:relative; }
+  .showcase{ margin-top:0.18in; }
+  .car-track{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    border:1px solid var(--line); background:#0c0c0c;
+  }
+  .car-track::-webkit-scrollbar{ display:none; }
+  .slide{ margin:0; flex:0 0 100%; scroll-snap-align:center; }
+  .slide .stage{ position:relative; width:100%; aspect-ratio:16 / 9; overflow:hidden; background:#0c0c0c; }
+  .slide .stage img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:var(--pos,center); display:block; }
+  .slide .stage::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.32) 34%, rgba(0,0,0,0) 58%); }
+  .stage-cap{ position:absolute; left:0.3in; right:1.2in; bottom:0.26in; z-index:2; border-left:3px solid var(--lime); padding-left:0.17in; }
+  .stage-cap b{ display:block; font-family:'Exo 2',sans-serif; font-weight:800; font-size:17pt; letter-spacing:-0.01em; line-height:1.04; color:#fff; }
+  .stage-cap span{ display:block; margin-top:0.06in; font-family:'Raleway',sans-serif; font-size:10pt; color:rgba(255,255,255,0.86); }
+  .show-note{ font-family:'Raleway',sans-serif; font-size:8.4pt; line-height:1.45; color:#A3A3A3; margin-top:0.11in; }
+  /* Closing page: big square apparel video beside the contact card */
+  .close-feature{ display:grid; grid-template-columns:2.85in 1fr; gap:0.26in; align-items:center; }
+  .card-note{ margin-top:0.09in; padding-top:0.08in; border-top:1px solid rgba(26,26,26,0.2); font-size:9.2pt; line-height:1.4; }
+  .apparel-big{ margin:0; }
+  .apparel-big .media{ position:relative; width:100%; aspect-ratio:1 / 1; overflow:hidden; background:#0c0c0c; border:1px solid var(--line); }
+  .apparel-big .media video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .apparel-big figcaption{ font-family:'Raleway',sans-serif; font-size:8.2pt; line-height:1.4; color:#A3A3A3; margin-top:0.08in; }
+  .ex-tag{
+    position:absolute; left:0; top:0; z-index:2; background:var(--lime); color:var(--lime-text);
+    font-family:'Exo 2',sans-serif; font-weight:800; font-size:7.5pt; letter-spacing:0.06em;
+    text-transform:uppercase; padding:0.03in 0.08in;
+  }
+  .car-btn{
+    position:absolute; top:50%; transform:translateY(-50%); width:0.44in; height:0.44in; border:0;
+    background:rgba(0,0,0,0.55); color:#fff; font-family:'Exo 2',sans-serif; font-size:17pt; line-height:1;
+    cursor:pointer; z-index:3; display:flex; align-items:center; justify-content:center;
+  }
+  .car-btn:hover{ background:var(--lime); color:var(--lime-text); }
+  .car-btn.prev{ left:0.1in; } .car-btn.next{ right:0.1in; }
+  .car-dots{ display:flex; gap:0.07in; justify-content:center; margin-top:0.12in; }
+  .car-dots button{ width:0.1in; height:0.1in; padding:0; border:0; border-radius:50%; background:#555; cursor:pointer; }
+  .car-dots button.on{ background:var(--lime); }
 
   .benefit-grid{
     margin-top:0.3in;
@@ -340,6 +491,10 @@
     padding:0.16in 0.17in;
     min-height:0.9in;
   }
+  .benefit-grid.row4{ grid-template-columns:repeat(4,1fr); gap:0.12in; }
+  .benefit-grid.row4 .benefit{ min-height:0; padding:0.13in 0.13in; }
+  .benefit-grid.row4 .benefit b{ font-size:9.6pt; letter-spacing:0.06em; }
+  .benefit-grid.row4 .benefit span{ font-size:8.2pt; margin-top:0.06in; }
   .benefit b{
     display:block;
     font-family:'Exo 2',sans-serif;
@@ -354,6 +509,34 @@
     font-size:8.8pt;
     line-height:1.42;
     margin-top:0.07in;
+  }
+
+  .who-grid{
+    margin-top:0.26in;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0.12in;
+  }
+  .who-item{
+    border-top:3px solid var(--lime);
+    background:var(--panel);
+    padding:0.16in 0.15in;
+    min-height:1.1in;
+  }
+  .who-item b{
+    display:block;
+    font-family:'Exo 2',sans-serif;
+    font-size:10pt;
+    line-height:1.12;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+  .who-item span{
+    display:block;
+    margin-top:0.07in;
+    font-size:8.8pt;
+    color:var(--muted);
+    line-height:1.4;
   }
 
   .cta-band{
@@ -419,6 +602,37 @@
     letter-spacing:0.03em;
   }
 
+  /* Founding deadline, stated big on the close. */
+  .deadline{
+    margin-top:0.16in;
+    border:1px solid var(--line);
+    background:var(--panel-2);
+    padding:0.2in 0.22in;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:0.2in;
+    flex-wrap:wrap;
+  }
+  .deadline-label{
+    font-family:'Exo 2',sans-serif;
+    font-weight:800;
+    font-size:10pt;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--white);
+    max-width:4in;
+    line-height:1.35;
+  }
+  .deadline-date{
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    font-size:26pt;
+    letter-spacing:-0.02em;
+    color:var(--lime);
+    line-height:0.9;
+  }
+
   .footer{
     margin-top:0.26in;
     padding-top:0.14in;
@@ -466,148 +680,99 @@
 
   @media screen{
     body{
-      padding:24px 16px;
-      overflow-x:auto;
+      padding:22px 16px;
+      overflow-x:hidden;
     }
+    /* On screen, let each page size to its content. Kills the dead space that
+       a fixed 11in print height leaves at the bottom of every page. */
     .page{
+      height:auto;
+      min-height:0;
+      overflow:visible;
       box-shadow:0 20px 70px rgba(0,0,0,0.45);
-      margin:0 auto 24px;
-      transform-origin:top center;
+      margin:0 auto 22px;
+      zoom:var(--pz, 1);
     }
-    @media (max-width:900px){
-      .page{
-        transform:scale(calc((100vw - 32px) / 816));
-        margin-bottom:calc(24px - (11in * (1 - ((100vw - 32px) / 816))));
-      }
-    }
+    /* These blocks pin to the bottom via margin-top:auto on a fixed-height page;
+       with auto height that collapses, so restore deliberate spacing. */
+    .cover-grid{ margin-top:0.42in; }
+    .budget-note{ margin-top:0.3in; }
+    .cta-band{ margin-top:0.34in; }
   }
 
   @media print{
     html, body{ background:transparent; }
     .page{ margin:0; box-shadow:none; }
+    .pdf-bar{ display:none !important; }
+    /* PDF can't play video: swap the embed for a still frame + play glyph. */
+    .give-video .video-frame iframe{ display:none; }
+    .give-video .video-poster{ display:block; position:absolute; inset:0; z-index:2; }
+    .give-video .video-poster img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .give-video .vplay{
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:0.62in; height:0.62in; display:flex; align-items:center; justify-content:center;
+      background:rgba(0,0,0,0.55); color:var(--lime); font-size:15pt; padding-left:3px;
+    }
+    /* The carousel is a screen feature. In print it must not overflow the page
+       width (a multi-slide flex track blows out the layout and makes Chrome
+       shrink the whole page). Show only the first slide, clipped. */
+    .car-track{ overflow:hidden !important; }
+    .slide:not(:first-child){ display:none !important; }
+    .car-btn, .car-dots{ display:none !important; }
+    html, body{ width:8.5in; overflow:hidden; }
   }
 </style>
 </head>
 <body>
 
+<!-- ============ 01 / COVER + THE ASK ============ -->
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>2027 Partner Package</strong><br />Ontario FRC Program</div>
+    <div class="doc-meta"><strong>2027 Partner Package</strong><br />Ontario FRC Team</div>
   </div>
 
   <div class="label">01 / Sponsor Package</div>
-  <h1 class="display cover-title">Your brand on the <span class="lime">build</span>.</h1>
-  <p class="lede">Partner with North York's rookie FRC team in our first competition season. Your support funds the robot, tools, travel, mentorship, and the student engineers who will carry this work forward.</p>
+  <h1 class="display cover-title" data-cms="cover.title" data-label="Cover headline (use *word* for green)" data-group="01 · Cover">Your brand on the <span class="lime">build</span>.</h1>
+  <p class="lede" data-cms="cover.lede" data-label="Cover paragraph" data-group="01 · Cover">SHFT Robotics is North York's new FRC team, building our first competition robot for the 2027 season. Sponsors pay for the robot, the tools, the travel, and the shop where students build it.</p>
 
-  <a href="mailto:team@shftrobotics.com?subject=SHFT%20sponsorship" style="display:inline-block;margin-top:0.22in;background:var(--lime);color:var(--lime-text);font-family:'Exo 2',sans-serif;font-weight:800;font-size:10pt;letter-spacing:0.08em;text-transform:uppercase;padding:0.13in 0.22in;align-self:flex-start;">Become a sponsor</a>
-
-  <div class="cover-grid">
-    <div class="hero-panel">
-      <b>Founding sponsors become part of the origin story.</b>
-      <span>Year one. 2027 FRC season.</span>
-    </div>
-    <div class="stat-stack">
-      <div class="stat"><b>2026</b><span>Program founded</span></div>
-      <div class="stat"><b>FRC</b><span>Global robotics competition</span></div>
-      <div class="stat"><b>WCP</b><span>Backed by West Coast Products</span></div>
-    </div>
+  <div class="ask">
+    <div class="ask-num" data-cms="cover.ask_num" data-label="The ask, big number" data-group="01 · Cover">$250 to $10,000+</div>
+    <div class="ask-cap" data-cms="cover.ask_caption" data-label="The ask, caption (use *b* for white)" data-group="01 · Cover">Sponsorships start at $250. <b>Every level keeps a student building.</b></div>
   </div>
 
-  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">@SHFTROBOTICS</span><span>SHFTROBOTICS.COM</span></div>
+  <a class="cta-btn" href="mailto:team@shftrobotics.com?subject=SHFT%20sponsorship" data-cms="cover.cta" data-label="Button text" data-group="01 · Cover">Become a sponsor</a>
+
+  <figure class="cover-hero">
+    <span class="ex-tag">Example &middot; FIRST Robotics</span>
+    <img src="frc-first-team.jpg" alt="A FIRST Robotics Competition team gathered around the giant FIRST logo at the championship" />
+    <figcaption class="cap">
+      <div class="hstats">
+        <div><b data-cms="cover.stat1_value" data-label="Stat 1 value" data-group="01 · Cover">2026</b><span data-cms="cover.stat1_label" data-label="Stat 1 label" data-group="01 · Cover">Team founded</span></div>
+        <div><b data-cms="cover.stat2_value" data-label="Stat 2 value" data-group="01 · Cover">2027</b><span data-cms="cover.stat2_label" data-label="Stat 2 label" data-group="01 · Cover">First season</span></div>
+        <div><b data-cms="cover.stat3_value" data-label="Stat 3 value" data-group="01 · Cover">6</b><span data-cms="cover.stat3_label" data-label="Stat 3 label" data-group="01 · Cover">Student subteams</span></div>
+      </div>
+      <b class="htitle" data-cms="cover.hero_title" data-label="Photo overlay headline (use *word* for green)" data-group="01 · Cover">The season SHFT joins in 2027.</b>
+      <span class="sub" data-cms="cover.hero_sub" data-label="Photo overlay subline" data-group="01 · Cover">Your logo can be on our first robot.</span>
+    </figcaption>
+  </figure>
 </section>
 
-<section class="page">
-  <div class="topbar">
-    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>Why Partner</strong><br />Impact plus visibility</div>
-  </div>
-
-  <div class="label">02 / The Opportunity</div>
-  <h2 class="display section-title">A team worth backing in year one.</h2>
-  <p class="lede">We are building a serious engineering program for students who want real ownership, real tools, and a team standard they can grow into.</p>
-
-  <div class="split">
-    <div class="card green">
-      <h3>Students get the work</h3>
-      <p>CAD, programming, fabrication, strategy, media, business operations, sponsor communication, and leadership. Students do not just watch. They build.</p>
-    </div>
-    <div class="card">
-      <h3>Sponsors get the story</h3>
-      <p>Your logo travels on the robot, pit, apparel, website, and social channels. More importantly, your company is tied to a visible STEM program in your own community.</p>
-    </div>
-    <div class="card">
-      <h3>Mentorship compounds</h3>
-      <p>SHFT is backed by mentors with more than a decade of FRC and VEX experience, coaching a program built to last.</p>
-    </div>
-    <div class="card">
-      <h3>Community sees it</h3>
-      <p>Competitions, demos, open houses, school events, and sponsor updates turn support into visible momentum across the season.</p>
-    </div>
-  </div>
-
-  <div class="rail">
-    <div class="rail-item"><b>Brand visibility</b><span>Robot, shirts, pit banner, website, sponsor wall, social, and event materials.</span></div>
-    <div class="rail-item"><b>Skills built</b><span>Your support gives students real engineering, fabrication, and software skills.</span></div>
-    <div class="rail-item"><b>Local proof</b><span>A concrete STEM investment families, students, and community partners can see.</span></div>
-  </div>
-
-  <div class="footer"><span>Partner value</span><span class="lime">Visibility. Skills. Impact.</span><span>Page 02</span></div>
-</section>
-
-<section class="page">
-  <div class="topbar">
-    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>Strategic Backing</strong><br />Backed by WCP</div>
-  </div>
-
-  <div class="label">03 / Strategic Backing</div>
-  <h2 class="display section-title">Serious backing from day one.</h2>
-  <p class="lede">SHFT launches with mentors who have coached FRC and VEX for more than a decade, and with the backing of West Coast Products, one of the most established manufacturers in FRC. New team, experienced hands.</p>
-
-  
-  <div class="cover-grid" style="margin-top:0.28in">
-    <div class="hero-panel">
-      <b>Backed by WCP.</b>
-      <span>West Coast Products &middot; one of FRC&#39;s most established suppliers</span>
-    </div>
-    <div class="stat-stack">
-      <div class="stat"><b>10+</b><span>Years of mentor FRC &amp; VEX experience</span></div>
-      <div class="stat"><b>2027</b><span>First competitive FRC season</span></div>
-      <div class="stat"><b>Day 1</b><span>WCP backing from launch</span></div>
-    </div>
-  </div>
-
-  <div class="rail" style="margin-top:0.2in">
-    <div class="rail-item"><b>Founding slot</b><span>origin-story placement, year one</span></div>
-    <div class="rail-item"><b>Ontario events</b><span>seen by teams, families, judges</span></div>
-    <div class="rail-item"><b>Direct line</b><span>sponsor updates all season</span></div>
-  </div>
-
-  <div class="benefit-grid" style="margin-top:0.2in">
-    <div class="benefit"><b>Backed by WCP</b><span>West Coast Products, one of FRC's most established parts manufacturers, is backing SHFT. Few rookie teams launch with this kind of support.</span></div>
-    <div class="benefit"><b>Your audience</b><span>@shftrobotics is live and growing from 100 followers on day one. Founding sponsors get in early, seen by every team, family, and judge at the Ontario events we attend.</span></div>
-  </div>
-
-  <div class="budget-note">SHFT is a new team. We would rather show you the program than oversell it: come to an open house, meet the mentors, watch the students work.</div>
-
-  <div class="footer"><span>Strategic backing</span><span class="lime">Backed by WCP</span><span>Page 03</span></div>
-</section>
-
+<!-- ============ 02 / WHERE THE MONEY GOES ============ -->
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
     <div class="doc-meta"><strong>What You Fund</strong><br />Season infrastructure</div>
   </div>
 
-  <div class="label">04 / Funding Map</div>
-  <h2 class="display section-title">Every dollar moves the robot forward.</h2>
-  <p class="lede">Our first competition season runs on roughly $140,000: registration, parts, tools, travel, and the shop behind it. Sponsors make the season possible and keep the student experience serious from day one.</p>
+  <div class="label">02 / Funding Map</div>
+  <h2 class="display section-title" data-cms="fund.title" data-label="Headline (use *word* for green)" data-group="02 · Funding">Where your money goes.</h2>
+  <p class="lede" data-cms="fund.lede" data-label="Paragraph" data-group="02 · Funding">Every place your support lands in a season, by share of the budget. No mystery, no overhead games.</p>
 
   <div class="budget" style="display:block;margin-top:0.3in">
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.12in;font-family:'Exo 2',sans-serif">
-      <span style="font-weight:800;font-size:9pt;letter-spacing:0.14em;text-transform:uppercase;color:#A3A3A3">Where your money goes</span>
-      <span style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:15pt;color:#A6FF00">$140,000</span>
+      <span style="font-weight:800;font-size:9pt;letter-spacing:0.14em;text-transform:uppercase;color:#A3A3A3" data-cms="fund.bar_label" data-label="Bar label" data-group="02 · Funding">Where support goes</span>
+      <span style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:15pt;color:#A6FF00" data-cms="fund.bar_total" data-label="Bar total" data-group="02 · Funding">By share</span>
     </div>
     <div style="display:flex;width:100%;height:0.46in;border:1px solid #333">
       <div style="width:40%;background:#A6FF00"></div>
@@ -617,222 +782,362 @@
       <div style="width:10%;background:#2A4100"></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.12in;margin-top:0.18in">
-      <div style="border-top:3px solid #A6FF00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff">Robot &amp; electronics</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in">$56,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3">40%</div></div>
-      <div style="border-top:3px solid #7FCC00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff">Registration</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in">$28,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3">20%</div></div>
-      <div style="border-top:3px solid #5A8C00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff">Travel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in">$21,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3">15%</div></div>
-      <div style="border-top:3px solid #3E6100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff">Tools &amp; safety</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in">$21,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3">15%</div></div>
-      <div style="border-top:3px solid #2A4100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff">Outreach &amp; apparel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in">$14,000</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3">10%</div></div>
+      <div style="border-top:3px solid #A6FF00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b1_label" data-label="Budget 1 label" data-group="02 · Funding">Robot &amp; electronics</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b1_amount" data-label="Budget 1 amount" data-group="02 · Funding">40%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b1_pct" data-label="Budget 1 percent" data-group="02 · Funding">Largest single cost</div></div>
+      <div style="border-top:3px solid #7FCC00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b2_label" data-label="Budget 2 label" data-group="02 · Funding">Registration</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b2_amount" data-label="Budget 2 amount" data-group="02 · Funding">20%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b2_pct" data-label="Budget 2 percent" data-group="02 · Funding">Event entry fees</div></div>
+      <div style="border-top:3px solid #5A8C00;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b3_label" data-label="Budget 3 label" data-group="02 · Funding">Travel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b3_amount" data-label="Budget 3 amount" data-group="02 · Funding">15%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b3_pct" data-label="Budget 3 percent" data-group="02 · Funding">Getting to events</div></div>
+      <div style="border-top:3px solid #3E6100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b4_label" data-label="Budget 4 label" data-group="02 · Funding">Tools &amp; safety</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b4_amount" data-label="Budget 4 amount" data-group="02 · Funding">15%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b4_pct" data-label="Budget 4 percent" data-group="02 · Funding">Building safely</div></div>
+      <div style="border-top:3px solid #2A4100;padding-top:0.08in"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:8.6pt;text-transform:uppercase;letter-spacing:0.03em;color:#fff" data-cms="fund.b5_label" data-label="Budget 5 label" data-group="02 · Funding">Outreach &amp; apparel</div><div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13pt;color:#A6FF00;margin-top:0.05in" data-cms="fund.b5_amount" data-label="Budget 5 amount" data-group="02 · Funding">10%</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:8pt;color:#A3A3A3" data-cms="fund.b5_pct" data-label="Budget 5 percent" data-group="02 · Funding">Pit &amp; team gear</div></div>
+    </div>
+    <p class="body-copy" style="font-size:8.4pt;margin-top:0.12in;color:#737373" data-cms="fund.b1_note" data-label="Footnote under robot line" data-group="02 · Funding">Robot and electronics includes a practice robot, spare parts, and competition field elements to build on.</p>
+  </div>
+
+  <div class="give-band">
+    <figure class="give-photo">
+      <span class="ex-tag">Example &middot; FIRST Robotics</span>
+      <img src="frc-fund-girl.jpg" alt="A FIRST Robotics student in a team shirt celebrating with a teammate, confetti falling at a championship" />
+      <figcaption data-cms="fund.photo_cap" data-label="Funding photo caption" data-group="02 · Funding">What your support builds.</figcaption>
+    </figure>
+    <div class="benefit-grid">
+      <div class="benefit"><b data-cms="fund.way1_title" data-label="Way to give 1 title" data-group="02 · Funding">Cash support</b><span data-cms="fund.way1_body" data-label="Way to give 1 body" data-group="02 · Funding">Directly funds purchases, registration, shipping, and event costs.</span></div>
+      <div class="benefit"><b data-cms="fund.way2_title" data-label="Way to give 2 title" data-group="02 · Funding">In-kind support</b><span data-cms="fund.way2_body" data-label="Way to give 2 body" data-group="02 · Funding">Materials, machining, printing, tools, food, transport, space, and services count toward tier value.</span></div>
+      <div class="benefit"><b data-cms="fund.way3_title" data-label="Way to give 3 title" data-group="02 · Funding">Mentor support</b><span data-cms="fund.way3_body" data-label="Way to give 3 body" data-group="02 · Funding">Engineers, designers, machinists, operators, and project managers can mentor students.</span></div>
+      <div class="benefit"><b data-cms="fund.way4_title" data-label="Way to give 4 title" data-group="02 · Funding">Event support</b><span data-cms="fund.way4_body" data-label="Way to give 4 body" data-group="02 · Funding">Host a demo, sponsor an open house, or bring SHFT to a company STEM day.</span></div>
     </div>
   </div>
 
-  <div class="benefit-grid">
-    <div class="benefit"><b>Cash support</b><span>Directly funds purchases, registration, shipping, and event costs.</span></div>
-    <div class="benefit"><b>In-kind support</b><span>Materials, machining, printing, tools, food, transportation, space, and services count toward tier value.</span></div>
-    <div class="benefit"><b>Mentor support</b><span>Engineers, designers, machinists, operators, marketers, and project managers can mentor students.</span></div>
-    <div class="benefit"><b>Event support</b><span>Host a demo, sponsor an open house, or bring SHFT to a company STEM day.</span></div>
-  </div>
+  <div class="budget-note"><strong data-cms="fund.note_lead" data-label="Funds-handled lead" data-group="02 · Funding">How funds are handled:</strong> <span data-cms="fund.note_body" data-label="Funds-handled body" data-group="02 · Funding">Contributions support a youth robotics program. We confirm the payee and any available tax treatment with you directly when you come on board, and every sponsor receives an acknowledgment and an invoice for their records.</span></div>
 
-  <!-- Tax treatment is handled in the direct conversation per Malhar, not stated on the page. Keep no charitable-receipt claim here. -->
-  <div class="budget-note"><strong>How funds are handled:</strong> Contributions support a youth robotics program. We confirm the payee and any tax treatment with you directly when you come on board, and every sponsor receives an acknowledgment and an invoice for their records.</div>
-
-  <div class="footer"><span>What sponsors fund</span><span class="lime">Robot. Tools. Travel. Students.</span><span>Page 04</span></div>
+  <div class="footer"><span>What sponsors fund</span><span class="lime">Robot. Tools. Travel. Students.</span><span>Page 02</span></div>
 </section>
 
+<!-- ============ 03 / TIERS ============ -->
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>Sponsor Tiers</strong><br />Cumulative recognition</div>
+    <div class="doc-meta"><strong>Sponsor Tiers</strong><br />Benefits are cumulative</div>
   </div>
 
-  <div class="label">05 / Partnership Levels</div>
-  <h2 class="display section-title">Choose a tier below.</h2>
-  <p class="lede">Each one buys a different level of logo placement and access. Benefits are cumulative. In-kind contributions are welcomed and credited by fair market value when they offset real season costs.</p>
-  <p class="body-copy" style="margin-top:0.12in">Benefits reflect our planned first competition season. Some deliverables debut as the season ramps up.</p>
+  <div class="label">03 / Partnership Levels</div>
+  <h2 class="display section-title" data-cms="tiers.title" data-label="Headline (use *word* for green)" data-group="03 · Tiers">Choose a tier.</h2>
+  <p class="lede" data-cms="tiers.lede" data-label="Paragraph" data-group="03 · Tiers">Each level buys more logo placement and access. Benefits are cumulative. In-kind contributions are welcomed and credited at fair market value when they offset real season costs.</p>
 
-  <div class="tier-table">
-    <div class="tier-row head"><div>Tier</div><div>Support</div><div>Recognition</div></div>
-    <div class="tier-row">
-      <div class="tier-name">Founding Partner</div>
-      <div class="tier-amount">$10,000+</div>
-      <div class="tier-copy"><strong>Largest logo placement, first position,</strong> on our first competition robot (debuting the 2027 season, per FIRST robot rules), plus pit banner, team apparel, website, sponsor wall, season highlight recap (photo or video), social launch post, and open house materials. Includes a robot demo once our competition robot is built, or a student tech showcase.</div>
+  <div class="tiers">
+    <div class="tier-card feat">
+      <span class="tier-tag">Most visible &middot; founding</span>
+      <div class="top">
+        <div class="tname" data-cms="tiers.t1_name" data-label="Tier 1 name" data-group="03 · Tiers">Founding Partner</div>
+        <div class="tprice" data-cms="tiers.t1_amount" data-label="Tier 1 amount" data-group="03 · Tiers">$10,000+</div>
+      </div>
+      <div class="tdesc" data-cms="tiers.t1_copy" data-label="Tier 1 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Premier logo, first position on the robot</strong> (debuts 2027, per FIRST robot rules). Pit banner, apparel, website, sponsor wall, season recap, a social launch post, and open house materials. Includes a robot demo once it is built.</div>
     </div>
-    <div class="tier-row">
-      <div class="tier-name">Platinum</div>
-      <div class="tier-amount">$5,000+</div>
-      <div class="tier-copy"><strong>Large logo placement</strong> on our first competition robot (per FIRST robot rules), plus pit banner, team apparel, website, sponsor wall, and a sponsor social feature. Includes a workshop tour or sponsor-site demo when the schedule allows.</div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-name">Gold</div>
-      <div class="tier-amount">$2,500+</div>
-      <div class="tier-copy"><strong>Medium logo placement</strong> on the pit banner, team apparel, website, and sponsor wall, plus a social thank-you and a season recap update.</div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-name">Silver</div>
-      <div class="tier-amount">$1,000+</div>
-      <div class="tier-copy"><strong>Small logo placement</strong> on pit banner or team apparel, website sponsor listing, sponsor wall, and social thank-you.</div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-name">Bronze</div>
-      <div class="tier-amount">$500+</div>
-      <div class="tier-copy"><strong>Name or logo listing</strong> on website and sponsor wall, plus a social thank-you and end-of-season appreciation note.</div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-name">Community</div>
-      <div class="tier-amount">$250+</div>
-      <div class="tier-copy"><strong>Name listing</strong> on the website community wall and a team thank-you note. Built for families, alumni, and local supporters.</div>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t2_name" data-label="Tier 2 name" data-group="03 · Tiers">Platinum</div>
+          <div class="tprice" data-cms="tiers.t2_amount" data-label="Tier 2 amount" data-group="03 · Tiers">$5,000+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t2_copy" data-label="Tier 2 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Large logo on the robot.</strong> Pit banner, apparel, website, sponsor wall, and a sponsor social feature. Workshop tour when the schedule allows.</div>
+      </div>
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t3_name" data-label="Tier 3 name" data-group="03 · Tiers">Gold</div>
+          <div class="tprice" data-cms="tiers.t3_amount" data-label="Tier 3 amount" data-group="03 · Tiers">$2,500+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t3_copy" data-label="Tier 3 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Medium logo.</strong> Pit banner, apparel, website, and sponsor wall, plus a social thank-you and a season recap update.</div>
+      </div>
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t4_name" data-label="Tier 4 name" data-group="03 · Tiers">Silver</div>
+          <div class="tprice" data-cms="tiers.t4_amount" data-label="Tier 4 amount" data-group="03 · Tiers">$1,000+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t4_copy" data-label="Tier 4 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Small logo.</strong> Pit banner or apparel, website listing, sponsor wall, and a social thank-you.</div>
+      </div>
+      <div class="tier-card">
+        <div class="top">
+          <div class="tname" data-cms="tiers.t5_name" data-label="Tier 5 name" data-group="03 · Tiers">Community</div>
+          <div class="tprice" data-cms="tiers.t5_amount" data-label="Tier 5 amount" data-group="03 · Tiers">$250+</div>
+        </div>
+        <div class="tdesc" data-cms="tiers.t5_copy" data-label="Tier 5 benefits (use *word* for white)" data-group="03 · Tiers"><strong>Name listing</strong> on the website and sponsor wall, plus a social thank-you. For families, alumni, and local supporters.</div>
+      </div>
     </div>
   </div>
 
-  <div class="footer"><span>Sponsor tiers</span><span class="lime">Cumulative benefits</span><span>Page 05</span></div>
+  <p class="body-copy" style="margin-top:0.16in" data-cms="tiers.foot" data-label="Closing note" data-group="03 · Tiers">Benefits are cumulative and reflect our planned first season. Robot placement is reserved for Founding Partner and Platinum, per FIRST robot rules.</p>
+
+  <div class="footer"><span>Sponsor tiers</span><span class="lime">Cumulative benefits</span><span>Page 03</span></div>
 </section>
 
+<!-- ============ 04 / WHERE YOUR LOGO LIVES ============ -->
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>Logo Placement</strong><br />Illustrative mockup</div>
+    <div class="doc-meta"><strong>Logo Placement</strong><br />How sponsors appear</div>
   </div>
 
-  <div class="label">06 / Logo Placement</div>
-  <h2 class="display section-title">Where your logo lives.</h2>
-  <p class="body-copy" style="margin-top:0.1in"><strong style="color:#fff">Illustrative mockup.</strong> Sponsor logos shown are placeholders. Robot placement is reserved for Founding Partner and Platinum tiers, per FIRST robot rules.</p>
+  <div class="label">04 / Logo Placement</div>
+  <h2 class="display section-title" data-cms="logo.title" data-label="Headline (use *word* for green)" data-group="05 · Logo Placement">Where your logo lives.</h2>
+  <p class="body-copy" style="margin-top:0.1in" data-cms="logo.intro" data-label="Intro (use *word* for white)" data-group="05 · Logo Placement"><span class="lime">Sponsor logos ride into competition</span> on the robot, in the arena, and in every match photo from the season.</p>
 
-  <div class="card" style="margin-top:0.18in;min-height:auto;padding:0.16in 0.2in">
-    <svg viewBox="0 0 1000 470" width="100%" style="display:block" role="img" aria-label="Illustrative FRC robot showing sponsor logo zones by tier">
-      <!-- ground -->
-      <line x1="40" y1="430" x2="700" y2="430" stroke="#A6FF00" stroke-width="3"/>
-      <!-- wheels -->
-      <g fill="#151515" stroke="#A6FF00" stroke-width="3">
-        <circle cx="300" cy="392" r="44"/><circle cx="430" cy="392" r="44"/><circle cx="560" cy="392" r="44"/>
-      </g>
-      <g fill="none" stroke="#404040" stroke-width="3"><circle cx="300" cy="392" r="15"/><circle cx="430" cy="392" r="15"/><circle cx="560" cy="392" r="15"/></g>
-      <!-- intake arm -->
-      <path d="M250 270 L150 350" stroke="#A6FF00" stroke-width="6" fill="none"/>
-      <circle cx="140" cy="356" r="24" fill="#151515" stroke="#A6FF00" stroke-width="3"/>
-      <!-- main body -->
-      <rect x="250" y="180" width="370" height="200" fill="#202020" stroke="#A6FF00" stroke-width="3"/>
-      <!-- bumper -->
-      <rect x="234" y="338" width="402" height="46" fill="#1A1A1A" stroke="#A6FF00" stroke-width="3"/>
-      <text x="435" y="368" text-anchor="middle" fill="#A6FF00" font-family="'Exo 2',sans-serif" font-weight="800" font-size="21" letter-spacing="3">TEAM SHFT</text>
-      <!-- elevator tower -->
-      <rect x="546" y="74" width="74" height="166" fill="#202020" stroke="#A6FF00" stroke-width="3"/>
-      <circle cx="583" cy="74" r="28" fill="#151515" stroke="#A6FF00" stroke-width="3"/>
-      <!-- Zone A: Founding (large) -->
-      <rect x="280" y="202" width="220" height="92" fill="#A6FF00" fill-opacity="0.10" stroke="#A6FF00" stroke-width="2" stroke-dasharray="7 5"/>
-      <text x="390" y="255" text-anchor="middle" fill="#FFFFFF" font-family="'Exo 2',sans-serif" font-weight="800" font-size="20" letter-spacing="2">YOUR LOGO</text>
-      <!-- Zone B: Platinum (medium) -->
-      <rect x="554" y="120" width="58" height="78" fill="#A6FF00" fill-opacity="0.10" stroke="#A6FF00" stroke-width="2" stroke-dasharray="6 4"/>
-      <text x="583" y="164" text-anchor="middle" fill="#FFFFFF" font-family="'Exo 2',sans-serif" font-weight="800" font-size="12">LOGO</text>
-      <!-- leader lines + labels -->
-      <line x1="500" y1="220" x2="720" y2="160" stroke="#737373" stroke-width="1.5"/>
-      <text x="732" y="156" fill="#A6FF00" font-family="'Exo 2',sans-serif" font-weight="800" font-size="19">FOUNDING PARTNER</text>
-      <text x="732" y="179" fill="#A3A3A3" font-family="'Exo 2',sans-serif" font-weight="700" font-size="13" letter-spacing="1">LARGE ROBOT PLACEMENT</text>
-      <line x1="612" y1="150" x2="720" y2="266" stroke="#737373" stroke-width="1.5"/>
-      <text x="732" y="262" fill="#A6FF00" font-family="'Exo 2',sans-serif" font-weight="800" font-size="19">PLATINUM</text>
-      <text x="732" y="285" fill="#A3A3A3" font-family="'Exo 2',sans-serif" font-weight="700" font-size="13" letter-spacing="1">MEDIUM ROBOT PLACEMENT</text>
-    </svg>
-  </div>
-
-  <div style="margin-top:0.2in">
-    <div class="label" style="margin:0 0 0.1in">Sponsor wall &middot; slots open</div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.1in">
-      <div style="border:1px dashed #404040;background:#151515;padding:0.13in 0.08in;text-align:center"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:9.5pt;letter-spacing:0.05em;color:#fff">FOUNDING</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-top:0.04in">Slot open</div></div>
-      <div style="border:1px dashed #404040;background:#151515;padding:0.13in 0.08in;text-align:center"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:9.5pt;letter-spacing:0.05em;color:#fff">PLATINUM</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-top:0.04in">Slot open</div></div>
-      <div style="border:1px dashed #404040;background:#151515;padding:0.13in 0.08in;text-align:center"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:9.5pt;letter-spacing:0.05em;color:#fff">GOLD</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-top:0.04in">Slot open</div></div>
-      <div style="border:1px dashed #404040;background:#151515;padding:0.13in 0.08in;text-align:center"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:9.5pt;letter-spacing:0.05em;color:#fff">SILVER</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-top:0.04in">Slot open</div></div>
-      <div style="border:1px dashed #404040;background:#151515;padding:0.13in 0.08in;text-align:center"><div style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:9.5pt;letter-spacing:0.05em;color:#fff">BRONZE</div><div style="font-family:'Exo 2',sans-serif;font-weight:700;font-size:7pt;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-top:0.04in">Slot open</div></div>
+  <div class="carousel showcase" id="robotCar">
+    <div class="car-track">
+      <figure class="slide">
+        <div class="stage" style="--pos:center 42%">
+          <span class="ex-tag">Example &middot; FRC 1323</span>
+          <img src="robot-1323-match.jpeg" alt="An FRC robot competing on the field, sponsor logos printed across the panel above its bumper" />
+          <div class="stage-cap">
+            <b>Your logo rides into every match.</b>
+            <span>On the robot, in the arena, on every camera.</span>
+          </div>
+        </div>
+      </figure>
+      <figure class="slide">
+        <div class="stage" style="--pos:center 52%">
+          <span class="ex-tag">Example &middot; FRC 1323</span>
+          <img src="robot-sponsors-1323.jpeg" alt="An FRC robot whose side panels are covered in sponsor logos" />
+          <div class="stage-cap">
+            <b>Room for every partner.</b>
+            <span>Founding sponsors sit largest, and first.</span>
+          </div>
+        </div>
+      </figure>
+      <figure class="slide">
+        <div class="stage" style="--pos:center 50%">
+          <span class="ex-tag">Example &middot; FRC 8121</span>
+          <img src="robot-pit.jpg" alt="An FRC team pit with a wall of sponsor logos on the banner above the workbenches" />
+          <div class="stage-cap">
+            <b>In the pit, in front of everyone.</b>
+            <span>The pit banner faces every team, family, and judge.</span>
+          </div>
+        </div>
+      </figure>
+      <figure class="slide">
+        <div class="stage" style="--pos:center 45%">
+          <span class="ex-tag">Example &middot; FRC 6358</span>
+          <img src="robot-apparel-6358.jpg" alt="A team shirt reading Thank You Sponsors with sponsor logos printed across the back" />
+          <div class="stage-cap">
+            <b>On the shirts, all season.</b>
+            <span>Sponsor logos on team apparel, worn at every event.</span>
+          </div>
+        </div>
+      </figure>
     </div>
+    <button class="car-btn prev" type="button" aria-label="Previous">&#8249;</button>
+    <button class="car-btn next" type="button" aria-label="Next">&#8250;</button>
+    <div class="car-dots" aria-hidden="true"></div>
+  </div>
+  <p class="show-note" data-cms="logo.caption" data-label="Photo caption" data-group="05 · Logo Placement">Robot placement is reserved for Founding Partner and Platinum, per FIRST rules. Team and robot photos throughout are from the FIRST Robotics Competition community (event photos courtesy NASA / Stennis Space Center, public domain), shown as real examples. SHFT's first competition robot debuts in 2027.</p>
+
+  <div class="benefit-grid row4" style="margin-top:0.2in">
+    <div class="benefit"><b data-cms="logo.spot1_title" data-label="Spot 1 title" data-group="05 · Logo Placement">On the robot</b><span data-cms="logo.spot1_body" data-label="Spot 1 body" data-group="05 · Logo Placement">A sponsor panel carries your logo into every match, in the arena and on camera.</span></div>
+    <div class="benefit"><b data-cms="logo.spot2_title" data-label="Spot 2 title" data-group="05 · Logo Placement">In the pit</b><span data-cms="logo.spot2_body" data-label="Spot 2 body" data-group="05 · Logo Placement">The pit banner faces every team, family, and judge who walks the event floor.</span></div>
+    <div class="benefit"><b data-cms="logo.spot3_title" data-label="Spot 3 title" data-group="05 · Logo Placement">On apparel</b><span data-cms="logo.spot3_body" data-label="Spot 3 body" data-group="05 · Logo Placement">Sponsor logos ride on team shirts at events, demos, and outreach.</span></div>
+    <div class="benefit"><b data-cms="logo.spot4_title" data-label="Spot 4 title" data-group="05 · Logo Placement">Online</b><span data-cms="logo.spot4_body" data-label="Spot 4 body" data-group="05 · Logo Placement">Your name and logo on the website sponsor wall and in season social posts.</span></div>
   </div>
 
-  <div class="footer"><span>Logo placement</span><span class="lime">Illustrative mockup</span><span>Page 06</span></div>
+  <div class="footer"><span>Logo placement</span><span class="lime">On the robot. In the arena.</span><span>Page 04</span></div>
 </section>
 
+<!-- ============ 05 / WHY BACK A ROOKIE + WHO SHFT IS ============ -->
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
-    <div class="doc-meta"><strong>Deliverables</strong><br />Beyond logo placement</div>
+    <div class="doc-meta"><strong>Who We Are</strong><br />Real work, real students</div>
   </div>
 
-  <div class="label">07 / Sponsor Experience</div>
-  <h2 class="display section-title">Your logo goes where people actually look.</h2>
-  <p class="lede">The robot, the pit, the apparel, the season recap. SHFT creates real touchpoints that make your support visible to students, employees, families, and the community.</p>
+  <div class="label">05 / Why Back a Rookie</div>
+  <h2 class="display section-title" data-cms="who.title" data-label="Headline (use *word* for green)" data-group="04 · Who We Are">A team worth backing in year one.</h2>
+  <p class="lede" data-cms="who.lede" data-label="Paragraph" data-group="04 · Who We Are">This is our first season, so there are no results to point to yet. Here is what is real right now: students doing the engineering, with mentors who have built FRC robots before.</p>
 
-  <div class="benefit-grid">
-    <div class="benefit"><b>Robot demo</b><span>Bring our competition robot to your office, plant, school event, or community day for a student-led demo once it is built.</span></div>
-    <div class="benefit"><b>Open house</b><span>Invite sponsors to see the shop, meet students, and watch prototypes become competition hardware.</span></div>
-    <div class="benefit"><b>Season updates</b><span>Send sponsor updates during build season and a polished recap after competition.</span></div>
-    <div class="benefit"><b>Real student skills</b><span>Students gain hands-on engineering, fabrication, software, and project skills they carry into university and careers.</span></div>
-    <div class="benefit"><b>Co-branded moments</b><span>Feature sponsor support in kickoff, reveal, open house, and competition recap content.</span></div>
-    <div class="benefit"><b>In-kind showcase</b><span>Show how donated material, machining, tools, food, or services changed the season.</span></div>
+  <div class="who-grid">
+    <div class="who-item"><b data-cms="who.fact1_title" data-label="Fact 1 title" data-group="04 · Who We Are">Who runs it</b><span data-cms="who.fact1_body" data-label="Fact 1 body" data-group="04 · Who We Are">Malhar Soni, Team Director and Head Coach, with mentors who have hands-on FRC build and competition experience.</span></div>
+    <div class="who-item"><b data-cms="who.fact2_title" data-label="Fact 2 title" data-group="04 · Who We Are">Where we are</b><span data-cms="who.fact2_body" data-label="Fact 2 body" data-group="04 · Who We Are">Based in North York, Ontario. We compete at Ontario FRC events in the 2027 season.</span></div>
+    <div class="who-item"><b data-cms="who.fact3_title" data-label="Fact 3 title" data-group="04 · Who We Are">What students do</b><span data-cms="who.fact3_body" data-label="Fact 3 body" data-group="04 · Who We Are">Six subteams: CAD, programming, fabrication, strategy, media, and business. Students design, machine, and program the robot themselves.</span></div>
   </div>
 
-  <div class="split" style="margin-top:0.22in">
+  <div class="split" style="margin-top:0.26in">
     <div class="card green">
-      <h3>What makes SHFT different</h3>
-      <p>Sign on now and your logo is on our first robot reveal, first apparel run, and launch video. Your support will be visible as the program becomes real.</p>
+      <h3 data-cms="who.card1_title" data-label="Card 1 title" data-group="04 · Who We Are">Students get the work</h3>
+      <p data-cms="who.card1_body" data-label="Card 1 body" data-group="04 · Who We Are">CAD, programming, fabrication, strategy, media, and business operations. Mentors guide; students build.</p>
     </div>
     <div class="card">
-      <h3>What we need from sponsors</h3>
-      <p>A high-resolution logo, website URL, contact name, approved recognition name, contribution details, and any restrictions for public posts.</p>
+      <h3 data-cms="who.card2_title" data-label="Card 2 title" data-group="04 · Who We Are">Sponsors get the story</h3>
+      <p data-cms="who.card2_body" data-label="Card 2 body" data-group="04 · Who We Are">Your logo travels on the robot, the pit banner, apparel, the website, and social. Locally, it ties your company to students in your own community.</p>
+    </div>
+    <div class="card">
+      <h3 data-cms="who.card3_title" data-label="Card 3 title" data-group="04 · Who We Are">Community sees it</h3>
+      <p data-cms="who.card3_body" data-label="Card 3 body" data-group="04 · Who We Are">Competitions, demos, open houses, and school events turn your support into something families and students can see.</p>
+    </div>
+    <div class="card">
+      <h3 data-cms="who.card4_title" data-label="Card 4 title" data-group="04 · Who We Are">You get in first</h3>
+      <p data-cms="who.card4_body" data-label="Card 4 body" data-group="04 · Who We Are">Sign on now and your logo is on the first robot reveal, the first apparel run, and the launch video.</p>
     </div>
   </div>
 
-  <p class="body-copy" style="margin-top:0.12in">Student appearances are supervised by team mentors and follow our school and FIRST safety guidelines.</p>
-
-  <div class="footer"><span>Sponsor experience</span><span class="lime">Visible partnership</span><span>Page 07</span></div>
+  <div class="footer"><span>Why back a rookie</span><span class="lime">Real work. Real students.</span><span>Page 05</span></div>
 </section>
 
+<!-- ============ 06 / GRACIOUS PROFESSIONALISM ============ -->
+<section class="page">
+  <div class="topbar">
+    <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
+    <div class="doc-meta"><strong>How We Compete</strong><br />Philosophies &amp; ethos</div>
+  </div>
+
+  <div class="label">06 / Gracious Professionalism</div>
+
+  <figure class="gp-hero">
+    <img src="frc-gp.jpg" alt="Dr. Woodie Flowers greeting a FIRST Robotics team, students smiling and emotional" />
+    <figcaption class="cap" data-cms="gp.photo_cap" data-label="Photo caption" data-group="05 · Gracious Professionalism">A FIRST team meets Dr. Woodie Flowers, who named Gracious Professionalism.</figcaption>
+  </figure>
+
+  <div class="gp-text">
+    <div>
+      <h2 class="display gp-title" data-cms="gp.title" data-label="Headline (use *word* for green)" data-group="05 · Gracious Professionalism">Gracious <span class="lime">Professionalism.</span></h2>
+      <p class="gp-lead" data-cms="gp.lead" data-label="Lead sentence" data-group="05 · Gracious Professionalism">It is the ethos of FIRST, and the way SHFT works: serious engineering, done with respect for the people around you.</p>
+    </div>
+    <div>
+      <p class="body-copy" data-cms="gp.body1" data-label="Paragraph 1 (use *word* for white)" data-group="05 · Gracious Professionalism">We are building a team <strong>any student can join, no experience needed</strong>. Newcomers learn beside mentors who have built robots before. On event day we compete hard, then walk to the next pit and help a rival get running again.</p>
+      <p class="body-copy" data-cms="gp.body2" data-label="Paragraph 2 (use *word* for white)" data-group="05 · Gracious Professionalism">Back SHFT and your name stands with a team learning to compete the right way: <strong>hard on the field, decent off it</strong>. That is the standard we are building toward.</p>
+      <p class="gp-credit" data-cms="gp.credit" data-label="Credit line" data-group="05 · Gracious Professionalism">Gracious Professionalism&reg; was coined by Dr. Woodie Flowers (1943&ndash;2019), distinguished advisor to FIRST.</p>
+    </div>
+  </div>
+
+  <div class="footer"><span>How we compete</span><span class="lime">Compete hard. Stay kind.</span><span>Page 06</span></div>
+</section>
+
+<!-- ============ 07 / SAY YES ============ -->
 <section class="page">
   <div class="topbar">
     <img class="wordmark" src="../brand-assets/wordmark-shft-robotics.png" alt="SHFT ROBOTICS" />
     <div class="doc-meta"><strong>Next Step</strong><br />Become a sponsor</div>
   </div>
 
-  <div class="label">08 / Join the Build</div>
-  <h2 class="display section-title">Ready to sponsor SHFT?</h2>
-  <p class="lede">Start with a short conversation. We will confirm the right tier, collect your logo, and make sure every recognition detail is correct before anything goes public.</p>
+  <div class="label">07 / Join the Build</div>
+  <h2 class="display section-title" data-cms="close.title" data-label="Headline (use *word* for green)" data-group="06 · Say Yes">Ready to sponsor SHFT?</h2>
+  <p class="lede" data-cms="close.lede" data-label="Paragraph" data-group="06 · Say Yes">Start with a short conversation. We confirm the right tier, collect your logo, and get every detail right before anything goes public.</p>
 
-  <div class="contact-grid" style="margin-top:0.2in">
-    <div class="card green">
-      <h3>Contact</h3>
-      <p><strong>Sponsorship contact:</strong> Malhar Soni, Head Coach, Team SHFT<br /><strong>Email:</strong> <a href="mailto:team@shftrobotics.com">team@shftrobotics.com</a><br /><strong>Website:</strong> shftrobotics.com<br /><strong>Instagram:</strong> @shftrobotics<br /><strong>Location:</strong> North York, Ontario</p>
-    </div>
-    <div class="card">
-      <h3>Sponsor checklist</h3>
-      <ul class="checklist">
-        <li>Choose a tier or describe in-kind support.</li>
-        <li>Send SVG, PNG, or vector logo files.</li>
-        <li>Confirm sponsor display name and URL.</li>
-        <li>Confirm payment or donation-processing details.</li>
-      </ul>
-      <p class="body-copy" style="margin-top:0.1in">We will send an invoice and payment instructions once you choose a tier.</p>
-    </div>
+  <div class="deadline" style="padding:0.13in 0.2in;margin-top:0.12in">
+    <div class="deadline-label" data-cms="close.deadline_label" data-label="Deadline sentence" data-group="06 · Say Yes">Founding placement on the first robot, pit, and apparel closes when our season starts:</div>
+    <div class="deadline-date" data-cms="close.deadline_date" data-label="Deadline date (big)" data-group="06 · Say Yes">September 10, 2026</div>
   </div>
 
-  <div class="split" style="margin-top:0.18in">
-    <div class="card">
-      <h3>Good sponsor fits</h3>
-      <p>Engineering, manufacturing, software, trades, logistics, design, education, finance, local business, food, printing, transportation, and community foundations.</p>
-    </div>
-    <div class="card">
-      <h3>Why now</h3>
-      <p>Our team's first season of activities begins September 10, 2026. Commit before then for founding-sponsor placement on the first robot, pit, and apparel. Late sponsors are welcomed into the next cycle.</p>
+  <div class="close-feature" style="margin-top:0.14in">
+    <figure class="apparel-big">
+      <div class="media"><span class="ex-tag">On apparel</span><video src="tee-sponsors.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
+      <figcaption data-cms="close.apparel_note" data-label="Apparel note" data-group="06 · Say Yes">Founding partners appear on team apparel, worn at every event, demo, and outreach day.</figcaption>
+    </figure>
+    <div class="card green">
+      <h3 data-cms="close.contact_title" data-label="Contact card title" data-group="06 · Say Yes">Contact</h3>
+      <p>
+        <strong>Sponsorship contact:</strong> <span data-cms="close.contact_name" data-label="Contact name + role" data-group="06 · Say Yes">Malhar Soni, Head Coach, Team SHFT</span><br />
+        <strong>Email:</strong> <a href="mailto:team@shftrobotics.com" data-cms="close.contact_email" data-label="Contact email" data-group="06 · Say Yes">team@shftrobotics.com</a><br />
+        <strong>Website:</strong> <span data-cms="close.contact_web" data-label="Website" data-group="06 · Say Yes">shftrobotics.com</span><br />
+        <strong>Instagram:</strong> <span data-cms="close.contact_ig" data-label="Instagram" data-group="06 · Say Yes">@shftrobotics</span><br />
+        <strong>Location:</strong> <span data-cms="close.contact_loc" data-label="Location" data-group="06 · Say Yes">North York, Ontario</span>
+      </p>
+      <p class="card-note" data-cms="close.checklist_note" data-label="To-start line" data-group="06 · Say Yes"><strong>To start:</strong> pick a tier, send a vector logo, and confirm your display name. We send an invoice once you choose.</p>
     </div>
   </div>
 
   <a class="cta-band" href="mailto:team@shftrobotics.com?subject=SHFT%20sponsorship" style="text-decoration:none">
     <div class="cta-copy">
-      <b>Ready to sponsor SHFT?</b>
-      <span>Start with a short conversation.</span>
+      <b data-cms="close.cta_title" data-label="CTA headline" data-group="06 · Say Yes">Say yes.</b>
+      <span data-cms="close.cta_sub" data-label="CTA subline" data-group="06 · Say Yes">One email starts it.</span>
     </div>
     <!-- QR encodes mailto:team@shftrobotics.com?subject=SHFT sponsorship (generated with segno). -->
     <div class="qr">
       <div class="qr-box" style="background:#fff;padding:0.05in"><img src="qr-email.svg" alt="Scan to email team@shftrobotics.com" style="width:100%;height:100%;display:block" /></div>
-      <span>EMAIL US</span>
+      <span data-cms="close.qr_label" data-label="QR label" data-group="06 · Say Yes">EMAIL US</span>
     </div>
   </a>
 
-  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Founding partners, 2027 season.</span><span>Page 08</span></div>
+  <div class="footer"><span>SHFT ROBOTICS</span><span class="lime">Founding partners, 2027 season.</span><span>Page 07</span></div>
 </section>
+
+<div class="pdf-bar">
+  <a class="pdf-dl" href="shft-sponsorship-package.pdf" download data-cms="close.pdf_label" data-label="PDF download button" data-group="06 · Say Yes">&#8681;&nbsp; Download the package (PDF)</a>
+</div>
+
+<script>
+  /* CMS overlay. The inline copy above is the default, so the deck works and
+     prints with no JSON. The editor (edit.html) publishes a content.json to
+     GitHub; this loader reads it so published edits go live without a rebuild.
+     Source order: local preview (this browser only) > published GitHub copy >
+     deployed content.json > inline default. *word* renders as a lime accent. */
+  (function () {
+    var RAW = 'https://raw.githubusercontent.com/SNX-Corp/SHFT/main/marketing/sponsors/content.json';
+    function render(val) {
+      var d = document.createElement('div');
+      d.textContent = String(val);
+      return d.innerHTML.replace(/\*([^*]+)\*/g, '<span class="lime">$1</span>');
+    }
+    function apply(data) {
+      if (!data) return;
+      document.querySelectorAll('[data-cms]').forEach(function (el) {
+        var k = el.getAttribute('data-cms');
+        if (data[k] != null && data[k] !== '') el.innerHTML = render(data[k]);
+      });
+    }
+    // The editor loads this page with ?cms=edit and wants the raw inline
+    // defaults, so it can tell what has actually been changed. Skip the overlay.
+    if (location.search.indexOf('cms=edit') > -1) return;
+    var local = null;
+    try { local = JSON.parse(localStorage.getItem('shft_sponsor_preview') || 'null'); } catch (e) {}
+    if (local) { apply(local); return; }
+    fetch(RAW, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data) { apply(data); return; }
+        return fetch('./content.json', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(apply);
+      })
+      .catch(function () {
+        fetch('./content.json', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(apply).catch(function () {});
+      });
+  })();
+
+  /* Fit each 8.5in page to the viewport width on screen (not print). */
+  (function () {
+    var fit = function () {
+      var s = Math.min(1, (window.innerWidth - 32) / 816);
+      document.documentElement.style.setProperty('--pz', s);
+    };
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+
+  /* Robot carousel: arrows, swipe (native scroll-snap), and dots. */
+  (function () {
+    var car = document.getElementById('robotCar');
+    if (!car) return;
+    var track = car.querySelector('.car-track');
+    var slides = car.querySelectorAll('.slide');
+    var dots = car.querySelector('.car-dots');
+    var cur = function () { return Math.round(track.scrollLeft / track.clientWidth); };
+    var go = function (i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+    };
+    slides.forEach(function (_, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      if (i === 0) b.className = 'on';
+      b.addEventListener('click', function () { go(i); });
+      dots.appendChild(b);
+    });
+    var sync = function () {
+      var c = cur();
+      dots.querySelectorAll('button').forEach(function (d, i) { d.className = i === c ? 'on' : ''; });
+    };
+    car.querySelector('.next').addEventListener('click', function () { go(cur() + 1); });
+    car.querySelector('.prev').addEventListener('click', function () { go(cur() - 1); });
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); });
+  })();
+</script>
 
 </body>
 </html>
