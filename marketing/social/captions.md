@@ -262,7 +262,7 @@ You will never forget your first one.
 ---
 
 ### hype-03
-**First line:** Shift the standard.
+**First line:** Shft the standard.
 
 A new Ontario FRC team built to compete from day one. Our goal is top 10 in Ontario in year one. We say it out loud because our mentors have spent more than ten years coaching teams through this exact climb.
 

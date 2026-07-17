@@ -4,5 +4,5 @@ export const social = [
 
 export const teamName = 'SHFT';
 export const teamNumber = 'Number pending';
-export const tagline = 'Shift the standard.';
+export const tagline = 'Shft the standard.';
 export const founded = 2026;

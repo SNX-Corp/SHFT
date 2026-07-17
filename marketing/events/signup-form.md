@@ -8,7 +8,7 @@ Two things here: the exact fields for a Google Form (digital signup + QR code on
 
 **Form title:** Join SHFT Interest Form
 **Form description:**
-> Shift the standard. SHFT is a new Ontario FRC team built to compete from day one. Drop your info and we'll save you a spot. No experience required. @shftrobotics · https://shftrobotics.com
+> Shft the standard. SHFT is a new Ontario FRC team built to compete from day one. Drop your info and we'll save you a spot. No experience required. @shftrobotics · https://shftrobotics.com
 
 ### Fields
 
@@ -46,7 +46,7 @@ Print landscape. One line per person. Keep it dead simple so the line moves. Pri
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────┐
-│  SHFT INFO NIGHT SIGN-IN                        Shift the standard.   @shftrobotics         │
+│  SHFT INFO NIGHT SIGN-IN                        Shft the standard.   @shftrobotics         │
 │  Date: ____________   ·   Prefer digital? Scan the QR code at the table.                    │
 ├────┬───────────────────┬──────────┬──────────────┬───────────────────┬─────────────────────┤
 │ #  │ Student name      │ Grade    │ School       │ Email             │ Parent phone        │

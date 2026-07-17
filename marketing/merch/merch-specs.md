@@ -49,7 +49,7 @@ Production-ready specs for the core SHFT merch line. Hand this to a print shop o
 Or, once known, the team number:
 > TEAM [FILL: team number]
 
-**Optional back hit:** Small lime bolt at center-back yoke (2 in tall) or the tagline `SHIFT THE STANDARD.` across the upper back.
+**Optional back hit:** Small lime bolt at center-back yoke (2 in tall) or the tagline `SHFT THE STANDARD.` across the upper back.
 
 ---
 
@@ -83,7 +83,7 @@ The lime bolt alone. This is the most recognizable, most repeatable piece of the
 
 **Print locations:**
 - **Left chest (small):** Lime bolt only, approx **3.5–4 in (9–10 cm) tall**, positioned left-chest (about 7 in down from the shoulder seam, 4 in in from center).
-- **Full back (large):** Either the full `SH⚡FT` wordmark approx **12 in (30 cm) wide** across the upper back, OR the tagline `SHIFT THE STANDARD.` in the Orbitron-style face, uppercase, tight tracking, across the back.
+- **Full back (large):** Either the full `SH⚡FT` wordmark approx **12 in (30 cm) wide** across the upper back, OR the tagline `SHFT THE STANDARD.` in the Orbitron-style face, uppercase, tight tracking, across the back.
 
 **Colors / inks:**
 - Left chest bolt: SHFT Lime `#A6FF00`, neon ink.
@@ -91,7 +91,7 @@ The lime bolt alone. This is the most recognizable, most repeatable piece of the
 - Proof lime to Pantone 802 C / 809 C, confirm on a physical fleece swatch (texture changes the read).
 
 **Copy options for the back:**
-> SHIFT THE STANDARD.
+> SHFT THE STANDARD.
 
 > TOP 10 IN ONTARIO. YEAR ONE.
 
@@ -124,7 +124,7 @@ The lime bolt alone. This is the most recognizable, most repeatable piece of the
 **Layout:**
 - Background: solid SHFT Black `#1A1A1A` (or true black).
 - Center: large `SH⚡FT` wordmark, white letters + lime bolt, sized to roughly 60% of banner width with bolt-height clear space around it.
-- Under the wordmark: tagline `SHIFT THE STANDARD.` in the Orbitron-style face, uppercase, tight tracking, lime or white.
+- Under the wordmark: tagline `SHFT THE STANDARD.` in the Orbitron-style face, uppercase, tight tracking, lime or white.
 - Bottom strip: `[FILL: team number]` · `ONTARIO` · `shftrobotics.com` · `@shftrobotics`. Small, white, evenly spaced.
 - Optional: faint lime energy-pattern motif (see `energy-pattern.svg`) bled off the corners at low opacity. Keep it subtle so the wordmark stays the hero.
 
@@ -178,14 +178,14 @@ ITEMS:
 
 3) HOODIE // Black heavyweight fleece (Independent IND4000 or equiv).
    Left chest: lime bolt ~3.5–4 in tall, neon ink.
-   Full back: wordmark ~12 in wide (white + lime) OR "SHIFT THE STANDARD."
+   Full back: wordmark ~12 in wide (white + lime) OR "SHFT THE STANDARD."
 
 4) CAP // Black structured 6-panel (Flexfit 6277 / Richardson 112).
    EMBROIDERED front: lime bolt ~2–2.5 in tall, fluoro poly thread.
    Optional: small wordmark version (white letters + lime bolt).
 
 5) PIT BANNER // 6 ft x 3 ft, 13 oz matte vinyl, hemmed + grommeted.
-   Black bg, centered wordmark (white + lime), tagline "SHIFT THE STANDARD.",
+   Black bg, centered wordmark (white + lime), tagline "SHFT THE STANDARD.",
    bottom strip: [FILL: team number] · ONTARIO · shftrobotics.com · @shftrobotics.
    FLAG the lime as fluorescent. Ask if large-format can hit neon or needs
    a spot/fluoro pass. Request a color-strip proof first.

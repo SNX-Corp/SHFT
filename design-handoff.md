@@ -75,7 +75,7 @@ weights, uppercase, tight tracking** is the brand voice. All three are free
 (Google Fonts / fontsource), so a printer can license/obtain them easily.
 
 **Voice rule (applies to any copy on merch):** no em dashes. Short, declarative
-lines. e.g. "Shift the standard." / "Better. Every. Year." / "Built to compete."
+lines. e.g. "Shft the standard." / "Better. Every. Year." / "Built to compete."
 
 ---
 
@@ -108,10 +108,10 @@ lines. e.g. "Shift the standard." / "Better. Every. Year." / "Built to compete."
 
 - **Tee (hero):** black tee, large white `SH⚡FT` wordmark across the chest, lime bolt. Optional small "ONTARIO COMMUNITY FRC TEAM" or team number under it in Orbitron.
 - **Bolt sticker / patch:** the lime bolt alone. The most reusable, recognizable item.
-- **Hoodie:** black, small bolt on the left chest, big wordmark or "SHIFT THE STANDARD." across the back in Orbitron.
+- **Hoodie:** black, small bolt on the left chest, big wordmark or "SHFT THE STANDARD." across the back in Orbitron.
 - **Cap:** embroidered bolt (front) or small wordmark.
 - **Pit / banner:** black field, oversized wordmark, lime bolt, plus partner lockups (ALT-F4, WCP) in a tidy row at the bottom.
-- **Slogan line options:** "Shift the standard." · "Built to compete from day one." · "Better. Every. Year."
+- **Slogan line options:** "Shft the standard." · "Built to compete from day one." · "Better. Every. Year."
 
 ---
 

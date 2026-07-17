@@ -7,7 +7,7 @@ Keep one idea per slide. The deck supports the talk; it does not replace it. The
 ---
 
 ### Slide 1: Title / Hook
-**SHFT. Shift the standard.**
+**SHFT. Shft the standard.**
 A new Ontario FRC team built to compete from day one. (Logo, @shftrobotics, site URL.)
 
 ### Slide 2: Who We Are

@@ -83,10 +83,10 @@ RSAs let Google mix headlines and descriptions. Provide many; Google picks. Pin 
 
 ---
 
-### RSA Set 3: Branded / "shift the standard"
+### RSA Set 3: Branded / "shft the standard"
 **Headlines**
 1. SHFT Robotics: Official *(pin to position 1)*
-2. Shift The Standard
+2. Shft The Standard
 3. Top 10 In Ontario. Year One.
 4. Not Just A Club
 5. A Launchpad For Students

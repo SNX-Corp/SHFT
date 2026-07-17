@@ -103,7 +103,7 @@ All copy is in **`website/src/content/sections/*.md`** (Astro content collection
 **CMS option:** a Decap/Sveltia admin is wired up at `/admin` (`public/admin/config.yml`) for editing the same markdown through a UI. It needs a Git-backed auth provider configured to write changes (see the auth setup notes in the repo).
 
 ### Current key facts (so they stay consistent)
-- Tagline: **"Shift the standard."**
+- Tagline: **"Shft the standard."**
 - Eyebrow: **"Ontario Community FRC Team"**
 - Hero line: **"A new Ontario FRC team built to compete from day one."**
 - Partner: **ALT-F4** (Team 7558) · Sponsor: **WCP**
