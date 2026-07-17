@@ -113,7 +113,7 @@ Buttons are **square** (`rounded-none`), Exo 2 bold uppercase, `active:scale(0.9
 - **Values:** FOCUS, ELEVATE, INNOVATE, TOGETHER.
 - **Hard rule:** no em dashes anywhere. Short, declarative lines. Use a period or a colon.
 
-Team facts: name **SHFT** (SHFT ROBOTICS in full lockup), team number **"Number pending"**, founded **2025**, Ontario FRC team, Instagram **@shftrobotics**, bio "Robotics Team. Innovate. Build. Compete.", `shftrobotics.com`.
+Team facts: name **SHFT** (SHFT ROBOTICS in full lockup), team number **"Number pending"**, founded **2026** (first competition season 2027), Ontario FRC team, Instagram **@shftrobotics**, bio "Robotics Team. Innovate. Build. Compete.", `shftrobotics.com`.
 
 ---
 
