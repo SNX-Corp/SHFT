@@ -17,12 +17,19 @@ OUT="${OUT_DIR:-${TMPDIR:-/tmp}/sponsor-deploy}"
 rm -rf "$OUT"
 mkdir -p "$OUT/brand-assets"
 
-# index.html = the package, with parent-relative asset paths flattened to root.
-sed -e 's#\.\./brand-assets/#brand-assets/#g' \
-    "$SRC_DIR/sponsor-package.html" > "$OUT/index.html"
+# index.html = the mobile-proof image-page viewer (renders identically everywhere).
+cp "$SRC_DIR/site-index.html" "$OUT/index.html"
 
-# edit.html = the in-browser copy editor (its iframe loads index.html).
-cp "$SRC_DIR/edit.html" "$OUT/"
+# pages/ = each package page rendered as an image (see render notes in README).
+mkdir -p "$OUT/pages"
+cp "$SRC_DIR"/pages/page-*.jpg "$OUT/pages/"
+
+# package.html = the original HTML package, kept for desktop deep-links and the editor.
+sed -e 's#\.\./brand-assets/#brand-assets/#g' \
+    "$SRC_DIR/sponsor-package.html" > "$OUT/package.html"
+
+# edit.html = the in-browser copy editor; point its iframe at package.html.
+sed -e 's#index\.html#package.html#g' "$SRC_DIR/edit.html" > "$OUT/edit.html"
 
 # content.json = published copy overrides, if any have been saved.
 [ -f "$SRC_DIR/content.json" ] && cp "$SRC_DIR/content.json" "$OUT/"
