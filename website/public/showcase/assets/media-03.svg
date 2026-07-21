@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#161616"/>
+  <!-- circuit traces -->
+  <g stroke="#A6FF00" stroke-width="5" fill="none" opacity="0.9">
+    <polyline points="0,200 420,200 500,280 900,280"/>
+    <polyline points="0,430 300,430 380,350 760,350 830,430 1180,430"/>
+    <polyline points="0,650 520,650 600,570 1050,570"/>
+    <polyline points="240,1000 240,760 320,680 720,680"/>
+    <polyline points="1600,180 1250,180 1180,250 1020,250"/>
+    <polyline points="1600,800 1300,800 1220,720 980,720"/>
+  </g>
+  <!-- pads -->
+  <g fill="#A6FF00">
+    <circle cx="900" cy="280" r="14"/><circle cx="1180" cy="430" r="14"/>
+    <circle cx="1050" cy="570" r="14"/><circle cx="720" cy="680" r="14"/>
+    <circle cx="1020" cy="250" r="14"/><circle cx="980" cy="720" r="14"/>
+  </g>
+  <g fill="none" stroke="#ffffff" opacity="0.35" stroke-width="2">
+    <circle cx="900" cy="280" r="26"/><circle cx="1050" cy="570" r="26"/><circle cx="980" cy="720" r="26"/>
+  </g>
+  <!-- chip -->
+  <rect x="1240" y="520" width="200" height="200" fill="#1F1F1F" stroke="#A6FF00" stroke-width="4"/>
+  <text x="1340" y="632" fill="#A6FF00" font-family="Arial, sans-serif" font-weight="900" font-size="40" text-anchor="middle" letter-spacing="4">SHFT</text>
+  <g stroke="#737373" stroke-width="4">
+    <line x1="1265" y1="500" x2="1265" y2="520"/><line x1="1315" y1="500" x2="1315" y2="520"/>
+    <line x1="1365" y1="500" x2="1365" y2="520"/><line x1="1415" y1="500" x2="1415" y2="520"/>
+    <line x1="1265" y1="720" x2="1265" y2="740"/><line x1="1315" y1="720" x2="1315" y2="740"/>
+    <line x1="1365" y1="720" x2="1365" y2="740"/><line x1="1415" y1="720" x2="1415" y2="740"/>
+  </g>
+  <text x="80" y="930" fill="#737373" font-family="Arial, sans-serif" font-size="26" letter-spacing="10">CONTROL BOARD / 03</text>
+</svg>
