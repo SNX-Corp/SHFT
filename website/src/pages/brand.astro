@@ -6,6 +6,7 @@ import ColorSwatch from '../components/brand/ColorSwatch.astro';
 import TypeSpecimen from '../components/brand/TypeSpecimen.astro';
 import LogoShowcase from '../components/brand/LogoShowcase.astro';
 import LogoDownloads from '../components/brand/LogoDownloads.astro';
+import PlacementGuide from '../components/brand/PlacementGuide.astro';
 import DesignPrinciples from '../components/brand/DesignPrinciples.astro';
 import Button from '../components/Button.astro';
 
@@ -191,12 +192,30 @@ const fonts = [
     </div>
   </section>
 
+  <!-- Placement -->
+  <!-- data-no-reveal for the same reason as Downloads: the reveal script offsets
+       every bordered element inside a section, which catches the spec rows. -->
+  <section id="placement" data-no-reveal class="py-16 lg:py-24 bg-bg border-t border-border scroll-mt-20">
+    <div class="content-width">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-8 h-px bg-accent"></div>
+        <span class="text-label-size font-heading text-text-muted">05 - PLACEMENT</span>
+      </div>
+      <p class="font-body text-text-secondary text-[15px] max-w-2xl leading-relaxed mb-12">
+        Where each mark goes on each item, and how big. Every diagram uses the production file from
+        the pack above.
+      </p>
+
+      <PlacementGuide />
+    </div>
+  </section>
+
   <!-- Design Principles -->
   <section class="py-16 lg:py-24 bg-bg border-t border-border">
     <div class="content-width">
       <div class="flex items-center gap-4 mb-12">
         <div class="w-8 h-px bg-accent"></div>
-        <span class="text-label-size font-heading text-text-muted">05 - DESIGN PRINCIPLES</span>
+        <span class="text-label-size font-heading text-text-muted">06 - DESIGN PRINCIPLES</span>
       </div>
 
       <DesignPrinciples />
@@ -208,7 +227,7 @@ const fonts = [
     <div class="content-width">
       <div class="flex items-center gap-4 mb-12">
         <div class="w-8 h-px bg-accent"></div>
-        <span class="text-label-size font-heading text-text-muted">06 - COMPONENTS</span>
+        <span class="text-label-size font-heading text-text-muted">07 - COMPONENTS</span>
       </div>
 
       <!-- Buttons -->

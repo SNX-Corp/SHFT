@@ -1,0 +1,272 @@
+---
+/**
+ * PlacementGuide - /brand section 05.
+ *
+ * Answers the question a printer actually asks: which mark, where on the
+ * garment, and how wide. Every diagram places the real production vector from
+ * public/brand/svg on a garment outline, so what a vendor sees here is the file
+ * they download. Measurements come from marketing/merch/merch-specs.md.
+ *
+ * Deliberately not product photography. The renders we have use a green that is
+ * not #A6FF00, and a page whose whole instruction is "never substitute a
+ * different green" cannot show one.
+ */
+
+const placements = [
+  {
+    id: 'tee',
+    item: 'Tee',
+    where: 'Full front',
+    method: 'Screen print, DTF, or vinyl',
+    mark: 'Wordmark',
+    file: 'shft-wordmark-full-on-dark',
+    size: '10 to 11 in / 25 to 28 cm wide',
+    position: 'Centred. Top of the mark sits 3 in (7.5 cm) below the collar seam on an adult M.',
+    dim: '10 - 11 in',
+  },
+  {
+    id: 'hoodie-chest',
+    item: 'Hoodie',
+    where: 'Left chest',
+    method: 'Screen print or DTF',
+    mark: 'Bolt',
+    file: 'shft-bolt-full-on-dark',
+    size: '3.5 to 4 in / 9 to 10 cm tall',
+    position: "Wearer's left. About 7 in down from the shoulder seam and 4 in in from centre.",
+    dim: '3.5 - 4 in',
+  },
+  {
+    id: 'hoodie-back',
+    item: 'Hoodie',
+    where: 'Full back',
+    method: 'Screen print or DTF',
+    mark: 'Wordmark',
+    file: 'shft-wordmark-full-on-dark',
+    size: '12 in / 30 cm wide',
+    position: 'Centred across the upper back, below the shoulder seam.',
+    dim: '12 in',
+  },
+  {
+    id: 'cap',
+    item: 'Cap',
+    where: 'Front panel',
+    method: 'Embroidery, not print',
+    mark: 'Bolt',
+    file: 'shft-bolt-full-on-dark',
+    size: '2 to 2.5 in / 5 to 6 cm tall',
+    position: 'Centred on the front panel. Keep the cap all black so the green carries.',
+    dim: '2 - 2.5 in',
+  },
+  {
+    id: 'sticker',
+    item: 'Sticker or patch',
+    where: 'Contour cut',
+    method: 'Die-cut vinyl, or embroidered patch',
+    mark: 'Bolt',
+    file: 'shft-bolt-green',
+    size: '2.5 to 3 in / 6 to 7.5 cm tall',
+    position: 'Cut to the bolt silhouette, or set the bolt on a black field. A 1.5 in mini works for helmets.',
+    dim: '2.5 - 3 in',
+  },
+  {
+    id: 'banner',
+    item: 'Pit banner',
+    where: 'Centre',
+    method: 'Large format, 13 oz matte vinyl',
+    mark: 'Full lockup',
+    file: 'shft-robotics-lockup-full-on-dark',
+    size: 'About 60% of banner width',
+    position: 'Centred on a 6 ft x 3 ft banner. Team number and site sit in a small strip along the bottom.',
+    dim: '~60% of width',
+    wide: true,
+  },
+];
+---
+
+<div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {placements.map((p) => (
+      <div class={`border border-border bg-bg flex flex-col ${p.wide ? 'md:col-span-2' : ''}`}>
+        <!-- Diagram -->
+        <div class={`relative bg-surface-alt ${p.wide ? 'aspect-[2/1]' : 'aspect-square'}`}>
+          <svg
+            viewBox={p.wide ? '0 0 400 200' : '0 0 200 200'}
+            class="absolute inset-0 w-full h-full"
+            fill="none"
+            aria-hidden="true"
+          >
+            {p.id === 'tee' && (
+              <g stroke="rgba(255,255,255,0.28)" stroke-width="1.25">
+                <path d="M86,22 C93,31 107,31 114,22 L140,26 L170,58 L152,78 L138,66 L138,176 L62,176 L62,66 L48,78 L30,58 L56,26 Z" />
+                <path d="M86,22 L114,22" />
+              </g>
+            )}
+
+            {p.id === 'hoodie-chest' && (
+              <g stroke="rgba(255,255,255,0.28)" stroke-width="1.25">
+                <path d="M74,64 L56,58 L26,74 L34,98 L56,90 L56,176 L144,176 L144,90 L166,98 L174,74 L144,58 L126,64" />
+                <path d="M74,64 L82,40 C90,32 110,32 118,40 L126,64" />
+                <path d="M74,64 C86,78 114,78 126,64" />
+                <path d="M70,130 L130,130 L126,158 L74,158 Z" />
+                <path d="M56,166 L144,166" stroke="rgba(255,255,255,0.14)" />
+              </g>
+            )}
+
+            {p.id === 'hoodie-back' && (
+              <g stroke="rgba(255,255,255,0.28)" stroke-width="1.25">
+                <path d="M74,64 L56,58 L26,74 L34,98 L56,90 L56,176 L144,176 L144,90 L166,98 L174,74 L144,58 L126,64" />
+                <path d="M74,64 L82,40 C90,32 110,32 118,40 L126,64" />
+                <path d="M74,64 L126,64" />
+                <path d="M56,166 L144,166" stroke="rgba(255,255,255,0.14)" />
+              </g>
+            )}
+
+            {p.id === 'cap' && (
+              <g stroke="rgba(255,255,255,0.28)" stroke-width="1.25">
+                <path d="M52,120 C52,66 148,66 148,120 L156,120 C152,138 48,138 44,120 Z" />
+                <path d="M52,120 L148,120" stroke="rgba(255,255,255,0.14)" />
+                <path d="M100,80 L100,120" stroke="rgba(255,255,255,0.14)" />
+              </g>
+            )}
+
+            {p.id === 'sticker' && (
+              <g stroke="rgba(255,255,255,0.28)" stroke-width="1.25">
+                <path d="M44,24 L156,24 L156,168 L44,168 Z" stroke-dasharray="5 4" />
+              </g>
+            )}
+
+            {p.id === 'banner' && (
+              <g stroke="rgba(255,255,255,0.28)" stroke-width="1.25">
+                <path d="M72,36 L328,36 L328,164 L72,164 Z" />
+                <g fill="rgba(255,255,255,0.28)" stroke="none">
+                  <circle cx="82" cy="44" r="2.5" /><circle cx="200" cy="44" r="2.5" /><circle cx="318" cy="44" r="2.5" />
+                  <circle cx="82" cy="156" r="2.5" /><circle cx="200" cy="156" r="2.5" /><circle cx="318" cy="156" r="2.5" />
+                </g>
+                <path d="M72,148 L328,148" stroke="rgba(255,255,255,0.14)" />
+              </g>
+            )}
+
+            <!-- Dimension rule, in the accent so the measured edge is unmistakable -->
+            {p.id === 'tee' && (
+              <g stroke="#A6FF00" stroke-width="1.25">
+                <path d="M80,58 L120,58" /><path d="M80,53 L80,63" /><path d="M120,53 L120,63" />
+              </g>
+            )}
+            {p.id === 'hoodie-chest' && (
+              <g stroke="#A6FF00" stroke-width="1.25">
+                <path d="M134,86 L134,102" /><path d="M129,86 L139,86" /><path d="M129,102 L139,102" />
+              </g>
+            )}
+            {p.id === 'hoodie-back' && (
+              <g stroke="#A6FF00" stroke-width="1.25">
+                <path d="M76,100 L124,100" /><path d="M76,95 L76,105" /><path d="M124,95 L124,105" />
+              </g>
+            )}
+            {p.id === 'cap' && (
+              <g stroke="#A6FF00" stroke-width="1.25">
+                <path d="M126,84 L126,108" /><path d="M121,84 L131,84" /><path d="M121,108 L131,108" />
+              </g>
+            )}
+            {p.id === 'sticker' && (
+              <g stroke="#A6FF00" stroke-width="1.25">
+                <path d="M168,48 L168,148" /><path d="M163,48 L173,48" /><path d="M163,148 L173,148" />
+              </g>
+            )}
+            {p.id === 'banner' && (
+              <g stroke="#A6FF00" stroke-width="1.25">
+                <path d="M123,132 L277,132" /><path d="M123,127 L123,137" /><path d="M277,127 L277,137" />
+              </g>
+            )}
+          </svg>
+
+          <!-- The mark, in position. Percentages map to the viewBox above. -->
+          {p.id === 'tee' && (
+            <img src={`/brand/svg/${p.file}.svg`} alt="" class="absolute block" style="left:50%;top:19%;width:20%;transform:translateX(-50%)" />
+          )}
+          {p.id === 'hoodie-chest' && (
+            <img src={`/brand/svg/${p.file}.svg`} alt="" class="absolute block" style="left:58%;top:43%;height:8%;transform:translateX(-50%)" />
+          )}
+          {p.id === 'hoodie-back' && (
+            <img src={`/brand/svg/${p.file}.svg`} alt="" class="absolute block" style="left:50%;top:39%;width:24%;transform:translateX(-50%)" />
+          )}
+          {p.id === 'cap' && (
+            <img src={`/brand/svg/${p.file}.svg`} alt="" class="absolute block" style="left:50%;top:42%;height:12%;transform:translateX(-50%)" />
+          )}
+          {p.id === 'sticker' && (
+            <img src={`/brand/svg/${p.file}.svg`} alt="" class="absolute block" style="left:50%;top:24%;height:50%;transform:translateX(-50%)" />
+          )}
+          {p.id === 'banner' && (
+            <img src={`/brand/svg/${p.file}.svg`} alt="" class="absolute block" style="left:50%;top:33%;width:38.5%;transform:translateX(-50%)" />
+          )}
+
+          <!-- Measurement caption. One fixed spot on every tile: the rule shows
+               what is being measured, the caption says how much. -->
+          <span class="absolute bottom-4 left-1/2 -translate-x-1/2 font-heading font-bold text-[10px] uppercase tracking-[0.1em] text-accent whitespace-nowrap">
+            {p.dim}
+          </span>
+
+          <!-- Item tag -->
+          <span class="absolute top-4 left-4 font-heading font-bold text-[10px] uppercase tracking-[0.12em] text-white/40">
+            {p.item} - {p.where}
+          </span>
+        </div>
+
+        <!-- Spec -->
+        <div class="p-6">
+          <ul class="space-y-px">
+            {[
+              ['Mark', p.mark],
+              ['File', `${p.file}.svg`],
+              ['Size', p.size],
+              ['Method', p.method],
+            ].map(([k, v]) => (
+              <li class="flex items-baseline gap-4 py-2.5 border-t border-border first:border-t-0 first:pt-0">
+                <span class="font-heading font-semibold text-[10px] uppercase tracking-[0.1em] text-text-muted w-14 shrink-0">{k}</span>
+                <span class="font-body text-[13px] text-text-primary leading-snug">{v}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="font-body text-[13px] text-text-secondary leading-relaxed mt-4 pt-4 border-t border-border">
+            {p.position}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Team number and tagline -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div class="border border-border bg-surface p-6">
+      <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-4">
+        Team number
+      </h4>
+      <p class="font-display font-black text-[clamp(2rem,5vw,3rem)] text-text-primary leading-none tracking-[0.02em] mb-4">11753</p>
+      <p class="font-body text-[13px] text-text-secondary leading-relaxed">
+        Sets in Orbitron Black, uppercase. It is ordinary type rather than custom art, so you can set
+        it yourself. Never draw it into the wordmark and never let it replace the bolt. On a jersey
+        back it goes below the wordmark, not beside it.
+      </p>
+    </div>
+    <div class="border border-border bg-surface p-6">
+      <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-4">
+        Tagline
+      </h4>
+      <p class="font-display font-black text-[clamp(1.25rem,3vw,1.75rem)] text-text-primary leading-none mb-4">INNOVATE. ADAPT. SHFT.</p>
+      <p class="font-body text-[13px] text-text-secondary leading-relaxed">
+        Set in Orbitron, uppercase, with the periods. It is type, not art. Keep it to one line and do
+        not letterspace it wider than the mark it sits under.
+      </p>
+    </div>
+  </div>
+
+  <!-- Honesty note -->
+  <div class="border border-border bg-bg p-6 mt-4">
+    <p class="font-body text-[13px] text-text-secondary leading-relaxed max-w-3xl">
+      These are placement diagrams, not photographs. Each one uses the same vector file you download
+      above, so what you see here is what you get. Sizes are for an adult M; scale proportionally for
+      other sizes, or lock one placement to M if your shop runs a single screen. If a placement you
+      need is not here, ask before the run rather than after:
+      <a href="mailto:team@shftrobotics.com" class="text-text-primary underline underline-offset-2 hover:text-accent-dim transition-colors duration-150">team@shftrobotics.com</a>.
+    </p>
+  </div>
+</div>
