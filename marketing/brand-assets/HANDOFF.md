@@ -61,10 +61,11 @@ embedded creation timestamp, so a rebuild shows churn in those two.
   tags every `[class*="border"]` element inside a `<section>` and offsets it 24px. Any
   new section full of bordered chips or table rows needs `data-no-reveal` on the
   `<section>`, or its contents render visibly shifted.
-- **The S-mark is deliberately out of the pack.** `SS.svg` is an autotrace with visible
-  edge wobble. It stays a screen mark; the bolt covers small placements. If it ever
-  needs to go to print, run it through `regularize.py` first and review the corners by
-  eye, because the first pass left small artifacts on the hook shapes.
+- **The S-mark is retired, not just out of the pack.** Malhar confirmed on 2026-07-30
+  that the team does not use it. `SS.svg` and `SMark.astro` are deleted, `/logos`
+  redirects to `/brand#downloads`, and the bolt took over every placement it held. Do
+  not reintroduce it. The same angular arrow mark appears on Noeen's product sheet and
+  on the `polo`, `bottle`, and `flag` renders, which is why those stay unusable.
 
 ---
 
@@ -99,35 +100,58 @@ and `~/Desktop/SHFT/merch-lookbook/lookbook.html`.
 
 Take the product range and the placement thinking. Do not take the artwork.
 
-Three things in it do not match the brand as recorded:
+Two things in it still do not match the brand. The other two are now resolved.
 
-1. **The emblem** is the angular arrow mark, not the current bolt. Same mark as the
-   three unusable renders above.
+1. **The emblem** is the angular arrow mark, not the current bolt. That mark is now
+   retired outright, so nothing from the sheet's artwork can be used.
 2. **The green** is a mid-green, not `#A6FF00`. BRAND.md is explicit that the canonical
    green is `#A6FF00` and that off-greens get corrected.
-3. **`VERIFY:` team number 11753.** It appears throughout the sheet and **nowhere in the
-   repo.** Do not put a team number on public brand assets until Malhar confirms it.
-   Note that 7558 is ALT-F4's number and must never appear on SHFT material.
-4. **`VERIFY:` tagline "INNOVATE. ADAPT. SHFT."** BRAND.md records the banner tagline as
-   "INNOVATE. BUILD. COMPETE." Confirm which is current before either goes on the page.
+3. **Resolved: team number 11753.** Malhar confirmed it on 2026-07-30. It is now in
+   BRAND.md and filled through the marketing kit. 7558 is ALT-F4's and stays off SHFT
+   material.
+4. **Resolved: tagline "INNOVATE. ADAPT. SHFT."** Malhar confirmed it on 2026-07-30.
+   "INNOVATE. BUILD. COMPETE." turned out to be ALT-F4's tagline that SHFT drafts had
+   borrowed, and it was corrected on 8 surfaces.
 
-### Recommended approach
+### Done: the placement section
 
-Add a placement section under Downloads that answers the question a printer actually
-has: where does the mark go, and how big. For each placement, show the garment, name it,
-give the print width in mm and inches from the minimum-size table, and name the file to
-use. That is more useful to a vendor than a photo gallery, and it stays honest because
-it is a diagram rather than a fake product shot.
+Shipped as `/brand` section 05, built from `PlacementGuide.astro`. Six placements (tee
+front, hoodie left chest, hoodie back, cap front, sticker or patch, pit banner), each
+naming the file, the size in both units, and the decoration method. Measurements come
+from `merch/merch-specs.md`, and every diagram places the real production vector from
+`public/brand/svg` on a garment outline drawn to adult-M scale.
 
-Use the six usable renders. Do not put AI-generated product photos with garbled text on
-a page going to outside vendors; that is the exact failure the shft-public gate exists
-to catch.
+**The renders were not used, and should not be.** All six carry a green that is not
+`#A6FF00`: sampled at `#9DCA06`, `#86B103`, `#94BC43`, `#A9D11A`, `#9CDE21`, and
+`#99D30A`. The hoodie also has an off-brand red sleeve mark and the tee has garbled AI
+text reading "Sponsored by". A page whose own instruction is "never substitute a
+different green" cannot show one. They remain fine for the lookbook and social, where
+they are not read as production specs.
+
+If mockups are ever wanted on the page, correct the green first the way the
+`brand-assets` PNGs were corrected, and drop the tee entirely.
 
 ---
 
-## 3. Gate reminder
+## 3. Still open
+
+- **`wordmark-shft-robotics.png` is still wrong and still referenced.** Unchanged from
+  the last pass. About 20 files still point at it and sweeping them needs a per-file
+  visual check, because the aspect ratio changes from 3.17 to 2.31.
+- **No verified Pantone or thread number.** `merch-specs.md` suggests proofing to
+  Pantone 802 C / 809 C; the download page says none is on file. Both are true (suggested
+  is not verified), but the first shop that picks one should have it recorded so the
+  numbers stop disagreeing.
+
+## 4. Gate reminder
 
 Everything on `/brand` and everything inside the zip is outward-facing. It goes through
-the shft-public gate before it ships. On this pass the gate caught `FRC Team 7558` in the
-spec sheet header, which would have put ALT-F4's team number inside a zip going to
-outside vendors.
+the shft-public gate before it ships. Earlier the gate caught `FRC Team 7558` in the spec
+sheet header, which would have put ALT-F4's team number inside a zip going to outside
+vendors.
+
+On the placement pass it caught five things in freshly written copy, four of which were
+invented rules or claims stated as fact: a jersey-number placement rule that exists
+nowhere, a tagline letterspacing limit, a wrong minimum-size explanation, and a phrase
+implying SHFT has print runs behind it. Write the rule into BRAND.md first, or do not
+state it on a public page.
