@@ -1,0 +1,93 @@
+SHFT ROBOTICS - LOGO PACK FOR APPAREL AND PRINT
+shftrobotics.com/brand
+
+
+WHAT IS IN HERE
+---------------
+Three marks, five colorways each, in four formats.
+
+Marks
+  shft-wordmark ............. SHFT and the bolt. The default. Use this unless you
+                              need the full team name.
+  shft-robotics-lockup ...... SHFT, the bolt, and ROBOTICS underneath. Use where
+                              the full name has to read, such as a jacket back.
+  shft-bolt ................. The bolt on its own. For small placements: sleeve,
+                              cap, tag, sock.
+
+Colorways
+  full-on-dark .............. White letters, green bolt. For dark garments.
+  full-on-light ............. Near-black letters, green bolt. For light garments.
+  white ..................... Everything white. One-color print.
+  black ..................... Everything near-black. One-color print.
+  green ..................... Everything green. One-color print.
+
+Formats
+  /svg ...... Vector. The master. Opens in Illustrator, Affinity, Inkscape, CorelDRAW.
+  /pdf ...... Vector. Use this if your workflow prefers PDF over SVG.
+  /eps ...... Vector. For older screen-printing and embroidery software.
+  /png ...... 4000px on the longest side, transparent background. Convenience only, not for
+              large-format print. Use a vector file if the art will be resized.
+
+Every file is trimmed to the artwork, so there is no hidden padding. Sizing by
+height or width gives you the size you asked for.
+
+
+COLORS
+------
+  Green ......... #A6FF00     R 166  G 255  B 0
+  Near-black .... #1A1A1A     R 26   G 26   B 26
+  White ......... #FFFFFF     R 255  G 255  B 255
+
+The green is a bright lime that sits outside the CMYK gamut, so a four-color
+process print will come out duller than the screen version. For screen printing,
+DTF, or vinyl, match to a spot color rather than to a CMYK conversion. If you
+need a starting point for process, C35 M0 Y100 K0 is close, but check a proof.
+
+We do not have a verified Pantone or thread number on file yet. If you pick one,
+tell us which and we will record it so the next run matches.
+
+Never substitute a different green. The whole identity is one accent color.
+
+
+MINIMUM SIZES
+-------------
+Screen print, DTF, or vinyl
+  Wordmark .......... 50 mm (2 in) wide
+  Full lockup ....... 75 mm (3 in) wide
+  Bolt .............. 15 mm (0.6 in) wide
+
+Embroidery
+  Wordmark .......... 90 mm (3.5 in) wide
+  Full lockup ....... 130 mm (5 in) wide
+  Bolt .............. 25 mm (1 in) wide
+
+The lockup needs more room than the wordmark because ROBOTICS is small and
+letterspaced. At 130 mm the ROBOTICS letters are about 6 mm tall with a 1.4 mm
+stem, which is around the floor most shops give for satin stitch. If your shop
+says different, go with theirs. Below that size, drop the ROBOTICS line and use
+the wordmark on its own.
+
+
+CLEAR SPACE
+-----------
+Keep clear space on all four sides equal to one quarter of the mark's height.
+Nothing else goes inside that area: no seams, no other logos, no trim.
+
+
+THINGS THAT BREAK THE MARK
+--------------------------
+- Do not retype ROBOTICS in a font. Those letterforms are custom and no font
+  matches them. Use the supplied vector.
+- Do not recolor the green, add a gradient, or add a stroke, outline, glow, or
+  drop shadow.
+- Do not rotate, skew, condense, or stretch. The letters are already italic.
+- Do not place the full-color version on a mid-green or mid-gray garment. Use
+  the one-color white or black file instead.
+- Do not rebuild the mark from a screenshot or a PNG. Ask us for the vector.
+
+
+QUESTIONS OR A FILE YOU DO NOT SEE HERE
+---------------------------------------
+Email team@shftrobotics.com and we will send it. If you need a different
+format, a specific placement size, or a production proof checked, ask before the
+run rather than after.

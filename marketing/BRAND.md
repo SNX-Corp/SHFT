@@ -54,11 +54,22 @@ Emblem variations (from the brand board): **Primary** (white + green on dark), *
 
 Clear space: keep open space around the mark equal to the height of the emblem. Minimum sizes (digital): emblem 24px, wordmark 80px wide.
 
+**The production pack lives at `website/public/brand/`** and is published at
+[shftrobotics.com/brand#downloads](https://shftrobotics.com/brand#downloads). Three marks
+(wordmark, full SHFT ROBOTICS lockup, bolt) x five colourways x SVG, PDF, EPS, and 4000px PNG,
+plus `shft-logo-pack.zip` and a spec sheet. Send that link to any printer, embroiderer, or
+apparel designer. Regenerate with `python3 marketing/brand-assets/build/build-pack.py`; never
+hand-edit files under `website/public/brand/`.
+
 Asset files (cleaned to `#A6FF00`, transparent):
 
 | File | What it is |
 |------|-----------|
-| `brand-assets/wordmark-shft-robotics.png` | Full SHFT ROBOTICS wordmark, white letters + green bolt, transparent. For dark grounds. |
+| `brand-assets/wordmark.svg` / `-dark.svg` | **Master vector.** SHFT + bolt (no ROBOTICS), white or ink letters. Everything else is generated from this. |
+| `brand-assets/wordmark-tight.svg` | The same artwork with the viewBox trimmed to the art. |
+| `brand-assets/_robotics-vector-src.svg` | The ROBOTICS letterforms as vector, rebuilt from the master raster. Read by the lockup composer, not for direct use. |
+| `brand-assets/wordmark-robotics-official.png` | The full lockup raster the ROBOTICS vector was keyed off. Zero padding, `#A6FF00`. |
+| `brand-assets/wordmark-shft-robotics.png` | **Do not use.** Off-model bolt (fat, missing top spike) and 137px of padding on the top edge only. Superseded by the pack. |
 | `brand-assets/icon-transparent.png` | The emblem in a green circle, transparent. Avatar, sticker, watermark. |
 | `brand-assets/wordmark-official.jpeg` | Original AI wordmark on black (reference, off-green). |
 | `brand-assets/icon.jpeg` | Original AI icon on black (reference, off-green). |
@@ -69,7 +80,10 @@ Asset files (cleaned to `#A6FF00`, transparent):
 
 Also in the website repo: `website/public/images/logo/wordmark.png` (older "SHFT" lockup, correct green, transparent) and `SS.svg` (older S-mark vector).
 
-Production note: the new SHFT ROBOTICS wordmark and emblem currently exist only as cleaned rasters. For large merch and embroidery, commission a true vector (SVG/AI/EPS) of the wordmark and the emblem at `#A6FF00`.
+Production note: the SHFT ROBOTICS lockup is now a true vector and ships in the pack above, so
+merch and embroidery no longer need a commissioned redraw. The emblem (`icon-transparent.png`) is
+still raster only. The S-mark (`SS.svg`) is an autotrace with wobbly edges, so it stays a screen
+mark and is deliberately left out of the print pack; use the bolt for small placements instead.
 
 ---
 
