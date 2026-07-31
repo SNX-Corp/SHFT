@@ -41,7 +41,7 @@ Get your name on year one.
 ```
 
 **Name field (the searchable bold line, separate from handle):**
-Set it to `SHFT Robotics | Ontario FRC` so the account surfaces in search for "robotics" and "FRC." Once the number is confirmed, use `SHFT [FILL: team number] | Ontario FRC`.
+Set it to `SHFT 11753 | Ontario FRC` so the account surfaces in search for "robotics" and "FRC."
 
 **Category (IG professional account):** set to "Sports Team" or "Education."
 

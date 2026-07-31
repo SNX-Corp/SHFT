@@ -2,7 +2,7 @@
 
 **Shift the standard.** A new Ontario FRC team built to compete from day one.
 
-- **Team:** SHFT (Team [FILL: team number]). Find us at @shftrobotics and https://shftrobotics.com
+- **Team:** SHFT (Team 11753). Find us at @shftrobotics and https://shftrobotics.com
 - **Event:** Info Night / Open House
 - **Date / Time:** [FILL: date] · [FILL: start time]
 - **Location:** [FILL: venue + address]

@@ -1,6 +1,6 @@
 # SHFT Robotics Recruitment Marketing Plan
 
-**Team:** SHFT Robotics (FRC team number `[FILL: team number, "Number pending"]`)
+**Team:** SHFT Robotics (FRC Team 11753)
 **Region:** Ontario, Canada (specific city `[FILL: city]`)
 **Site:** https://shftrobotics.com · **Instagram:** [@shftrobotics](https://instagram.com/shftrobotics)
 **Partners:** Team 7558 (ALT-F4) · WCP

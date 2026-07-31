@@ -2,7 +2,7 @@
 
 Ready to send. Replace every `[FILL]`. Keep the tone confident and human. No em dashes.
 
-- **Team:** SHFT (Team [FILL: team number]) · @shftrobotics · https://shftrobotics.com
+- **Team:** SHFT (Team 11753) · @shftrobotics · https://shftrobotics.com
 - **Event:** Info Night · [FILL: date] · [FILL: time] · [FILL: location]
 - **Contact:** [FILL: your name], [FILL: your role], [FILL: phone/email]
 

@@ -27,7 +27,7 @@ The funnel cannot run without these. Lock them before Week 3 of the plan.
 - [ ] **QR code generated** pointing at your signup link, dropped into the flyers in place of the placeholder. Use the tracking link in `ads/targeting-and-tracking.md`.
 
 ### Facts to confirm
-- [ ] **Team number.** Shows as "pending" everywhere. Confirm it, then swap every `[FILL: team number]` in the kit. Appears in: plan, print copy, flyers, merch specs, outreach emails, slides, run-of-show, the IG name field.
+- [x] **Team number: 11753.** Confirmed 2026-07-30 and swapped through the kit: plan, print copy, flyers, merch specs, outreach emails, run-of-show, and the IG name field.
 - [ ] **Specific city within Ontario.** Drives the ad targeting radius and the local copy. Appears in: plan, ads (heavily), targeting, captions, profile.
 - [ ] **Budget tier picked: $0, ~$150, or ~$500.** From `PLAN.md` section 7. This decides whether you touch the `ads/` folder at all.
 

@@ -6,7 +6,7 @@ Recruitment push for a new Ontario FRC team. Small budget, local reach.
 **Site:** https://shftrobotics.com · **Instagram:** @shftrobotics
 **Primary CTA button (Meta):** `Learn More` (use `Sign Up` only once a real form or info-night RSVP page is live).
 
-> Fill the bracketed items before launch: `[FILL: city]`, `[FILL: team number]`, `[FILL: info night date/time]`, `[FILL: info night location]`. Do not run with placeholders showing.
+> Fill the bracketed items before launch: `[FILL: city]`, `[FILL: info night date/time]`, `[FILL: info night location]`. Do not run with placeholders showing.
 
 ---
 

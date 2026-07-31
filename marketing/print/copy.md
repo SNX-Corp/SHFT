@@ -8,7 +8,7 @@ No em dashes anywhere. Replace every `[FILL: ...]` before printing.
 ## Brand
 
 - Team: SHFT (FRC)
-- Team number: [FILL: team number]
+- Team number: 11753
 - Region: Ontario, Canada
 - Site: shftrobotics.com
 - Instagram: @shftrobotics
@@ -84,7 +84,7 @@ shftrobotics.com
 
 ## Footer / credit line
 
-SHFT Robotics  /  FRC Team [FILL: team number]  /  Ontario, Canada
+SHFT Robotics  /  FRC Team 11753  /  Ontario, Canada
 In partnership with Team 7558 (ALT-F4) and WCP.
 
 ---
