@@ -1,0 +1,212 @@
+---
+/**
+ * LogoDownloads - the apparel and print asset pack on /brand.
+ * Driven by public/brand/manifest.json, which build-pack.py regenerates.
+ */
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+interface Entry {
+  mark: string;
+  way: string;
+  label: string;
+  stem: string;
+  w: number;
+  h: number;
+}
+
+const brandDir = fileURLToPath(new URL('../../../public/brand', import.meta.url));
+const manifest: Entry[] = JSON.parse(fs.readFileSync(`${brandDir}/manifest.json`, 'utf8'));
+const zipBytes = fs.statSync(`${brandDir}/shft-logo-pack.zip`).size;
+const zipSize = `${(zipBytes / 1e6).toFixed(1)} MB`;
+const fileCount = manifest.length * 4;
+
+const marks = [
+  {
+    id: 'shft-wordmark',
+    name: 'Wordmark',
+    use: 'The default mark. Use this unless the full team name has to read.',
+    preview: 'max-h-14',
+  },
+  {
+    id: 'shft-robotics-lockup',
+    name: 'Full lockup',
+    use: 'SHFT with ROBOTICS underneath, for jacket backs and banners.',
+    preview: 'max-h-[4.5rem]',
+  },
+  {
+    id: 'shft-bolt',
+    name: 'Bolt',
+    use: 'Small placements: sleeve, cap, tag, sock.',
+    preview: 'max-h-24',
+  },
+];
+
+const formats = ['svg', 'png', 'pdf', 'eps'] as const;
+
+const minSizes = [
+  { mark: 'Wordmark', print: '50 mm / 2 in', stitch: '90 mm / 3.5 in' },
+  { mark: 'Full lockup', print: '75 mm / 3 in', stitch: '130 mm / 5 in' },
+  { mark: 'Bolt', print: '15 mm / 0.6 in', stitch: '25 mm / 1 in' },
+];
+
+const colors = [
+  { name: 'SHFT green', hex: '#A6FF00', rgb: '166, 255, 0' },
+  { name: 'Near-black', hex: '#1A1A1A', rgb: '26, 26, 26' },
+  { name: 'White', hex: '#FFFFFF', rgb: '255, 255, 255' },
+];
+
+const donts = [
+  'Do not retype ROBOTICS in a font. Those letterforms are custom and no font matches them.',
+  'Do not recolor the green, or add a gradient, stroke, outline, glow, or drop shadow.',
+  'Do not rotate, skew, condense, or stretch. The letters are already italic.',
+  'Do not put the full-color version on a mid-green or mid-gray garment. Use the one-color file.',
+  'Do not rebuild the mark from a screenshot or a PNG. Ask us for the vector.',
+];
+---
+
+<div>
+  <!-- Primary download -->
+  <div class="border border-border bg-surface-alt p-8 lg:p-10 mb-4">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div class="max-w-xl">
+        <h3 class="font-display font-black text-[clamp(1.5rem,3vw,2rem)] text-text-inverse leading-none mb-3">
+          THE LOGO PACK.
+        </h3>
+        <p class="font-body text-white/60 text-[15px] leading-relaxed">
+          Three marks, five colorways each, as vector and high-resolution raster. Everything is
+          trimmed to the artwork, so sizing by width or height gives you the size you asked for.
+          The pack includes a one-page spec with colors, minimum sizes, and clear space.
+        </p>
+      </div>
+      <div class="shrink-0">
+        <a
+          href="/brand/shft-logo-pack.zip"
+          download
+          class="inline-flex items-center justify-center font-heading font-bold uppercase tracking-wide rounded-none px-8 py-4 text-[14px] bg-accent text-accent-text hover:bg-accent-hover active:scale-[0.97] transition-all duration-200"
+        >
+          Download everything
+        </a>
+        <p class="font-body text-white/40 text-[12px] mt-3 lg:text-right">
+          ZIP &middot; {zipSize} &middot; {fileCount} files
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Per-mark files -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    {marks.map((mark) => (
+      <div class="border border-border bg-bg flex flex-col">
+        <div class="bg-surface-alt flex items-center justify-center px-8 h-44">
+          <img
+            src={`/brand/svg/${mark.id}-full-on-dark.svg`}
+            alt={`SHFT ${mark.name}`}
+            class={`${mark.preview} max-w-full w-auto h-auto`}
+          />
+        </div>
+
+        <div class="p-6 flex-1 flex flex-col">
+          <h4 class="font-heading font-bold text-[15px] text-text-primary">{mark.name}</h4>
+          <p class="font-body text-text-secondary text-[13px] leading-relaxed mt-1 mb-5">{mark.use}</p>
+
+          <ul class="space-y-px mt-auto">
+            {manifest
+              .filter((e) => e.mark === mark.id)
+              .map((entry) => (
+                <li class="flex items-center justify-between gap-3 py-2.5 border-t border-border">
+                  <span class="font-body text-[12px] text-text-primary">{entry.label}</span>
+                  <span class="flex items-center gap-1 shrink-0">
+                    {formats.map((f) => (
+                      <a
+                        href={`/brand/${f}/${entry.stem}.${f}`}
+                        download
+                        class="font-heading font-bold text-[10px] uppercase tracking-[0.08em] px-2 py-1 border border-border text-text-secondary hover:border-text-primary hover:text-text-primary hover:bg-surface transition-colors duration-150"
+                        aria-label={`${entry.label} ${mark.name} as ${f.toUpperCase()}`}
+                      >
+                        {f}
+                      </a>
+                    ))}
+                  </span>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Production spec -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div class="border border-border bg-bg p-6">
+      <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-5">
+        Color
+      </h4>
+      <ul class="space-y-3">
+        {colors.map((c) => (
+          <li class="flex items-center gap-3">
+            <span class="w-8 h-8 border border-border shrink-0" style={`background:${c.hex}`}></span>
+            <span class="font-body text-[13px] text-text-primary w-28">{c.name}</span>
+            <span class="font-heading font-semibold text-[12px] text-text-secondary">{c.hex}</span>
+            <span class="font-body text-[12px] text-text-muted hidden sm:inline">RGB {c.rgb}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="font-body text-[13px] text-text-secondary leading-relaxed mt-5">
+        The green sits outside the CMYK gamut, so four-color process comes out duller than screen.
+        Match to a spot color where you can. C35 M0 Y100 K0 is a starting point for process, but
+        check a proof. We have no verified Pantone or thread number on file yet. If you pick one,
+        tell us and we will record it so the next run matches.
+      </p>
+    </div>
+
+    <div class="border border-border bg-bg p-6">
+      <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-5">
+        Minimum size
+      </h4>
+      <table class="w-full">
+        <thead>
+          <tr class="border-b border-border">
+            <th class="text-left font-heading font-semibold text-[11px] uppercase tracking-[0.08em] text-text-muted pb-2"></th>
+            <th class="text-right font-heading font-semibold text-[11px] uppercase tracking-[0.08em] text-text-muted pb-2">Print</th>
+            <th class="text-right font-heading font-semibold text-[11px] uppercase tracking-[0.08em] text-text-muted pb-2">Stitch</th>
+          </tr>
+        </thead>
+        <tbody>
+          {minSizes.map((r) => (
+            <tr class="border-b border-border last:border-0">
+              <td class="font-body text-[13px] text-text-primary py-2.5">{r.mark}</td>
+              <td class="font-body text-[13px] text-text-secondary py-2.5 text-right">{r.print}</td>
+              <td class="font-body text-[13px] text-text-secondary py-2.5 text-right">{r.stitch}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="font-body text-[13px] text-text-secondary leading-relaxed mt-5">
+        Print covers screen print, DTF, and vinyl. The lockup needs more room than the wordmark
+        because ROBOTICS is small and letterspaced. Below the stitch minimum, drop the ROBOTICS
+        line and use the wordmark on its own. Keep clear space on all four sides equal to a quarter
+        of the mark's height.
+      </p>
+    </div>
+  </div>
+
+  <!-- Don'ts -->
+  <div class="border border-border bg-surface p-6 mt-4">
+    <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-4">
+      Things that break the mark
+    </h4>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+      {donts.map((d) => (
+        <li class="font-body text-[13px] text-text-secondary leading-relaxed flex gap-2.5">
+          <span class="text-text-muted shrink-0 mt-px">&times;</span>
+          <span>{d}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="font-body text-[13px] text-text-secondary leading-relaxed mt-5 pt-5 border-t border-border">
+      Need a format that is not here, a specific placement size, or a proof checked before the run?
+      Email <a href="mailto:team@shftrobotics.com" class="text-text-primary underline underline-offset-2 hover:text-accent-dim transition-colors duration-150">team@shftrobotics.com</a>.
+    </p>
+  </div>
+</div>

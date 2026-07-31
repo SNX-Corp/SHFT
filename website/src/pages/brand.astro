@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import ColorSwatch from '../components/brand/ColorSwatch.astro';
 import TypeSpecimen from '../components/brand/TypeSpecimen.astro';
 import LogoShowcase from '../components/brand/LogoShowcase.astro';
+import LogoDownloads from '../components/brand/LogoDownloads.astro';
 import DesignPrinciples from '../components/brand/DesignPrinciples.astro';
 import Button from '../components/Button.astro';
 
@@ -72,7 +73,9 @@ const fonts = [
         BRAND<br />IDENTITY.
       </h1>
       <p class="font-body text-text-secondary text-[clamp(1rem,1.5vw,1.125rem)] max-w-xl leading-relaxed">
-        The visual system behind Team SHFT. Colors, typography, logo usage, and the design principles that define our identity.
+        The visual system behind Team SHFT. Colors, typography, logo usage, and the design
+        principles that define our identity. Printing something for us? The production files are
+        in <a href="#downloads" class="text-text-primary underline underline-offset-2 hover:text-accent-dim transition-colors duration-150">downloads</a>.
       </p>
     </div>
   </section>
@@ -169,12 +172,31 @@ const fonts = [
     </div>
   </section>
 
+  <!-- Downloads -->
+  <!-- data-no-reveal: the reveal script tags every [class*="border"] element and offsets it 24px,
+       which catches the file chips and table rows. This section is a utility area, so it renders
+       in place instead of animating. -->
+  <section id="downloads" data-no-reveal class="py-16 lg:py-24 bg-surface scroll-mt-20">
+    <div class="content-width">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-8 h-px bg-accent"></div>
+        <span class="text-label-size font-heading text-text-muted">04 - DOWNLOADS</span>
+      </div>
+      <p class="font-body text-text-secondary text-[15px] max-w-2xl leading-relaxed mb-12">
+        Production files for anyone printing, stitching, or cutting the SHFT logo. Take the whole
+        pack or pull the one file you need.
+      </p>
+
+      <LogoDownloads />
+    </div>
+  </section>
+
   <!-- Design Principles -->
-  <section class="py-16 lg:py-24 bg-surface">
+  <section class="py-16 lg:py-24 bg-bg border-t border-border">
     <div class="content-width">
       <div class="flex items-center gap-4 mb-12">
         <div class="w-8 h-px bg-accent"></div>
-        <span class="text-label-size font-heading text-text-muted">04 - DESIGN PRINCIPLES</span>
+        <span class="text-label-size font-heading text-text-muted">05 - DESIGN PRINCIPLES</span>
       </div>
 
       <DesignPrinciples />
@@ -182,11 +204,11 @@ const fonts = [
   </section>
 
   <!-- Component Catalog -->
-  <section class="py-16 lg:py-24 bg-bg border-t border-border">
+  <section class="py-16 lg:py-24 bg-surface">
     <div class="content-width">
       <div class="flex items-center gap-4 mb-12">
         <div class="w-8 h-px bg-accent"></div>
-        <span class="text-label-size font-heading text-text-muted">05 - COMPONENTS</span>
+        <span class="text-label-size font-heading text-text-muted">06 - COMPONENTS</span>
       </div>
 
       <!-- Buttons -->
