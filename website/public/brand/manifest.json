@@ -1,0 +1,122 @@
+[
+  {
+    "mark": "shft-wordmark",
+    "way": "full-on-dark",
+    "label": "Full color, for dark garments",
+    "stem": "shft-wordmark-full-on-dark",
+    "w": 1543,
+    "h": 441
+  },
+  {
+    "mark": "shft-wordmark",
+    "way": "full-on-light",
+    "label": "Full color, for light garments",
+    "stem": "shft-wordmark-full-on-light",
+    "w": 1543,
+    "h": 441
+  },
+  {
+    "mark": "shft-wordmark",
+    "way": "white",
+    "label": "One color, white",
+    "stem": "shft-wordmark-white",
+    "w": 1543,
+    "h": 441
+  },
+  {
+    "mark": "shft-wordmark",
+    "way": "black",
+    "label": "One color, black",
+    "stem": "shft-wordmark-black",
+    "w": 1543,
+    "h": 441
+  },
+  {
+    "mark": "shft-wordmark",
+    "way": "green",
+    "label": "One color, SHFT green",
+    "stem": "shft-wordmark-green",
+    "w": 1543,
+    "h": 441
+  },
+  {
+    "mark": "shft-robotics-lockup",
+    "way": "full-on-dark",
+    "label": "Full color, for dark garments",
+    "stem": "shft-robotics-lockup-full-on-dark",
+    "w": 1543,
+    "h": 531
+  },
+  {
+    "mark": "shft-robotics-lockup",
+    "way": "full-on-light",
+    "label": "Full color, for light garments",
+    "stem": "shft-robotics-lockup-full-on-light",
+    "w": 1543,
+    "h": 531
+  },
+  {
+    "mark": "shft-robotics-lockup",
+    "way": "white",
+    "label": "One color, white",
+    "stem": "shft-robotics-lockup-white",
+    "w": 1543,
+    "h": 531
+  },
+  {
+    "mark": "shft-robotics-lockup",
+    "way": "black",
+    "label": "One color, black",
+    "stem": "shft-robotics-lockup-black",
+    "w": 1543,
+    "h": 531
+  },
+  {
+    "mark": "shft-robotics-lockup",
+    "way": "green",
+    "label": "One color, SHFT green",
+    "stem": "shft-robotics-lockup-green",
+    "w": 1543,
+    "h": 531
+  },
+  {
+    "mark": "shft-bolt",
+    "way": "full-on-dark",
+    "label": "Full color, for dark garments",
+    "stem": "shft-bolt-full-on-dark",
+    "w": 276,
+    "h": 440
+  },
+  {
+    "mark": "shft-bolt",
+    "way": "full-on-light",
+    "label": "Full color, for light garments",
+    "stem": "shft-bolt-full-on-light",
+    "w": 276,
+    "h": 440
+  },
+  {
+    "mark": "shft-bolt",
+    "way": "white",
+    "label": "One color, white",
+    "stem": "shft-bolt-white",
+    "w": 276,
+    "h": 440
+  },
+  {
+    "mark": "shft-bolt",
+    "way": "black",
+    "label": "One color, black",
+    "stem": "shft-bolt-black",
+    "w": 276,
+    "h": 440
+  },
+  {
+    "mark": "shft-bolt",
+    "way": "green",
+    "label": "One color, SHFT green",
+    "stem": "shft-bolt-green",
+    "w": 276,
+    "h": 440
+  }
+]
