@@ -48,7 +48,7 @@ These improve reach and polish but the campaign launches without them.
 
 ### Merch (only if you order)
 - [ ] **Merch vendor / print shop chosen.** Hand them the order block in `merch/merch-specs.md`.
-- [ ] **Export vector logo files for the printer.** You already have the native vector at `~/Desktop/SHFT/SHFT logo.ai` (a layered Illustrator file). Open it, outline the text, confirm the bolt is `#A6FF00`, and export SVG plus EPS of the full wordmark and the standalone bolt. Full steps are in `merch/vector-plan.md`. Do not let a shop print the auto-traced `SS.svg` / `ii.svg` as the logo.
+- [x] **Vector logo files for the printer: done.** The wordmark, the full SHFT ROBOTICS lockup, and the bolt all ship as true vectors (SVG, PDF, EPS) in five colorways at shftrobotics.com/brand#downloads. Send printers that link.
 - [ ] **Referral reward items decided** (sticker pack, shirt, top-referrer perk). The `[FILL: item]` slots are in `events/referral.md`.
 
 ### Ads (only on the $150 or $500 tier)

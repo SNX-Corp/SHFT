@@ -1,55 +1,119 @@
 ---
-import SMark from './SMark.astro';
+/**
+ * LogoShowcase - the three live SHFT marks on /brand section 03.
+ * Renders the production vectors out of public/brand/svg, the same files the
+ * download pack ships, so this section and the vendor pack can never drift.
+ *
+ * The S-mark was retired on 2026-07-30. The bolt is the only standalone mark.
+ */
+
+const marks = [
+  {
+    id: 'shft-wordmark',
+    name: 'Wordmark',
+    use: 'The default mark.',
+    size: 'max-h-10',
+  },
+  {
+    id: 'shft-robotics-lockup',
+    name: 'Full lockup',
+    use: 'Where the full team name has to read.',
+    size: 'max-h-[3.25rem]',
+  },
+  {
+    id: 'shft-bolt',
+    name: 'Bolt',
+    use: 'Small placements and avatars.',
+    size: 'max-h-20',
+  },
+];
+
+const grounds = [
+  { key: 'full-on-dark', label: 'On dark', tile: 'bg-surface-alt', text: 'text-white/40' },
+  { key: 'full-on-light', label: 'On light', tile: 'bg-white border border-border', text: 'text-text-muted' },
+];
 ---
 
 <div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <!-- S-Mark on white -->
-    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-4 p-8 bg-white border border-border transition-transform duration-200 hover:-translate-y-1">
-      <SMark size="92px" mode="light" />
-      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-text-muted" style="font-family:'Exo 2 Variable',system-ui;">S-Mark - on Light</span>
-    </div>
+  <!-- The three marks, on both grounds -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    {grounds.map((ground) =>
+      marks.map((mark) => (
+        <div class={`${ground.tile} flex flex-col items-center justify-center gap-5 p-8 aspect-[3/2] transition-transform duration-200 hover:-translate-y-1`}>
+          <img
+            src={`/brand/svg/${mark.id}-${ground.key}.svg`}
+            alt={`SHFT ${mark.name}, ${ground.label.toLowerCase()}`}
+            class={`${mark.size} max-w-full w-auto h-auto`}
+          />
+          <span class={`font-heading font-semibold text-[10px] uppercase tracking-[0.1em] ${ground.text}`}>
+            {mark.name} - {ground.label}
+          </span>
+        </div>
+      ))
+    )}
+  </div>
 
-    <!-- S-Mark on dark -->
-    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-4 p-8 bg-surface-alt transition-transform duration-200 hover:-translate-y-1">
-      <SMark size="92px" mode="dark" />
-      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40" style="font-family:'Exo 2 Variable',system-ui;">S-Mark - on Dark</span>
-    </div>
-
-    <!-- Wordmark on white -->
-    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-5 p-8 bg-white border border-border transition-transform duration-200 hover:-translate-y-1">
-      <img src="/images/logo/wordmark-dark.png" alt="Team SHFT" class="h-10 w-auto" />
-      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-text-muted" style="font-family:'Exo 2 Variable',system-ui;">Wordmark - on Light</span>
-    </div>
-
-    <!-- Wordmark on dark -->
-    <div class="aspect-[3/2] flex flex-col items-center justify-center gap-5 p-8 bg-surface-alt transition-transform duration-200 hover:-translate-y-1">
-      <img src="/images/logo/wordmark.png" alt="Team SHFT" class="h-10 w-auto" />
-      <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40" style="font-family:'Exo 2 Variable',system-ui;">Wordmark - on Dark</span>
-    </div>
+  <!-- What each mark is for -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+    {marks.map((mark) => (
+      <div class="border border-border bg-bg p-5">
+        <h4 class="font-heading font-bold text-[13px] text-text-primary mb-1">{mark.name}</h4>
+        <p class="font-body text-[13px] text-text-secondary leading-relaxed">{mark.use}</p>
+      </div>
+    ))}
   </div>
 
   <!-- Clear space & minimum size -->
-  <div class="mt-8 p-6 bg-surface border border-border">
-    <h4 class="font-heading font-bold text-[13px] text-text-primary mb-4">Clear Space &amp; Minimum Size</h4>
-    <div class="flex flex-col sm:flex-row gap-8">
-      <div class="flex-1">
-        <div class="border border-dashed border-accent/40 p-8 flex items-center justify-center">
-          <div class="border border-dashed border-text-muted p-6">
-            <SMark size="56px" mode="light" />
-          </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <div class="border border-border bg-surface p-6">
+      <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-5">
+        Clear space
+      </h4>
+      <div class="bg-bg border border-border p-8 flex items-center justify-center">
+        <!-- The dashed box is the clear-space boundary: a quarter of the mark's
+             height on every side. Padding is set to 25% of the 48px mark height. -->
+        <div class="border border-dashed border-accent p-3">
+          <img src="/brand/svg/shft-wordmark-full-on-light.svg" alt="" class="h-12 w-auto block" />
         </div>
-        <p class="font-body text-[12px] text-text-muted mt-2">Minimum clear space = height of the S-mark on all sides</p>
       </div>
-      <div class="flex-1">
-        <div class="flex items-center gap-6 p-8 border border-border">
-          <SMark size="28px" mode="light" />
-          <span class="font-body text-[11px] text-text-muted">24px min</span>
-          <img src="/images/logo/wordmark-dark.png" alt="Team SHFT" class="h-4 w-auto" />
-          <span class="font-body text-[11px] text-text-muted">80px min</span>
-        </div>
-        <p class="font-body text-[12px] text-text-muted mt-2">Minimum reproduction sizes for digital use</p>
-      </div>
+      <p class="font-body text-[13px] text-text-secondary leading-relaxed mt-5">
+        Keep space on all four sides equal to a quarter of the mark's height. Nothing goes inside
+        that area: no seams, no other logos, no trim, no type.
+      </p>
     </div>
+
+    <div class="border border-border bg-surface p-6">
+      <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-5">
+        Minimum size, on screen
+      </h4>
+      <div class="bg-bg border border-border p-8 flex items-end justify-center gap-8">
+        <div class="flex flex-col items-center gap-3">
+          <img src="/brand/svg/shft-wordmark-full-on-light.svg" alt="" class="w-20 h-auto block" />
+          <span class="font-heading font-semibold text-[10px] uppercase tracking-[0.1em] text-text-muted">80px wide</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="/brand/svg/shft-bolt-full-on-light.svg" alt="" class="h-6 w-auto block" />
+          <span class="font-heading font-semibold text-[10px] uppercase tracking-[0.1em] text-text-muted">24px tall</span>
+        </div>
+      </div>
+      <p class="font-body text-[13px] text-text-secondary leading-relaxed mt-5">
+        Below 80px the ROBOTICS line stops reading, so drop to the wordmark on its own. Below the
+        wordmark minimum, use the bolt. Print and stitch minimums are in
+        <a href="#downloads" class="text-text-primary underline underline-offset-2 hover:text-accent-dim transition-colors duration-150">downloads</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Retired mark -->
+  <div class="border border-border bg-bg p-6 mt-4">
+    <h4 class="font-heading font-bold text-[11px] uppercase tracking-[0.15em] text-accent-dim mb-3">
+      Retired
+    </h4>
+    <p class="font-body text-[13px] text-text-secondary leading-relaxed max-w-3xl">
+      The angular arrow mark that read as an "S" is no longer part of the identity, and neither is
+      the version of it set inside a green circle. If a supplier still has it on file from an
+      earlier run, ask them to replace it with the bolt. Anything printed with the old mark is out
+      of date.
+    </p>
   </div>
 </div>
