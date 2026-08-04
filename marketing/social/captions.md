@@ -158,7 +158,7 @@ This could be your second home.
 ### bts-03
 **First line:** We built this from nothing.
 
-No alumni, no trophy case, no legacy to coast on. Just mentors who have taken a team from zero to the top of Canadian FRC, and students willing to put in the work.
+No alumni, no trophy case, no legacy to coast on. Just mentors who have coached FRC and VEX for more than ten years, and students willing to put in the work.
 
 We build the culture first.
 
@@ -240,7 +240,7 @@ A new team is the easiest team to join.
 ### hype-01
 **First line:** Top 10 in Ontario. Year one.
 
-That is the goal, and we are not joking about it. SHFT was built by mentors who have already taken a team from nothing to the top of Canadian FRC.
+That is the goal, and we are not joking about it. SHFT was built by mentors who have coached FRC and VEX for more than ten years.
 
 **CTA:** Come to the open house. Link in bio.
 
@@ -262,9 +262,9 @@ You will never forget your first one.
 ---
 
 ### hype-03
-**First line:** Shift the standard.
+**First line:** Shft the standard.
 
-A new Ontario FRC team built to compete from day one. Our goal is top 10 in Ontario in year one. We say it out loud because our mentors have made this climb before with FRC 7558.
+A new Ontario FRC team built to compete from day one. Our goal is top 10 in Ontario in year one. We say it out loud because our mentors have spent more than ten years coaching teams through this exact climb.
 
 **CTA:** Raise the standard with us. Link in bio.
 
@@ -275,7 +275,7 @@ A new Ontario FRC team built to compete from day one. Our goal is top 10 in Onta
 ### hype-04
 **First line:** Our goal in year one: rank in the top 10 in Ontario.
 
-The difference is the people behind it. Mentors who coached FRC 7558 ALT-F4 from 35th in Canada to 3rd. The program is built on what worked there.
+The difference is the people behind it. Mentors with more than ten years coaching FRC and VEX. The program is built on what they have seen work.
 
 **CTA:** Launch with us. Link in bio.
 

@@ -1,0 +1,23 @@
+@import url("ig.css");
+/* v2 additions: photo treatments and layout archetypes */
+.bg { position: absolute; inset: -50px; background-size: cover; background-position: center; }
+.bg.blur { filter: blur(26px) brightness(.42) saturate(.85); }
+.bg.blur-soft { filter: blur(10px) brightness(.5) saturate(.9); }
+.scrim-full { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,26,26,.55), rgba(26,26,26,.35) 45%, rgba(26,26,26,.85)); }
+.scrim-bottom { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,26,26,.35) 0%, rgba(26,26,26,0) 25%, rgba(26,26,26,0) 52%, rgba(26,26,26,.96) 88%); }
+.glass {
+  background: rgba(26,26,26,.78); border: 1px solid rgba(255,255,255,.16);
+  padding: 72px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.split-band {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 460px;
+  background: #A6FF00; color: #1A1A1A; padding: 72px 88px;
+}
+.split-band h2 { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 150px; line-height: .95; text-transform: uppercase; letter-spacing: -0.01em; }
+.split-band .sb-sub { font-family: 'Exo 2', sans-serif; font-weight: 700; font-size: 27px; letter-spacing: .14em; text-transform: uppercase; margin-top: 26px; }
+.values-list { margin-top: 8px; }
+.values-list .vrow {
+  font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 104px;
+  text-transform: uppercase; line-height: 1.28; color: #fff;
+}
+.values-list .vrow .idx { font-family: 'Exo 2', sans-serif; font-weight: 700; font-size: 26px; color: #737373; letter-spacing: .2em; vertical-align: 42px; margin-right: 28px; }

@@ -84,4 +84,4 @@ If the push extends, rotate this every week:
 - **First frame is the whole game.** The on-screen hook decides whether anyone watches. Make it readable in under one second.
 - **Caption first line must stand alone.** Feeds truncate after one line. Front-load the hook.
 - **Pin the strongest recruiting Reel** (see `profile.md` pinned-post plan).
-- **Tag location and partners** (Team 7558 ALT-F4, WCP) when relevant for local reach.
+- **Tag location and partners** (WCP) when relevant for local reach. Never tag or name ALT-F4 / 7558 on SHFT channels.

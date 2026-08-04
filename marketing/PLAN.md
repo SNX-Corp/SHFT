@@ -15,7 +15,7 @@
 
 We are a brand-new Ontario FRC team that recruits like a top-tier program before we have a single trophy, by selling a credible promise: serious mentorship (proven by ALT-F4 and WCP), real engineering you can put on a resume, and a crew that takes you seriously from day one. The entire 8-week push funnels strangers into one room (the info night) and one room into a roster, using social proof and momentum instead of money.
 
-**The single big idea:** **"Shift the standard."** We are not another after-school robotics club. We are a launchpad that lets you compete from day one. Newcomers hear "you belong and you'll matter fast." Builders hear "finally, a team that's as serious as you are." Both join because SHFT treats joining as joining something that's going somewhere, not signing up for a class.
+**The single big idea:** **"Shft the standard."** We are not another after-school robotics club. We are a launchpad that lets you compete from day one. Newcomers hear "you belong and you'll matter fast." Builders hear "finally, a team that's as serious as you are." Both join because SHFT treats joining as joining something that's going somewhere, not signing up for a class.
 
 ---
 
@@ -63,7 +63,7 @@ You leave with hard skills and a portfolio. This is the stuff universities and e
 No attendance-sheet energy. You get real responsibility, real friends, and a name on the build. You matter from week one.
 
 **Slogan bank (use verbatim):**
-- "Shift the standard." (master tagline)
+- "Shft the standard." (master tagline)
 - "Compete from day one."
 - "Not just a team. A launchpad."
 - "Top 10 in Ontario. Year one."
@@ -95,7 +95,7 @@ Week 8 ends the first week of September 2026. **Info Night is Week 6** (early-sc
 
 | Week | IG / TikTok | School Posters | Outreach | Info Night / Milestone |
 |---|---|---|---|---|
-| **Week 1**<br>(mid-July) | Set up/refresh @shftrobotics. Post intro Reel: "A new Ontario FRC team. Shift the standard." Build link-in-bio. | Design poster v1 (QR → form). Don't print yet. | **Build the interest form.** List target schools + 2–3 feeder middle schools. DM ALT-F4/WCP for a repost/shoutout. | Lock Info Night date, time, location. Put it in writing. |
+| **Week 1**<br>(mid-July) | Set up/refresh @shftrobotics. Post intro Reel: "A new Ontario FRC team. Shft the standard." Build link-in-bio. | Design poster v1 (QR → form). Don't print yet. | **Build the interest form.** List target schools + 2–3 feeder middle schools. DM ALT-F4/WCP for a repost/shoutout. | Lock Info Night date, time, location. Put it in writing. |
 | **Week 2** | 3 posts: mentor credibility ("from nothing to top of Canadian FRC"), a tools/CAD shot, a "no experience needed" Reel. | Email/ask school admin for postering + announcement permission. | Reach out to physics/tech/shop teachers and ask them to flag interested students. Contact feeder middle-school STEM/robotics leads. | Confirm room booking + projector for Info Night. |
 | **Week 3** | TikTok: "POV: you join a team that's actually trying to win." Newcomer-focused. Start a countdown sticker to Info Night. | Print poster v1. Place in approved spots (see Ch.6). | First school announcement (morning PA / bulletin). Personal asks: every member invites 2 friends. | Draft Info Night run-of-show (15 min talk + demo + signup table). |
 | **Week 4** | Builder-focused week: ownership, real responsibility, "top 10 year one." Carousel of skills you'll learn. | Refresh/replace any torn posters. Add posters at feeder schools (with their permission). | Middle-school visit or short demo if invited. Ask current contacts to forward the form. | Open Info Night RSVP on the form/link-in-bio. |
@@ -121,7 +121,7 @@ Week 8 ends the first week of September 2026. **Info Night is Week 6** (early-sc
 ### School Postering
 - **Get permission first.** Most schools require admin/main-office sign-off and a stamp before anything goes on a wall. Ask in Week 2 and don't skip this: unapproved posters get torn down and burn goodwill.
 - **Where they actually get seen:** main entrance, cafeteria, library, science/tech/shop hallways, near the gym, and the official club/announcement boards.
-- **Poster design:** logo + "Shift the standard." + one line ("New Ontario FRC team. No experience needed.") + **big QR code** to the form + Info Night date once set. Readable from 2 meters. One CTA.
+- **Poster design:** logo + "Shft the standard." + one line ("New Ontario FRC team. No experience needed.") + **big QR code** to the form + Info Night date once set. Readable from 2 meters. One CTA.
 - **Maintain them:** walk the halls weekly, replace torn/covered posters. A dead poster is worse than none.
 - **Combine with PA announcements.** A poster they've already seen plus hearing it on the announcements is the combo that converts.
 

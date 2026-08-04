@@ -2,7 +2,7 @@
 
 Everything you need to recruit new high-school students to SHFT this summer into September. Built for a non-coder. You can run the whole campaign from the files in this folder.
 
-**Brand in one line:** lime bolt on black. Slogan: "Shift the standard." The goal of every piece here is to get a student to follow, sign up, and show up to Info Night.
+**Brand in one line:** lime bolt on black. Slogan: "Shft the standard." The goal of every piece here is to get a student to follow, sign up, and show up to Info Night.
 
 ---
 

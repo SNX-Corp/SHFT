@@ -19,7 +19,7 @@ No em dashes anywhere. Replace every `[FILL: ...]` before printing.
 
 ## Headlines (pick one)
 
-1. SHIFT THE STANDARD.
+1. SHFT THE STANDARD.
 2. BUILD A REAL COMPETITION ROBOT.
 3. NOT JUST A TEAM. A LAUNCHPAD.
 
@@ -91,7 +91,7 @@ In partnership with Team 7558 (ALT-F4) and WCP.
 
 ## One-liners for social / captions
 
-- Shift the standard.
+- Shft the standard.
 - Not just a team. A launchpad.
 - Top 10 in Ontario. Year one.
 - A new Ontario FRC team built to compete from day one.

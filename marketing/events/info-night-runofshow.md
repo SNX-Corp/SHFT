@@ -1,6 +1,6 @@
 # SHFT Info Night: Run of Show
 
-**Shift the standard.** A new Ontario FRC team built to compete from day one.
+**Shft the standard.** A new Ontario FRC team built to compete from day one.
 
 - **Team:** SHFT (Team [FILL: team number]). Find us at @shftrobotics and https://shftrobotics.com
 - **Event:** Info Night / Open House
@@ -32,7 +32,7 @@ If running long, cut Q&A to 5 min and push detailed questions to one-on-ones at 
 ## Segment notes
 
 ### Welcome (5 min)
-- Open with the brand line, not a bio. "Shift the standard."
+- Open with the brand line, not a bio. "Shft the standard."
 - One sentence on the mentors' track record: they have taken a team from nothing to the top of Canadian FRC.
 - Tell people exactly what the next 50 minutes look like so nobody is waiting to leave.
 

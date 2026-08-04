@@ -69,13 +69,13 @@ Every tool you'll learn to use here. None of it requires you to know it first. W
 | 2 | 3-5s | Same frame, second line snaps in | YEAR ONE | Beat drop here. |
 | 3 | 5-8s | Robot driving fast across the shop floor, low angle | most rookies aim to survive | Motion shot. |
 | 4 | 8-11s | Team working together, tight crew shot | we aim to rank | Group energy. |
-| 5 | 11-14s | Close-up of the bolt logo on a shirt or banner | coached by the mentors behind FRC 7558 ALT-F4 | |
+| 5 | 11-14s | Close-up of the bolt logo on a shirt or banner | coached by mentors with 10+ years in FRC and VEX | |
 | 6 | 14-16s | Wordmark on black, CTA | SHFT / come to the open house / link in bio | |
 
 **Audio idea:** a building cinematic / phonk track with a hard drop at the 3s mark to land "YEAR ONE." Cut visuals on the drop.
 
 **Caption (use hype-01 from captions.md):**
-Top 10 in Ontario. Year one. That is the goal, and we are not joking about it. SHFT was built by mentors who have already taken a team from nothing to the top of Canadian FRC. Come to the open house. Link in bio.
+Top 10 in Ontario. Year one. That is the goal, and we are not joking about it. SHFT was built by mentors who have coached FRC and VEX for more than ten years. Come to the open house. Link in bio.
 `#SHFT #JoinSHFT #FRC #FIRSTRobotics #OntarioRobotics #competition #FRC2027`
 
 ---

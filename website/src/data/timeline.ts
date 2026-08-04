@@ -6,23 +6,23 @@ export interface Milestone {
 
 export const milestones: Milestone[] = [
   {
-    year: '2025',
+    year: '2026',
     title: 'Team Founded',
     description: 'Team SHFT established with founding members. Brand identity created, workshop secured.',
   },
   {
-    year: '2025',
-    title: 'Build Season Begins',
-    description: 'First robot design kicks off. CAD models, prototypes, and late nights in the shop.',
+    year: '2026',
+    title: 'Training Begins',
+    description: 'The first cohort starts in September: CAD, fabrication, wiring, and code, three to four days a week.',
   },
   {
-    year: '2026',
+    year: '2027',
+    title: 'First Build Season',
+    description: 'First robot design kicks off in January. CAD models, prototypes, and late nights in the shop.',
+  },
+  {
+    year: '2027',
     title: 'Rookie Season',
     description: 'First FRC competition entry. Competing, learning, and making our mark.',
-  },
-  {
-    year: '2026',
-    title: 'Growing Strong',
-    description: 'Expanding the team, building sponsor relationships, and refining our craft.',
   },
 ];
