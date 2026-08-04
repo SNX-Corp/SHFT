@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <defs>
+    <pattern id="m1" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="2.2" fill="#A6FF00" opacity="0.2"/>
+    </pattern>
+    <radialGradient id="g1" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#242424"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g1)"/>
+  <rect width="1600" height="1000" fill="url(#m1)"/>
+  <circle cx="800" cy="500" r="330" fill="none" stroke="#A6FF00" stroke-width="14"/>
+  <circle cx="800" cy="500" r="270" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.25" stroke-dasharray="10 14"/>
+  <polygon points="866,255 662,552 776,552 720,762 944,449 822,449 894,255" fill="#A6FF00"/>
+  <g fill="#737373" font-family="Arial, sans-serif" font-size="26" letter-spacing="10">
+    <text x="80" y="120">SHFT ROBOTICS</text>
+    <text x="80" y="930">EMBLEM / 01</text>
+  </g>
+</svg>

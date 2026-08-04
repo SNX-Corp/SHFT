@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <pattern id="d1" width="34" height="34" patternUnits="userSpaceOnUse">
+      <rect width="3" height="3" x="16" y="16" fill="#A6FF00" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <rect width="800" height="600" fill="url(#d1)"/>
+  <!-- drivetrain frame -->
+  <rect x="180" y="220" width="440" height="180" fill="none" stroke="#A6FF00" stroke-width="4"/>
+  <rect x="200" y="240" width="400" height="140" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+  <!-- swerve modules -->
+  <g stroke="#A6FF00" stroke-width="4" fill="#1A1A1A">
+    <circle cx="200" cy="240" r="34"/><circle cx="600" cy="240" r="34"/>
+    <circle cx="200" cy="380" r="34"/><circle cx="600" cy="380" r="34"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="2" opacity="0.6">
+    <line x1="200" y1="214" x2="200" y2="266"/><line x1="600" y1="214" x2="600" y2="266"/>
+    <line x1="174" y1="380" x2="226" y2="380"/><line x1="574" y1="380" x2="626" y2="380"/>
+  </g>
+  <!-- dimension lines -->
+  <g stroke="#737373" stroke-width="1.5">
+    <line x1="180" y1="460" x2="620" y2="460"/>
+    <line x1="180" y1="450" x2="180" y2="470"/><line x1="620" y1="450" x2="620" y2="470"/>
+  </g>
+  <text x="380" y="485" fill="#737373" font-family="Arial, sans-serif" font-size="16" letter-spacing="4" text-anchor="middle">DRIVETRAIN 01 / SWERVE</text>
+  <g fill="#A6FF00">
+    <polygon points="700,60 672,102 688,102 680,132 711,89 694,89 704,60"/>
+  </g>
+</svg>

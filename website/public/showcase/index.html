@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHFT ROBOTICS. The Showcase. Every trick from landonorris.com, rebuilt.</title>
+  <meta name="description" content="A component and effects showcase rebuilding the landonorris.com interaction stack: GSAP ScrollTrigger, Lenis smooth scroll, Three.js WebGL and Rive-style vector motion. SHFT Robotics brand." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Exo+2:wght@600;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/emblem.svg" />
+</head>
+<body>
+
+  <!-- ============================================================
+       01 / PRELOADER
+       landonorris.com trick: percentage preloader with wordmark
+       reveal, then a curtain lift into a choreographed hero intro.
+       ============================================================ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__slashes">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="preloader__mark">
+      <span class="preloader__word" id="preloaderWord">SH<svg class="bolt-inline" viewBox="0 0 60 100" aria-hidden="true"><polygon points="38,0 8,56 26,56 16,100 52,38 32,38 46,0"/></svg>FT</span>
+      <span class="preloader__sub">ROBOTICS</span>
+    </div>
+    <div class="preloader__count"><span id="preloaderCount">0</span>%</div>
+    <div class="preloader__bar"><span id="preloaderBar"></span></div>
+    <div class="preloader__curtain"></div>
+  </div>
+
+  <!-- 02 / CUSTOM CURSOR : dot + lagging ring, grows over interactive targets -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot" id="cursorDot"></div>
+    <div class="cursor__ring" id="cursorRing"><span class="cursor__label" id="cursorLabel"></span></div>
+  </div>
+
+  <!-- 03 / PAGE TRANSITION overlay : staggered panel wipe with emblem flash -->
+  <div class="transition" id="transition" aria-hidden="true">
+    <div class="transition__panel"></div>
+    <div class="transition__panel"></div>
+    <div class="transition__panel"></div>
+    <div class="transition__emblem">
+      <svg viewBox="0 0 60 100"><polygon points="38,0 8,56 26,56 16,100 52,38 32,38 46,0"/></svg>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAV : fixed bar, scramble-on-hover links, fullscreen menu
+       ============================================================ -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" data-cursor data-transition="#top" aria-label="SHFT Robotics home">
+      <span class="nav__logo-word">SH<svg class="bolt-inline" viewBox="0 0 60 100" aria-hidden="true"><polygon points="38,0 8,56 26,56 16,100 52,38 32,38 46,0"/></svg>FT</span>
+      <span class="nav__logo-sub">ROBOTICS</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#reveal" class="nav__link" data-scramble data-cursor data-transition="#reveal">Effects</a>
+      <a href="#hall" class="nav__link" data-scramble data-cursor data-transition="#hall">Machines</a>
+      <a href="#ontrack" class="nav__link" data-scramble data-cursor data-transition="#ontrack">On Track</a>
+      <a href="#lab" class="nav__link" data-scramble data-cursor data-transition="#lab">The Lab</a>
+    </nav>
+    <button class="nav__burger" id="menuBtn" data-cursor aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Fullscreen overlay menu with staggered oversized links -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu__bg"></div>
+    <div class="menu__inner">
+      <p class="menu__tag">MENU / FULLSCREEN OVERLAY. STAGGERED LINK REVEAL.</p>
+      <nav class="menu__links">
+        <a href="#hero" class="menu__link" data-menu-close data-cursor><span>01</span>Reveal</a>
+        <a href="#manifesto" class="menu__link" data-menu-close data-cursor><span>02</span>Manifesto</a>
+        <a href="#bolt3d" class="menu__link" data-menu-close data-cursor><span>03</span>3D Bay</a>
+        <a href="#hall" class="menu__link" data-menu-close data-cursor><span>04</span>Machines</a>
+        <a href="#ontrack" class="menu__link" data-menu-close data-cursor><span>05</span>On Track</a>
+      </nav>
+      <p class="menu__foot">INNOVATE. BUILD. COMPETE.</p>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============================================================
+         04 / HERO with WEBGL LIQUID TRAIL MASK
+         The signature landonorris.com effect: the pointer drags a
+         gooey WebGL blob trail that reveals an alternate layer
+         under the page. Ping-pong render targets + SDF brush.
+         ============================================================ -->
+    <section class="hero" id="hero">
+      <canvas class="hero__gl" id="fluidCanvas" aria-hidden="true"></canvas>
+      <div class="hero__content">
+        <p class="hero__kicker" data-intro>ONTARIO FRC. FOUNDED 2025. TEAM NUMBER PENDING.</p>
+        <h1 class="hero__title" aria-label="We don't follow. We SHFT.">
+          <span class="hero__line" data-split>WE DON'T</span>
+          <span class="hero__line" data-split>FOLLOW.</span>
+          <span class="hero__line hero__line--accent" data-split>WE SHFT.</span>
+        </h1>
+        <p class="hero__sub" data-intro>A new Ontario FRC team built to compete from day one.
+          Move your pointer: the liquid trail is a WebGL mask, same trick as landonorris.com.</p>
+        <div class="hero__stack" data-intro>
+          <span class="chip">GSAP + SCROLLTRIGGER</span>
+          <span class="chip">LENIS</span>
+          <span class="chip">THREE.JS WEBGL</span>
+          <span class="chip">RIVE-STYLE MOTION</span>
+        </div>
+      </div>
+      <div class="hero__corner-slashes" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="hero__scrollcue" aria-hidden="true">
+        <span class="hero__scrollcue-label">SCROLL</span>
+        <span class="hero__scrollcue-line"></span>
+      </div>
+      <p class="section-note section-note--hero">01 / WEBGL FLUID TRAIL. PING-PONG FBO MASK OVER TWO PROCEDURAL SCENES.</p>
+    </section>
+
+    <!-- ============================================================
+         05 / VELOCITY MARQUEE
+         Infinite ticker strips whose speed and skew react to
+         scroll velocity (Lenis velocity feeds GSAP).
+         ============================================================ -->
+    <section class="marquee-zone" aria-label="Marquee">
+      <div class="marquee marquee--a" data-marquee data-marquee-dir="1">
+        <div class="marquee__track">
+          <span class="marquee__item">INNOVATE. BUILD. COMPETE.<i class="marquee__bolt"></i></span>
+        </div>
+      </div>
+      <div class="marquee marquee--b" data-marquee data-marquee-dir="-1">
+        <div class="marquee__track">
+          <span class="marquee__item">SHIFT THE STANDARD.<i class="marquee__bolt"></i></span>
+        </div>
+      </div>
+      <p class="section-note">02 / MARQUEE. SPEED AND SKEW DRIVEN BY LIVE SCROLL VELOCITY.</p>
+    </section>
+
+    <!-- ============================================================
+         06 / MANIFESTO : scroll-scrubbed text
+         Line-mask reveals + outline word that fills with color as
+         you scroll (clip-path scrub), as on LN's story sections.
+         ============================================================ -->
+    <section class="manifesto" id="manifesto">
+      <p class="section-tag">03 / SCRUBBED TEXT. LINE MASKS + OUTLINE FILL ON SCROLL.</p>
+      <div class="manifesto__copy">
+        <p class="manifesto__p" data-lines>We are a rookie team with a veteran mindset. Every mechanism is designed twice and built once. Every match is data. Every loss is a prototype for a win.</p>
+        <p class="manifesto__p" data-lines>The goal: top 10 in Ontario in our first season. We plan the whole year backwards from it.</p>
+      </div>
+      <div class="manifesto__giant" aria-hidden="true">
+        <span class="manifesto__giant-outline">RELENTLESS</span>
+        <span class="manifesto__giant-fill" id="giantFill">RELENTLESS</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         07 / STATS : count-up numbers on enter
+         ============================================================ -->
+    <section class="stats" id="stats">
+      <p class="section-tag section-tag--dark">04 / COUNTERS. NUMBERS TWEEN UP WHEN THE SECTION ENTERS.</p>
+      <div class="stats__grid">
+        <div class="stat" data-cursor>
+          <span class="stat__num" data-count="2025">0</span>
+          <span class="stat__label">FOUNDED</span>
+        </div>
+        <div class="stat" data-cursor>
+          <span class="stat__num"><span data-count="10">0</span></span>
+          <span class="stat__label">TOP 10 ONTARIO TARGET</span>
+        </div>
+        <div class="stat" data-cursor>
+          <span class="stat__num"><span data-count="4">0</span></span>
+          <span class="stat__label">BRAND VALUES</span>
+        </div>
+        <div class="stat" data-cursor>
+          <span class="stat__num"><span data-count="100">0</span>%</span>
+          <span class="stat__label">SEND. EVERY MATCH.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         08 / 3D BAY : Three.js drag-to-rotate object
+         LN's "Helmet Hall of Fame" 3D viewers, rebuilt as the SHFT
+         bolt: extruded geometry, studio lights, drag + inertia,
+         plus scroll-linked rotation.
+         ============================================================ -->
+    <section class="bay" id="bolt3d">
+      <p class="section-tag">05 / THREE.JS VIEWER. DRAG TO ROTATE. INERTIA + SCROLL-LINKED SPIN.</p>
+      <div class="bay__stage">
+        <canvas id="boltCanvas" data-cursor-label="DRAG"></canvas>
+        <div class="bay__hint" aria-hidden="true">DRAG</div>
+      </div>
+      <div class="bay__meta">
+        <h2 class="bay__title" data-split-scroll>THE BOLT</h2>
+        <p class="bay__desc">On landonorris.com this is a helmet. Here it is the SHFT emblem, extruded and lit like a garage build. Grab it.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         09 / HALL OF MACHINES : pinned horizontal gallery
+         Section pins while the track scrubs sideways. Inner art
+         parallaxes against card motion (containerAnimation).
+         ============================================================ -->
+    <section class="hall" id="hall">
+      <div class="hall__pin">
+        <p class="section-tag">06 / PINNED HORIZONTAL SCROLL. INNER PARALLAX VIA CONTAINERANIMATION.</p>
+        <div class="hall__head">
+          <h2 class="hall__title">HALL OF<br />MACHINES</h2>
+          <span class="hall__progress"><span id="hallBar"></span></span>
+        </div>
+        <div class="hall__track" id="hallTrack">
+          <article class="mcard" data-cursor>
+            <div class="mcard__art" data-hall-parallax><img src="assets/machine-01.svg" alt="Concept sketch: drivetrain unit" /></div>
+            <span class="mcard__num">01</span>
+            <h3 class="mcard__name">KICKOFF RIG</h3>
+            <p class="mcard__spec">SWERVE TESTBED. WEEK ZERO.</p>
+          </article>
+          <article class="mcard" data-cursor>
+            <div class="mcard__art" data-hall-parallax><img src="assets/machine-02.svg" alt="Concept sketch: manipulator arm" /></div>
+            <span class="mcard__num">02</span>
+            <h3 class="mcard__name">FIRST ARM</h3>
+            <p class="mcard__spec">TWO-STAGE LIFT. PROTOTYPE.</p>
+          </article>
+          <article class="mcard" data-cursor>
+            <div class="mcard__art" data-hall-parallax><img src="assets/machine-03.svg" alt="Concept sketch: vision module" /></div>
+            <span class="mcard__num">03</span>
+            <h3 class="mcard__name">EYES ON</h3>
+            <p class="mcard__spec">VISION + AUTO ALIGN.</p>
+          </article>
+          <article class="mcard" data-cursor>
+            <div class="mcard__art" data-hall-parallax><img src="assets/machine-04.svg" alt="Concept sketch: competition robot" /></div>
+            <span class="mcard__num">04</span>
+            <h3 class="mcard__name">COMP BOT</h3>
+            <p class="mcard__spec">TARGET: TOP 10.</p>
+          </article>
+          <article class="mcard mcard--cta" data-cursor>
+            <span class="mcard__num">05</span>
+            <h3 class="mcard__name">YOUR NAME<br />HERE</h3>
+            <p class="mcard__spec">JOIN THE BUILD SEASON.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10 / REVEAL GRID : clip-path image reveals + parallax +
+         grayscale-to-color hover, LN's media grid treatment.
+         ============================================================ -->
+    <section class="reveal" id="reveal">
+      <p class="section-tag">07 / MEDIA REVEALS. CLIP-PATH WIPE IN, INNER SCALE PARALLAX, HOVER DESATURATION FLIP.</p>
+      <div class="reveal__grid">
+        <figure class="rimg" data-reveal data-cursor-label="VIEW">
+          <div class="rimg__mask"><img src="assets/media-01.svg" alt="Dot grid render of the SHFT emblem" /></div>
+          <figcaption class="rimg__cap">EMBLEM / DOT FIELD</figcaption>
+        </figure>
+        <figure class="rimg rimg--tall" data-reveal data-cursor-label="VIEW">
+          <div class="rimg__mask"><img src="assets/media-02.svg" alt="Speed slashes over the pit wall" /></div>
+          <figcaption class="rimg__cap">PIT WALL / SLASHES</figcaption>
+        </figure>
+        <figure class="rimg" data-reveal data-cursor-label="VIEW">
+          <div class="rimg__mask"><img src="assets/media-03.svg" alt="Circuit trace pattern" /></div>
+          <figcaption class="rimg__cap">CONTROL BOARD / TRACES</figcaption>
+        </figure>
+        <figure class="rimg rimg--wide" data-reveal data-cursor-label="VIEW">
+          <div class="rimg__mask"><img src="assets/media-04.svg" alt="Wordmark banner lockup" /></div>
+          <figcaption class="rimg__cap">BANNER / LOCKUP</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         11 / THE LAB : interaction components
+         Magnetic buttons, scramble links, underline slides,
+         Rive-style vector motion loop.
+         ============================================================ -->
+    <section class="lab" id="lab">
+      <p class="section-tag">08 / INTERACTION LAB. MAGNETIC PULL, TEXT SCRAMBLE, UNDERLINE SLIDE, VECTOR MOTION LOOP.</p>
+      <div class="lab__grid">
+        <div class="lab__cell">
+          <h3 class="lab__cell-title">MAGNETIC CTA</h3>
+          <button class="btn-magnet" data-magnetic data-cursor data-transition="#ontrack">
+            <span class="btn-magnet__fill"></span>
+            <span class="btn-magnet__label">JOIN THE TEAM</span>
+          </button>
+          <p class="lab__cell-note">Button leans toward the pointer, snaps back on leave. Click fires the page transition wipe.</p>
+        </div>
+        <div class="lab__cell">
+          <h3 class="lab__cell-title">SCRAMBLE LINKS</h3>
+          <ul class="lab__links">
+            <li><a href="#top" data-scramble data-cursor class="lab__link">SPONSOR PACKAGE</a></li>
+            <li><a href="#top" data-scramble data-cursor class="lab__link">BUILD LOG</a></li>
+            <li><a href="#top" data-scramble data-cursor class="lab__link">@SHFTROBOTICS</a></li>
+          </ul>
+          <p class="lab__cell-note">Characters cycle through a glyph set before settling, the LN nav hover.</p>
+        </div>
+        <div class="lab__cell">
+          <h3 class="lab__cell-title">RIVE-STYLE MOTION</h3>
+          <div class="lab__rive" aria-hidden="true">
+            <svg viewBox="0 0 200 200" class="rive-emblem" id="riveEmblem">
+              <circle class="rive-emblem__ring" cx="100" cy="100" r="86" />
+              <circle class="rive-emblem__ring rive-emblem__ring--dash" cx="100" cy="100" r="70" />
+              <polygon class="rive-emblem__bolt" points="118,30 62,112 94,112 78,170 140,84 106,84 126,30" />
+            </svg>
+          </div>
+          <p class="lab__cell-note">landonorris.com ships Rive files for vector motion. Emulated here as a scripted SVG loop: draw-on ring, pulsing bolt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         12 / ON TRACK : schedule table with hover slide + chips
+         ============================================================ -->
+    <section class="ontrack" id="ontrack">
+      <p class="section-tag section-tag--dark">09 / DATA TABLE. ROW HOVER SLIDE, SEMANTIC STATUS CHIPS, STAGGERED ENTRY. SAMPLE SEASON DATA.</p>
+      <h2 class="ontrack__title" data-split-scroll>ON TRACK</h2>
+      <div class="ontrack__table" role="table" aria-label="Sample season schedule">
+        <div class="trow trow--head" role="row">
+          <span role="columnheader">EVENT</span><span role="columnheader">WHERE</span><span role="columnheader">WHEN</span><span role="columnheader">STATUS</span>
+        </div>
+        <a class="trow" role="row" href="#ontrack" data-cursor>
+          <span class="trow__event">FRC KICKOFF</span><span>ONTARIO</span><span>JAN 2027</span><span><em class="chip chip--green">CONFIRMED</em></span>
+        </a>
+        <a class="trow" role="row" href="#ontrack" data-cursor>
+          <span class="trow__event">DISTRICT EVENT 1</span><span>NORTH BAY</span><span>MAR 2027</span><span><em class="chip chip--gold">PLANNED</em></span>
+        </a>
+        <a class="trow" role="row" href="#ontrack" data-cursor>
+          <span class="trow__event">DISTRICT EVENT 2</span><span>WATERLOO</span><span>APR 2027</span><span><em class="chip chip--gold">PLANNED</em></span>
+        </a>
+        <a class="trow" role="row" href="#ontrack" data-cursor>
+          <span class="trow__event">PROVINCIALS</span><span>MISSISSAUGA</span><span>APR 2027</span><span><em class="chip chip--red">LOCKED</em></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         13 / FOOTER : giant scrub wordmark, magnetic socials
+         ============================================================ -->
+    <footer class="footer">
+      <p class="section-note">10 / FOOTER. OVERSIZED WORDMARK SCRUBS UP FROM BELOW THE FOLD.</p>
+      <div class="footer__giant" aria-hidden="true" id="footerGiant">
+        <span>SH<svg class="bolt-inline bolt-inline--big" viewBox="0 0 60 100"><polygon points="38,0 8,56 26,56 16,100 52,38 32,38 46,0"/></svg>FT</span>
+      </div>
+      <div class="footer__row">
+        <p class="footer__tag">BUILDING THE FUTURE ONE SHIFT AT A TIME.</p>
+        <nav class="footer__socials" aria-label="Social">
+          <a href="https://instagram.com/shftrobotics" data-magnetic data-scramble data-cursor>INSTAGRAM</a>
+          <a href="https://shftrobotics.com" data-magnetic data-scramble data-cursor>SHFTROBOTICS.COM</a>
+          <button id="backTop" data-magnetic data-cursor data-transition="#top">BACK TO TOP</button>
+        </nav>
+      </div>
+      <p class="footer__legal">SHFT ROBOTICS. ONTARIO FRC. FOUNDED 2025. THIS PAGE IS A TECH DEMO REBUILDING THE LANDONORRIS.COM INTERACTION STACK: GSAP, LENIS, THREE.JS, RIVE-STYLE MOTION.</p>
+    </footer>
+  </main>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/fluid-trail.js"></script>
+  <script src="js/bolt3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

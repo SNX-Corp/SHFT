@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <pattern id="d3" width="34" height="34" patternUnits="userSpaceOnUse">
+      <rect width="3" height="3" x="16" y="16" fill="#A6FF00" opacity="0.14"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <rect width="800" height="600" fill="url(#d3)"/>
+  <!-- camera body -->
+  <rect x="150" y="240" width="140" height="90" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="290" cy="285" r="28" fill="#1A1A1A" stroke="#A6FF00" stroke-width="5"/>
+  <circle cx="290" cy="285" r="10" fill="#A6FF00"/>
+  <!-- view cone -->
+  <polygon points="318,285 660,150 660,420" fill="#A6FF00" opacity="0.08"/>
+  <line x1="318" y1="285" x2="660" y2="150" stroke="#A6FF00" stroke-width="1.5" opacity="0.6"/>
+  <line x1="318" y1="285" x2="660" y2="420" stroke="#A6FF00" stroke-width="1.5" opacity="0.6"/>
+  <!-- target crosshair -->
+  <g stroke="#A6FF00" stroke-width="3" fill="none">
+    <circle cx="560" cy="285" r="44"/>
+    <line x1="560" y1="225" x2="560" y2="257"/><line x1="560" y1="313" x2="560" y2="345"/>
+    <line x1="500" y1="285" x2="532" y2="285"/><line x1="588" y1="285" x2="620" y2="285"/>
+  </g>
+  <g fill="#F5C518">
+    <rect x="640" y="180" width="14" height="14"/><rect x="660" y="360" width="14" height="14"/>
+  </g>
+  <text x="150" y="545" fill="#737373" font-family="Arial, sans-serif" font-size="16" letter-spacing="4">VISION 03 / AUTO ALIGN</text>
+</svg>

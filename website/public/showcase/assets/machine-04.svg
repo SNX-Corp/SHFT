@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <pattern id="d4" width="34" height="34" patternUnits="userSpaceOnUse">
+      <rect width="3" height="3" x="16" y="16" fill="#A6FF00" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <rect width="800" height="600" fill="url(#d4)"/>
+  <!-- bumpers -->
+  <rect x="200" y="380" width="400" height="70" fill="#A6FF00"/>
+  <text x="400" y="428" fill="#1A1A1A" font-family="Arial, sans-serif" font-weight="900" font-size="42" letter-spacing="10" text-anchor="middle">SHFT</text>
+  <!-- chassis + superstructure -->
+  <rect x="230" y="290" width="340" height="90" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <polygon points="300,290 340,170 460,170 500,290" fill="none" stroke="#A6FF00" stroke-width="4"/>
+  <rect x="370" y="120" width="60" height="50" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.7"/>
+  <!-- wheels -->
+  <g fill="#1A1A1A" stroke="#ffffff" stroke-width="4">
+    <circle cx="260" cy="470" r="26"/><circle cx="400" cy="470" r="26"/><circle cx="540" cy="470" r="26"/>
+  </g>
+  <!-- speed slashes -->
+  <g fill="#A6FF00">
+    <polygon points="640,120 610,210 632,210 662,120"/>
+    <polygon points="680,120 650,210 672,210 702,120" opacity="0.6"/>
+    <polygon points="720,120 690,210 712,210 742,120" opacity="0.3"/>
+  </g>
+  <text x="200" y="545" fill="#737373" font-family="Arial, sans-serif" font-size="16" letter-spacing="4">COMP BOT 04 / TOP 10 ONTARIO</text>
+</svg>
