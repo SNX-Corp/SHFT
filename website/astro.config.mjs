@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://teamshiftfrc.com',
+  site: 'https://shftrobotics.com',
   output: 'static',
   redirects: {
     // /logos was an unlinked second copy of the mark gallery and had already
