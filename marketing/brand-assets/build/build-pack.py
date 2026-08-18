@@ -19,8 +19,8 @@ OUT = ROOT / 'website' / 'public' / 'brand'
 GREEN, INK, WHITE = '#A6FF00', '#1A1A1A', '#FFFFFF'
 
 # tight artwork boxes in the master viewBox (0 0 2175.5 1079)
-WORDMARK_BOX = (316, 319, 1543, 441)          # SHFT + bolt
-BOLT_BOX = (988.0, 319.4, 276.2, 439.7)       # bolt alone
+WORDMARK_BOX = (124, 126, 1927, 827)          # SHFT + bolt
+BOLT_BOX = (939.0, 126.75, 488.7, 825.5)      # bolt alone
 PAD = 0  # artwork is delivered trimmed; clear space is documented, not baked in
 
 # colorway -> (letter fill, bolt fill, label)

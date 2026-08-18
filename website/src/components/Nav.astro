@@ -113,7 +113,7 @@ const navLinks = d.links;
     top: 2rem; /* nav center on mobile (h-16 = 64px) */
     z-index: calc(var(--z-nav) + 5);
     display: block;
-    height: 22px;
+    height: 40px;
     transform: translate(-50%, -50%);
     transform-origin: center center;
     will-change: transform, opacity, filter;
@@ -123,7 +123,7 @@ const navLinks = d.links;
   @media (min-width: 1024px) {
     .brand-logo {
       top: 2.5rem; /* nav center on desktop (h-20 = 80px) */
-      height: 28px;
+      height: 52px;
     }
   }
   .brand-logo__img {
@@ -202,13 +202,13 @@ const navLinks = d.links;
     dy = slotCenterViewportTop - navCenterY;
 
     // Docked nav logo height (matches the CSS .brand-logo height values).
-    const navLogoH = window.matchMedia('(min-width: 1024px)').matches ? 28 : 22;
+    const navLogoH = window.matchMedia('(min-width: 1024px)').matches ? 52 : 40;
 
     // Natural aspect ratio of the wordmark, used for the width cap.
     const aspect =
       brandLight && brandLight.naturalWidth && brandLight.naturalHeight
         ? brandLight.naturalWidth / brandLight.naturalHeight
-        : 1225 / 364;
+        : 1225 / 537;
 
     // Hero display height = the slot height, but never wide enough to overflow the
     // viewport (cap to ~90vw on narrow phones so the outer letters never clip).
