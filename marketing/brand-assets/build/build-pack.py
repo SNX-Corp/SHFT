@@ -17,10 +17,13 @@ ASSETS = ROOT / 'marketing' / 'brand-assets'
 OUT = ROOT / 'website' / 'public' / 'brand'
 
 GREEN, INK, WHITE = '#A6FF00', '#1A1A1A', '#FFFFFF'
+# The one-colour dark mark is vendor-bound (screens, film, embroidery digitising), so it
+# ships as pure black rather than the website's near-black.
+PRINT_BLACK = '#000000'
 
 # tight artwork boxes in the master viewBox (0 0 2175.5 1079)
-WORDMARK_BOX = (124, 126, 1927, 827)          # SHFT + bolt
-BOLT_BOX = (939.0, 126.75, 488.7, 825.5)      # bolt alone
+WORDMARK_BOX = (124, 156, 1927, 828)          # SHFT + bolt
+BOLT_BOX = (899.7, 156.9, 489.0, 826.1)      # bolt alone
 PAD = 0  # artwork is delivered trimmed; clear space is documented, not baked in
 
 # colorway -> (letter fill, bolt fill, label)
@@ -28,7 +31,7 @@ WAYS = {
     'full-on-dark':  (WHITE, GREEN, 'Full color, for dark garments'),
     'full-on-light': (INK,   GREEN, 'Full color, for light garments'),
     'white':         (WHITE, WHITE, 'One color, white'),
-    'black':         (INK,   INK,   'One color, black'),
+    'black':         (PRINT_BLACK, PRINT_BLACK, 'One color, black'),
     'green':         (GREEN, GREEN, 'One color, SHFT green'),
 }
 

@@ -18,7 +18,7 @@ Colorways
   full-on-dark .............. White letters, green bolt. For dark garments.
   full-on-light ............. Near-black letters, green bolt. For light garments.
   white ..................... Everything white. One-color print.
-  black ..................... Everything near-black. One-color print.
+  black ..................... Everything pure black. One-color print.
   green ..................... Everything green. One-color print.
 
 Formats
@@ -35,8 +35,13 @@ height or width gives you the size you asked for.
 COLORS
 ------
   Green ......... #A6FF00     R 166  G 255  B 0
-  Near-black .... #1A1A1A     R 26   G 26   B 26
+  Black ......... #000000     R 0    G 0    B 0     (the one-color black files)
+  Near-black .... #1A1A1A     R 26   G 26   B 26    (full-on-light, and the website)
   White ......... #FFFFFF     R 255  G 255  B 255
+
+The one-color black files are pure #000000 so screens, film and embroidery digitising
+get a true black. The near-black #1A1A1A is the website's ink and is what the
+full-color-on-light files use for their letters.
 
 The green is a bright lime that sits outside the CMYK gamut, so a four-color
 process print will come out duller than the screen version. For screen printing,

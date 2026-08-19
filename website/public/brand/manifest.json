@@ -5,7 +5,7 @@
     "label": "Full color, for dark garments",
     "stem": "shft-wordmark-full-on-dark",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-wordmark",
@@ -13,7 +13,7 @@
     "label": "Full color, for light garments",
     "stem": "shft-wordmark-full-on-light",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-wordmark",
@@ -21,7 +21,7 @@
     "label": "One color, white",
     "stem": "shft-wordmark-white",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-wordmark",
@@ -29,7 +29,7 @@
     "label": "One color, black",
     "stem": "shft-wordmark-black",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-wordmark",
@@ -37,7 +37,7 @@
     "label": "One color, SHFT green",
     "stem": "shft-wordmark-green",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-robotics-lockup",
@@ -45,7 +45,7 @@
     "label": "Full color, for dark garments",
     "stem": "shft-robotics-lockup-full-on-dark",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-robotics-lockup",
@@ -53,7 +53,7 @@
     "label": "Full color, for light garments",
     "stem": "shft-robotics-lockup-full-on-light",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-robotics-lockup",
@@ -61,7 +61,7 @@
     "label": "One color, white",
     "stem": "shft-robotics-lockup-white",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-robotics-lockup",
@@ -69,7 +69,7 @@
     "label": "One color, black",
     "stem": "shft-robotics-lockup-black",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-robotics-lockup",
@@ -77,7 +77,7 @@
     "label": "One color, SHFT green",
     "stem": "shft-robotics-lockup-green",
     "w": 1927,
-    "h": 827
+    "h": 828
   },
   {
     "mark": "shft-bolt",

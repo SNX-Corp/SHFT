@@ -32,25 +32,25 @@
   <line x1="16" y1="33" x2="404" y2="33" class="dimln"/>
 
   <!-- ============ PLACEMENT 1 : FULL FRONT ============ -->
-  <!-- print box: 260 wide; wordmark aspect 1.7726 -> height 146.68 -->
+  <!-- print box: 260 wide; wordmark aspect 2.3313 -> height 111.52 -->
   <!-- positioned upper-left quadrant -->
   <g transform="translate(40,70)">
     <text x="0" y="-12" class="h1" font-size="5" letter-spacing="0.3">1  FULL FRONT</text>
     <text x="0" y="-6" class="meta" font-size="3.2">wordmark.svg  -  260 mm wide  -  centered, top 75 mm below collar seam</text>
 
     <!-- garment field: shows white + lime art as it appears on the black tee -->
-    <rect x="0" y="0" width="260" height="146.68" fill="#1A1A1A"/>
+    <rect x="0" y="0" width="260" height="111.52" fill="#000000"/>
     <!-- print-area box -->
-    <rect x="0" y="0" width="260" height="146.68" class="regln"/>
+    <rect x="0" y="0" width="260" height="111.52" class="regln"/>
 
     <!-- the real vector, embedded unmodified, scaled to 260 wide -->
-    <image x="0" y="0" width="260" height="146.68" xlink:href="../../brand-assets/wordmark.svg"
+    <image x="0" y="0" width="260" height="111.52" xlink:href="../../brand-assets/wordmark.svg"
            preserveAspectRatio="xMidYMid meet"/>
 
     <!-- center registration crosshair (above the field, then light marks on the field) -->
     <line x1="130" y1="-3" x2="130" y2="0" class="reg"/>
-    <line x1="127" y1="73.34" x2="133" y2="73.34" stroke="#A3A3A3" stroke-width="0.25"/>
-    <line x1="130" y1="70.34" x2="130" y2="76.34" stroke="#A3A3A3" stroke-width="0.25"/>
+    <line x1="127" y1="55.74" x2="133" y2="55.74" stroke="#A3A3A3" stroke-width="0.25"/>
+    <line x1="130" y1="52.74" x2="130" y2="58.74" stroke="#A3A3A3" stroke-width="0.25"/>
 
     <!-- width dimension -->
     <line x1="0" y1="156" x2="260" y2="156" class="dimln"/>
@@ -61,19 +61,19 @@
   </g>
 
   <!-- ============ PLACEMENT 2 : LEFT CHEST ============ -->
-  <!-- bolt 90 tall; aspect w/h 0.6309 -> width 56.78 -->
+  <!-- bolt 90 tall; aspect w/h 0.5919 -> width 53.27 -->
   <g transform="translate(330,80)">
     <text x="-18" y="-22" class="h1" font-size="5" letter-spacing="0.3">2  LEFT CHEST</text>
     <text x="-18" y="-16" class="meta" font-size="3.2">bolt.svg  -  90 mm tall</text>
     <text x="-18" y="-11.5" class="meta" font-size="3.2">70 mm right of center, 70 mm below shoulder seam</text>
 
     <!-- garment field -->
-    <rect x="0" y="0" width="56.78" height="90" fill="#1A1A1A"/>
+    <rect x="0" y="0" width="53.27" height="90" fill="#000000"/>
     <!-- print-area box -->
-    <rect x="0" y="0" width="56.78" height="90" class="regln"/>
+    <rect x="0" y="0" width="53.27" height="90" class="regln"/>
 
     <!-- real vector embedded unmodified -->
-    <image x="0" y="0" width="56.78" height="90" xlink:href="../../brand-assets/bolt.svg"
+    <image x="0" y="0" width="53.27" height="90" xlink:href="../../brand-assets/bolt.svg"
            preserveAspectRatio="xMidYMid meet"/>
 
     <!-- height dimension -->
@@ -84,7 +84,7 @@
     <text x="69" y="46" class="lbl" font-size="3.8">90 mm</text>
 
     <!-- alt note -->
-    <text x="-18" y="110" class="meta" font-size="3">Alt left-chest mark: shft.svg (compact, 90 mm wide).</text>
+    <text x="-18" y="110" class="meta" font-size="3">Alt left-chest mark: shft.svg (full mark, 90 mm wide).</text>
   </g>
 
   <!-- ============ COLOR / SPOT CALLOUT ============ -->
@@ -97,8 +97,8 @@
     <rect x="78" y="5" width="8" height="8" fill="#FFFFFF" stroke="#D4D4D4" stroke-width="0.3"/>
     <text x="89" y="11" class="lbl" font-size="3.6">White  #FFFFFF</text>
 
-    <rect x="150" y="5" width="8" height="8" fill="#1A1A1A" stroke="#D4D4D4" stroke-width="0.3"/>
-    <text x="161" y="11" class="lbl" font-size="3.6">Ink  #1A1A1A  (garment)</text>
+    <rect x="150" y="5" width="8" height="8" fill="#000000" stroke="#D4D4D4" stroke-width="0.3"/>
+    <text x="161" y="11" class="lbl" font-size="3.6">Ink  #000000  (garment)</text>
 
     <text x="0" y="23" class="spot" font-size="3.4">Lime must print as a spot color. Match to PMS 802 C or 809 C, or a neon ink.</text>
     <text x="0" y="28" class="spot" font-size="3.4">Plain CMYK prints flat olive. Confirm a physical swatch before the run.</text>

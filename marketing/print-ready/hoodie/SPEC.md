@@ -34,7 +34,7 @@ Confirm the exact black on the chosen blank. We want a true black body, not wash
 
 | Attribute | Value |
 |-----------|-------|
-| Artwork | compact SHFT mark |
+| Artwork | SHFT mark (the one master mark) |
 | Vector file | `../../brand-assets/shft.svg` (or local `left-chest-shft.svg`, identical art) |
 | Print width | **95 mm** wide (height follows art, approx 54 mm) |
 | Vertical placement | top of mark **180 mm** down from the shoulder/seam high point |
