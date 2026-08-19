@@ -2,7 +2,7 @@
 
 Production-ready specs for the core SHFT merch line. Hand this to a print shop or embroiderer alongside the vector art (see `vector-plan.md`). The look is built on one rule: **electric lime on black, restraint everywhere else.** Lime does the talking.
 
-> **Team number:** [FILL: team number]. Pending: confirm before any printed run.
+> **Team number:** 11753. Pending: confirm before any printed run.
 > **Region:** Ontario community FRC team. Specific city not yet locked.
 > **Site:** https://shftrobotics.com · Instagram: @shftrobotics
 
@@ -47,7 +47,7 @@ Production-ready specs for the core SHFT merch line. Hand this to a print shop o
 > ONTARIO COMMUNITY FRC TEAM
 
 Or, once known, the team number:
-> TEAM [FILL: team number]
+> TEAM 11753
 
 **Optional back hit:** Small lime bolt at center-back yoke (2 in tall) or the tagline `SHFT THE STANDARD.` across the upper back.
 
@@ -125,7 +125,7 @@ The lime bolt alone. This is the most recognizable, most repeatable piece of the
 - Background: solid SHFT Black `#1A1A1A` (or true black).
 - Center: large `SH⚡FT` wordmark, white letters + lime bolt, sized to roughly 60% of banner width with bolt-height clear space around it.
 - Under the wordmark: tagline `SHFT THE STANDARD.` in the Orbitron-style face, uppercase, tight tracking, lime or white.
-- Bottom strip: `[FILL: team number]` · `ONTARIO` · `shftrobotics.com` · `@shftrobotics`. Small, white, evenly spaced.
+- Bottom strip: `11753` · `ONTARIO` · `shftrobotics.com` · `@shftrobotics`. Small, white, evenly spaced.
 - Optional: faint lime energy-pattern motif (see `energy-pattern.svg`) bled off the corners at low opacity. Keep it subtle so the wordmark stays the hero.
 
 **Colors / inks:**
@@ -168,7 +168,7 @@ ITEMS:
 1) TEE (HERO) // Black ring-spun cotton (Bella+Canvas 3001 or equiv).
    Front center, wordmark ~10–11 in wide. 2 color: white letters + neon
    lime bolt. Optional small line under: "ONTARIO COMMUNITY FRC TEAM" or
-   "TEAM [FILL: team number]".
+   "TEAM 11753".
 
 2) STICKER // Die-cut vinyl, gloss, contour-cut to bolt. 2.5–3 in tall
    (+ 1.5 in mini option). Solid neon lime bolt. Confirm vinyl green to swatch.
@@ -186,7 +186,7 @@ ITEMS:
 
 5) PIT BANNER // 6 ft x 3 ft, 13 oz matte vinyl, hemmed + grommeted.
    Black bg, centered wordmark (white + lime), tagline "SHFT THE STANDARD.",
-   bottom strip: [FILL: team number] · ONTARIO · shftrobotics.com · @shftrobotics.
+   bottom strip: 11753 · ONTARIO · shftrobotics.com · @shftrobotics.
    FLAG the lime as fluorescent. Ask if large-format can hit neon or needs
    a spot/fluoro pass. Request a color-strip proof first.
 

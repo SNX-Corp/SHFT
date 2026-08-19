@@ -58,7 +58,8 @@ Asset files (cleaned to `#A6FF00`, transparent):
 
 | File | What it is |
 |------|-----------|
-| `brand-assets/wordmark-shft-robotics.png` | Full SHFT ROBOTICS wordmark, white letters + green bolt, transparent. For dark grounds. |
+| `brand-assets/wordmark-robotics-official.png` | **Use this one on dark grounds.** Full SHFT ROBOTICS lockup, keyed straight off `wordmark-official.jpeg` so the bolt keeps its top spike and full tapered tail. Transparent, tight-cropped (1178x510, zero padding), green normalised to `#A6FF00`. Most of the box height is bolt overshoot, so set a height that looks large for the letter size. |
+| `brand-assets/wordmark-shft-robotics.png` | **Off-model, do not use.** Two separate faults: the bolt is drawn fat and its top spike is missing, so it does not match the official lockup; and it carries 137px of transparent padding on its TOP EDGE ONLY, so sizing by CSS height renders it 27% undersized and bottom-anchored. This is the file that made the logo look wrong on flyers for months. |
 | `brand-assets/icon-transparent.png` | The emblem in a green circle, transparent. Avatar, sticker, watermark. |
 | `brand-assets/wordmark-official.jpeg` | Original AI wordmark on black (reference, off-green). |
 | `brand-assets/icon.jpeg` | Original AI icon on black (reference, off-green). |
