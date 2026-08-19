@@ -42,7 +42,7 @@ Two options. A normal team order runs Option A on the front; Option B is the alt
 ### Option B: Left chest
 | Field | Spec |
 |---|---|
-| Artwork file | **`../../brand-assets/bolt.svg`** (bare bolt). Alt: `../../brand-assets/shft.svg` (compact SHFT, 90 mm wide) |
+| Artwork file | **`../../brand-assets/bolt.svg`** (bare bolt). Alt: `../../brand-assets/shft.svg` (full SHFT mark, 90 mm wide) |
 | Print size | **90 mm tall** (bolt width follows art at ~56.8 mm) |
 | Horizontal | **70 mm right of the garment center line** (this lands on the wearer's left chest) |
 | Vertical | **70 mm below the shoulder seam** |
@@ -60,7 +60,7 @@ Keep the print to **2 colors**. The garment supplies the black.
 |---|---|---|---|
 | Accent | Lime | **#A6FF00** | **SPOT COLOR.** Match to **Pantone 802 C** or **809 C**, or a neon ink. |
 | Text / underbase | White | #FFFFFF | Standard white. Doubles as underbase under lime on black. |
-| Garment | Ink | #1A1A1A | The blank. Not printed. |
+| Garment | Black | #000000 | The blank. Not printed. |
 
 > **Spot color is mandatory.** Lime #A6FF00 in plain CMYK prints a flat, dull olive. It must be a spot or neon ink. Pull a **physical swatch** and get sign-off before the run. Do not approve to screen.
 

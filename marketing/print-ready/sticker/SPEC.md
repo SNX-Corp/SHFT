@@ -34,7 +34,7 @@ Keep each sticker to 1 to 2 inks plus white. The lime is the brand color and mus
 | Color | Value | Production note |
 |---|---|---|
 | Lime (brand) | #A6FF00 | **Spot color.** Proof against **PANTONE 802 C** (or **809 C**) or a neon/fluorescent green ink. Plain 4-color CMYK prints flat olive and is not acceptable. Confirm a physical swatch before the full run. |
-| Ink | #1A1A1A | Roundel disc background. Rich black build, not pure 100K, to avoid a thin gray. |
+| Black | #000000 | Roundel disc background. Supplied as pure black for spot and digital vinyl. If the vendor runs CMYK litho instead, ask them to build a rich black from it rather than printing 100K alone. |
 | White | #FFFFFF | Keyline ring on roundels, halo on the kiss-cut bolt, and the white base under lime on clear vinyl. |
 | CutContour | #FF00FF (magenta, 1pt) | Cut path only. **Does not print.** Set as a spot named `CutContour` (or your plotter's cut-spot name) with overprint off. |
 
@@ -48,7 +48,7 @@ Each artwork is a self-contained SVG with the brand vectors embedded and a magen
 - **File:** `bolt-roundel.svg`
 - **Brand vector inside:** `../../brand-assets/bolt.svg` (lime bolt)
 - **Size:** 75 mm diameter finished. Alt small size 50 mm.
-- **Build:** lime bolt centered on a #1A1A1A disc, 14u white keyline ring inset from the edge, black bleed extends ~1.75 mm past the cut line.
+- **Build:** lime bolt centered on a #000000 disc, 14u white keyline ring inset from the edge, black bleed extends ~1.75 mm past the cut line.
 - **Cut:** full die-cut circle, CutContour at r = 75 mm.
 - **Colors:** Lime spot + Ink + White (2 colors + white base on clear stock; on white stock no base needed).
 
@@ -56,7 +56,7 @@ Each artwork is a self-contained SVG with the brand vectors embedded and a magen
 - **File:** `shft-roundel.svg`
 - **Brand vector inside:** `../../brand-assets/shft.svg` (white SHFT letters + lime accent stroke)
 - **Size:** 75 mm diameter finished. Alt small size 50 mm.
-- **Build:** compact SHFT mark centered on a #1A1A1A disc, 14u white keyline ring, black bleed past the cut line.
+- **Build:** the SHFT mark centered on a #000000 disc, 14u white keyline ring, black bleed past the cut line.
 - **Cut:** full die-cut circle, CutContour at r = 75 mm.
 - **Colors:** Lime spot + Ink + White.
 
