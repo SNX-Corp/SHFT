@@ -27,13 +27,13 @@ In `website/public/images/logo/`:
 
 | File | What it is | Use on |
 |------|-----------|--------|
-| `wordmark.png` | **Light** wordmark (white letters + lime bolt), 1225×364 | dark garments / dark backgrounds |
+| `wordmark.png` | **Light** wordmark (white letters + lime bolt), 1229×537 | dark garments / dark backgrounds |
 | `wordmark-dark.png` | **Dark** wordmark (near-black letters + lime bolt) | light garments / white backgrounds |
 | `bolt-mask.png` | The **bolt shape** alone (mask) | building a standalone bolt icon |
 | `SS.svg`, `ii.svg` | Vector letter/mark fragments | vector starting points |
 | `../maple-leaf.png` | Maple-leaf crest (secondary mark) | "Ontario" / Canadian accent |
 
-> ⚠️ **For merch, get a true vector wordmark.** The PNGs are 1225 px wide — fine for screens and small prints, but large-format apparel, embroidery, and screen-print want **SVG / AI / EPS** so it scales and separates cleanly. Re-export the wordmark to vector (or rebuild it from the Orbitron-style letters + the bolt) before any large run. The bolt itself should be a clean vector path.
+> ⚠️ **For merch, get a true vector wordmark.** The PNGs are 1229 px wide — fine for screens and small prints, but large-format apparel, embroidery, and screen-print want **SVG / AI / EPS** so it scales and separates cleanly. Re-export the wordmark to vector (or rebuild it from the Orbitron-style letters + the bolt) before any large run. The bolt itself should be a clean vector path.
 
 ---
 
@@ -96,7 +96,7 @@ lines. e.g. "Shift the standard." / "Better. Every. Year." / "Built to compete."
 - Keep the wordmark's proportions exact.
 
 **Don't**
-- ❌ Stretch or squish the wordmark (keep the 1225:364 ≈ **3.37:1** aspect ratio locked).
+- ❌ Stretch or squish the wordmark (keep the 1229:537 ≈ **2.29:1** aspect ratio locked).
 - ❌ Recolor the bolt anything but the lime (or a single garment-matched knockout).
 - ❌ Add drop shadows, gradients, or outlines to the wordmark.
 - ❌ Rebuild the wordmark in a different font. Use the supplied art.
@@ -122,7 +122,7 @@ lines. e.g. "Shift the standard." / "Better. Every. Year." / "Built to compete."
 - [ ] Specify **lime = `#A6FF00`**, proof against Pantone 802/809 C, confirm with a physical swatch (neon).
 - [ ] Confirm garment color first (the look is built around **lime on black**).
 - [ ] Supply Orbitron / Exo 2 / Raleway if any custom text is set.
-- [ ] Lock the wordmark aspect ratio at **3.37:1** — do not let anyone "fit to box."
+- [ ] Lock the wordmark aspect ratio at **2.29:1** — do not let anyone "fit to box."
 
 ---
 

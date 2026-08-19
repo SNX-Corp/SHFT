@@ -37,11 +37,11 @@ const LOGO = '/images/logo/wordmark.png';
     --gx: 5px;
     --open: 0.8s;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
-    /* Logo sized to the hero wordmark. The min() also caps it by width so the
-       wordmark never overflows on narrow phones (matches the hero logo, which
-       is width-capped to ~90vw). 26.7vw tall keeps the 1225:364 mark at ~90vw. */
+    /* Logo sized to the hero wordmark. The vw term caps the height on narrow
+       phones so the mark never runs off the edge. The ratio is the wordmark
+       PNG's own 1229:537 and moves whenever the artwork box does. */
     --lh: min(clamp(8.75rem, 33vh, 23rem), 49vw);
-    --logo-w: calc(var(--lh) * 1225 / 537);
+    --logo-w: calc(var(--lh) * 1229 / 537);
     /* seam (where the logo straddles + doors split) = hero logo centre;
        the boot script measures the real hero slot and overrides this. */
     --seam: 48%;

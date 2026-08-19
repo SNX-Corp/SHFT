@@ -46,7 +46,7 @@ The native `.ai` beats all of these. Reach for these only for a quick single-col
 
 ## In the website repo (screen use only)
 
-`website/public/images/logo/` holds `wordmark.png` and `wordmark-dark.png` (1225 by 364 raster) and `bolt-mask.png`. The PNGs are fine for screens and small prints, not for print. Printers get the true-vector pack at `website/public/brand/`, published at shftrobotics.com/brand#downloads. The auto-traced `SS.svg` was deleted when the S-mark was retired.
+`website/public/images/logo/` holds `wordmark.png` and `wordmark-dark.png` (1229 by 537 raster) and `bolt-mask.png`. The PNGs are fine for screens and small prints, not for print. Printers get the true-vector pack at `website/public/brand/`, published at shftrobotics.com/brand#downloads. The auto-traced `SS.svg` was deleted when the S-mark was retired.
 
 ---
 

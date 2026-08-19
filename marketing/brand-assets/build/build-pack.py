@@ -22,7 +22,7 @@ GREEN, INK, WHITE = '#A6FF00', '#1A1A1A', '#FFFFFF'
 PRINT_BLACK = '#000000'
 
 # tight artwork boxes in the master viewBox (0 0 2175.5 1079)
-WORDMARK_BOX = (124, 156, 1927, 828)          # SHFT + bolt
+WORDMARK_BOX = (118, 156, 1933, 828)          # SHFT + bolt
 BOLT_BOX = (899.7, 156.9, 489.0, 826.1)      # bolt alone
 PAD = 0  # artwork is delivered trimmed; clear space is documented, not baked in
 

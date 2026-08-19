@@ -32,7 +32,7 @@
   <line x1="16" y1="33" x2="404" y2="33" class="dimln"/>
 
   <!-- ============ PLACEMENT 1 : FULL FRONT ============ -->
-  <!-- print box: 260 wide; wordmark aspect 2.3313 -> height 111.52 -->
+  <!-- print box: 260 x 111.52 as drawn; the wordmark's tight aspect is 2.3386 -->
   <!-- positioned upper-left quadrant -->
   <g transform="translate(40,70)">
     <text x="0" y="-12" class="h1" font-size="5" letter-spacing="0.3">1  FULL FRONT</text>

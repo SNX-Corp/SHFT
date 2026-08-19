@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SHFT ROBOTICS - Logo Pack Proof Sheet</title>
+<!--
+  Vendor proof sheet. Screenshot this page at 2x to make
+  instant-imprints-pack/proof-sheet.png:
+
+    chrome-devtools-axi open file://<abs path>/proof-sheet.html
+    chrome-devtools-axi emulate --viewport "1538x779x2"
+    chrome-devtools-axi screenshot proof-sheet.png
+
+  The marks are the pack SVGs, so this page always shows what is actually in the
+  pack. Re-run build-pack.py first.
+-->
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --muted: #6E6E6E;
+    --faint: #9B9B9B;
+    --dark: #141414;
+    --light: #F2F2F0;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 1538px; height: 779px; background: #FFFFFF; color: var(--ink);
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 26px 30px 0;
+  }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.2px; }
+  .sub { margin-top: 9px; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+  .grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 178px repeat(5, 1fr);
+    column-gap: 11px;
+    row-gap: 14px;
+    align-items: start;
+  }
+  .colhead { font-size: 12.5px; font-weight: 600; padding-bottom: 2px; }
+  .rowhead { padding-top: 44px; }
+  .rowhead b { display: block; font-size: 15px; font-weight: 700; letter-spacing: 0.2px; }
+  .rowhead span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+  .rowhead em { display: block; font-size: 11.5px; color: var(--faint); font-style: normal; margin-top: 2px; }
+  .cell { height: 154px; display: flex; align-items: center; justify-content: center; }
+  .cell.on-dark { background: var(--dark); }
+  .cell.on-light { background: var(--light); }
+  .cell img { width: 78%; max-height: 68%; object-fit: contain; }
+  .cell.bolt img { width: auto; height: 78%; }
+  .cap { font-size: 11.5px; color: var(--muted); margin-top: 7px; }
+  .foot { margin-top: 22px; font-size: 12.5px; color: var(--muted); }
+</style>
+</head>
+<body>
+  <h1>SHFT ROBOTICS &middot; LOGO PACK PROOF SHEET</h1>
+  <p class="sub">
+    Three marks, five colorways each. Every file is a true vector: SVG, PDF and EPS, plus a 4000 px PNG for convenience.<br>
+    Point at the cell you want and note the folder name and the colorway name under it.
+  </p>
+
+  <div class="grid" id="grid"></div>
+
+  <p class="foot">Green #A6FF00 &middot; Black #000000 (pure, for spot and digital) &middot; White #FFFFFF &middot; Near-black #1A1A1A is used only in full-color-on-light.</p>
+
+<script>
+  const WAYS = [
+    ['full-on-dark',  'full-color-on-dark',  'on-dark'],
+    ['full-on-light', 'full-color-on-light', 'on-light'],
+    ['black',         'one-color-black',     'on-light'],
+    ['white',         'one-color-white',     'on-dark'],
+    ['green',         'one-color-green',     'on-dark'],
+  ];
+  const ROWS = [
+    ['shft-robotics-lockup', 'FULL LOGO', 'SHFT + bolt + ROBOTICS', '01-full-logo-shft-robotics/'],
+    ['shft-wordmark',        'WORDMARK',  'SHFT + bolt',            '02-wordmark-shft/'],
+    ['shft-bolt',            'BOLT',      'bolt only',              '03-bolt/'],
+  ];
+  const SVG = '../../../website/public/brand/svg/';
+  const grid = document.getElementById('grid');
+  const el = (tag, cls, html) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html !== undefined) n.innerHTML = html;
+    return n;
+  };
+
+  grid.appendChild(el('div'));
+  for (const [, label] of WAYS) grid.appendChild(el('div', 'colhead', label));
+
+  for (const [stem, title, what, folder] of ROWS) {
+    grid.appendChild(el('div', 'rowhead', `<b>${title}</b><span>${what}</span><em>${folder}</em>`));
+    for (const [way, label, bg] of WAYS) {
+      const wrap = el('div');
+      const cell = el('div', `cell ${bg}${stem === 'shft-bolt' ? ' bolt' : ''}`);
+      const img = new Image();
+      img.src = `${SVG}${stem}-${way}.svg`;
+      img.alt = '';
+      cell.appendChild(img);
+      wrap.appendChild(cell);
+      wrap.appendChild(el('div', 'cap', `${label}.svg / .pdf / .eps`));
+      grid.appendChild(wrap);
+    }
+  }
+</script>
+</body>
+</html>

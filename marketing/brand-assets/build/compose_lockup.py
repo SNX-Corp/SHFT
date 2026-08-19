@@ -20,8 +20,8 @@ HERE = pathlib.Path(__file__).resolve().parent
 ASSETS = HERE.parent
 
 # --- master wordmark geometry, measured from an 8px/unit render of wordmark.svg ---
-# viewBox of wordmark.svg is "0 0 2175.5 1079"; the artwork's tight box is "124 126 1927 827".
-LETTERS = dict(x0=124.88, x1=2050.62, y0=414.75, y1=725.44)   # SHFT letterforms only
+# viewBox of wordmark.svg is "0 0 2175.5 1079"; the artwork's tight box is "118 156 1933 828".
+LETTERS = dict(x0=118.88, x1=2050.62, y0=414.75, y1=725.44)   # SHFT letterforms only
 BOLT    = dict(x0=899.81, x1=1388.56, y0=157.12, y1=982.81)   # the bolt
 
 # --- ROBOTICS proportions, as multiples of the SHFT cap height ---
